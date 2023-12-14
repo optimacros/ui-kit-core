@@ -1,0 +1,57 @@
+@import '../../themes/config.css';
+
+.Container {
+    display: inline-flex;
+    overflow: hidden;
+}
+
+:global {
+    .rc-dropdown .rc-menu {
+        margin: 2px 0 0 !important;
+        background-color: var(--rc-dropdown-menu-bg) !important;
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12) !important;
+        font-size: 1.2rem !important;
+        max-height: calc(100vh - 20px) !important;
+        overflow: auto !important;
+        border: none !important;
+    }
+
+    .rc-dropdown > .rc-menu-inline,
+    .rc-dropdown > .rc-menu-vertical,
+    .rc-dropdown > .rc-menu-vertical-left,
+    .rc-dropdown > .rc-menu-vertical-right {
+        padding: 4px 0;
+    }
+
+    .rc-dropdown > .rc-menu >.rc-menu-item:first-child {
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+    }
+
+    .rc-dropdown > .rc-menu > .rc-menu-item:last-child {
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+
+    .rc-dropdown > .rc-menu-inline > .rc-menu-item,
+    .rc-dropdown > .rc-menu-inline > .rc-menu-submenu > .rc-menu-submenu-title,
+    .rc-dropdown > .rc-menu-vertical-left > .rc-menu-item,
+    .rc-dropdown > .rc-menu-vertical-left > .rc-menu-submenu > .rc-menu-submenu-title,
+    .rc-dropdown > .rc-menu-vertical-right > .rc-menu-item,
+    .rc-dropdown > .rc-menu-vertical-right > .rc-menu-submenu > .rc-menu-submenu-title,
+    .rc-dropdown > .rc-menu-vertical > .rc-menu-item,
+    .rc-dropdown > .rc-menu-vertical > .rc-menu-submenu > .rc-menu-submenu-title {
+        padding: 12px 24px 12px 16px;
+    }
+
+    .rc-dropdown > .rc-menu > .rc-menu-item {
+        position: relative;
+        display: block;
+        clear: both;
+        font-size: 12px;
+        font-weight: 400;
+        color: var(--primary-text-color);
+        white-space: nowrap;
+        cursor: pointer;
+    }
+}

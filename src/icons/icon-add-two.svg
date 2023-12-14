@@ -1,0 +1,56 @@
+<svg
+	version="1.1"
+	xmlns="http://www.w3.org/2000/svg"
+	x="0px"
+	y="0px"
+	viewBox="-293 385 24 24"
+	style="enable-background:new -293 385 24 24;"
+>
+	<style type="text/css">
+		.st0 {
+			display: none;
+			fill: none;
+			stroke: #E51A1A;
+			stroke-width: 5;
+			stroke-miterlimit: 10;
+		}
+		.element {
+			fill: #9d9d9d;
+		}
+	</style>
+	<rect
+		x="-285.9"
+		y="395.1"
+		width="2"
+		height="11.4"
+		class="element"
+	/>
+	<rect
+		x="-290.5"
+		y="399.8"
+		width="11.4"
+		height="2"
+		class="element"
+	/>
+	<rect
+		x="-278.2"
+		y="387.5"
+		width="2"
+		height="11.4"
+		class="element"
+	/>
+	<rect
+		x="-282.9"
+		y="392.2"
+		width="11.4"
+		height="2"
+		class="element"
+	/>
+	<rect
+		x="-293"
+		y="385"
+		class="st0"
+		width="24"
+		height="24"
+	/>
+</svg>

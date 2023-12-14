@@ -1,0 +1,6 @@
+@import '../../themes/config.css';
+
+.Container {
+    will-change: left, top;
+    position: relative;
+}
