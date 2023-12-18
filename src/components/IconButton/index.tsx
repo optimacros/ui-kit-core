@@ -22,7 +22,7 @@ export interface IconButtonProps extends Partial<ButtonInitialProps> {
 const RippledIconButton = themedRippleFactory({ centered: true })(IconButtonComponent)
 
 export class IconButton extends React.Component<Partial<IconButtonProps>> {
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         const {
             icon,
             children,

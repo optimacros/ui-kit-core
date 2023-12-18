@@ -34,7 +34,7 @@ export interface InitialProps {
 }
 
 export class CheckBox extends React.Component<InitialProps> {
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         const ThemedCheckboxComponent = this.props.tooltipLabel
             ? tooltip(CheckBoxComponent)
             : CheckBoxComponent

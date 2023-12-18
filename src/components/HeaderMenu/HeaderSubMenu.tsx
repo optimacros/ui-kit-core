@@ -36,7 +36,7 @@ export class HeaderSubMenu extends React.Component<Props> {
         }
     }
 
-    render(): React.ReactElement | null {
+    render(): React.JSX.Element | null {
         const { elements, element } = this.props
 
         if (isEmpty(elements)) {
@@ -58,7 +58,7 @@ export class HeaderSubMenu extends React.Component<Props> {
         )
     }
 
-    renderList(): (React.ReactElement | null)[] {
+    renderList(): (React.JSX.Element | null)[] {
         return map(this.props.elements, (element) => {
             if (element.hidden) {
                 return null

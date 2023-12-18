@@ -35,7 +35,7 @@ export class Tabs extends React.Component<React.PropsWithChildren<Props>, State>
         return null
     }
 
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         const {
             children,
             onChange,

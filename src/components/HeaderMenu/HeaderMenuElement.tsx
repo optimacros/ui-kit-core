@@ -44,7 +44,7 @@ export class HeaderMenuElement extends React.Component<Props, State> {
         showMenu: false,
     }
 
-    render(): React.ReactElement | null {
+    render(): React.JSX.Element | null {
         const { element } = this.props
 
         if (element.hidden) {
@@ -76,7 +76,7 @@ export class HeaderMenuElement extends React.Component<Props, State> {
         )
     }
 
-    renderSubMenu(): React.ReactElement | null {
+    renderSubMenu(): React.JSX.Element | null {
         const { element } = this.props
 
         if (!this.state.showMenu || isEmpty(element.children)) {

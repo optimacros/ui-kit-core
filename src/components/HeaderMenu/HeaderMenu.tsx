@@ -13,7 +13,7 @@ type Props = {
 
 @observer
 export class HeaderMenu extends Component<Props> {
-    render(): React.ReactElement | null {
+    render(): React.JSX.Element | null {
         if (isEmpty(this.props.elements)) {
             return null
         }
@@ -27,7 +27,7 @@ export class HeaderMenu extends Component<Props> {
         )
     }
 
-    renderList(): (React.ReactElement | null)[] {
+    renderList(): (React.JSX.Element | null)[] {
         return map(this.props.elements, (element) => {
             if (element.hidden) {
                 return null

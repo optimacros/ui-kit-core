@@ -8,7 +8,7 @@ type Props = {
 }
 
 export class Divider extends PureComponent<Props> {
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         const className = classNames({
             [styles.Divider]: true,
             [styles.Divider__vertical]: this.props.vertical,

@@ -22,7 +22,7 @@ type Props = {
 }
 
 export class Chip extends React.Component<React.PropsWithChildren<Partial<Props>>> {
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         const {
             children,
             className = '',

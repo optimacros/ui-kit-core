@@ -9,7 +9,7 @@ type Props = {
     className?: string;
 }
 
-export const HeaderUserSubMenu = (props: React.PropsWithChildren<Props>): React.ReactElement => {
+export const HeaderUserSubMenu = (props: React.PropsWithChildren<Props>): React.JSX.Element => {
     const className = classNames(styles.userMenu_List, styles.userMenu_List_SubMenu, props.className)
 
     return (

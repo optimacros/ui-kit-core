@@ -12,7 +12,7 @@ type Props = {
     icon?: string;
 }
 
-export const HeaderUserMenuElement = (props: React.PropsWithChildren<Props>): React.ReactElement => {
+export const HeaderUserMenuElement = (props: React.PropsWithChildren<Props>): React.JSX.Element => {
     const ContainerNode = props.href
         ? 'a'
         : 'span'

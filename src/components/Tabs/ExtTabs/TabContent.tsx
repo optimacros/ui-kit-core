@@ -21,7 +21,7 @@ type Props = Omit<TabsContainerProps, 'headerClassName' | 'contentClassName'> & 
 }
 
 export class TabContent extends Component<Props> {
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         const theme = this.getTheme
         const className = classNames(theme.TabContent, this.props.className)
 
@@ -32,7 +32,7 @@ export class TabContent extends Component<Props> {
         )
     }
 
-    renderPanel(): (React.ReactElement | null)[] {
+    renderPanel(): (React.JSX.Element | null)[] {
         const theme = this.getTheme
         const active = this.props.active ?? 0
 

@@ -8,7 +8,7 @@ type Props = {
 }
 
 export class HeaderContainer extends Component<React.PropsWithChildren<Props>> {
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         const className = classNames(styles.Container, this.props.className)
 
         return (

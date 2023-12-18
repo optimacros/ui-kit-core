@@ -15,7 +15,7 @@ interface BoxProps extends Partial<RippleProps> {
     style?: CSSProperties;
 }
 
-export const Box = (props: BoxProps): React.ReactElement => (
+export const Box = (props: BoxProps): React.JSX.Element => (
     <div
         role="none"
         data-react-toolbox="check"

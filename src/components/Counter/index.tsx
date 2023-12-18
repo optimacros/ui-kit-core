@@ -34,7 +34,7 @@ export class Counter extends React.Component<CounterProps> {
         return this.renderCounter()
     }
 
-    private renderCounter = (): React.ReactElement | null => {
+    private renderCounter = (): React.JSX.Element | null => {
         const value = this.props.value
         const maxValue = this.props.maxValue ?? Infinity
 

@@ -6,7 +6,7 @@ export { Divider } from 'rc-menu'
 
 import 'rc-menu/assets/index.css'
 
-export const Menu = (props: MenuProps): React.ReactElement => {
+export const Menu = (props: MenuProps): React.JSX.Element => {
     return (
         <BaseMenu selectable={false}
             {...props}
@@ -14,7 +14,7 @@ export const Menu = (props: MenuProps): React.ReactElement => {
     )
 }
 
-export const SubMenu = (props: SubMenuProps): React.ReactElement => {
+export const SubMenu = (props: SubMenuProps): React.JSX.Element => {
     return (
         <BaseSubMenu {...props}
             title={props.title}
@@ -22,7 +22,7 @@ export const SubMenu = (props: SubMenuProps): React.ReactElement => {
     )
 }
 
-export const MenuItem = (props: MenuItemProps): React.ReactElement => {
+export const MenuItem = (props: MenuItemProps): React.JSX.Element => {
     return (
         <Item {...props}>
             {props.title || props.children}

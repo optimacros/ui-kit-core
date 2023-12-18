@@ -10,7 +10,7 @@ type Props = {
 }
 
 export class HeaderNavigation extends Component<Props> {
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         return (
             <div
                 role="none"

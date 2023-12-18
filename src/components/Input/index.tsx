@@ -38,11 +38,11 @@ interface Props extends Omit<HTMLAttributes, 'onChange' | 'onKeyPress'> {
     onKeyPress?: (event: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
     multiline?: boolean;
     floating?: boolean;
-    label?: string | React.ReactElement;
-    error?: string | React.ReactElement | null;
-    hint?: string | React.ReactElement;
+    label?: string | React.JSX.Element;
+    error?: string | React.JSX.Element | null;
+    hint?: string | React.JSX.Element;
     collapsed?: boolean;
-    icon?: string | React.ReactElement;
+    icon?: string | React.JSX.Element;
     theme?: Partial<InputTheme>;
 }
 
@@ -75,7 +75,7 @@ export class Input extends React.Component<Props> {
         }
     }
 
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         const {
             name,
             value,

@@ -112,7 +112,7 @@ export class TabHeader extends Component<Props> {
         }
     }
 
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         const theme = this.getTheme
 
         const className = classNames(
@@ -120,7 +120,7 @@ export class TabHeader extends Component<Props> {
                 [theme.TabHeaderContainer]: true,
                 [styles.TabHeaderContainer_noScroller]: !this.tabHeaderState.countScrollableTabs,
             },
-            this.props.className
+            this.props.className,
         )
 
         return (
@@ -136,7 +136,7 @@ export class TabHeader extends Component<Props> {
         )
     }
 
-    renderScroller(): React.ReactElement | null {
+    renderScroller(): React.JSX.Element | null {
         if (!this.tabHeaderState.countScrollableTabs) {
             return null
         }
@@ -154,7 +154,7 @@ export class TabHeader extends Component<Props> {
         )
     }
 
-    renderTabsHeaderButton(isScrollableTabs: boolean): (React.ReactElement | null)[] | null {
+    renderTabsHeaderButton(isScrollableTabs: boolean): (React.JSX.Element | null)[] | null {
         const theme = this.getTheme
 
         const {
@@ -198,7 +198,7 @@ export class TabHeader extends Component<Props> {
                     [theme.TabButton__draggable]: isDraggableTab,
                     [theme.TabButton__disabled]: isDisabled,
                 },
-                tab.props.className
+                tab.props.className,
             )
 
             styleContainer.zIndex = countScrollableTabs - index
@@ -265,7 +265,7 @@ export class TabHeader extends Component<Props> {
         })
     }
 
-    renderCounter(tab: React.ReactElement): React.ReactElement | null {
+    renderCounter(tab: React.JSX.Element): React.JSX.Element | null {
         const {
             counter,
             maxCounter,
@@ -285,7 +285,7 @@ export class TabHeader extends Component<Props> {
         )
     }
 
-    renderIcon = (tab: React.ReactElement): React.ReactElement | null => {
+    renderIcon = (tab: React.JSX.Element): React.JSX.Element | null => {
         const props: TabProps = tab.props
 
         if (!props.icon) {
@@ -304,7 +304,7 @@ export class TabHeader extends Component<Props> {
         return props.icon
     }
 
-    renderDropdown(): React.ReactElement | null {
+    renderDropdown(): React.JSX.Element | null {
         if (isEmpty(this.tabHeaderState.hiddenTabs)) {
             return null
         }
@@ -327,7 +327,7 @@ export class TabHeader extends Component<Props> {
         )
     }
 
-    renderDropdownList(): React.ReactElement[] {
+    renderDropdownList(): React.JSX.Element[] {
         return map(this.tabHeaderState.hiddenTabs, (element, index) => {
             const { content, active, position, disabled } = element
             const className = classNames({
@@ -383,7 +383,7 @@ export class TabHeader extends Component<Props> {
         this.tabHeaderState.setScrollLeft()
     }
 
-    private onHeaderContextMenu = (event: React.MouseEvent<HTMLElement, MouseEvent>, tab: React.ReactElement): void => {
+    private onHeaderContextMenu = (event: React.MouseEvent<HTMLElement, MouseEvent>, tab: React.JSX.Element): void => {
         const props: TabProps = tab.props
 
         if (props.onHeaderContextMenu) {
@@ -391,7 +391,7 @@ export class TabHeader extends Component<Props> {
         }
     }
 
-    private onDoubleClick= (tab: React.ReactElement): void => {
+    private onDoubleClick = (tab: React.JSX.Element): void => {
         const props: TabProps = tab.props
 
         if (props.onDoubleClick) {

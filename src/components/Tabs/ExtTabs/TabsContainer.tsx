@@ -28,7 +28,7 @@ export type TabsContainerProps = {
 }
 
 export class TabsContainer extends Component<TabsContainerProps> {
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         const {
             headerClassName,
             contentClassName,

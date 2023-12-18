@@ -81,7 +81,7 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
         }
     }
 
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         const {
             allowBlank,
             auto,
@@ -153,7 +153,7 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
         )
     }
 
-    renderTemplateValue(selected: SelectBoxProps['source'][number] | undefined): React.ReactElement | null {
+    renderTemplateValue(selected: SelectBoxProps['source'][number] | undefined): React.JSX.Element | null {
         if (!this.props.template) {
             return null
         }
@@ -191,7 +191,7 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
         )
     }
 
-    renderValue = (item: SelectBoxProps['source'][number], idx: number): React.ReactElement => {
+    renderValue = (item: SelectBoxProps['source'][number], idx: number): React.JSX.Element => {
         const { labelKey, theme, valueKey } = this.props
         const { focusedItemIndex } = this.state
         const className = classnames({

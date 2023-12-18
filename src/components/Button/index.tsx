@@ -35,7 +35,7 @@ export type Theme = ThemeButtonProps & {
 
 export interface ButtonInitialProps extends ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
     label: string;
-    icon: string | React.ReactElement | null;
+    icon: string | React.JSX.Element | null;
     href: string;
     gray: boolean;
     warning: boolean;
@@ -59,7 +59,7 @@ export interface ButtonInitialProps extends ButtonHTMLAttributes<HTMLButtonEleme
 const RippledButton = themedRippleFactory({ centered: false })(ButtonComponent)
 
 export class Button extends Component<Partial<ButtonInitialProps>> {
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         let theme = mergeStyles(style, this.props.theme) as Theme
         theme = mergeStyles(theme, themeStyle) as Theme
 

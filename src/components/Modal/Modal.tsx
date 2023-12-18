@@ -2,9 +2,9 @@ import classNames from 'classnames'
 import React, { Component } from 'react'
 import type BaseReactModal from 'react-modal'
 
-import { FontIcon } from '../FontIcon'
 import Draggable from './DraggableModalContainer'
 import ReactModal from './ReactModal'
+import { FontIcon } from '../FontIcon'
 
 import styles from './Modal.module.css'
 
@@ -20,7 +20,7 @@ interface Props extends BaseReactModal.Props {
 }
 
 export class Modal extends Component<React.PropsWithChildren<Props>> {
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         const containerClassName = classNames({
             [styles.Container]: true,
             [styles.Container__compact]: this.props.compact ?? false,
@@ -64,7 +64,7 @@ export class Modal extends Component<React.PropsWithChildren<Props>> {
         )
     }
 
-    renderHeader(): React.ReactElement | null {
+    renderHeader(): React.JSX.Element | null {
         if (!this.props.title) {
             return null
         }
@@ -95,7 +95,7 @@ export class Modal extends Component<React.PropsWithChildren<Props>> {
         )
     }
 
-    renderCloseButton(): React.ReactElement | null {
+    renderCloseButton(): React.JSX.Element | null {
         if (!this.props.onRequestClose || this.props.isFatalError) {
             return null
         }

@@ -37,13 +37,13 @@ interface Props {
     onClick?: (event: React.MouseEvent) => void;
     title?: string;
     alt?: string;
-    children?: React.ReactElement;
+    children?: React.JSX.Element;
     theme?: Record<string, string>;
     style?: React.CSSProperties;
 }
 
 export class Icon extends React.Component<Props> {
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         const { value, ...otherProps } = this.props
 
         if (this.props.value in this.icons) {

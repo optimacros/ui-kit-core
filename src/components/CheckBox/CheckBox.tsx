@@ -21,7 +21,7 @@ export class CheckBoxComponent extends Component<CheckBoxComponentProps> {
 
     inputNode: React.RefObject<HTMLInputElement>
 
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         const {
             checked = false,
             children,

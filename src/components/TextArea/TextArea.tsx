@@ -11,7 +11,7 @@ type Props = {
 }
 
 export class TextArea extends React.PureComponent<Props> {
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         const {
             error,
             label,

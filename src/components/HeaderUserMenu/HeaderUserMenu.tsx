@@ -7,7 +7,7 @@ type Props = {
 }
 
 export class HeaderUserMenu extends React.Component<React.PropsWithChildren<Props>> {
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         return (
             <div className={styles.headerNav}>
                 <ul className={styles.headerNav_List}>
@@ -19,7 +19,7 @@ export class HeaderUserMenu extends React.Component<React.PropsWithChildren<Prop
         )
     }
 
-    renderDropDown(): React.ReactElement {
+    renderDropDown(): React.JSX.Element {
         return (
             <div className={styles.userMenu}>
                 <div className={styles.userMenu_Title}>{this.props.userName || ' '}</div>

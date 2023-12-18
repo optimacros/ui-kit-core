@@ -21,7 +21,7 @@ export interface Props extends Omit<SelectBoxProps, 'theme'> {
 }
 
 export class SelectBox extends Component<Props> {
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         const {
             label,
             className,
@@ -54,7 +54,7 @@ export class SelectBox extends Component<Props> {
         )
     }
 
-    renderChip(): React.ReactElement | null {
+    renderChip(): React.JSX.Element | null {
         if (!this.props.multiSelect) {
             return null
         }
@@ -62,7 +62,7 @@ export class SelectBox extends Component<Props> {
         return <div>{this.renderList()}</div>
     }
 
-    renderList(): (React.ReactElement | null)[] | null {
+    renderList(): (React.JSX.Element | null)[] | null {
         if (!Array.isArray(this.props.value)) {
             return null
         }

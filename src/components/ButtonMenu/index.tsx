@@ -20,12 +20,12 @@ type Props = {
     arrowUp?: boolean;
     menuRootContainerClassName?: string;
     theme?: Record<string, string>;
-    icon?: string | React.ReactElement;
+    icon?: string | React.JSX.Element;
     classNameDropdownContainer?: string;
 }
 
 export class ButtonMenu extends PureComponent<React.PropsWithChildren<Props>> {
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         return (
             <Dropdown
                 overlay={this.renderMenu()}
@@ -38,7 +38,7 @@ export class ButtonMenu extends PureComponent<React.PropsWithChildren<Props>> {
         )
     }
 
-    renderMenu(): React.ReactElement {
+    renderMenu(): React.JSX.Element {
         const { menuRootContainerClassName } = this.props
         const theme = mergeStyles(this.props.theme, buttonMenuTheme)
         const className = classNames(menuRootContainerClassName, theme.MenuRootContainerClassName)
@@ -50,7 +50,7 @@ export class ButtonMenu extends PureComponent<React.PropsWithChildren<Props>> {
         )
     }
 
-    renderButton(): React.ReactElement {
+    renderButton(): React.JSX.Element {
         const TooltipButton = this.props.tooltip
             ? tooltip(Button)
             : Button

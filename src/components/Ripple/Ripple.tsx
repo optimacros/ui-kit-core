@@ -68,7 +68,7 @@ const rippleFactory = (options: RippleFactoryProps): RippleWrapperFC => {
     } = options
 
     return function <T extends React.PropsWithChildren<Partial<RippleProps>>>(
-        ComposedComponent: React.ComponentClass<T> | React.FC<T>
+        ComposedComponent: React.ComponentClass<T> | React.FC<T>,
     ): React.ComponentClass<T, State> {
         return class RippledComponent extends Component<T, State> {
             state: State = {
@@ -96,7 +96,7 @@ const rippleFactory = (options: RippleFactoryProps): RippleWrapperFC => {
                 })
             }
 
-            render(): React.ReactElement {
+            render(): React.JSX.Element {
                 const {
                     children,
                     disabled = false,
@@ -134,7 +134,7 @@ const rippleFactory = (options: RippleFactoryProps): RippleWrapperFC => {
                 key: string,
                 className: string,
                 { active, left, restarting, top, width }: RippleItem,
-            ): React.ReactElement {
+            ): React.JSX.Element {
                 const theme = mergeStyles(defaultTheme, this.props.theme)
 
                 const scale = restarting
@@ -147,7 +147,7 @@ const rippleFactory = (options: RippleFactoryProps): RippleWrapperFC => {
                         [theme.rippleActive]: active,
                         [theme.rippleRestarting]: restarting,
                     },
-                    className
+                    className,
                 )
 
                 return (
@@ -168,7 +168,7 @@ const rippleFactory = (options: RippleFactoryProps): RippleWrapperFC => {
                                 {
                                     width: `${width}px`,
                                     height: `${width}px`,
-                                }
+                                },
                             )}
                         />
                     </span>
@@ -308,7 +308,7 @@ const rippleFactory = (options: RippleFactoryProps): RippleWrapperFC => {
                                     },
                                 },
                             }))
-                        }
+                        },
                     )
                 }
             }

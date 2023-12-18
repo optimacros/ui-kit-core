@@ -15,7 +15,7 @@ type Props = {
 
 @observer
 export class HeaderMenuElementContainer extends React.Component<Props> {
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         const { element } = this.props
 
         const className = classNames({
@@ -41,7 +41,7 @@ export class HeaderMenuElementContainer extends React.Component<Props> {
         )
     }
 
-    renderIcon(element: Element): React.ReactElement | null {
+    renderIcon(element: Element): React.JSX.Element | null {
         if (!element.icon) {
             return null
         }
@@ -56,7 +56,7 @@ export class HeaderMenuElementContainer extends React.Component<Props> {
         )
     }
 
-    renderArrowIcon(): React.ReactElement | null {
+    renderArrowIcon(): React.JSX.Element | null {
         const { element, isFirstLevel } = this.props
 
         if (isFirstLevel || isEmpty(element.children) || element.disabled) {

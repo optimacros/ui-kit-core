@@ -33,7 +33,7 @@ export class Loader extends Component<Props> {
     min = 0;
     max = 100;
 
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         if (this.props.min) {
             this.min = this.props.min
         }
@@ -77,7 +77,7 @@ export class Loader extends Component<Props> {
         )
     }
 
-    renderCircular(theme: Theme): React.ReactElement {
+    renderCircular(theme: Theme): React.JSX.Element {
         return (
             <svg
                 className={theme.circle}
@@ -94,7 +94,7 @@ export class Loader extends Component<Props> {
         )
     }
 
-    renderLinear(theme: Theme): React.ReactElement {
+    renderLinear(theme: Theme): React.JSX.Element {
         const { buffer = 0, value } = this.linearStyle()
 
         return (

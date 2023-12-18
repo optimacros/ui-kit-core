@@ -6,7 +6,7 @@
 
 export function mergeStyles(
     original: Record<string, string> = {},
-    mixin: Record<string, string | undefined> = {}
+    mixin: Record<string, string | undefined> = {},
 ): Record<string, string> {
     // make a copy to avoid mutations of nested objects
     // also strip all functions injected by isomorphic-style-loader

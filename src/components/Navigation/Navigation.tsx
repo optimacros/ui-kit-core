@@ -12,7 +12,7 @@ interface Props extends Omit<NavigationProps, 'theme'> {
 }
 
 export class Navigation extends React.Component<React.PropsWithChildren<Props>> {
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         const theme = mergeStyles(this.props.theme, navigationTheme) as NavigationTheme
 
         const className = classNames(
@@ -20,7 +20,7 @@ export class Navigation extends React.Component<React.PropsWithChildren<Props>> 
                 [navigationTheme.NavigationContainer]: true,
                 [navigationTheme.NavigationContainer_Vertical]: this.props?.type === 'vertical',
             },
-            this.props.className
+            this.props.className,
         )
 
         return (

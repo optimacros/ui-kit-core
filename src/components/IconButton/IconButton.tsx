@@ -18,7 +18,7 @@ export class IconButtonComponent extends Component<Props> {
 
     buttonNode: React.RefObject<HTMLButtonElement>
 
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         const {
             inverse = false,
             neutral = true,

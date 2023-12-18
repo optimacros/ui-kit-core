@@ -53,7 +53,7 @@ export default class DraggableModalContainer extends Component<Props, State> {
         document.removeEventListener('mouseup', this.endDrag)
     }
 
-    render(): React.ReactElement {
+    render(): React.JSX.Element {
         const containerPosition = {
             top: this.state.movePosition.y,
             left: this.state.movePosition.x,

@@ -170,7 +170,7 @@ const tooltipFactory = (options: TooltipFactoryProps): TooltipWrapperFC => {
                                 </span>
                             </span>
                         </Portal>
-                    )
+                    ),
                 )
             }
 

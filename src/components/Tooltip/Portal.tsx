@@ -46,7 +46,7 @@ class Portal extends Component<React.PropsWithChildren<Props>> {
         }
     }
 
-    private getOverlay(): null | React.ReactElement {
+    private getOverlay(): null | React.JSX.Element {
         if (!this.props.children) {
             return null
         }

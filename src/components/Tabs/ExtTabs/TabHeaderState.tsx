@@ -16,7 +16,7 @@ import type React from 'react'
 import type { TabProps } from '../Tab'
 
 export type HiddenTabProps = {
-    content: string | React.ReactElement | undefined;
+    content: string | React.JSX.Element | undefined;
     active: boolean;
     position: number;
     disabled: boolean;
@@ -35,9 +35,9 @@ export class TabHeaderState {
 
     @observable private scrollableTabsNodes: React.RefObject<HTMLDivElement>[] = []
 
-    @observable fixedTabsChildren: React.ReactElement<TabProps>[] = []
+    @observable fixedTabsChildren: React.JSX.Element<TabProps>[] = []
 
-    @observable scrollableTabsChildren: React.ReactElement<TabProps>[] = []
+    @observable scrollableTabsChildren: React.JSX.Element<TabProps>[] = []
 
     @observable countFixedTabs = 0
 
@@ -51,9 +51,9 @@ export class TabHeaderState {
         this.activeTab = index
     }
 
-    @action.bound setTabsChildren(children: React.ReactElement<TabProps>[] = []): void {
-        const fixedTabsChildren: React.ReactElement<TabProps>[] = []
-        const scrollableTabsChildren: React.ReactElement<TabProps>[] = []
+    @action.bound setTabsChildren(children: React.JSX.Element<TabProps>[] = []): void {
+        const fixedTabsChildren: React.JSX.Element<TabProps>[] = []
+        const scrollableTabsChildren: React.JSX.Element<TabProps>[] = []
 
         each(children, (element) => {
             if (element && element.props.isFixed) {
@@ -177,7 +177,7 @@ export class TabHeaderState {
 
                 return result
             },
-            []
+            [],
         )
     }
 
@@ -196,7 +196,7 @@ export class TabHeaderState {
 
                 return result
             },
-            []
+            [],
         )
     }
 

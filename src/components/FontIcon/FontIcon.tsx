@@ -3,14 +3,14 @@ import React from 'react'
 
 export type FontIconProps = {
     className?: string;
-    value: string | React.ReactElement;
+    value: string | React.JSX.Element;
     onClick?: (event: React.MouseEvent) => void;
     title?: string;
     alt?: string;
     theme?: Record<string, string>;
 }
 
-export const FontIcon = (props: React.PropsWithChildren<FontIconProps>): React.ReactElement => {
+export const FontIcon = (props: React.PropsWithChildren<FontIconProps>): React.JSX.Element => {
     const {
         alt = '',
         children,
