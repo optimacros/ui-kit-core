@@ -14,7 +14,7 @@ type State = {
     activeTab: number;
 }
 
-export class Tabs extends React.Component<Props, State> {
+export class Tabs extends React.Component<React.PropsWithChildren<Props>, State> {
     constructor(props: Props) {
         super(props)
 

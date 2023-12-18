@@ -1,13 +1,32 @@
 import { defineConfig } from 'vite'
 import path from 'node:path'
 import react from '@vitejs/plugin-react'
+// TODO https://github.com/gxmari007/vite-plugin-eslint/issues/84
+// @ts-ignore
+import eslint from 'vite-plugin-eslint'
 import dts from 'vite-plugin-dts'
 import postcssNesting from 'postcss-nested'
 
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [
-        react(),
+        react({
+            babel: {
+                babelrc: false,
+                configFile: false,
+                plugins: [
+                    [
+                        "@babel/plugin-proposal-decorators",
+                        { loose: true, version: "2022-03" },
+                    ],
+                ],
+            }
+        }),
+        eslint({
+            cache: false,
+            include: ['./src/**/*.js', './src/**/*.jsx', './src/**/*.ts', './src/**/*.tsx'],
+            exclude: [],
+        }),
         dts({
             insertTypesEntry: true,
         }),

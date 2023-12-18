@@ -34,7 +34,10 @@ export class IconButton extends React.Component<Partial<IconButtonProps>> {
         let theme = mergeStyles(style, customTheme) as IconButtonTheme
         theme = mergeStyles(theme, themeStyle) as IconButtonTheme
 
-        const TooltipIconButton = tooltip(RippledIconButton)
+        const TooltipIconButton = this.props.tooltip
+            ? tooltip(RippledIconButton)
+            : RippledIconButton
+
         const iconIsString = isString(icon)
         const className = classNames(theme.IconButton, this.props.className)
 

@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import React, { Component } from 'react'
 import type BaseReactModal from 'react-modal'
 
-import { FontIcon } from './.'
+import { FontIcon } from '../FontIcon'
 import Draggable from './DraggableModalContainer'
 import ReactModal from './ReactModal'
 

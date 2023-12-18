@@ -13,10 +13,9 @@ export type NavigationTheme = {
 }
 
 export type NavigationProps = {
-    type: 'vertical' | 'horizontal';
+    type?: 'vertical' | 'horizontal';
     theme: NavigationTheme;
     className?: string;
-    vertical?: boolean;
 }
 
 export const Navigation = ({
@@ -29,7 +28,8 @@ export const Navigation = ({
     const classes = classnames(updatedTheme[type ?? 'horizontal'], className)
 
     return (
-        <nav data-react-toolbox="navigation"
+        <nav
+            data-react-toolbox="navigation"
             className={classes}
         >
             {children}

@@ -1,0 +1,10 @@
+.gitignore
+package.json
+babel.config.js
+package-lock.json
+/node_modules
+node_modules/*
+build/*
+build
+config-overrides.js
+src/react-app-env.d.ts

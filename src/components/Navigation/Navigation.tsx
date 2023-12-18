@@ -11,7 +11,7 @@ interface Props extends Omit<NavigationProps, 'theme'> {
     theme?: Partial<NavigationTheme>;
 }
 
-export class Navigation extends React.Component<Props> {
+export class Navigation extends React.Component<React.PropsWithChildren<Props>> {
     render(): React.ReactElement {
         const theme = mergeStyles(this.props.theme, navigationTheme) as NavigationTheme
 
