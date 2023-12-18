@@ -40,7 +40,7 @@ export class Chip extends React.Component<React.PropsWithChildren<Partial<Props>
             {
                 [theme.deletable]: deletable,
             },
-            className
+            className,
         )
 
         return (

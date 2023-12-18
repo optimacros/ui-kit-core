@@ -4,28 +4,26 @@ import { observer } from 'mobx-react'
 import type { CSSProperties, KeyboardEvent } from 'react'
 import React, { Component } from 'react'
 
+import { TabHeaderState } from './TabHeaderState'
+import type { TabsContainerProps, TabsContainerTheme } from './TabsContainer'
+import { Key } from '../../../types/KeyboardKeyList'
 import { mergeStyles } from '../../../utils/mergeStyle'
 import { ButtonMenu } from '../../ButtonMenu'
 import { Counter } from '../../Counter'
 import { Icon } from '../../Icon'
 import { MenuItem } from '../../Menu'
 import type { TabProps } from '../Tab'
-import { TabHeaderState } from './TabHeaderState'
-import type { TabsContainerProps, TabsContainerTheme } from './TabsContainer'
-import { Key } from '../../../types/KeyboardKeyList'
 
 import styles from './TabHeader.module.css'
 
 export type TabHeaderTheme = {
     TabHeaderContainer: string;
     TabButton: string;
-    /* eslint-disable camelcase */
     TabButton_Inner: string;
     TabButton_Content: string;
     TabButton__active: string;
     TabButton__disabled: string;
     TabButton__draggable: string;
-    /* eslint-enable camelcase */
 }
 
 type Props = Omit<TabsContainerProps, 'headerClassName'| 'contentClassName'> & {

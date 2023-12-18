@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
+
 import { Navigation } from './index'
 import { Button } from '../Button'
 
@@ -20,7 +21,7 @@ export const NavigationHorizontal: Story = {
                 <Button label="Option 1" />
                 <Button label="Option 2" />
             </>
-        )
+        ),
     },
     argTypes,
 }
@@ -29,11 +30,11 @@ export const NavigationVertical: Story = {
     args: {
         type: 'vertical',
         children: (
-          <>
-              <Button label="Option 1" />
-              <Button label="Option 2" />
-          </>
-        )
+            <>
+                <Button label="Option 1" />
+                <Button label="Option 2" />
+            </>
+        ),
     },
     argTypes,
 }

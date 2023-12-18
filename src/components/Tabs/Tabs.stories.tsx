@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
+
 import { Tabs } from './index'
 import { Tab } from './Tab.tsx'
 
@@ -22,7 +23,7 @@ export const SelectBoxWithError: Story = {
                     <div>Tab content</div>
                 </Tab>
             </>
-        )
+        ),
     },
     argTypes,
 }

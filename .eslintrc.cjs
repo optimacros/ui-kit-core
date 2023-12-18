@@ -1,12 +1,10 @@
 module.exports = {
   root: true,
-  env: { browser: true, es2020: true },
+  env: { browser: true, es2020: true, node: true },
   extends: [
     'react-app',
     'eslint:recommended',
-    'plugin:@typescript-eslint/strict-type-checked',
     'plugin:react-hooks/recommended',
-    'plugin:@typescript-eslint/stylistic-type-checked',
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
     'plugin:jsx-a11y/recommended',
@@ -17,6 +15,25 @@ module.exports = {
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh', 'eslint-plugin-react', 'jsx-a11y', 'unused-imports'],
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx'], // Your TypeScript files extension
+      
+      // As mentioned in the comments, you should extend TypeScript plugins here,
+      // instead of extending them outside the `overrides`.
+      // If you don't want to extend any rules, you don't need an `extends` attribute.
+      
+      parserOptions: {
+        project: ['./tsconfig.json'], // Specify it only for TypeScript files
+      },
+      rules: {
+        // 'plugin:@typescript-eslint/recommended' brings this rule again
+        'react/react-in-jsx-scope': 'off',
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': ['error', { ignoreRestSiblings: true }],
+      },
+    },
+  ],
   rules: {
     'react-refresh/only-export-components': [
       'warn',
@@ -133,12 +150,6 @@ module.exports = {
           },
           {
             pattern: '*.css',
-            patternOptions: { matchBase: true },
-            group: 'unknown',
-            position: 'after',
-          },
-          {
-            pattern: '*.scss',
             patternOptions: { matchBase: true },
             group: 'unknown',
             position: 'after',
@@ -311,7 +322,6 @@ module.exports = {
       exceptions: ['/', '-', '+'],
     }],
     'wrap-regex': 0,
-    
     'constructor-super': 2,
     'generator-star-spacing': [2, {
       before: false,
@@ -321,6 +331,16 @@ module.exports = {
     'no-var': 0,
     'object-shorthand': 0,
     'prefer-const': 2,
+    'import/no-anonymous-default-export': ["error", {
+      "allowArray": false,
+      "allowArrowFunction": true,
+      "allowAnonymousClass": false,
+      "allowAnonymousFunction": false,
+      "allowCallExpression": true, // The true value here is for backward compatibility
+      "allowNew": false,
+      "allowLiteral": false,
+      "allowObject": true,
+    }],
     
     'max-depth': [2, 3],
     'max-len': [2, 120, 2],
@@ -341,7 +361,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
+    project: ['./tsconfig.json'],
     tsconfigRootDir: __dirname,
   },
 }

@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
+
 import { Toolbar } from './index'
 import { Button } from '../Button'
 
@@ -18,15 +19,15 @@ export const LeftToolbar: Story = {
         children: (
             <>
                 <Button
-                  label="cancel"
+                    label="cancel"
                 />
 
                 <Button
-                  label="submit"
-                  warning
+                    label="submit"
+                    warning
                 />
             </>
-        )
+        ),
     },
     argTypes,
 }

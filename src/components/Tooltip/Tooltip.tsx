@@ -75,7 +75,7 @@ const tooltipFactory = (options: TooltipFactoryProps): TooltipWrapperFC => {
     } = { ...options }
 
     return function <T extends React.PropsWithChildren<Partial<TooltipProps>>>(
-        ComposedComponent: React.ComponentClass<T> | string
+        ComposedComponent: React.ComponentClass<T> | string,
     ): React.ComponentClass<T, State> {
         return class TooltippedComponent extends Component<T, State> {
             constructor(props: T) {
@@ -85,7 +85,7 @@ const tooltipFactory = (options: TooltipFactoryProps): TooltipWrapperFC => {
             }
 
             private tooltipNode: React.RefObject<HTMLSpanElement>
-            private timeout: NodeJS.Timeout | undefined
+            private timeout: ReturnType<typeof setTimeout> | undefined
 
             state = {
                 active: false,

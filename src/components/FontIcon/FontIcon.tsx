@@ -29,7 +29,7 @@ export const FontIcon = (props: React.PropsWithChildren<FontIconProps>): React.J
                 {
                     'material-icons': typeof value === 'string' || typeof children === 'string',
                 },
-                className
+                className,
             )}
         >
             {value}

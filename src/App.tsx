@@ -1,10 +1,12 @@
-import { ButtonMenu } from './components/index.ts'
+import React from 'react'
 
-function App() {
+import { ButtonMenu } from './components'
+
+function App(): React.JSX.Element {
     return (
-          <div>
-              <ButtonMenu icon="bookmark">Click me</ButtonMenu>
-          </div>
+        <div>
+            <ButtonMenu icon="bookmark">Click me</ButtonMenu>
+        </div>
     )
 }
 

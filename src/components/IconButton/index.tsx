@@ -2,11 +2,11 @@ import classNames from 'classnames'
 import { isString } from 'lodash'
 import React from 'react'
 
+import { IconButtonComponent } from './IconButton'
+import { mergeStyles } from '../../utils/mergeStyle'
 import type { ButtonInitialProps, ThemeButtonProps } from '../Button'
 import themedRippleFactory from '../Ripple'
 import { tooltip } from '../Tooltip'
-import { IconButtonComponent } from './IconButton'
-import { mergeStyles } from '../../utils/mergeStyle'
 
 // order of styles import is important
 import themeStyle from './theme.module.css'
@@ -19,6 +19,7 @@ export interface IconButtonProps extends Partial<ButtonInitialProps> {
     theme: Partial<IconButtonTheme>;
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 const RippledIconButton = themedRippleFactory({ centered: true })(IconButtonComponent)
 
 export class IconButton extends React.Component<Partial<IconButtonProps>> {

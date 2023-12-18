@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
+
 import { Counter } from './index'
 
 const meta: Meta<typeof Counter> = {

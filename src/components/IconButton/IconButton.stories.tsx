@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
+
 import { IconButton } from './index'
 
 const meta: Meta<typeof IconButton> = {
@@ -18,9 +19,9 @@ export const Accent: Story = {
     argTypes,
     decorators: [
         (Story) => (
-          <div style={{ marginLeft: '20px' }}>
-              <Story />
-          </div>
+            <div style={{ marginLeft: '20px' }}>
+                <Story />
+            </div>
         ),
     ],
 }
@@ -33,9 +34,9 @@ export const WithTooltip: Story = {
     argTypes,
     decorators: [
         (Story) => (
-          <div style={{ marginLeft: '20px' }}>
-              <Story />
-          </div>
+            <div style={{ marginLeft: '20px' }}>
+                <Story />
+            </div>
         ),
     ],
 }

@@ -1,10 +1,10 @@
 import classnames from 'classnames'
 import React, { Component } from 'react'
 
-import rippleFactory from '../Ripple'
 import { Box } from './Box'
 import type { InitialProps, Theme } from './index'
 import { mergeStyles } from '../../utils/mergeStyle'
+import rippleFactory from '../Ripple'
 
 import themeStyle from './theme.module.css'
 
@@ -41,7 +41,7 @@ export class CheckBoxComponent extends Component<CheckBoxComponentProps> {
         const className = classnames(
             theme.field,
             { [theme.disabled]: this.props.disabled },
-            this.props.className
+            this.props.className,
         )
 
         const RippledBox = rippleFactory({

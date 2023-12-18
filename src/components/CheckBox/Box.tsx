@@ -2,8 +2,8 @@ import classnames from 'classnames'
 import type { CSSProperties, MouseEventHandler, TouchEventHandler } from 'react'
 import React from 'react'
 
-import type { RippleProps } from '../Ripple/Ripple'
 import type { Theme } from './index'
+import type { RippleProps } from '../Ripple/Ripple'
 
 interface BoxProps extends Partial<RippleProps> {
     theme: Required<Theme>;
@@ -21,7 +21,7 @@ export const Box = (props: BoxProps): React.JSX.Element => (
         data-react-toolbox="check"
         className={classnames(
             props.theme.check,
-            { [props.theme.checked]: props.checked }
+            { [props.theme.checked]: props.checked },
         )}
         onMouseDown={props.onMouseDown}
         onTouchStart={props.onTouchStart}

@@ -3,11 +3,12 @@ import { isNull, isUndefined } from 'lodash'
 import React from 'react'
 import type { TextareaHTMLAttributes, HTMLInputTypeAttribute, InputHTMLAttributes } from 'react'
 
-import { FontIcon } from '../FontIcon'
 import { mergeStyles } from '../../utils/mergeStyle'
 import { isValuePresent } from '../../utils/react-toolbox-utils'
+import { FontIcon } from '../FontIcon'
 
 // order of styles import is important
+// eslint-disable-next-line
 import inputThemeStyle from './theme.module.css'
 // eslint-disable-next-line
 import inputDefaultStyle from './Input.module.css'
@@ -122,7 +123,7 @@ export class Input extends React.Component<Props> {
                 [theme.hidden]: type === 'hidden',
                 [theme.withIcon]: icon,
             },
-            this.props.className
+            this.props.className,
         )
 
         const valuePresent = isValuePresent(value) || isValuePresent(defaultValue)

@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
+
 import { ButtonMenu } from './index'
 import { MenuItem } from '../Menu'
 
@@ -17,14 +18,14 @@ export const Active: Story = {
         label: 'Menu',
         icon: 'print',
         children:
-            <>
-                <MenuItem>
-                    <span>option</span>
-                </MenuItem>
-                <MenuItem>
-                    <span>option</span>
-                </MenuItem>
-            </>
+    <>
+        <MenuItem>
+            <span>option</span>
+        </MenuItem>
+        <MenuItem>
+            <span>option</span>
+        </MenuItem>
+    </>,
     },
     argTypes,
 }
@@ -34,14 +35,14 @@ export const Disabled: Story = {
         label: 'Button Menu',
         disabled: true,
         children:
-            <>
-                <MenuItem>
-                    <span>option</span>
-                </MenuItem>
-                <MenuItem>
-                    <span>option</span>
-                </MenuItem>
-            </>
+    <>
+        <MenuItem>
+            <span>option</span>
+        </MenuItem>
+        <MenuItem>
+            <span>option</span>
+        </MenuItem>
+    </>,
     },
     argTypes,
 }

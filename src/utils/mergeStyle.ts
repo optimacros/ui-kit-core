@@ -32,7 +32,6 @@ export function mergeStyles(
                 switch (typeof originalValue) {
                     case 'object': {
                         // exactly nested theme object - go recursive
-                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                         // @ts-ignore
                         result[key] = mergeStyles(originalValue, mixinValue)
                         break

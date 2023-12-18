@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
+
 import { Modal } from './index'
 
 const meta: Meta<typeof Modal> = {
@@ -25,9 +26,9 @@ export const ModalDraggable: Story = {
 export const ModalCompact: Story = {
     decorators: [
         (Story) => (
-          <div style={{ width: '200px' }}>
-              <Story />
-          </div>
+            <div style={{ width: '200px' }}>
+                <Story />
+            </div>
         ),
     ],
     args: {

@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
+
 import { SelectBox } from './index'
 
 const meta: Meta<typeof SelectBox> = {
@@ -13,17 +14,17 @@ const argTypes = {}
 
 export const SelectBoxWithLabel: Story = {
     args: {
-        name: "name",
+        name: 'name',
         source: [{ value: 'value1', label: 'label1' }, { value: 'value2', label: 'label2' }],
         value: 'value1',
-        label: 'description'
+        label: 'description',
     },
     argTypes,
     decorators: [
         (Story) => (
-          <div style={{ width: '200px' }}>
-              <Story />
-          </div>
+            <div style={{ width: '200px' }}>
+                <Story />
+            </div>
         ),
     ],
 }
@@ -31,10 +32,10 @@ export const SelectBoxWithLabel: Story = {
 export const SelectBoxWithError: Story = {
     args: {
         label: '',
-        name: "name",
+        name: 'name',
         source: [{ value: 'value1', label: 'label1' }, { value: 'value2', label: 'label2' }],
         value: 'value1',
-        error: 'error description'
+        error: 'error description',
     },
     argTypes,
     decorators: [

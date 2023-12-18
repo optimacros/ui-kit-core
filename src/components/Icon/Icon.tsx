@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { FontIcon } from '../FontIcon'
 import {
     iconCube,
     iconDataBase,
@@ -15,6 +14,7 @@ import {
     iconList,
     iconListView,
 } from './iconsList'
+import { FontIcon } from '../FontIcon'
 
 enum IconValue {
     IconCube = 'iconCube',

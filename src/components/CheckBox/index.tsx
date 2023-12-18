@@ -1,9 +1,9 @@
 import type { CSSProperties, MouseEventHandler } from 'react'
 import React from 'react'
 
-import { tooltip } from '../Tooltip'
 import { CheckBoxComponent } from './CheckBox'
 import { mergeStyles } from '../../utils/mergeStyle'
+import { tooltip } from '../Tooltip'
 
 import style from './CheckBox.module.css'
 

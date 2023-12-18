@@ -18,7 +18,7 @@
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build",
-        "lint": "eslint src --ext .js,.jsx,.ts,.tsx --report-unused-disable-directives --max-warnings 0",
+        "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
         "preview": "vite preview",
         "prepack": "json -f package.json -I -e \"delete this.devDependencies; delete this.dependencies\"",
         "storybook": "storybook dev -p 6006",
@@ -57,9 +57,9 @@
         "postcss-nested": "^6.0.1",
         "storybook": "^7.6.4",
         "typescript": "^5.3.3",
-        "typescript-eslint": "^0.0.1-alpha.0",
         "vite": "^5.0.7",
         "vite-plugin-dts": "^3.6.4",
-        "vite-plugin-eslint": "^1.8.1"
+        "vite-plugin-eslint": "^1.8.1",
+        "vite-tsconfig-paths": "^4.2.2"
     }
 }

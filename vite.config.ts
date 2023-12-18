@@ -6,9 +6,11 @@ import react from '@vitejs/plugin-react'
 import eslint from 'vite-plugin-eslint'
 import dts from 'vite-plugin-dts'
 import postcssNesting from 'postcss-nested'
+import tsconfigPaths from 'vite-tsconfig-paths'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+    root: path.join(__dirname, 'src'),
     plugins: [
         react({
             babel: {
@@ -27,6 +29,7 @@ export default defineConfig({
             include: ['./src/**/*.js', './src/**/*.jsx', './src/**/*.ts', './src/**/*.tsx'],
             exclude: [],
         }),
+        tsconfigPaths(),
         dts({
             insertTypesEntry: true,
         }),

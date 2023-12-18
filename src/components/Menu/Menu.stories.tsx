@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
+
 import { Menu, MenuItem, SubMenu } from './index'
 
 const meta: Meta<typeof Menu> = {
@@ -14,9 +15,9 @@ const argTypes = {}
 export const MenuAndSubMenu: Story = {
     decorators: [
         (Story) => (
-          <div style={{ width: '200px' }}>
-              <Story />
-          </div>
+            <div style={{ width: '200px' }}>
+                <Story />
+            </div>
         ),
     ],
     args: {

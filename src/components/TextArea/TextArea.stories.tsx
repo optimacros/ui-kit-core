@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
+
 import { TextArea } from './index'
 
 const meta: Meta<typeof TextArea> = {
@@ -13,14 +14,14 @@ const argTypes = {}
 
 export const TextAreaWithLabel: Story = {
     args: {
-        label: 'description'
+        label: 'description',
     },
     argTypes,
     decorators: [
         (Story) => (
-          <div style={{ width: '200px', color: 'black' }}>
-              <Story />
-          </div>
+            <div style={{ width: '200px', color: 'black' }}>
+                <Story />
+            </div>
         ),
     ],
 }
@@ -28,7 +29,7 @@ export const TextAreaWithLabel: Story = {
 export const TextAreaWithError: Story = {
     args: {
         label: '',
-        error: 'error description'
+        error: 'error description',
     },
     argTypes,
     decorators: [

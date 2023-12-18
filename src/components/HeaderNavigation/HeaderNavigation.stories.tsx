@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
+
 import { HeaderNavigation } from './index'
 
 const meta: Meta<typeof HeaderNavigation> = {

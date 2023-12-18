@@ -30,8 +30,8 @@ type Props = {
 }
 
 export class Loader extends Component<Props> {
-    min = 0;
-    max = 100;
+    min = 0
+    max = 100
 
     render(): React.JSX.Element {
         if (this.props.min) {
@@ -59,7 +59,7 @@ export class Loader extends Component<Props> {
                 [theme.indeterminate]: mode === 'indeterminate',
                 [theme.multicolor]: multicolor,
             },
-            className
+            className,
         )
 
         return (

@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
+
 import { Input } from './index'
 
 const meta: Meta<typeof Input> = {
@@ -13,35 +14,35 @@ const argTypes = {}
 
 export const Required: Story = {
     args: {
-        name: "name",
+        name: 'name',
         value: 'name',
-        label: "Application name",
+        label: 'Application name',
         required: true,
     },
     argTypes,
     decorators: [
         (Story) => (
-          <div style={{ width: '200px' }}>
-              <Story />
-          </div>
+            <div style={{ width: '200px' }}>
+                <Story />
+            </div>
         ),
     ],
 }
 
 export const WithError: Story = {
     args: {
-        name: "name",
+        name: 'name',
         value: 'name',
         error: 'error description',
-        label: "Application name",
+        label: 'Application name',
         required: true,
     },
     argTypes,
     decorators: [
         (Story) => (
-          <div style={{ width: '200px' }}>
-              <Story />
-          </div>
+            <div style={{ width: '200px' }}>
+                <Story />
+            </div>
         ),
     ],
 }

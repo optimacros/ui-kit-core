@@ -2,8 +2,8 @@ import classnames from 'classnames'
 import type { MouseEvent } from 'react'
 import React, { Component } from 'react'
 
-import { FontIcon } from '../FontIcon'
 import type { IconButtonProps, IconButtonTheme } from './index'
+import { FontIcon } from '../FontIcon'
 
 interface Props extends IconButtonProps {
     theme: IconButtonTheme;
@@ -46,7 +46,7 @@ export class IconButtonComponent extends Component<Props> {
                 [theme[level]]: neutral,
                 [theme.inverse]: inverse,
             },
-            className
+            className,
         )
 
         const props = {

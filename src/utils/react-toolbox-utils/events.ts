@@ -88,7 +88,6 @@ export default {
 
 const TRANSITIONS: Record<keyof CSSStyleDeclaration, keyof HTMLElementEventMap> = {
     transition: 'transitionend',
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     OTransition: 'oTransitionEnd',
     MozTransition: 'transitionend',

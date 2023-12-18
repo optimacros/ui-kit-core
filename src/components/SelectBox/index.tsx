@@ -2,11 +2,11 @@ import classNames from 'classnames'
 import { find, indexOf, map, without, filter } from 'lodash'
 import React, { Component } from 'react'
 
-import { Chip } from '../Chip/index'
-import type { InputTheme } from '../Input'
 import type { SelectBoxTheme, SelectBoxProps } from './SelectBox'
 import { SelectBoxComponent } from './SelectBox'
 import { mergeStyles } from '../../utils/mergeStyle'
+import { Chip } from '../Chip/index'
+import type { InputTheme } from '../Input'
 
 // order of styles import is important
 // eslint-disable-next-line
@@ -114,7 +114,7 @@ export class SelectBox extends Component<Props> {
         if (this.props.multiSelect && Array.isArray(this.props.value)) {
             return filter(this.source, (option) => indexOf(
                 this.props.value as (string | number)[],
-                option.value
+                option.value,
             ) == -1)
         }
 

@@ -11,7 +11,7 @@ type CounterProps = {
     navigationComponent?: React.JSXElementConstructor<
         React.PropsWithChildren<{
             route: Record<string, any>;
-            className: string
+            className: string;
         }>
     >;
 }

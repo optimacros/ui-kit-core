@@ -63,6 +63,7 @@ class Portal extends Component<React.PropsWithChildren<Props>> {
 
     private unrenderOverlay(): void {
         if (this.overlayTarget) {
+            // eslint-disable-next-line react/no-deprecated
             ReactDOM.unmountComponentAtNode(this.overlayTarget)
         }
     }

@@ -1,12 +1,12 @@
 import classNames from 'classnames'
 import React, { Component } from 'react'
 
-import { mergeStyles } from '../../../utils/mergeStyle'
-import type { TabProps } from '../Tab'
 import type { TabContentTheme } from './TabContent'
 import { TabContent } from './TabContent'
 import type { TabHeaderTheme } from './TabHeader'
 import { TabHeader } from './TabHeader'
+import { mergeStyles } from '../../../utils/mergeStyle'
+import type { TabProps } from '../Tab'
 
 import styles from './TabsContainer.module.css'
 

@@ -1,9 +1,9 @@
 import type { ButtonHTMLAttributes } from 'react'
 import React, { Component } from 'react'
 
+import { ButtonComponent } from './Button'
 import { mergeStyles } from '../../utils/mergeStyle'
 import themedRippleFactory from '../Ripple'
-import { ButtonComponent } from './Button'
 
 // order of styles import is important
 import themeStyle from './ButtonTheme.module.css'
@@ -27,7 +27,6 @@ export type ThemeButtonProps = {
 }
 
 export type Theme = ThemeButtonProps & {
-    // eslint-disable-next-line camelcase
     button_uppercase: string;
     gray: string;
     warning: string;
@@ -56,6 +55,7 @@ export interface ButtonInitialProps extends ButtonHTMLAttributes<HTMLButtonEleme
     theme: Partial<ThemeButtonProps>;
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 const RippledButton = themedRippleFactory({ centered: false })(ButtonComponent)
 
 export class Button extends Component<Partial<ButtonInitialProps>> {

@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
+
 import { Divider } from './index'
 
 const meta: Meta<typeof Divider> = {

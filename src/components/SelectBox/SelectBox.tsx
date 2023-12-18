@@ -2,9 +2,9 @@ import classnames from 'classnames'
 import { isUndefined } from 'lodash'
 import React, { Component } from 'react'
 
-import { Input } from '../Input'
 import { Key } from '../../types/KeyboardKeyList'
 import events from '../../utils/react-toolbox-utils/events'
+import { Input } from '../Input'
 
 export type SelectBoxTheme = {
     active: string;
@@ -107,7 +107,7 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
                 [theme.disabled]: this.props.disabled ?? false,
                 [theme.required]: this.props.required ?? false,
             },
-            this.props.className ?? ''
+            this.props.className ?? '',
         )
 
         return (
@@ -141,7 +141,6 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
 
                 {template && selected && this.renderTemplateValue(selected)}
 
-                {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
                 <ul
                     ref={this.dropdownNode}
                     onKeyDown={this.handleKeyDown}
@@ -201,7 +200,6 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
         })
 
         return (
-            // eslint-disable-next-line jsx-a11y/click-events-have-key-events
             <li
                 key={idx}
                 className={className}

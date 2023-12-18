@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 import React, { PureComponent } from 'react'
 
+import { mergeStyles } from '../../utils/mergeStyle'
 import { Button } from '../Button'
 import { Dropdown } from '../Dropdown'
 import { FontIcon } from '../FontIcon'
@@ -8,7 +9,6 @@ import { Menu } from '../Menu'
 import { tooltip } from '../Tooltip'
 
 import buttonMenuTheme from './ButtonMenu.module.css'
-import { mergeStyles } from '../../utils/mergeStyle'
 
 type Props = {
     label?: string;
@@ -64,7 +64,7 @@ export class ButtonMenu extends PureComponent<React.PropsWithChildren<Props>> {
                 [buttonMenuTheme.ButtonMenu__showOnlyIcon]: this.props.showOnlyIcon,
             },
             this.props.className,
-            theme.ButtonMenu
+            theme.ButtonMenu,
         )
 
         const classNameText = classNames(buttonMenuTheme.buttonText, theme.buttonText)

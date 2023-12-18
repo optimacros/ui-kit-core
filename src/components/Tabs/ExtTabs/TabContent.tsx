@@ -2,15 +2,14 @@ import classNames from 'classnames'
 import { map } from 'lodash'
 import React, { Component } from 'react'
 
+import type { TabsContainerProps, TabsContainerTheme } from './TabsContainer'
 import { mergeStyles } from '../../../utils/mergeStyle'
 import type { TabProps } from '../Tab'
-import type { TabsContainerProps, TabsContainerTheme } from './TabsContainer'
 
 import styles from './TabContent.module.css'
 
 export type TabContentTheme = {
     TabContent: string;
-    // eslint-disable-next-line camelcase
     TabContent_Inner: string;
 }
 

@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
+
 import { Button } from './index.tsx'
 
 const meta: Meta<typeof Button> = {

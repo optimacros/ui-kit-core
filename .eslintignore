@@ -1,4 +1,5 @@
 .gitignore
+vite-env.d.ts
 package.json
 babel.config.js
 package-lock.json
