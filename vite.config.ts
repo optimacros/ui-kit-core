@@ -10,7 +10,6 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    root: path.join(__dirname, 'src'),
     plugins: [
         react({
             babel: {
@@ -19,7 +18,7 @@ export default defineConfig({
                 plugins: [
                     [
                         "@babel/plugin-proposal-decorators",
-                        { loose: true, version: "2022-03" },
+                        { "legacy": true },
                     ],
                 ],
             }
