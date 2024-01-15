@@ -19,10 +19,8 @@ storybook-static*
 reports
 coverage
 
-public
 lib
 dist
 
 src/version.json
 
-.wercker
