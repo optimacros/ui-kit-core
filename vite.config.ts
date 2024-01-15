@@ -1,11 +1,17 @@
-import { defineConfig } from 'vite'
-import path from 'node:path'
 import react from '@vitejs/plugin-react'
+import path from 'node:path'
+// @ts-ignore
+import postcssApply from 'postcss-apply'
+import postcssCustomProperties from 'postcss-custom-properties'
+import postcssImport from 'postcss-import'
+import postcssNesting from 'postcss-nested'
+import postcssNormalize from 'postcss-normalize'
+import postcssPresetEnv from 'postcss-preset-env'
+import { defineConfig } from 'vite'
+import dts from 'vite-plugin-dts'
 // TODO https://github.com/gxmari007/vite-plugin-eslint/issues/84
 // @ts-ignore
 import eslint from 'vite-plugin-eslint'
-import dts from 'vite-plugin-dts'
-import postcssNesting from 'postcss-nested'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 // https://vitejs.dev/config/
@@ -17,11 +23,11 @@ export default defineConfig({
                 configFile: false,
                 plugins: [
                     [
-                        "@babel/plugin-proposal-decorators",
-                        { "legacy": true },
+                        '@babel/plugin-proposal-decorators',
+                        { legacy: true },
                     ],
                 ],
-            }
+            },
         }),
         eslint({
             cache: false,
@@ -35,7 +41,22 @@ export default defineConfig({
     ],
     css: {
         postcss: {
-            plugins: [postcssNesting],
+            plugins: [
+                postcssApply,
+                postcssImport({ path: ['src'] }),
+                postcssNesting,
+                postcssPresetEnv({
+                    stage: 3,
+                    features: {
+                        'nesting-rules': true,
+                        'custom-media-queries': true,
+                    },
+                }),
+                postcssCustomProperties({
+                    preserve: false,
+                }),
+                postcssNormalize,
+            ],
         },
     },
     build: {
