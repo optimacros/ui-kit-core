@@ -1,4 +1,4 @@
-import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react-swc'
 import path from 'node:path'
 // @ts-ignore
 import postcssApply from 'postcss-apply'
@@ -17,18 +17,7 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [
-        react({
-            babel: {
-                babelrc: false,
-                configFile: false,
-                plugins: [
-                    [
-                        '@babel/plugin-proposal-decorators',
-                        { legacy: true },
-                    ],
-                ],
-            },
-        }),
+        react({ tsDecorators: true }),
         eslint({
             cache: false,
             include: ['./src/**/*.js', './src/**/*.jsx', './src/**/*.ts', './src/**/*.tsx'],

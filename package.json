@@ -33,7 +33,6 @@
         "react-modal": "3.16.1"
     },
     "devDependencies": {
-        "@babel/plugin-proposal-decorators": "^7.23.7",
         "@storybook/addon-actions": "^7.6.8",
         "@storybook/addon-essentials": "^7.6.8",
         "@storybook/addon-interactions": "^7.6.8",
@@ -45,7 +44,7 @@
         "@types/react": "^18.2.48",
         "@types/react-dom": "^18.2.18",
         "@types/react-modal": "^3.16.3",
-        "@vitejs/plugin-react": "^4.2.1",
+        "@vitejs/plugin-react-swc": "^3.5.0",
         "classnames": "^2.5.1",
         "eslint": "^8.56.0",
         "eslint-config-react-app": "^7.0.1",
