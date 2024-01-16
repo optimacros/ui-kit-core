@@ -1,4 +1,5 @@
 import react from '@vitejs/plugin-react-swc'
+import crypto from 'crypto'
 import path from 'node:path'
 // @ts-ignore
 import postcssApply from 'postcss-apply'
@@ -29,6 +30,23 @@ export default defineConfig({
         }),
     ],
     css: {
+        modules: {
+            localsConvention: 'camelCase',
+            generateScopedName: (name, filename, css) => {
+                const componentName = filename
+                    .replace(/\.\w+$/, '')
+                    .split('/')
+                    .pop()
+
+                const hash = crypto
+                    .createHash('md5')
+                    .update(css)
+                    .digest('base64')
+                    .substring(0, 5)
+
+                return `${componentName?.replace('.module', '')}__${name}__${hash}`
+            },
+        },
         postcss: {
             plugins: [
                 postcssApply,
