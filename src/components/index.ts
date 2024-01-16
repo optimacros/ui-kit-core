@@ -25,3 +25,5 @@ export { TabHeader } from './Tabs/ExtTabs/TabHeader'
 export { TextArea } from './TextArea'
 export { Toolbar } from './Toolbar'
 export { tooltip, tooltipFactory } from './Tooltip'
+
+export { mergeStyles } from '../utils/mergeStyle'

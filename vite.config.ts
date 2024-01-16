@@ -9,6 +9,7 @@ import postcssNesting from 'postcss-nested'
 import postcssNormalize from 'postcss-normalize'
 import postcssPresetEnv from 'postcss-preset-env'
 import { defineConfig } from 'vite'
+import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 import dts from 'vite-plugin-dts'
 // TODO https://github.com/gxmari007/vite-plugin-eslint/issues/84
 // @ts-ignore
@@ -18,6 +19,7 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [
+        cssInjectedByJsPlugin(),
         react({ tsDecorators: true }),
         eslint({
             cache: false,
@@ -34,7 +36,6 @@ export default defineConfig({
             localsConvention: 'camelCase',
             generateScopedName: (name, filename, css) => {
                 const componentName = filename
-                    .replace(/\.\w+$/, '')
                     .split('/')
                     .pop()
 
@@ -42,9 +43,10 @@ export default defineConfig({
                     .createHash('md5')
                     .update(css)
                     .digest('base64')
+                    .replace('/', '')
                     .substring(0, 5)
 
-                return `${componentName?.replace('.module', '')}__${name}__${hash}`
+                return `${componentName?.replace('.module.css', '')}_${name}__${hash}`
             },
         },
         postcss: {

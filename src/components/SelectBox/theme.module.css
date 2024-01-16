@@ -1,5 +1,3 @@
-@import '../../themes/config.css';
-
 :root {
     --dropdown-value-border-size: calc(var(--input-field-height) / 7);
     --dropdown-color-white: var(--color-white);
