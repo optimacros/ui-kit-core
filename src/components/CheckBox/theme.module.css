@@ -6,8 +6,19 @@
     margin-bottom: var(--checkbox-field-margin-bottom);
     position: relative;
     white-space: nowrap;
+    box-sizing: border-box;
+    font-family: var(--preferred-font);
+    -webkit-font-smoothing: antialiased;
+    text-size-adjust: 100%;
 
-    @apply --reset;
+    & *,
+    & *::after,
+    & *::before {
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+        text-size-adjust: 100%;
+        -webkit-touch-callout: none;
+    }
 
     & .ripple {
         background-color: var(--checkbox-color);
@@ -68,8 +79,19 @@
     transition-timing-function: var(--animation-curve-default);
     vertical-align: top;
     width: var(--checkbox-size);
+    box-sizing: border-box;
+    font-family: var(--preferred-font);
+    -webkit-font-smoothing: antialiased;
+    text-size-adjust: 100%;
 
-    @apply --reset;
+    & *,
+    & *::after,
+    & *::before {
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+        text-size-adjust: 100%;
+        -webkit-touch-callout: none;
+    }
 
     &.checked {
         background-color: var(--checkbox-color);

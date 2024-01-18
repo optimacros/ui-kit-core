@@ -1,12 +1,10 @@
 import react from '@vitejs/plugin-react-swc'
 import crypto from 'crypto'
 import path from 'node:path'
-// @ts-ignore
-import postcssApply from 'postcss-apply'
 import postcssCustomProperties from 'postcss-custom-properties'
 import postcssImport from 'postcss-import'
 import postcssNesting from 'postcss-nested'
-import postcssNormalize from 'postcss-normalize'
+// import postcssNormalize from 'postcss-normalize'
 import postcssPresetEnv from 'postcss-preset-env'
 import { defineConfig } from 'vite'
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
@@ -65,7 +63,6 @@ export default defineConfig({
         },
         postcss: {
             plugins: [
-                postcssApply,
                 postcssImport({ path: ['src'] }),
                 postcssNesting,
                 postcssPresetEnv({
@@ -78,7 +75,7 @@ export default defineConfig({
                 postcssCustomProperties({
                     preserve: false,
                 }),
-                postcssNormalize,
+                // postcssNormalize,
             ],
         },
     },

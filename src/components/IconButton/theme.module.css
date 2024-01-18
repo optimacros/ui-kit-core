@@ -24,8 +24,19 @@
         background-color 0.2s var(--animation-curve-default),
         color 0.2s var(--animation-curve-default);
     white-space: nowrap;
+    box-sizing: border-box;
+    font-family: var(--preferred-font);
+    -webkit-font-smoothing: antialiased;
+    text-size-adjust: 100%;
 
-    @apply --reset;
+    & *,
+    & *::after,
+    & *::before {
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+        text-size-adjust: 100%;
+        -webkit-touch-callout: none;
+    }
 
     & > input {
         height: 0.1px;
