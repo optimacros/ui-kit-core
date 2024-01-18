@@ -16,10 +16,24 @@ import dts from 'vite-plugin-dts'
 import eslint from 'vite-plugin-eslint'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
+const injectCodeFunction = (cssCode: string) => {
+    try {
+        if (typeof window === 'undefined') {
+            return
+        }
+
+        const elementStyle = document.createElement('style')
+        elementStyle.appendChild(document.createTextNode(cssCode))
+        document.head.appendChild(elementStyle)
+    } catch (e) {
+        console.error('vite-plugin-css-injected-by-js', e)
+    }
+}
+
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [
-        cssInjectedByJsPlugin(),
+        cssInjectedByJsPlugin({ injectCodeFunction }),
         react({ tsDecorators: true }),
         eslint({
             cache: false,
@@ -69,6 +83,7 @@ export default defineConfig({
         },
     },
     build: {
+        copyPublicDir: false,
         lib: {
             entry: path.resolve(__dirname, 'src/components/index.ts'),
             name: 'ui-kit-lite',
