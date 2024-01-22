@@ -4,7 +4,6 @@ import path from 'node:path'
 import postcssCustomProperties from 'postcss-custom-properties'
 import postcssImport from 'postcss-import'
 import postcssNesting from 'postcss-nested'
-// import postcssNormalize from 'postcss-normalize'
 import postcssPresetEnv from 'postcss-preset-env'
 import { defineConfig } from 'vite'
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
@@ -75,7 +74,6 @@ export default defineConfig({
                 postcssCustomProperties({
                     preserve: false,
                 }),
-                // postcssNormalize,
             ],
         },
     },
