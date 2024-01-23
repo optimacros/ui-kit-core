@@ -54,7 +54,7 @@ export default defineConfig({
                     .createHash('md5')
                     .update(css)
                     .digest('base64')
-                    .replace('/', '')
+                    .replace(/[^\d\w]+/, '')
                     .substring(0, 5)
 
                 return `${componentName?.replace('.module.css', '')}_${name}__${hash}`
