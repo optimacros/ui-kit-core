@@ -1,4 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-vite'
+import { withoutVitePlugins } from '@storybook/builder-vite'
 
 const config: StorybookConfig = {
     framework: '@storybook/react-vite',
@@ -14,8 +15,12 @@ const config: StorybookConfig = {
         storyStoreV7: true,
     },
 
-    async viteFinal(configuration) {
-        return configuration;
+    async viteFinal(config) {
+        return {
+            ...config,
+            // don't create d.ts files during storybook creation
+            plugins: await withoutVitePlugins(config.plugins, ['vite:dts']),
+        }
     },
 
     docs: {
