@@ -1,4 +1,3 @@
-import '../src/index.css';
 import { Preview } from '@storybook/react'
 
 export const parameters: Preview = {

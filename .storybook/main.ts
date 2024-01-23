@@ -20,7 +20,9 @@ const config: StorybookConfig = {
 
     docs: {
         autodocs: true
-    }
+    },
+
+    staticDirs: [{ from: '../src/fonts', to: 'fonts' }]
 };
 
 export default config
