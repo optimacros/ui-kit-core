@@ -1,0 +1,38 @@
+<svg
+	version="1.1"
+	xmlns="http://www.w3.org/2000/svg"
+	x="0px"
+	y="0px"
+	viewBox="-293 385 24 24"
+	style="enable-background: new -293 385 24 24;"
+>
+	<defs>
+		<style>
+			.st0 {
+				fill: none;
+			}
+			.element {
+				fill: #9d9d9d;
+			}
+		</style>
+	</defs>
+	<path
+		class="st0"
+		d="M-293,385h24v24h-24V385z"
+	/>
+	<rect
+		x="-282"
+		y="389.3"
+		width="2"
+		height="15.4"
+		class="element"
+	/>
+	<rect
+		x="-288.7"
+		y="396"
+		width="15.4"
+		height="2"
+		class="element"
+	/>
+</svg>
+
