@@ -14,13 +14,16 @@ type Story = StoryObj<typeof Tabs>
 
 const argTypes = {}
 
-export const SelectBoxWithError: Story = {
+export const RegularTab: Story = {
     args: {
         // @ts-ignore
         children: (
             <>
-                <Tab>
-                    <div>Tab content</div>
+                <Tab
+                    key={0}
+                    title="Tab1"
+                >
+                    <div style={{ height: '40px', color: 'black', fontSize: '12px' }}>Tab content</div>
                 </Tab>
             </>
         ),

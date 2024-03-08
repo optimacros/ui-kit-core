@@ -1,5 +1,4 @@
 @import './config.css';
-@import '../../themes/config.css';
 
 .linear {
     background: var(--color-divider);

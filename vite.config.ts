@@ -1,29 +1,37 @@
-import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react-swc'
+import crypto from 'crypto'
 import path from 'node:path'
-import react from '@vitejs/plugin-react'
+import postcssCustomProperties from 'postcss-custom-properties'
+import postcssImport from 'postcss-import'
+import postcssNesting from 'postcss-nested'
+import postcssPresetEnv from 'postcss-preset-env'
+import { defineConfig } from 'vite'
+import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
+import dts from 'vite-plugin-dts'
 // TODO https://github.com/gxmari007/vite-plugin-eslint/issues/84
 // @ts-ignore
 import eslint from 'vite-plugin-eslint'
-import dts from 'vite-plugin-dts'
-import postcssNesting from 'postcss-nested'
 import tsconfigPaths from 'vite-tsconfig-paths'
+
+const injectCodeFunction = (cssCode: string) => {
+    try {
+        if (typeof window === 'undefined') {
+            return
+        }
+
+        const elementStyle = document.createElement('style')
+        elementStyle.appendChild(document.createTextNode(cssCode))
+        document.head.appendChild(elementStyle)
+    } catch (e) {
+        console.error('vite-plugin-css-injected-by-js', e)
+    }
+}
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    root: path.join(__dirname, 'src'),
     plugins: [
-        react({
-            babel: {
-                babelrc: false,
-                configFile: false,
-                plugins: [
-                    [
-                        "@babel/plugin-proposal-decorators",
-                        { loose: true, version: "2022-03" },
-                    ],
-                ],
-            }
-        }),
+        cssInjectedByJsPlugin({ injectCodeFunction }),
+        react({ tsDecorators: true }),
         eslint({
             cache: false,
             include: ['./src/**/*.js', './src/**/*.jsx', './src/**/*.ts', './src/**/*.tsx'],
@@ -35,11 +43,42 @@ export default defineConfig({
         }),
     ],
     css: {
+        modules: {
+            localsConvention: 'camelCase',
+            generateScopedName: (name, filename, css) => {
+                const componentName = filename
+                    .split('/')
+                    .pop()
+
+                const hash = crypto
+                    .createHash('md5')
+                    .update(css)
+                    .digest('base64')
+                    .replace(/[^\d\w]+/, '')
+                    .substring(0, 5)
+
+                return `${componentName?.replace('.module.css', '')}_${name}__${hash}`
+            },
+        },
         postcss: {
-            plugins: [postcssNesting],
+            plugins: [
+                postcssImport({ path: ['src'] }),
+                postcssNesting,
+                postcssPresetEnv({
+                    stage: 3,
+                    features: {
+                        'nesting-rules': true,
+                        'custom-media-queries': true,
+                    },
+                }),
+                postcssCustomProperties({
+                    preserve: false,
+                }),
+            ],
         },
     },
     build: {
+        copyPublicDir: false,
         lib: {
             entry: path.resolve(__dirname, 'src/components/index.ts'),
             name: 'ui-kit-lite',

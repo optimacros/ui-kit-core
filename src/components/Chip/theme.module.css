@@ -1,5 +1,4 @@
 @import './config.css';
-@import '../../themes/config.css';
 
 .chip {
     background-color: var(--chip-background);
@@ -15,8 +14,19 @@
     position: relative;
     text-overflow: ellipsis;
     white-space: nowrap;
+    box-sizing: border-box;
+    font-family: var(--preferred-font);
+    -webkit-font-smoothing: antialiased;
+    text-size-adjust: 100%;
 
-    @apply --reset;
+    & *,
+    & *::after,
+    & *::before {
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+        text-size-adjust: 100%;
+        -webkit-touch-callout: none;
+    }
 }
 
 .avatar {

@@ -2,6 +2,7 @@
 .vscode
 node_modules*
 bower_components*
+storybook-static*
 
 
 *.swp
@@ -18,10 +19,8 @@ bower_components*
 reports
 coverage
 
-public
 lib
 dist
 
 src/version.json
 
-.wercker

@@ -1,4 +1,3 @@
-@import '../../themes/config.css';
 @import './config.css';
 
 .horizontal {
@@ -20,8 +19,19 @@
 .vertical,
 .horizontal {
     padding: calc(var(--navigation-space) / 2);
+    box-sizing: border-box;
+    font-family: var(--preferred-font);
+    -webkit-font-smoothing: antialiased;
+    text-size-adjust: 100%;
 
-    @apply --reset;
+    & *,
+    & *::after,
+    & *::before {
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+        text-size-adjust: 100%;
+        -webkit-touch-callout: none;
+    }
 
     & > [data-react-toolbox='link'] {
         color: var(--navigation-color);

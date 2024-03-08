@@ -6,7 +6,7 @@ import styles from './HeaderUserMenu.module.css'
 
 type Props = {
     label: string;
-    onClick: () => void;
+    onClick?: () => void;
     href?: string;
     className?: string;
     icon?: string;
