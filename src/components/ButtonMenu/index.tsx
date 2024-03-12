@@ -1,13 +1,12 @@
 import classNames from 'classnames'
-import type { PropsWithChildren } from 'react'
 import React, { PureComponent } from 'react'
 
+import { mergeStyles } from '../../utils/mergeStyle'
 import { Button } from '../Button'
 import { Dropdown } from '../Dropdown'
 import { FontIcon } from '../FontIcon'
 import { Menu } from '../Menu'
 import { tooltip } from '../Tooltip'
-import { mergeStyles } from 'utils/mergeStyle'
 
 import buttonMenuTheme from './ButtonMenu.module.css'
 
@@ -21,12 +20,12 @@ type Props = {
     arrowUp?: boolean;
     menuRootContainerClassName?: string;
     theme?: Record<string, string>;
-    icon?: string | JSX.Element;
+    icon?: string | React.JSX.Element;
     classNameDropdownContainer?: string;
 }
 
-export class ButtonMenu extends PureComponent<PropsWithChildren<Props>> {
-    render(): JSX.Element {
+export class ButtonMenu extends PureComponent<React.PropsWithChildren<Props>> {
+    render(): React.JSX.Element {
         return (
             <Dropdown
                 overlay={this.renderMenu()}
@@ -39,7 +38,7 @@ export class ButtonMenu extends PureComponent<PropsWithChildren<Props>> {
         )
     }
 
-    renderMenu(): JSX.Element {
+    renderMenu(): React.JSX.Element {
         const { menuRootContainerClassName } = this.props
         const theme = mergeStyles(this.props.theme, buttonMenuTheme)
         const className = classNames(menuRootContainerClassName, theme.MenuRootContainerClassName)
@@ -51,7 +50,7 @@ export class ButtonMenu extends PureComponent<PropsWithChildren<Props>> {
         )
     }
 
-    renderButton(): JSX.Element {
+    renderButton(): React.JSX.Element {
         const TooltipButton = this.props.tooltip
             ? tooltip(Button)
             : Button
@@ -65,7 +64,7 @@ export class ButtonMenu extends PureComponent<PropsWithChildren<Props>> {
                 [buttonMenuTheme.ButtonMenu__showOnlyIcon]: this.props.showOnlyIcon,
             },
             this.props.className,
-            theme.ButtonMenu
+            theme.ButtonMenu,
         )
 
         const classNameText = classNames(buttonMenuTheme.buttonText, theme.buttonText)
