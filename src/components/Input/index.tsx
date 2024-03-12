@@ -8,7 +8,6 @@ import { isValuePresent } from '../../utils/react-toolbox-utils'
 import { FontIcon } from '../FontIcon'
 
 // order of styles import is important
-// eslint-disable-next-line
 import inputThemeStyle from './theme.module.css'
 // eslint-disable-next-line
 import inputDefaultStyle from './Input.module.css'
@@ -43,7 +42,7 @@ interface Props extends Omit<HTMLAttributes, 'onChange' | 'onKeyPress'> {
     error?: string | React.JSX.Element | null;
     hint?: string | React.JSX.Element;
     collapsed?: boolean;
-    icon?: string | React.JSX.Element;
+    icon?: string | React.ReactElement;
     theme?: Partial<InputTheme>;
 }
 

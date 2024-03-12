@@ -1,21 +1,11 @@
+@import '../../themes/variables.css';
 @import './config.css';
 
 .input {
     padding: var(--input-padding) 0;
     position: relative;
-    box-sizing: border-box;
-    font-family: var(--preferred-font);
-    -webkit-font-smoothing: antialiased;
-    text-size-adjust: 100%;
 
-    & *,
-    & *::after,
-    & *::before {
-        box-sizing: border-box;
-        -webkit-font-smoothing: antialiased;
-        text-size-adjust: 100%;
-        -webkit-touch-callout: none;
-    }
+    @apply --reset;
 
     &.withIcon {
         margin-left: calc(var(--input-icon-size) + var(--input-icon-right-space));
