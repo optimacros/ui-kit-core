@@ -95,7 +95,7 @@ export class CheckBoxComponent extends Component<CheckBoxComponentProps> {
         }
 
         if (!this.props.disabled && this.props.onChange) {
-            this.props.onChange(!this.props.checked, event)
+            this.props.onChange(!this.props.checked ?? false, event)
         }
     }
 
