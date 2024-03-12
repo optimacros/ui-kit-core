@@ -1,5 +1,5 @@
-@import "../../themes/variables.css";
-@import "./config.css";
+@import '../../themes/variables.css';
+@import './config.css';
 
 .button {
     align-content: center;
@@ -43,7 +43,7 @@
         border: 0;
     }
 
-    & > span:not([data-react-toolbox="tooltip"]) {
+    & > span:not([data-react-toolbox='tooltip']) {
         display: inline-block;
         line-height: var(--button-height);
         vertical-align: middle;
@@ -130,7 +130,7 @@
     height: var(--button-floating-height);
     width: var(--button-floating-height);
 
-    & .icon:not([data-react-toolbox="tooltip"]) {
+    & .icon:not([data-react-toolbox='tooltip']) {
         line-height: var(--button-floating-height);
     }
 

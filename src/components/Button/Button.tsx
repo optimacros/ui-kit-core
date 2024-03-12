@@ -2,9 +2,9 @@ import classNames from 'classnames'
 import type { MouseEvent } from 'react'
 import React, { Component } from 'react'
 
-import type { ButtonInitialProps, Theme } from './index'
 import { FontIcon } from '../FontIcon'
 import type { RippleProps } from '../Ripple/Ripple'
+import type { ButtonInitialProps, Theme } from './index'
 
 interface ButtonComponentProps extends Partial<ButtonInitialProps> {
     theme: Theme;
@@ -67,7 +67,7 @@ export class ButtonComponent extends Component<ButtonComponentProps & Partial<Ri
                 [theme.gray]: gray,
                 [theme.warning]: warning,
             },
-            className,
+            className
         )
 
         const style = {

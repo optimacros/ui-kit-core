@@ -1,9 +1,9 @@
-import { mergeStyles } from 'components'
 import type { ButtonHTMLAttributes } from 'react'
 import React, { Component } from 'react'
 
-import { ButtonComponent } from './Button'
 import themedRippleFactory from '../Ripple'
+import { ButtonComponent } from './Button'
+import { mergeStyles } from 'utils/mergeStyle'
 
 // order of styles import is important
 import themeStyle from './ButtonTheme.module.css'
