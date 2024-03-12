@@ -1,8 +1,8 @@
+import { mergeStyles } from 'components'
 import type { ButtonHTMLAttributes } from 'react'
 import React, { Component } from 'react'
 
 import { ButtonComponent } from './Button'
-import { mergeStyles } from '../../utils/mergeStyle'
 import themedRippleFactory from '../Ripple'
 
 // order of styles import is important
@@ -27,6 +27,7 @@ export type ThemeButtonProps = {
 }
 
 export type Theme = ThemeButtonProps & {
+    // eslint-disable-next-line camelcase
     button_uppercase: string;
     gray: string;
     warning: string;
@@ -34,7 +35,7 @@ export type Theme = ThemeButtonProps & {
 
 export interface ButtonInitialProps extends ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
     label: string;
-    icon: string | React.JSX.Element | null;
+    icon: string | JSX.Element | null;
     href: string;
     gray: boolean;
     warning: boolean;
@@ -44,7 +45,6 @@ export interface ButtonInitialProps extends ButtonHTMLAttributes<HTMLButtonEleme
     bordered: boolean;
     uppercase: boolean;
     floating: boolean;
-    flat: boolean;
     raised: boolean;
     inverse: boolean;
     mini: boolean;
@@ -55,11 +55,10 @@ export interface ButtonInitialProps extends ButtonHTMLAttributes<HTMLButtonEleme
     theme: Partial<ThemeButtonProps>;
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 const RippledButton = themedRippleFactory({ centered: false })(ButtonComponent)
 
 export class Button extends Component<Partial<ButtonInitialProps>> {
-    render(): React.JSX.Element {
+    render(): JSX.Element {
         let theme = mergeStyles(style, this.props.theme) as Theme
         theme = mergeStyles(theme, themeStyle) as Theme
 

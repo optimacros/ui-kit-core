@@ -19,7 +19,7 @@ export class ButtonComponent extends Component<ButtonComponentProps & Partial<Ri
 
     buttonNode: React.RefObject<HTMLButtonElement | HTMLAnchorElement>
 
-    render(): React.JSX.Element {
+    render(): JSX.Element {
         const {
             className = '',
             type = 'button',
