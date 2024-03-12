@@ -17,8 +17,8 @@ type State = {
     visible: boolean;
 }
 
-export class Dropdown extends React.PureComponent<React.PropsWithChildren<Props>, State> {
-    constructor(props: React.PropsWithChildren<Props>) {
+export class Dropdown extends React.PureComponent<Props, State> {
+    constructor(props: Props) {
         super(props)
 
         this.state = {
@@ -32,7 +32,7 @@ export class Dropdown extends React.PureComponent<React.PropsWithChildren<Props>
         document.removeEventListener('keydown', this.onGlobalKeyDown)
     }
 
-    static getDerivedStateFromProps(props: React.PropsWithChildren<Props>, state: State): State | null {
+    static getDerivedStateFromProps(props: DropdownProps, state: State): State | null {
         if (props.visible !== state.visible) {
             return { visible: props.visible ?? false }
         }
