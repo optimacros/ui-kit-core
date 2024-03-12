@@ -15,6 +15,7 @@
         white-space: nowrap;
         background-color: var(--Modal-overlay-bg) !important;
         overflow: auto;
+        overflow: overlay;
         &:after {
             content: '';
             display: inline-block;
