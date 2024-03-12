@@ -13,9 +13,10 @@ export type NavigationTheme = {
 }
 
 export type NavigationProps = {
-    type?: 'vertical' | 'horizontal';
+    type: 'vertical' | 'horizontal';
     theme: NavigationTheme;
     className?: string;
+    vertical?: boolean;
 }
 
 export const Navigation = ({
