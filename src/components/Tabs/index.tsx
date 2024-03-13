@@ -14,8 +14,8 @@ type State = {
     activeTab: number;
 }
 
-export class Tabs extends React.Component<React.PropsWithChildren<Props>, State> {
-    constructor(props: React.PropsWithChildren<Props>) {
+export class Tabs extends React.Component<Props, State> {
+    constructor(props: Props) {
         super(props)
 
         this.setCorrectActiveTab(this.props, this.state)
@@ -25,7 +25,7 @@ export class Tabs extends React.Component<React.PropsWithChildren<Props>, State>
         activeTab: this.props.active ?? 0,
     }
 
-    static getDerivedStateFromProps(props: React.PropsWithChildren<Props>, state: State): State | null {
+    static getDerivedStateFromProps(props: Props, state: State): State | null {
         if (currentTabIsDisabled(props, state)) {
             const activeTab = getFirstNonDisabledTab(props) ?? 0
 
@@ -69,7 +69,7 @@ export class Tabs extends React.Component<React.PropsWithChildren<Props>, State>
         this.setActiveTab(index)
     }
 
-    private setCorrectActiveTab(props: React.PropsWithChildren<Props>, state: State): void {
+    private setCorrectActiveTab(props: Props, state: State): void {
         if (currentTabIsDisabled(props, state)) {
             const activeTab = getFirstNonDisabledTab(props) ?? 0
 
@@ -82,7 +82,7 @@ export class Tabs extends React.Component<React.PropsWithChildren<Props>, State>
     }
 }
 
-function currentTabIsDisabled(props: React.PropsWithChildren<Props>, state: State): boolean {
+function currentTabIsDisabled(props: Props, state: State): boolean {
     if (!isArray(props.children)) {
         return false
     }

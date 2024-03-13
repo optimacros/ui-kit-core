@@ -16,7 +16,7 @@ import type React from 'react'
 import type { TabProps } from '../Tab'
 
 export type HiddenTabProps = {
-    content: string | React.JSX.Element | undefined;
+    content: string | React.ReactElement | undefined;
     active: boolean;
     position: number;
     disabled: boolean;
@@ -80,11 +80,11 @@ export class TabHeaderState {
             const { width: tabsScrollerWidth } = this.tabsScrollerNode.getBoundingClientRect()
 
             this.tabsScrollerNode.scrollLeft = toRight
-                ? this.scrollableTabsOffsetsLeft[index] - tabsScrollerWidth + this.scrollableTabsWidth[index] || 0
-                : this.scrollableTabsOffsetsLeft[index] || 0
+                ? this.scrollableTabsOffsetsLeft[index] - tabsScrollerWidth + this.scrollableTabsWidth[index] ?? 0
+                : this.scrollableTabsOffsetsLeft[index] ?? 0
 
             const countScrolledTabs = findIndex(this.scrollableTabsOffsetsLeft, (offset) => {
-                return offset >= (this.tabsScrollerNode?.scrollLeft || 0)
+                return offset >= (this.tabsScrollerNode?.scrollLeft ?? 0)
             })
 
             this.countScrolledTabs = toRight
