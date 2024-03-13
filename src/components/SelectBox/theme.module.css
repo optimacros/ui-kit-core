@@ -1,11 +1,33 @@
+@import '../../themes/variables.css';
+@import '../Input/config.css';
+
 :root {
     --dropdown-value-border-size: calc(var(--input-field-height) / 7);
     --dropdown-color-white: var(--color-white);
     --dropdown-color-primary: var(--primary-color);
+    --dropdown-color-primary-contrast: var(--primary-color-contrast);
     --dropdown-color-disabled: color(var(--color-black) a(26%));
     --dropdown-value-hover-background: var(--palette-grey-200);
     --dropdown-overflow-max-height: 45vh;
     --dropdown-value-border-radius: calc(0.2 * var(--unit));
+
+    --reset: {
+        box-sizing: border-box;
+        font-family: var(--preferred-font);
+        -webkit-font-smoothing: antialiased;
+        font-smoothing: antialiased;
+        text-size-adjust: 100%;
+
+        & *,
+        & *::after,
+        & *::before {
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            font-smoothing: antialiased;
+            text-size-adjust: 100%;
+            -webkit-touch-callout: none;
+        }
+    }
 }
 
 .value {
@@ -84,19 +106,8 @@
 .dropdown {
     position: relative;
     outline: none;
-    box-sizing: border-box;
-    font-family: var(--preferred-font);
-    -webkit-font-smoothing: antialiased;
-    text-size-adjust: 100%;
 
-    & *,
-    & *::after,
-    & *::before {
-        box-sizing: border-box;
-        -webkit-font-smoothing: antialiased;
-        text-size-adjust: 100%;
-        -webkit-touch-callout: none;
-    }
+    @apply --reset;
 
     &:not(.active) {
         & > .values {
@@ -129,7 +140,7 @@
     }
 
     &.disabled {
-        cursor: default;
+        cursor: normal;
         pointer-events: none;
     }
 }
@@ -165,7 +176,7 @@
     }
 
     &.disabled {
-        cursor: default;
+        cursor: normal;
         pointer-events: none;
 
         & > .templateValue {

@@ -1,5 +1,5 @@
 .Title {
-    color: var(--SelectBox-Title-color);
+    color: var(--secondary-text-color);
     overflow: hidden;
     margin-bottom: -15px;
 }
