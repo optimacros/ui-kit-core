@@ -73,7 +73,7 @@ export default defineConfig({
             formats: ['es'],
         },
         rollupOptions: {
-            external: [ 'react', 'react-dom', 'react/jsx-runtime'],
+            external: [ 'react', 'react/jsx-runtime'],
             input: Object.fromEntries(
                 glob.sync('src/lib/**/*.{ts,tsx}', { ignore: 'src/lib/**/*.stories.tsx' }).map(file => [
                     // The name of the entry point
@@ -88,10 +88,6 @@ export default defineConfig({
                 ]),
             ),
             output: {
-                globals: {
-                    react: 'React',
-                    'react-dom': 'ReactDOM',
-                },
                 assetFileNames: 'assets/[name][extname]',
                 entryFileNames: '[name].js',
             },
