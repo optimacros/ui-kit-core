@@ -27,6 +27,7 @@ export default defineConfig({
         }),
         tsconfigPaths(),
         dts({
+            include: ['lib'],
             insertTypesEntry: true,
         }),
     ],
