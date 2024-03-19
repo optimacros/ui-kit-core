@@ -1,3 +1,5 @@
+@import '../../../themes/config.css';
+
 .TabContent {
     width: 100%;
     flex-grow: 1;
