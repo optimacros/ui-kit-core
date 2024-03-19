@@ -22,7 +22,7 @@ export default defineConfig({
         libInjectCss(),
         eslint({
             cache: false,
-            include: ['./src/**/*.js', './src/**/*.jsx', './src/**/*.ts', './src/**/*.tsx'],
+            include: ['./src/lib/**/*.js', './src/lib/**/*.jsx', './src/lib/**/*.ts', './src/lib/**/*.tsx'],
             exclude: [],
         }),
         tsconfigPaths(),
@@ -50,7 +50,7 @@ export default defineConfig({
         },
         postcss: {
             plugins: [
-                postcssImport({ path: ['src'] }),
+                postcssImport({ path: ['src/lib'] }),
                 postcssNesting,
                 postcssPresetEnv({
                     stage: 3,
@@ -68,21 +68,21 @@ export default defineConfig({
     build: {
         copyPublicDir: false,
         lib: {
-            entry: path.resolve(__dirname, 'src/components/index.ts'),
+            entry: path.resolve(__dirname, 'src/lib/index.ts'),
             formats: ['es'],
         },
         rollupOptions: {
             external: [ 'react', 'react-dom', 'react/jsx-runtime'],
             input: Object.fromEntries(
-                glob.sync('src/components/**/*.{ts,tsx}', { ignore: 'src/components/**/*.stories.tsx' }).map(file => [
+                glob.sync('src/lib/**/*.{ts,tsx}', { ignore: 'src/lib/**/*.stories.tsx' }).map(file => [
                     // The name of the entry point
-                    // src/components/nested/foo.ts becomes nested/foo
+                    // src/lib/nested/foo.ts becomes nested/foo
                     path.relative(
-                        'src/components',
+                        'src/lib',
                         file.slice(0, file.length - path.extname(file).length),
                     ),
                     // The absolute path to the entry file
-                    // src/components/nested/foo.ts becomes /project/src/components/nested/foo.ts
+                    // src/lib/nested/foo.ts becomes /project/src/lib/nested/foo.ts
                     fileURLToPath(new URL(file, import.meta.url)),
                 ]),
             ),

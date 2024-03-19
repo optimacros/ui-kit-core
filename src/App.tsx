@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ButtonMenu, Input } from './components'
+import { ButtonMenu, Input } from './lib'
 
 function App(): React.JSX.Element {
     return (
