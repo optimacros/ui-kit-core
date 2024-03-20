@@ -46,10 +46,12 @@ export class Modal extends Component<React.PropsWithChildren<Props>> {
 
         return (
             <ReactModal
+                {...rest}
                 contentLabel="optimacros-modal"
                 shouldCloseOnOverlayClick={false}
                 ariaHideApp={false}
-                {...rest}
+                className={styles.ReactModal__Content}
+                overlayClassName={styles.ReactModal__Overlay}
             >
                 <Draggable draggableTarget={this.props.draggableTarget ?? `.${styles.Header}`}>
                     <div className={containerClassName}>

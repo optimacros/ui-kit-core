@@ -21,7 +21,7 @@ const injectCodeFunction = (cssCode: string) => {
 
         const elementStyle = document.createElement('style')
         elementStyle.appendChild(document.createTextNode(cssCode))
-        document.body.appendChild(elementStyle)
+        document.head.appendChild(elementStyle)
     } catch (e) {
         console.error('vite-plugin-css-injected-by-js', e)
     }
