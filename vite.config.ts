@@ -27,7 +27,7 @@ export default defineConfig({
         }),
         tsconfigPaths(),
         dts({
-            include: ['lib'],
+            include: ['lib/**/!(*.stories|vite-env.*).{ts,tsx}'],
             insertTypesEntry: true,
         }),
     ],
@@ -75,7 +75,7 @@ export default defineConfig({
         rollupOptions: {
             external: [ 'react', 'react/jsx-runtime'],
             input: Object.fromEntries(
-                glob.sync('lib/**/*.{ts,tsx}', { ignore: 'lib/**/*.stories.tsx' }).map(file => [
+                glob.sync('lib/**/!(*.stories|vite-env.*).{ts,tsx}', { ignore: 'lib/**/*.stories.tsx' }).map(file => [
                     // The name of the entry point
                     // lib/nested/foo.ts becomes nested/foo
                     path.relative(
@@ -88,6 +88,10 @@ export default defineConfig({
                 ]),
             ),
             output: {
+                globals: {
+                    react: 'React',
+                    'react-dom': 'ReactDOM',
+                },
                 assetFileNames: 'assets/[name][extname]',
                 entryFileNames: '[name].js',
             },
