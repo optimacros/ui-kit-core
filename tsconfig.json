@@ -1,7 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
-    "rootDir": "src",
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
@@ -39,6 +37,6 @@
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
   },
-  "include": ["src", "vite.config.ts"],
+  "include": ["lib", "vite.config.ts", "src"],
   "exclude": ["node_modules"],
 }

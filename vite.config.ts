@@ -22,12 +22,12 @@ export default defineConfig({
         libInjectCss(),
         eslint({
             cache: false,
-            include: ['./src/lib/**/*.js', './src/lib/**/*.jsx', './src/lib/**/*.ts', './src/lib/**/*.tsx'],
+            include: ['./lib/**/*.js', './lib/**/*.jsx', './lib/**/*.ts', './lib/**/*.tsx'],
             exclude: [],
         }),
         tsconfigPaths(),
         dts({
-            include: ['src/lib'],
+            include: ['lib'],
             insertTypesEntry: true,
         }),
     ],
@@ -51,7 +51,7 @@ export default defineConfig({
         },
         postcss: {
             plugins: [
-                postcssImport({ path: ['src/lib'] }),
+                postcssImport({ path: ['lib'] }),
                 postcssNesting,
                 postcssPresetEnv({
                     stage: 3,
@@ -69,21 +69,21 @@ export default defineConfig({
     build: {
         copyPublicDir: false,
         lib: {
-            entry: path.resolve(__dirname, 'src/lib/index.ts'),
+            entry: path.resolve(__dirname, 'lib/index.ts'),
             formats: ['es'],
         },
         rollupOptions: {
             external: [ 'react', 'react/jsx-runtime'],
             input: Object.fromEntries(
-                glob.sync('src/lib/**/*.{ts,tsx}', { ignore: 'src/lib/**/*.stories.tsx' }).map(file => [
+                glob.sync('lib/**/*.{ts,tsx}', { ignore: 'lib/**/*.stories.tsx' }).map(file => [
                     // The name of the entry point
-                    // src/lib/nested/foo.ts becomes nested/foo
+                    // lib/nested/foo.ts becomes nested/foo
                     path.relative(
-                        'src/lib',
+                        'lib',
                         file.slice(0, file.length - path.extname(file).length),
                     ),
                     // The absolute path to the entry file
-                    // src/lib/nested/foo.ts becomes /project/src/lib/nested/foo.ts
+                    // lib/nested/foo.ts becomes /project/lib/nested/foo.ts
                     fileURLToPath(new URL(file, import.meta.url)),
                 ]),
             ),
