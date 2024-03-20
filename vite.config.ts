@@ -39,6 +39,7 @@ export default defineConfig({
         }),
         tsconfigPaths(),
         dts({
+            include: ['./src/components/**/!(*.stories).{ts,tsx}'],
             insertTypesEntry: true,
         }),
     ],
