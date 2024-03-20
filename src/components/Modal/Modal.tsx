@@ -7,7 +7,6 @@ import ReactModal from './ReactModal'
 import { FontIcon } from '../FontIcon'
 
 import styles from './Modal.module.css'
-import { mergeStyles } from 'utils/mergeStyle.ts'
 
 interface Props extends BaseReactModal.Props {
     title?: string | React.ReactNode;
