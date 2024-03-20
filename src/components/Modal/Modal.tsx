@@ -7,6 +7,7 @@ import ReactModal from './ReactModal'
 import { FontIcon } from '../FontIcon'
 
 import styles from './Modal.module.css'
+import { mergeStyles } from 'utils/mergeStyle.ts'
 
 interface Props extends BaseReactModal.Props {
     title?: string | React.ReactNode;
@@ -44,14 +45,17 @@ export class Modal extends Component<React.PropsWithChildren<Props>> {
             ...rest
         } = this.props
 
+        const className = classNames(this.props.className, styles.ReactModal__Content)
+        const overlayClassName = classNames(this.props.overlayClassName, styles.ReactModal__Overlay)
+
         return (
             <ReactModal
                 {...rest}
                 contentLabel="optimacros-modal"
                 shouldCloseOnOverlayClick={false}
                 ariaHideApp={false}
-                className={styles.ReactModal__Content}
-                overlayClassName={styles.ReactModal__Overlay}
+                className={className}
+                overlayClassName={overlayClassName}
             >
                 <Draggable draggableTarget={this.props.draggableTarget ?? `.${styles.Header}`}>
                     <div className={containerClassName}>
