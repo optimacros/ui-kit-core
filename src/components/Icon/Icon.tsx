@@ -1,39 +1,13 @@
 import React from 'react'
 
-import {
-    iconCube,
-    iconDataBase,
-    iconView,
-    iconPersonalView,
-    iconModule,
-    iconFormula,
-    iconDashboard,
-    iconWorkspaces,
-    iconCopy,
-    iconRename,
-    iconList,
-    iconListView,
-} from './iconsList'
+import * as icons from './iconsList'
 import { FontIcon } from '../FontIcon'
 
-enum IconValue {
-    IconCube = 'iconCube',
-    IconDataBase = 'iconDataBase',
-    IconView = 'iconView',
-    IconPersonalView = 'iconPersonalView',
-    IconModule = 'iconModule',
-    IconFormula = 'iconFormula',
-    IconDashboard = 'iconDashboard',
-    IconWorkspaces = 'iconWorkspaces',
-    IconCopy = 'iconCopy',
-    IconRename = 'iconRename',
-    IconList = 'iconList',
-    IconListView = 'iconListView',
-}
+import IconStyle from './Icon.module.css'
 
 interface Props {
     className?: string;
-    value: string;
+    value: IconComponent | string;
     onClick?: (event: React.MouseEvent) => void;
     title?: string;
     alt?: string;
@@ -42,41 +16,47 @@ interface Props {
     style?: React.CSSProperties;
 }
 
+interface IconComponent {
+    name: string;
+    fill?: string;
+    opacity?: number;
+}
+
 export class Icon extends React.Component<Props> {
-    render(): React.JSX.Element {
+    icons: Record<string, (({ fill, opacity }: { fill?: string; opacity?: number}) => React.JSX.Element)> = icons
+
+    render() {
         const { value, ...otherProps } = this.props
 
-        if (this.props.value in this.icons) {
+        if (typeof value !== 'string') {
+            const IconComponent = this.icons[value.name]
+
+            if (!IconComponent) {
+                return this.renderIcon(value.name, otherProps)
+            }
+
             return (
-                <div {...otherProps}>
-                    <img
-                        src={this.icons[value as IconValue]}
-                        alt=""
+                <div
+                    {...otherProps}
+                    className={IconStyle.Container}
+                >
+                    <IconComponent
+                        fill={value.fill}
+                        opacity={Number(value.opacity)}
                     />
                 </div>
             )
         }
 
-        return (
-            <FontIcon
-                value={value}
-                {...otherProps}
-            />
-        )
+        return this.renderIcon(value, otherProps)
     }
 
-    icons = {
-        iconCube: iconCube,
-        iconDataBase: iconDataBase,
-        iconView: iconView,
-        iconPersonalView: iconPersonalView,
-        iconModule: iconModule,
-        iconFormula: iconFormula,
-        iconDashboard: iconDashboard,
-        iconWorkspaces: iconWorkspaces,
-        iconCopy: iconCopy,
-        iconRename: iconRename,
-        iconList: iconList,
-        iconListView: iconListView,
+    renderIcon(value: string, otherProps: Omit<Props, 'value'>): React.JSX.Element {
+        return (
+            <FontIcon
+                {...otherProps}
+                value={value}
+            />
+        )
     }
 }
