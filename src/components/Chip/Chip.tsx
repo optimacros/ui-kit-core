@@ -3,7 +3,7 @@ import React from 'react'
 
 import { mergeStyles } from '../../utils/mergeStyle'
 
-import style from './theme.module.css'
+import styles from './theme.module.css'
 
 type Theme = {
     avatar: string;
@@ -17,8 +17,10 @@ type Theme = {
 type Props = {
     className: string;
     deletable: boolean;
-    onDeleteClick: React.MouseEventHandler<HTMLSpanElement>;
+    onDeleteClick: React.MouseEventHandler<SVGSVGElement>;
     theme: Partial<Theme>;
+    settingsDialog: React.JSX.Element;
+    incomeDeleteIcon: React.JSX.Element;
 }
 
 export class Chip extends React.Component<React.PropsWithChildren<Partial<Props>>> {
@@ -28,11 +30,12 @@ export class Chip extends React.Component<React.PropsWithChildren<Partial<Props>
             className = '',
             deletable = false,
             onDeleteClick,
+            settingsDialog,
             theme: customTheme,
             ...other
         } = this.props
 
-        const theme = mergeStyles(customTheme, style) as Required<Theme>
+        const theme = mergeStyles(customTheme, styles) as Required<Theme>
 
         const isStringChildren = typeof children === 'string'
         const classes = classnames(
@@ -50,26 +53,43 @@ export class Chip extends React.Component<React.PropsWithChildren<Partial<Props>
                 className={classes}
             >
                 {isStringChildren
-                    ? <span>{children}</span>
+                    ? <span>{ children }</span>
                     : children
                 }
 
-                {deletable && (
-                    <span
-                        role="none"
-                        className={theme.delete}
-                        onClick={onDeleteClick}
-                    >
-                        <svg viewBox="0 0 40 40"
-                            className={theme.deleteIcon}
-                        >
-                            <path className={theme.deleteX}
-                                d="M 12,12 L 28,28 M 28,12 L 12,28"
-                            />
-                        </svg>
-                    </span>
-                )}
+                <div className={styles.iconsContainer}>
+                    {settingsDialog && (
+                        <span className={styles.customIconsContainer}>
+                            {settingsDialog}
+                        </span>
+                    )}
+
+                    {deletable && this.renderDeleteIcon()}
+                </div>
             </div>
+        )
+    }
+
+    renderDeleteIcon(): React.JSX.Element {
+        if (this.props.incomeDeleteIcon) {
+            return (
+                <span className={styles.customIconsContainer}>
+                    {this.props.incomeDeleteIcon}
+                </span>
+            )
+        }
+
+        return (
+            <svg
+                viewBox="0 0 40 40"
+                className={styles.deleteIcon}
+                onClick={this.props.onDeleteClick}
+            >
+                <path
+                    className={styles.deleteX}
+                    d="M 12,12 L 28,28 M 28,12 L 12,28"
+                />
+            </svg>
         )
     }
 }

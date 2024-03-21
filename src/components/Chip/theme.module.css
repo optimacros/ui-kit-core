@@ -1,10 +1,12 @@
 @import './config.css';
 
 .chip {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     background-color: var(--chip-background);
     border-radius: var(--chip-height);
     color: var(--chip-color);
-    display: inline-block;
     font-size: var(--chip-font-size);
     line-height: var(--chip-height);
     margin-right: var(--chip-margin-right);
@@ -14,10 +16,6 @@
     position: relative;
     text-overflow: ellipsis;
     white-space: nowrap;
-    box-sizing: border-box;
-    font-family: var(--preferred-font);
-    -webkit-font-smoothing: antialiased;
-    text-size-adjust: 100%;
 
     & *,
     & *::after,
@@ -45,33 +43,39 @@
     }
 }
 
-.deletable {
-    padding-right: calc(var(--chip-remove-size) + 2 * var(--chip-remove-margin));
-}
-
-.delete {
-    cursor: pointer;
-    display: inline-block;
-    height: var(--chip-remove-size);
-    margin: var(--chip-remove-margin);
-    padding: var(--chip-remove-margin);
-    position: absolute;
-    right: 0;
-    width: var(--chip-remove-size);
-}
-
-.delete:hover .deleteIcon {
-    background: var(--chip-remove-background-hover);
-}
-
 .deleteIcon {
     background: var(--chip-remove-background);
     border-radius: var(--chip-remove-size);
     vertical-align: top;
+    width: 20px;
+    cursor: pointer;
+    fill: var(--chip-remove-background);
 
     & .deleteX {
         fill: transparent;
         stroke: var(--chip-remove-color);
         stroke-width: var(--chip-remove-stroke-width);
     }
+}
+
+.deleteIcon:hover  {
+    background: var(--chip-remove-background-hover);
+}
+
+.iconsContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+}
+
+.customIconsContainer {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.children {
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
