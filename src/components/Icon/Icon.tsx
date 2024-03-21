@@ -38,7 +38,7 @@ export class Icon extends React.Component<Props> {
             return (
                 <div
                     {...otherProps}
-                    className={IconStyle.Container}
+                    className={otherProps.className ?? IconStyle.Container}
                 >
                     <IconComponent
                         fill={value.fill}
