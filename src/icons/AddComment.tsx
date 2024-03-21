@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-lone-blocks
 {/* eslint-disable max-len */}
-export default function AddCommentIcon({ fill = 'black', opacity = 1 }: { fill: string; opacity: number }) {
+export default function AddCommentIcon({ fill = 'black', opacity = 1 }: { fill?: string; opacity?: number }) {
     return (
         <svg width="15"
             height="15"

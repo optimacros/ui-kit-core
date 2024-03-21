@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-lone-blocks
 {/* eslint-disable max-len */}
-export default function IconPersonalListView({ fill = 'black', opacity = 1 }: { fill: string; opacity: number }) {
+export default function IconPersonalListView({ fill = 'black' }: { fill?: string }) {
     return (
         <svg width="15"
             height="15"

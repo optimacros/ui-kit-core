@@ -2,7 +2,7 @@ import { useId } from 'react'
 
 // eslint-disable-next-line no-lone-blocks
 {/* eslint-disable max-len */}
-export default function ActionIcon({ fill = 'black', opacity = 1 }: { fill: string; opacity: number }) {
+export default function ActionIcon({ fill = 'black', opacity = 1 }: { fill?: string; opacity?: number }) {
     const clipPathId = useId()
 
     return (

@@ -1,4 +1,4 @@
-export default function CombinationChartIcon({ fill = 'black', opacity = 1 }: { fill: string; opacity: number }) {
+export default function CombinationChartIcon({ fill = 'black', opacity = 1 }: { fill?: string; opacity?: number }) {
     return (
         <svg width="15"
             height="15"
