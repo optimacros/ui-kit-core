@@ -19,10 +19,10 @@ export class TextArea extends React.PureComponent<Props> {
         } = this.props
 
         const classNameContainer = classnames(styles.Container, this.props.classNameContainer)
-        const classNameField = classnames(this.props.className, {
+        const classNameField = classnames({
             [styles.Input]: true,
             [styles.Input_error]: error,
-        })
+        }, this.props.className)
 
         return (
             <div className={classNameContainer}>
