@@ -5,15 +5,20 @@ const config: StorybookConfig = {
     framework: '@storybook/react-vite',
     stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
 
+    typescript: {
+        reactDocgen: 'react-docgen-typescript',
+        reactDocgenTypescriptOptions: {
+            shouldExtractLiteralValuesFromEnum: true,
+            // 👇 Default prop filter, which excludes props from node_modules
+            propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
+        },
+    },
+
     addons: [
         '@storybook/addon-links',
         '@storybook/addon-essentials',
         '@storybook/addon-actions',
     ],
-
-    features: {
-        storyStoreV7: true,
-    },
 
     async viteFinal(config) {
         return {
