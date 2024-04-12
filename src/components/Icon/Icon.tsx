@@ -22,41 +22,40 @@ interface IconComponent {
     opacity?: number | string;
 }
 
-export class Icon extends React.Component<Props> {
-    icons: Record<string, (({ fill, opacity }: { fill?: string; opacity?: number}) => React.JSX.Element)> = icons
+const iconList: Record<string, (({ fill, opacity }: { fill?: string; opacity?: number}) => React.JSX.Element)> = icons
 
-    render() {
-        const { value, ...otherProps } = this.props
+export const Icon = (props: Props) => {
+    const { value, ...otherProps } = props
 
-        if (typeof value !== 'string') {
-            const IconComponent = this.icons[value.name]
+    if (typeof value !== 'string') {
+        const IconComponent = iconList[value.name]
 
-            if (!IconComponent) {
-                return this.renderIcon(value.name, otherProps)
-            }
-
+        if (!IconComponent) {
             return (
-                <div
+                <FontIcon
                     {...otherProps}
-                    className={otherProps.className ?? IconStyle.Container}
-                >
-                    <IconComponent
-                        fill={value.fill}
-                        opacity={Number(value.opacity) || 1}
-                    />
-                </div>
+                    value={value.name}
+                />
             )
         }
 
-        return this.renderIcon(value, otherProps)
-    }
-
-    renderIcon(value: string, otherProps: Omit<Props, 'value'>): React.JSX.Element {
         return (
-            <FontIcon
+            <div
                 {...otherProps}
-                value={value}
-            />
+                className={otherProps.className ?? IconStyle.Container}
+            >
+                <IconComponent
+                    fill={value.fill}
+                    opacity={Number(value.opacity) || 1}
+                />
+            </div>
         )
     }
+
+    return (
+        <FontIcon
+            {...otherProps}
+            value={value}
+        />
+    )
 }
