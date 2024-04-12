@@ -80,3 +80,5 @@ export { default as iconKeyboardDoubleArrowDown } from '../../icons/KeyboardDoub
 export { default as iconKeyboardDoubleArrowUp } from '../../icons/KeyboardDoubleArrowUp'
 export { default as iconKeyboardDoubleArrowRight } from '../../icons/KeyboardDoubleArrowRight'
 export { default as iconKeyboardDoubleArrowLeft } from '../../icons/KeyboardDoubleArrowLeft'
+export { default as iconPin } from '../../icons/Pin'
+export { default as iconUnpin } from '../../icons/Unpin'
