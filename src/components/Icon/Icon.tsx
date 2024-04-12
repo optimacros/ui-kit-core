@@ -19,7 +19,7 @@ interface Props {
 interface IconComponent {
     name: string;
     fill?: string;
-    opacity?: number;
+    opacity?: number | string;
 }
 
 export class Icon extends React.Component<Props> {
@@ -42,7 +42,7 @@ export class Icon extends React.Component<Props> {
                 >
                     <IconComponent
                         fill={value.fill}
-                        opacity={Number(value.opacity)}
+                        opacity={Number(value.opacity) ?? 1}
                     />
                 </div>
             )
