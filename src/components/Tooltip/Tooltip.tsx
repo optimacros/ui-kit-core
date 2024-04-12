@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import React, { Component } from 'react'
+import { createPortal } from 'react-dom'
 
-import Portal from './Portal'
 import { mergeStyles } from '../../utils/mergeStyle'
 import events from '../../utils/react-toolbox-utils/events'
 import { getViewport } from '../../utils/react-toolbox-utils/utils'
@@ -49,6 +49,7 @@ type TooltipProps = {
     tooltipHideOnClick: boolean;
     tooltipPosition: Position;
     tooltipShowOnClick: boolean;
+    tooltipOffset: number;
 }
 
 type State = {
@@ -157,19 +158,18 @@ const tooltipFactory = (options: TooltipFactoryProps): TooltipWrapperFC => {
                     ComposedComponent,
                     finalProps,
                     children,
-                    visible && (
-                        <Portal>
-                            <span
-                                ref={this.tooltipNode}
-                                className={_className}
-                                data-react-toolbox="tooltip"
-                                style={{ top, left }}
-                            >
-                                <span className={theme.tooltipInner}>
-                                    {tooltip}
-                                </span>
+                    visible && createPortal(
+                        <span
+                            ref={this.tooltipNode}
+                            className={_className}
+                            data-react-toolbox="tooltip"
+                            style={{ top, left }}
+                        >
+                            <span className={theme.tooltipInner}>
+                                { tooltip }
                             </span>
-                        </Portal>
+                        </span>,
+                        document.body,
                     ),
                 )
             }
@@ -239,18 +239,19 @@ const tooltipFactory = (options: TooltipFactoryProps): TooltipWrapperFC => {
                 const { top, left, height, width } = element.getBoundingClientRect()
                 const xOffset = window.scrollX || window.pageXOffset
                 const yOffset = window.scrollY || window.pageYOffset
+                const tooltipOffset = this.props.tooltipOffset || 0
 
                 switch (position) {
                     case (Position.bottom):
                         return {
                             top: top + height + yOffset,
-                            left: left + width / 2 + xOffset,
+                            left: left + width / 2 + xOffset + tooltipOffset,
                             position,
                         }
                     case (Position.top):
                         return {
                             top: top + yOffset,
-                            left: left + width / 2 + xOffset,
+                            left: left + width / 2 + xOffset + tooltipOffset,
                             position,
                         }
                     case (Position.left):
