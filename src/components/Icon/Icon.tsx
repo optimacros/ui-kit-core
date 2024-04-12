@@ -42,7 +42,7 @@ export class Icon extends React.Component<Props> {
                 >
                     <IconComponent
                         fill={value.fill}
-                        opacity={Number(value.opacity) ?? 1}
+                        opacity={Number(value.opacity) || 1}
                     />
                 </div>
             )
