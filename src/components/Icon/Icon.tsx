@@ -27,16 +27,7 @@ const iconList: Record<string, (({ fill, opacity }: { fill?: string; opacity?: n
 export const Icon = (props: Props) => {
     const { value, ...otherProps } = props
 
-    if (typeof value === 'string') {
-        return (
-            <FontIcon
-                {...otherProps}
-                value={value}
-            />
-        )
-    }
-
-    if ('name' in value) {
+    if (typeof value !== 'string' && 'name' in value) {
         const IconComponent = iconList[value.name]
 
         if (!IconComponent) {
@@ -61,5 +52,10 @@ export const Icon = (props: Props) => {
         )
     }
 
-    return value
+    return (
+        <FontIcon
+            {...otherProps}
+            value={value}
+        />
+    )
 }
