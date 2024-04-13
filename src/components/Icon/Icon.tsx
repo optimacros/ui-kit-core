@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 import * as icons from './iconsList'
 import { FontIcon } from '../FontIcon'
@@ -7,7 +7,7 @@ import IconStyle from './Icon.module.css'
 
 interface Props {
     className?: string;
-    value: IconComponent | string;
+    value: IconComponent | string | ReactElement;
     onClick?: (event: React.MouseEvent) => void;
     title?: string;
     alt?: string;
@@ -27,7 +27,16 @@ const iconList: Record<string, (({ fill, opacity }: { fill?: string; opacity?: n
 export const Icon = (props: Props) => {
     const { value, ...otherProps } = props
 
-    if (typeof value !== 'string') {
+    if (typeof value === 'string') {
+        return (
+            <FontIcon
+                {...otherProps}
+                value={value}
+            />
+        )
+    }
+
+    if ('name' in value) {
         const IconComponent = iconList[value.name]
 
         if (!IconComponent) {
@@ -52,10 +61,5 @@ export const Icon = (props: Props) => {
         )
     }
 
-    return (
-        <FontIcon
-            {...otherProps}
-            value={value}
-        />
-    )
+    return value
 }
