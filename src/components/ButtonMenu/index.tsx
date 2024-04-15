@@ -10,6 +10,8 @@ import { Tooltip, TooltipTheme } from '../Tooltip/Tooltip'
 
 import buttonMenuTheme from './ButtonMenu.module.css'
 
+export type ButtonMenuTheme = Partial<ButtonTheme> & Partial<TooltipTheme>
+
 type Props = {
     label?: string;
     disabled?: boolean;
@@ -19,7 +21,7 @@ type Props = {
     tooltip?: string;
     arrowUp?: boolean;
     menuRootContainerClassName?: string;
-    theme?: Partial<ButtonTheme> & Partial<TooltipTheme>;
+    theme?: ButtonMenuTheme;
     icon?: string | React.JSX.Element;
     classNameDropdownContainer?: string;
 }
