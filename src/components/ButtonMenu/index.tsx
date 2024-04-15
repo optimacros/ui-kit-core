@@ -2,11 +2,11 @@ import classNames from 'classnames'
 import React, { PureComponent } from 'react'
 
 import { mergeStyles } from '../../utils/mergeStyle'
-import { Button } from '../Button'
+import { Button, ButtonTheme } from '../Button'
 import { Dropdown } from '../Dropdown'
 import { FontIcon } from '../FontIcon'
 import { Menu } from '../Menu'
-import { tooltip } from '../Tooltip'
+import { Tooltip, TooltipTheme } from '../Tooltip/Tooltip'
 
 import buttonMenuTheme from './ButtonMenu.module.css'
 
@@ -19,7 +19,7 @@ type Props = {
     tooltip?: string;
     arrowUp?: boolean;
     menuRootContainerClassName?: string;
-    theme?: Record<string, string>;
+    theme?: Partial<ButtonTheme> & Partial<TooltipTheme>;
     icon?: string | React.JSX.Element;
     classNameDropdownContainer?: string;
 }
@@ -52,7 +52,13 @@ export class ButtonMenu extends PureComponent<React.PropsWithChildren<Props>> {
 
     renderButton(): React.JSX.Element {
         const TooltipButton = this.props.tooltip
-            ? tooltip(Button)
+            ? (
+                props: React.PropsWithChildren<Props>) => (
+                    <Tooltip
+                        {...props}
+                        composedComponent={Button}
+                    />
+            )
             : Button
 
         const theme = mergeStyles(this.props.theme, buttonMenuTheme)

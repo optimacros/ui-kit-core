@@ -2,12 +2,12 @@ import classNames from 'classnames'
 import type { MouseEvent } from 'react'
 import React, { Component } from 'react'
 
-import type { ButtonInitialProps, Theme } from './index'
+import type { ButtonInitialProps, ButtonTheme } from './index'
 import { FontIcon } from '../FontIcon'
 import type { RippleProps } from '../Ripple/Ripple'
 
 interface ButtonComponentProps extends Partial<ButtonInitialProps> {
-    theme: Theme;
+    theme: ButtonTheme;
 }
 
 export class ButtonComponent extends Component<ButtonComponentProps & Partial<RippleProps>> {

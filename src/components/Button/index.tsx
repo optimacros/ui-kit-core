@@ -26,7 +26,7 @@ export type ThemeButtonProps = {
     toggle: string;
 }
 
-export type Theme = ThemeButtonProps & {
+export type ButtonTheme = ThemeButtonProps & {
     button_uppercase: string;
     gray: string;
     warning: string;
@@ -60,8 +60,8 @@ const RippledButton = themedRippleFactory({ centered: false })(ButtonComponent)
 
 export class Button extends Component<Partial<ButtonInitialProps>> {
     render(): React.JSX.Element {
-        let theme = mergeStyles(style, this.props.theme) as Theme
-        theme = mergeStyles(theme, themeStyle) as Theme
+        let theme = mergeStyles(style, this.props.theme) as ButtonTheme
+        theme = mergeStyles(theme, themeStyle) as ButtonTheme
 
         return (
             <RippledButton
