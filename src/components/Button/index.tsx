@@ -51,7 +51,6 @@ export interface ButtonInitialProps extends ButtonHTMLAttributes<HTMLButtonEleme
     buttonColor: string;
     fontColor: string;
     fontSize: string | number;
-    tooltip: string | React.ReactNode; // works only for ButtonMenu and IconButton
     theme: Partial<ThemeButtonProps>;
 }
 

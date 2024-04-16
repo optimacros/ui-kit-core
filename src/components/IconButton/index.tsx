@@ -6,7 +6,7 @@ import { IconButtonComponent } from './IconButton'
 import { mergeStyles } from '../../utils/mergeStyle'
 import type { ButtonInitialProps, ThemeButtonProps } from '../Button'
 import themedRippleFactory from '../Ripple'
-import { Tooltip } from '../Tooltip/Tooltip'
+import { Tooltip, TooltipProps } from '../Tooltip/Tooltip'
 
 // order of styles import is important
 import themeStyle from './theme.module.css'
@@ -19,16 +19,31 @@ export interface IconButtonProps extends Partial<ButtonInitialProps> {
     theme: Partial<IconButtonTheme>;
 }
 
+type TooltipPickedProps = Pick<TooltipProps,
+  | 'tooltip'
+  | 'tooltipDelay'
+  | 'tooltipHideOnClick'
+  | 'tooltipPosition'
+  | 'tooltipShowOnClick'
+  | 'tooltipOffset'
+>
+
 // eslint-disable-next-line react-refresh/only-export-components
 const RippledIconButton = themedRippleFactory({ centered: true })(IconButtonComponent)
 
-export class IconButton extends React.Component<Partial<IconButtonProps>> {
+export class IconButton extends React.Component<Partial<IconButtonProps & TooltipPickedProps>> {
     render(): React.JSX.Element {
         const {
             icon,
             children,
             label,
             theme: customTheme,
+            tooltip,
+            tooltipDelay,
+            tooltipHideOnClick,
+            tooltipPosition,
+            tooltipShowOnClick,
+            tooltipOffset,
             ...otherProps
         } = this.props
 
@@ -40,6 +55,7 @@ export class IconButton extends React.Component<Partial<IconButtonProps>> {
 
         const composedComponentProps = {
             ...otherProps,
+            theme,
             className: className,
             icon: iconIsString
                 ? icon
@@ -49,10 +65,15 @@ export class IconButton extends React.Component<Partial<IconButtonProps>> {
 
         return (
             <Tooltip
-                tooltip={this.props.label ?? this.props.tooltip}
-                theme={theme}
                 composedComponent={RippledIconButton}
                 composedComponentProps={composedComponentProps}
+                tooltip={this.props.label ?? this.props.tooltip}
+                tooltipDelay={tooltipDelay}
+                tooltipHideOnClick={tooltipHideOnClick}
+                tooltipPosition={tooltipPosition}
+                tooltipShowOnClick={tooltipShowOnClick}
+                tooltipOffset={tooltipOffset}
+                theme={theme}
             />
         )
     }

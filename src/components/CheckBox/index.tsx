@@ -67,13 +67,13 @@ export class CheckBox extends React.Component<React.PropsWithChildren<InitialPro
                     tooltipShowOnClick={tooltipShowOnClick}
                     tooltipOffset={tooltipOffset}
                     composedComponent={CheckBoxComponent}
-                    composedComponentProps={{ ...otherProps, theme }}
+                    composedComponentProps={{ ...otherProps, theme: customTheme }}
                 />
             )
             : (
                 <CheckBoxComponent
-                    theme={customTheme}
                     {...otherProps}
+                    theme={customTheme}
                 />
             )
     }
