@@ -11,11 +11,10 @@ interface BoxProps extends Partial<RippleProps> {
     disabled?: boolean;
     onMouseDown?: MouseEventHandler<HTMLDivElement> | undefined;
     onTouchStart?: TouchEventHandler<HTMLDivElement> | undefined;
-    children?: React.ReactNode;
     style?: CSSProperties;
 }
 
-export const Box = (props: BoxProps): React.JSX.Element => (
+export const Box = (props: React.PropsWithChildren<BoxProps>): React.JSX.Element => (
     <div
         role="none"
         data-react-toolbox="check"

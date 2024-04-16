@@ -12,7 +12,7 @@ interface CheckBoxComponentProps extends InitialProps {
     theme: Required<Theme>;
 }
 
-export class CheckBoxComponent extends Component<CheckBoxComponentProps> {
+export class CheckBoxComponent extends Component<React.PropsWithChildren<CheckBoxComponentProps>> {
     constructor(props: CheckBoxComponentProps) {
         super(props)
 
@@ -55,6 +55,7 @@ export class CheckBoxComponent extends Component<CheckBoxComponentProps> {
                 className={className}
                 onMouseEnter={onMouseEnter}
                 onMouseLeave={onMouseLeave}
+                onClick={this.props.onClick}
             >
                 <input
                     {...others}

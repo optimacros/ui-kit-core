@@ -31,7 +31,7 @@ export type TooltipTheme = {
     tooltipWrapper: string;
 }
 
-type TooltipProps = {
+export type TooltipProps = {
     composedComponent: string | React.FunctionComponent<any> | React.ComponentClass<any>;
     composedComponentProps?: Record<string, any>;
     className?: string;

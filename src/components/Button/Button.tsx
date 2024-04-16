@@ -140,12 +140,22 @@ export class ButtonComponent extends Component<ButtonComponentProps & Partial<Ri
     }
 
     handleMouseUp = (event: MouseEvent<HTMLButtonElement>): void => {
+        if (this.buttonNode.current) {
+            // TODO проверить не сломает ли это теты в АМ
+            this.buttonNode.current.blur()
+        }
+
         if (this.props.onMouseUp) {
             this.props.onMouseUp(event)
         }
     }
 
     handleMouseLeave = (event: MouseEvent<HTMLButtonElement>): void => {
+        if (this.buttonNode.current) {
+            // TODO проверить не сломает ли это теты в АМ
+            this.buttonNode.current.blur()
+        }
+
         if (this.props.onMouseLeave) {
             this.props.onMouseLeave(event)
         }
