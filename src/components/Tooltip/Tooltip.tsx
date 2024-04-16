@@ -8,14 +8,16 @@ import { getViewport } from '../../utils/react-toolbox-utils/utils'
 
 import styles from './theme.module.css'
 
-enum Position {
-    bottom = 'BOTTOM',
-    horizontal = 'HORIZONTAL',
-    left = 'LEFT',
-    right = 'RIGHT',
-    top = 'TOP',
-    vertical = 'VERTICAL',
-}
+const POSITION = {
+    BOTTOM: 'bottom',
+    HORIZONTAL: 'horizontal',
+    LEFT: 'left',
+    RIGHT: 'right',
+    TOP: 'top',
+    VERTICAL: 'vertical',
+} as const
+
+type Position = typeof POSITION[keyof typeof POSITION]
 
 type PositionInfo = {
     top: number;
@@ -65,7 +67,7 @@ export class Tooltip extends Component<React.PropsWithChildren<TooltipProps>, St
 
     state = {
         active: false,
-        position: this.props.tooltipPosition ?? Position.vertical,
+        position: this.props.tooltipPosition ?? POSITION.VERTICAL,
         visible: false,
         top: 0,
         left: 0,
@@ -160,26 +162,26 @@ export class Tooltip extends Component<React.PropsWithChildren<TooltipProps>, St
     }
 
     getPosition(element: HTMLElement): Position {
-        const tooltipPosition = this.props.tooltipPosition ?? Position.vertical
+        const tooltipPosition = this.props.tooltipPosition ?? POSITION.VERTICAL
 
-        if (tooltipPosition === Position.horizontal) {
+        if (tooltipPosition === POSITION.HORIZONTAL) {
             const origin = element.getBoundingClientRect()
             const { width: ww } = getViewport()
             const toRight = origin.left < ww / 2 - origin.width / 2
 
             return toRight
-                ? Position.right
-                : Position.left
+                ? POSITION.RIGHT
+                : POSITION.LEFT
         }
 
-        if (tooltipPosition === Position.vertical) {
+        if (tooltipPosition === POSITION.VERTICAL) {
             const origin = element.getBoundingClientRect()
             const { height: wh } = getViewport()
             const toBottom = origin.top < wh / 2 - origin.height / 2
 
             return toBottom
-                ? Position.bottom
-                : Position.top
+                ? POSITION.BOTTOM
+                : POSITION.TOP
         }
 
         return tooltipPosition
@@ -219,25 +221,25 @@ export class Tooltip extends Component<React.PropsWithChildren<TooltipProps>, St
         const tooltipOffset = this.props.tooltipOffset || 0
 
         switch (position) {
-            case (Position.bottom):
+            case (POSITION.BOTTOM):
                 return {
                     top: top + height + yOffset,
                     left: left + width / 2 + xOffset + tooltipOffset,
                     position,
                 }
-            case (Position.top):
+            case (POSITION.TOP):
                 return {
                     top: top + yOffset,
                     left: left + width / 2 + xOffset + tooltipOffset,
                     position,
                 }
-            case (Position.left):
+            case (POSITION.LEFT):
                 return {
                     top: top + height / 2 + yOffset,
                     left: left + xOffset,
                     position,
                 }
-            case (Position.right):
+            case (POSITION.RIGHT):
                 return {
                     top: top + height / 2 + yOffset,
                     left: left + width + xOffset,
