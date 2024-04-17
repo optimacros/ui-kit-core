@@ -36,7 +36,7 @@ export class CheckBoxComponent extends Component<React.PropsWithChildren<CheckBo
             ...others
         } = this.props
 
-        const theme = mergeStyles(themeStyle, customTheme) as Required<Theme>
+        const theme = mergeStyles(customTheme, themeStyle) as Required<Theme>
 
         const className = classnames(
             theme.field,
