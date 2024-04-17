@@ -15,6 +15,7 @@ interface Props extends DropdownProps {
 
 type State = {
     visible: boolean;
+    lastVisible: boolean;
 }
 
 export class Dropdown extends React.PureComponent<React.PropsWithChildren<Props>, State> {
@@ -23,6 +24,7 @@ export class Dropdown extends React.PureComponent<React.PropsWithChildren<Props>
 
         this.state = {
             visible: props.visible ?? false,
+            lastVisible: props.visible ?? false,
         }
 
         document.addEventListener('keydown', this.onGlobalKeyDown)
@@ -34,7 +36,7 @@ export class Dropdown extends React.PureComponent<React.PropsWithChildren<Props>
 
     static getDerivedStateFromProps(props: React.PropsWithChildren<Props>, state: State): State | null {
         if (props.visible !== state.visible) {
-            return { visible: props.visible ?? false }
+            return { visible: props.visible ?? false, lastVisible: props.visible ?? false }
         }
 
         return null
@@ -42,6 +44,7 @@ export class Dropdown extends React.PureComponent<React.PropsWithChildren<Props>
 
     render(): React.ReactNode {
         const {
+            visible,
             onVisibleChange,
             ...otherProps
         } = this.props
@@ -51,12 +54,14 @@ export class Dropdown extends React.PureComponent<React.PropsWithChildren<Props>
         }
 
         const className = classNames(this.props.className, styles.Container)
+        const overlayClassName = classNames(this.props.overlayClassName, 'wg-dropdown')
 
         return (
             <div className={className}>
                 <BaseDropDown
                     {...otherProps}
                     onVisibleChange={this.onVisibleChange}
+                    overlayClassName={overlayClassName}
                 />
             </div>
         )
