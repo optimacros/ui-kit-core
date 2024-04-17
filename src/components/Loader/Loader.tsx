@@ -27,6 +27,8 @@ type Props = {
     value?: number;
     multicolor?: boolean;
     theme?: Theme;
+    innerRef?: React.RefObject<HTMLDivElement>;
+    disabled?: boolean;
 }
 
 export class Loader extends Component<Props> {
@@ -49,6 +51,8 @@ export class Loader extends Component<Props> {
             type = 'linear',
             theme: userTheme,
             value = 0,
+            innerRef,
+            disabled,
         } = this.props
 
         const theme = mergeStyles(userTheme, style) as Required<Theme>
@@ -64,6 +68,8 @@ export class Loader extends Component<Props> {
 
         return (
             <div
+                ref={innerRef}
+                data-disabled={disabled}
                 data-react-toolbox="progress-bar"
                 aria-valuenow={value}
                 aria-valuemin={this.min}
