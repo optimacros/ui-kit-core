@@ -92,7 +92,7 @@ export default defineConfig({
                 ]),
             ),
             output: {
-                assetFileNames: 'assets/[name][extname]',
+                assetFileNames: 'assets/index[extname]',
                 entryFileNames: '[name].js',
                 dir: 'dist/components',
                 globals: {
