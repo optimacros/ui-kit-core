@@ -18,6 +18,7 @@ export type InputTheme = {
     counter: string;
     disabled: string;
     error: string;
+    oneLineError: string;
     errored: string;
     hidden: string;
     hint: string;
@@ -41,6 +42,7 @@ interface Props extends Omit<HTMLAttributes, 'onChange' | 'onKeyPress'> {
     floating?: boolean;
     label?: string | React.JSX.Element;
     error?: string | React.JSX.Element | null;
+    oneLineError?: boolean;
     hint?: string | React.JSX.Element;
     collapsed?: boolean;
     icon?: string | React.JSX.Element;
@@ -63,10 +65,17 @@ export class Input extends React.Component<Props> {
         }
     }
 
-    componentDidUpdate(): void {
+    componentDidUpdate(prevProps: Props): void {
         // resize the textarea, if necessary
         if (this.props.multiline) {
+            window.addEventListener('resize', this.handleAutoresize)
             this.handleAutoresize()
+        }
+
+        if (!this.props.multiline && prevProps.multiline) {
+            window.addEventListener('resize', this.handleAutoresize)
+        } else if (this.props.multiline && !prevProps.multiline) {
+            window.removeEventListener('resize', this.handleAutoresize)
         }
     }
 
@@ -78,6 +87,7 @@ export class Input extends React.Component<Props> {
 
     render(): React.JSX.Element {
         const {
+            children,
             name,
             value,
             role = 'input',
@@ -90,6 +100,7 @@ export class Input extends React.Component<Props> {
             floating = true,
             defaultValue,
             error,
+            oneLineError,
             hint = '',
             icon,
             label,
@@ -120,6 +131,7 @@ export class Input extends React.Component<Props> {
                 [theme.collapsed]: collapsed,
                 [theme.disabled]: disabled,
                 [theme.errored]: error,
+                [theme.oneLineError]: oneLineError,
                 [theme.hidden]: type === 'hidden',
                 [theme.withIcon]: icon,
             },
@@ -144,7 +156,9 @@ export class Input extends React.Component<Props> {
             disabled,
             required,
             type,
-            value,
+            value: isNull(value)
+                ? ''
+                : value,
         }
 
         if (!multiline) {
@@ -177,7 +191,14 @@ export class Input extends React.Component<Props> {
                 <span className={theme.bar} />
 
                 {labelText && (
-                    <label className={labelClassName}>
+                    <label
+                        title={
+                            typeof labelText === 'string'
+                                ? labelText
+                                : ''
+                        }
+                        className={labelClassName}
+                    >
                         {labelText}
 
                         {required && <span className={theme.required}> * </span>}
@@ -193,7 +214,15 @@ export class Input extends React.Component<Props> {
                     </span>
                 )}
 
-                {error && <span className={theme.error}>{error}</span>}
+                {!oneLineError && error && <span className={theme.error}>{error}</span>}
+
+                {oneLineError && error
+                    ? (
+                        <div className={theme.error}>{error}</div>
+                    )
+                    : (
+                        <div className={theme.hidden} />
+                    )}
 
                 {maxLength && (
                     <span className={theme.counter}>
@@ -214,7 +243,7 @@ export class Input extends React.Component<Props> {
         // because the user could paste smt in the textarea.
         const haveToTrim = multiline && maxLength && target.value.length > maxLength
         const value = haveToTrim
-            ? valueFromEvent.substr(0, maxLength)
+            ? valueFromEvent.substring(0, maxLength)
             : valueFromEvent
 
         // propagate to store and therefore to the input

@@ -197,3 +197,17 @@
 .hidden {
     display: none;
 }
+
+.oneLineError {
+    & > .inputElement {
+        margin-top: 0;
+    }
+
+    & > .label {
+        pointer-events: visible;
+        width: calc(100%);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
