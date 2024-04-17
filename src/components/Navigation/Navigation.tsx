@@ -19,6 +19,7 @@ export class Navigation extends React.Component<React.PropsWithChildren<Props>> 
             {
                 [navigationTheme.NavigationContainer]: true,
                 [navigationTheme.NavigationContainer_Vertical]: this.props?.type === 'vertical',
+                [navigationTheme.NavigationContainer_Wrap]: this.props.wrap,
             },
             this.props.className,
         )

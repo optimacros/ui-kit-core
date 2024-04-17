@@ -16,6 +16,7 @@ export type NavigationProps = {
     type?: 'vertical' | 'horizontal';
     theme: NavigationTheme;
     className?: string;
+    wrap?: boolean;
 }
 
 export const Navigation = ({
