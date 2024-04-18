@@ -5,7 +5,7 @@ import { FontIcon } from '../FontIcon'
 import IconStyle from './Icon.module.css'
 
 interface Props {
-    value: React.FC | string;
+    value: React.JSX.Element | string;
     className?: string;
     onClick?: (event: React.MouseEvent) => void;
     title?: string;
@@ -26,14 +26,12 @@ export const Icon = (props: Props): React.JSX.Element => {
         )
     }
 
-    const IconComponent = value
-
     return (
         <div
             {...otherProps}
             className={otherProps.className ?? IconStyle.Container}
         >
-            <IconComponent />
+            {value}
         </div>
     )
 }
