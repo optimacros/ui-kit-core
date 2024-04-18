@@ -1,61 +1,39 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 
-import * as icons from './iconsList'
 import { FontIcon } from '../FontIcon'
 
 import IconStyle from './Icon.module.css'
 
 interface Props {
+    value: React.FC | string;
     className?: string;
-    value: IconComponent | string | ReactElement;
     onClick?: (event: React.MouseEvent) => void;
     title?: string;
     alt?: string;
-    children?: React.JSX.Element;
     theme?: Record<string, string>;
     style?: React.CSSProperties;
 }
 
-interface IconComponent {
-    name: string;
-    fill?: string;
-    opacity?: number | string;
-}
-
-const iconList: Record<string, (({ fill, opacity }: { fill?: string; opacity?: number}) => React.JSX.Element)> = icons
-
-export const Icon = (props: Props) => {
+export const Icon = (props: Props): React.JSX.Element => {
     const { value, ...otherProps } = props
 
-    if (typeof value !== 'string' && 'name' in value) {
-        const IconComponent = iconList[value.name]
-
-        if (!IconComponent) {
-            return (
-                <FontIcon
-                    {...otherProps}
-                    value={value.name}
-                />
-            )
-        }
-
+    if (typeof value === 'string') {
         return (
-            <div
+            <FontIcon
                 {...otherProps}
-                className={otherProps.className ?? IconStyle.Container}
-            >
-                <IconComponent
-                    fill={value.fill}
-                    opacity={Number(value.opacity) || 1}
-                />
-            </div>
+                value={value}
+            />
         )
     }
 
+    const IconComponent = value
+
     return (
-        <FontIcon
+        <div
             {...otherProps}
-            value={value}
-        />
+            className={otherProps.className ?? IconStyle.Container}
+        >
+            <IconComponent />
+        </div>
     )
 }
