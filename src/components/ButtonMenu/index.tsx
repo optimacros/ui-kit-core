@@ -29,8 +29,11 @@ type Props = {
     showOnlyIcon?: boolean;
     arrowUp?: boolean;
     menuRootContainerClassName?: string;
+    onVisibleChange?: () => void;
+    visible?: boolean;
     theme?: ButtonMenuTheme;
     icon?: string | React.JSX.Element;
+    dataName?: string;
     classNameDropdownContainer?: string;
 } & TooltipPickedProps
 
@@ -41,6 +44,8 @@ export class ButtonMenu extends PureComponent<React.PropsWithChildren<Props>> {
                 overlay={this.renderMenu()}
                 trigger={['click']}
                 disabled={this.props.disabled}
+                onVisibleChange={this.props.onVisibleChange}
+                visible={this.props.visible}
                 className={this.props.classNameDropdownContainer}
             >
                 {this.renderButton()}
