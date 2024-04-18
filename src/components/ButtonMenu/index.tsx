@@ -69,6 +69,8 @@ export class ButtonMenu extends PureComponent<React.PropsWithChildren<Props>> {
             tooltipShowOnClick,
             tooltipOffset,
             theme,
+            showOnlyIcon,
+            arrowUp,
             ...otherProps
         } = this.props
 
@@ -87,7 +89,7 @@ export class ButtonMenu extends PureComponent<React.PropsWithChildren<Props>> {
         const classNameText = classNames(buttonMenuTheme.buttonText, customTheme.buttonText)
         const classNameIcon = classNames(buttonMenuTheme.buttonIcon, customTheme.buttonIcon)
 
-        const iconValue = this.props.arrowUp
+        const iconValue = arrowUp
             ? 'arrow_drop_up'
             : 'arrow_drop_down'
 

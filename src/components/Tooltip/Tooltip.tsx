@@ -108,6 +108,7 @@ export class Tooltip extends Component<React.PropsWithChildren<TooltipProps>, St
             tooltipShowOnClick,
             composedComponent,
             composedComponentProps,
+            tooltipOffset,
             ...other
         } = this.props
 
