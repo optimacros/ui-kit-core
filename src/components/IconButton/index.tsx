@@ -1,5 +1,4 @@
 import classNames from 'classnames'
-import { isString } from 'lodash'
 import React from 'react'
 
 import { IconButtonComponent } from './IconButton'
@@ -34,7 +33,6 @@ const RippledIconButton = themedRippleFactory({ centered: true })(IconButtonComp
 export class IconButton extends React.Component<Partial<IconButtonProps & TooltipPickedProps>> {
     render(): React.JSX.Element {
         const {
-            icon,
             children,
             label,
             theme: customTheme,
@@ -50,16 +48,12 @@ export class IconButton extends React.Component<Partial<IconButtonProps & Toolti
         let theme = mergeStyles(style, customTheme) as IconButtonTheme
         theme = mergeStyles(theme, themeStyle) as IconButtonTheme
 
-        const iconIsString = isString(icon)
         const className = classNames(theme.IconButton, this.props.className)
 
         const composedComponentProps = {
             ...otherProps,
             theme,
             className: className,
-            icon: !iconIsString
-                ? icon
-                : null,
             'data-label': label,
         }
 
