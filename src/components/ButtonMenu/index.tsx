@@ -113,6 +113,9 @@ export class ButtonMenu extends PureComponent<React.PropsWithChildren<Props>> {
                         theme: customTheme,
                         'data-label': label,
                         'data-name': dataName,
+                        label: showOnlyIcon
+                            ? undefined
+                            : label,
                     }}
                     tooltip={tooltip}
                     theme={customTheme}
@@ -134,7 +137,11 @@ export class ButtonMenu extends PureComponent<React.PropsWithChildren<Props>> {
                 className={className}
                 icon={this.props.icon}
                 disabled={this.props.disabled}
-                label={label}
+                label={
+                    showOnlyIcon
+                        ? undefined
+                        : label
+                }
                 data-label={label}
                 data-name={this.props.dataName}
             >
