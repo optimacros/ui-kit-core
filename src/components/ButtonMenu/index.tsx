@@ -81,17 +81,18 @@ export class ButtonMenu extends PureComponent<React.PropsWithChildren<Props>> {
             visible,
             menuRootContainerClassName,
             classNameDropdownContainer,
+            uppercase,
             label,
             ...otherProps
         } = this.props
 
-        const customTheme = mergeStyles(this.props.theme, buttonMenuTheme)
+        const customTheme = mergeStyles(theme, buttonMenuTheme)
 
         const className = classNames(
             {
                 [buttonMenuTheme.ButtonMenu]: true,
-                [buttonMenuTheme.ButtonMenu__uppercase]: this.props.uppercase,
-                [buttonMenuTheme.ButtonMenu__showOnlyIcon]: this.props.showOnlyIcon,
+                [buttonMenuTheme.ButtonMenu__uppercase]: uppercase,
+                [buttonMenuTheme.ButtonMenu__showOnlyIcon]: showOnlyIcon,
             },
             this.props.className,
             customTheme.ButtonMenu,
@@ -104,18 +105,16 @@ export class ButtonMenu extends PureComponent<React.PropsWithChildren<Props>> {
             ? 'arrow_drop_up'
             : 'arrow_drop_down'
 
-        if (this.props.tooltip) {
+        if (tooltip) {
             return (
                 <Tooltip
                     composedComponent={Button}
                     composedComponentProps={{
                         ...otherProps,
+                        className: className,
                         theme: customTheme,
                         'data-label': label,
                         'data-name': dataName,
-                        label: showOnlyIcon
-                            ? undefined
-                            : label,
                     }}
                     tooltip={tooltip}
                     theme={customTheme}
@@ -135,13 +134,6 @@ export class ButtonMenu extends PureComponent<React.PropsWithChildren<Props>> {
                 {...otherProps}
                 theme={customTheme}
                 className={className}
-                icon={this.props.icon}
-                disabled={this.props.disabled}
-                label={
-                    showOnlyIcon
-                        ? undefined
-                        : label
-                }
                 data-label={label}
                 data-name={this.props.dataName}
             >
