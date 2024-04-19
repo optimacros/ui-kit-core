@@ -57,7 +57,7 @@ export class IconButton extends React.Component<Partial<IconButtonProps & Toolti
             ...otherProps,
             theme,
             className: className,
-            icon: iconIsString
+            icon: !iconIsString
                 ? icon
                 : null,
             'data-label': label,
