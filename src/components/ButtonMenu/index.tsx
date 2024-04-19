@@ -81,6 +81,7 @@ export class ButtonMenu extends PureComponent<React.PropsWithChildren<Props>> {
             visible,
             menuRootContainerClassName,
             classNameDropdownContainer,
+            label,
             ...otherProps
         } = this.props
 
@@ -110,7 +111,7 @@ export class ButtonMenu extends PureComponent<React.PropsWithChildren<Props>> {
                     composedComponentProps={{
                         ...otherProps,
                         theme: customTheme,
-                        'data-label': this.props.label,
+                        'data-label': label,
                         'data-name': dataName,
                     }}
                     tooltip={tooltip}
@@ -133,7 +134,8 @@ export class ButtonMenu extends PureComponent<React.PropsWithChildren<Props>> {
                 className={className}
                 icon={this.props.icon}
                 disabled={this.props.disabled}
-                data-label={this.props.label}
+                label={label}
+                data-label={label}
                 data-name={this.props.dataName}
             >
                 {this.renderContent(classNameText, classNameIcon, iconValue)}
