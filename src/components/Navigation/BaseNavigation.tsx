@@ -33,7 +33,11 @@ export const Navigation = ({
             data-react-toolbox="navigation"
             className={classes}
         >
-            {children}
+            {React.Children.map(children, (child) => (
+                React.isValidElement(child)
+                    ? React.cloneElement<any>(child, { theme: updatedTheme })
+                    : null
+            ))}
         </nav>
     )
 }
