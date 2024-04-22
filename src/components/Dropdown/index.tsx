@@ -36,8 +36,10 @@ export class Dropdown extends React.PureComponent<React.PropsWithChildren<Props>
     }
 
     static getDerivedStateFromProps(props: React.PropsWithChildren<Props>, state: State): State | null {
-        if (props.visible !== state.visible) {
-            return { visible: props.visible ?? false, lastVisible: props.visible ?? false }
+        const isVisible = props.visible ?? false
+
+        if (isVisible !== state.lastVisible) {
+            return { visible: isVisible, lastVisible: isVisible }
         }
 
         return null
