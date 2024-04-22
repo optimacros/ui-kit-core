@@ -29,7 +29,7 @@ type Props = {
     showOnlyIcon?: boolean;
     arrowUp?: boolean;
     menuRootContainerClassName?: string;
-    onVisibleChange?: () => void;
+    onVisibleChange?: (visible: boolean) => void;
     visible?: boolean;
     theme?: ButtonMenuTheme;
     icon?: string | React.JSX.Element;

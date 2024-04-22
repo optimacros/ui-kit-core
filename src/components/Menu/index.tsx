@@ -8,7 +8,8 @@ export { Divider } from 'rc-menu'
 
 export const Menu = (props: MenuProps): React.JSX.Element => {
     return (
-        <BaseMenu selectable={false}
+        <BaseMenu
+            selectable={false}
             {...props}
         />
     )
@@ -16,16 +17,17 @@ export const Menu = (props: MenuProps): React.JSX.Element => {
 
 export const SubMenu = (props: SubMenuProps): React.JSX.Element => {
     return (
-        <BaseSubMenu {...props}
+        <BaseSubMenu
+            {...props}
             title={props.title}
         />
     )
 }
 
-export const MenuItem = (props: MenuItemProps): React.JSX.Element => {
+export const MenuItem = (props: MenuItemProps & { label: string }): React.JSX.Element => {
     return (
         <Item {...props}>
-            {props.title || props.children}
+            {props.label || props.title || props.children}
         </Item>
     )
 }
