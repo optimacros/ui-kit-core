@@ -79,6 +79,7 @@ export class ButtonMenu extends PureComponent<React.PropsWithChildren<Props>> {
             dataName,
             onVisibleChange,
             visible,
+            className,
             menuRootContainerClassName,
             classNameDropdownContainer,
             uppercase,
@@ -88,13 +89,13 @@ export class ButtonMenu extends PureComponent<React.PropsWithChildren<Props>> {
 
         const customTheme = mergeStyles(theme, buttonMenuTheme)
 
-        const className = classNames(
+        const updatedClassName = classNames(
             {
                 [buttonMenuTheme.ButtonMenu]: true,
                 [buttonMenuTheme.ButtonMenu__uppercase]: uppercase,
                 [buttonMenuTheme.ButtonMenu__showOnlyIcon]: showOnlyIcon,
             },
-            this.props.className,
+            className,
             customTheme.ButtonMenu,
         )
 
@@ -111,10 +112,10 @@ export class ButtonMenu extends PureComponent<React.PropsWithChildren<Props>> {
                     composedComponent={Button}
                     composedComponentProps={{
                         ...otherProps,
-                        className: className,
                         'data-label': label,
                         'data-name': dataName,
                     }}
+                    className={updatedClassName}
                     tooltip={tooltip}
                     theme={customTheme}
                     tooltipDelay={tooltipDelay}
@@ -132,7 +133,7 @@ export class ButtonMenu extends PureComponent<React.PropsWithChildren<Props>> {
             <Button
                 {...otherProps}
                 theme={customTheme}
-                className={className}
+                className={updatedClassName}
                 data-label={label}
                 data-name={this.props.dataName}
             >
