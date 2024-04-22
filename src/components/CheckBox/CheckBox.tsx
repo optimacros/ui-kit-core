@@ -6,7 +6,7 @@ import type { InitialProps, Theme } from './index'
 import { mergeStyles } from '../../utils/mergeStyle'
 import rippleFactory from '../Ripple'
 
-import themeStyle from './theme.module.css'
+import checkBoxStyle from './CheckBox.module.css'
 
 interface CheckBoxComponentProps extends InitialProps {
     theme: Required<Theme>;
@@ -36,7 +36,7 @@ export class CheckBoxComponent extends Component<React.PropsWithChildren<CheckBo
             ...others
         } = this.props
 
-        const theme = mergeStyles(customTheme, themeStyle) as Required<Theme>
+        const theme = mergeStyles(customTheme, checkBoxStyle) as Required<Theme>
 
         const className = classnames(
             theme.field,

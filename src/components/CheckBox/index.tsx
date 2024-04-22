@@ -5,7 +5,7 @@ import { CheckBoxComponent } from './CheckBox'
 import { mergeStyles } from '../../utils/mergeStyle'
 import { Tooltip, TooltipProps, TooltipTheme } from '../Tooltip/Tooltip'
 
-import style from './CheckBox.module.css'
+import themeStyle from './theme.module.css'
 
 export type Theme = {
     field?: string;
@@ -54,7 +54,7 @@ export class CheckBox extends React.Component<React.PropsWithChildren<InitialPro
             ...otherProps
         } = this.props
 
-        const customTheme = mergeStyles(style, this.props.theme) as Required<Theme>
+        const customTheme = mergeStyles(themeStyle, this.props.theme) as Required<Theme>
 
         return tooltipLabel
             ? (
