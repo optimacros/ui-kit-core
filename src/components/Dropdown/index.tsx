@@ -11,6 +11,7 @@ import styles from './Dropdown.module.css'
 interface Props extends DropdownProps {
     className?: string;
     disabled?: boolean;
+    closeOnSelect?: boolean;
 }
 
 type State = {
@@ -46,6 +47,7 @@ export class Dropdown extends React.PureComponent<React.PropsWithChildren<Props>
         const {
             visible,
             onVisibleChange,
+            closeOnSelect,
             ...otherProps
         } = this.props
 
@@ -59,8 +61,10 @@ export class Dropdown extends React.PureComponent<React.PropsWithChildren<Props>
         return (
             <div className={className}>
                 <BaseDropDown
-                    {...otherProps}
+                    visible={this.state.visible}
                     onVisibleChange={this.onVisibleChange}
+                    onOverlayClick={this.onOverlayClick}
+                    {...otherProps}
                     overlayClassName={overlayClassName}
                 />
             </div>
@@ -73,6 +77,12 @@ export class Dropdown extends React.PureComponent<React.PropsWithChildren<Props>
         }
 
         this.setState({ visible })
+    }
+
+    private onOverlayClick = () => {
+        if (this.props.closeOnSelect !== false) {
+            this.onVisibleChange(false)
+        }
     }
 
     private onGlobalKeyDown = (event: KeyboardEvent): void => {
