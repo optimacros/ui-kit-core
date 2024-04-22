@@ -24,7 +24,7 @@ export const SubMenu = (props: SubMenuProps): React.JSX.Element => {
     )
 }
 
-export const MenuItem = (props: MenuItemProps & { label: string }): React.JSX.Element => {
+export const MenuItem = (props: MenuItemProps & { label?: string }): React.JSX.Element => {
     return (
         <Item {...props}>
             {props.label || props.title || props.children}
