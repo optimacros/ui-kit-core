@@ -4,6 +4,10 @@
 }
 
 :global {
+    .rc-dropdown {
+        z-index: 7070 !important;
+    }
+
     .rc-dropdown .rc-menu {
         margin: 2px 0 0 !important;
         background-color: var(--rc-dropdown-menu-bg) !important;
