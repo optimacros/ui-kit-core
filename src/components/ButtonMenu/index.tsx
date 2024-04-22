@@ -112,7 +112,6 @@ export class ButtonMenu extends PureComponent<React.PropsWithChildren<Props>> {
                     composedComponentProps={{
                         ...otherProps,
                         className: className,
-                        theme: customTheme,
                         'data-label': label,
                         'data-name': dataName,
                     }}

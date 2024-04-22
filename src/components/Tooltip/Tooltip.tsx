@@ -112,7 +112,7 @@ export class Tooltip extends Component<React.PropsWithChildren<TooltipProps>, St
             ...other
         } = this.props
 
-        const theme = mergeStyles(styles, this.props.theme)
+        const theme = mergeStyles(styles, customTheme)
 
         const tooltipsClassName = classnames(theme.tooltip, {
             [theme.tooltipActive]: active,
