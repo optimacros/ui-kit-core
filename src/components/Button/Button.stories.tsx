@@ -12,11 +12,11 @@ type Story = StoryObj<typeof Button>
 
 const argTypes = {
     icon: {
-        control: 'text',
+        control: { control: 'text' },
         description: 'Overwritten description',
     },
     fontSize: {
-        control: 'text',
+        control: { control: 'text' },
         description: 'Overwritten description',
     },
     tooltip: {
