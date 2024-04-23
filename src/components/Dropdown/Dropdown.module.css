@@ -46,19 +46,19 @@
         padding: 12px 24px 12px 16px;
     }
 
-    .rc-dropdown > .rc-menu > .rc-menu-item {
-        position: relative;
-        display: block;
-        clear: both;
-        font-size: 12px;
-        font-weight: 400;
-        color: var(--primary-text-color);
-        white-space: nowrap;
-        cursor: pointer;
-    }
-
-    .rc-menu {
+    .rc-dropdown > .rc-menu {
         color: unset !important;
+
+        & > .rc-menu-item {
+            position: relative;
+            display: block;
+            clear: both;
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--primary-text-color);
+            white-space: nowrap;
+            cursor: pointer;
+        }
     }
 
     .rc-menu-submenu-popup {
@@ -66,10 +66,10 @@
         z-index: 7500;
     }
 
-    .rc-menu-inline .rc-menu-submenu-arrow,
-    .rc-menu-vertical-left .rc-menu-submenu-arrow,
-    .rc-menu-vertical-right .rc-menu-submenu-arrow,
-    .rc-menu-vertical .rc-menu-submenu-arrow {
+    .rc-dropdown > .rc-menu-inline .rc-menu-submenu-arrow,
+    .rc-dropdown > .rc-menu-vertical-left .rc-menu-submenu-arrow,
+    .rc-dropdown > .rc-menu-vertical-right .rc-menu-submenu-arrow,
+    .rc-dropdown > .rc-menu-vertical .rc-menu-submenu-arrow {
         display: inline-block;
         position: absolute;
         right: 5px;
@@ -89,10 +89,10 @@
         text-rendering: optimizeLegibility;
     }
 
-    .rc-menu-inline .rc-menu-submenu-arrow:before,
-    .rc-menu-vertical-left .rc-menu-submenu-arrow:before,
-    .rc-menu-vertical-right .rc-menu-submenu-arrow:before,
-    .rc-menu-vertical .rc-menu-submenu-arrow:before {
+    .rc-dropdown > .rc-menu-inline .rc-menu-submenu-arrow:before,
+    .rc-dropdown > .rc-menu-vertical-left .rc-menu-submenu-arrow:before,
+    .rc-dropdown > .rc-menu-vertical-right .rc-menu-submenu-arrow:before,
+    .rc-dropdown > .rc-menu-vertical .rc-menu-submenu-arrow:before {
         content: "arrow_drop_down";
     }
 }
