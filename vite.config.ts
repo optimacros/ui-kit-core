@@ -99,7 +99,6 @@ export default defineConfig({
             output: {
                 assetFileNames: 'assets/index[extname]',
                 entryFileNames: '[name].js',
-                dir: '',
                 globals: {
                     react: 'React',
                     'react-dom': 'ReactDOM',
