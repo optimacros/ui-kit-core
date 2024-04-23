@@ -67,11 +67,6 @@ export default defineConfig({
             ],
         },
     },
-    resolve: {
-        alias: {
-            '@ui-kit-lite': path.resolve(__dirname, './src/components'),
-        },
-    },
     build: {
         copyPublicDir: false,
         lib: {
