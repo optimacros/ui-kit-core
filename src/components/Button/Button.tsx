@@ -63,9 +63,6 @@ export class ButtonComponent extends Component<ButtonComponentProps & Partial<Ri
                 [theme[level]]: neutral,
                 [theme.mini]: mini,
                 [theme.inverse]: inverse,
-                [theme.button_uppercase]: uppercase,
-                [theme.gray]: gray,
-                [theme.warning]: warning,
             },
             className,
         )

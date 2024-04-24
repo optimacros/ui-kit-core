@@ -9,9 +9,10 @@ import themedRippleFactory from '../Ripple'
 import themeStyle from './ButtonTheme.module.css'
 // eslint-disable-next-line
 import style from './Button.module.css'
+import classNames from 'classnames'
 
 export type ThemeButtonProps = {
-    Button: string;
+    button: string;
     icon: string;
     rippleWrapper: string;
     accent: string;
@@ -27,6 +28,7 @@ export type ThemeButtonProps = {
 }
 
 export type ButtonTheme = ThemeButtonProps & {
+    Button: string;
     button_uppercase: string;
     gray: string;
     warning: string;
@@ -62,9 +64,20 @@ export class Button extends Component<Partial<ButtonInitialProps>> {
         let theme = mergeStyles(style, this.props.theme) as ButtonTheme
         theme = mergeStyles(theme, themeStyle) as ButtonTheme
 
+        const className = classNames(
+            this.props.className,
+            {
+                [theme.button_uppercase]: this.props.uppercase,
+                [theme.gray]: this.props.gray,
+                [theme.warning]: this.props.warning,
+            },
+            theme.Button,
+        )
+
         return (
             <RippledButton
                 {...this.props}
+                className={className}
                 theme={theme}
             />
         )
