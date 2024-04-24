@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "files": [
-    "components"
+    "components",
+    "types"
   ],
   "main": "./components/index.js",
   "types": "./types/components/index.d.ts",
