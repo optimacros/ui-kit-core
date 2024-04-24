@@ -4,10 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "files": [
-    "dist"
+    "components"
   ],
-  "main": "./dist/components/index.js",
-  "types": "./dist/types/components/index.d.ts",
+  "main": "./components/index.js",
+  "types": "./components/types/components/index.d.ts",
   "scripts": {
     "prepare": "npm run build",
     "dev": "vite",
