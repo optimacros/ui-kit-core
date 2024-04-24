@@ -12,6 +12,10 @@
     ".": {
       "import": "./dist/components/index.js",
       "types": "./dist/types/components/index.d.ts"
+    },
+    "./Input": {
+      "import": "./dist/components/Input/index.js",
+      "types": "./dist/types/components/Input/index.d.ts"
     }
   },
   "scripts": {
