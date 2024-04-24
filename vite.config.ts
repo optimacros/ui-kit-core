@@ -70,7 +70,10 @@ export default defineConfig({
     build: {
         copyPublicDir: false,
         lib: {
-            entry: path.resolve(__dirname, 'src/components/index.ts'),
+            entry: [
+                path.resolve(__dirname, 'src/components/index.ts'),
+                path.resolve(__dirname, 'src/components/Input/index.tsx')
+            ],
             formats: ['es'],
         },
         rollupOptions: {
