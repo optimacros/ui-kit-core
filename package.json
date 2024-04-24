@@ -6,15 +6,14 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/components/index.js",
-  "types": "./dist/types/components/index.d.ts",
+  "main": "./dist/index.js",
   "exports": {
     ".": {
-      "import": "./dist/components/index.js",
+      "import": "./dist/index.js",
       "types": "./dist/types/components/index.d.ts"
     },
     "./Input": {
-      "import": "./dist/components/Input/index.js",
+      "import": "./dist/components/Input.js",
       "types": "./dist/types/components/Input/index.d.ts"
     }
   },
