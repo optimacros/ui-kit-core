@@ -8,16 +8,6 @@
   ],
   "main": "./dist/components/index.js",
   "types": "./dist/types/components/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/components/index.js",
-      "types": "./dist/types/components/index.d.ts"
-    },
-    "./Input": {
-      "import": "./dist/components/Input/index.js",
-      "types": "./dist/types/components/Input/index.d.ts"
-    }
-  },
   "scripts": {
     "prepare": "npm run build",
     "dev": "vite",
