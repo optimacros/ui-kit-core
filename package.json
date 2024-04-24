@@ -6,13 +6,8 @@
   "files": [
     "dist"
   ],
-  "module": "./dist/index.js",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/types/components/index.d.ts"
-    }
-  },
+  "main": "./dist/index.js",
+  "types": "./dist/types/components/index.d.ts",
   "scripts": {
     "prepare": "npm run build",
     "dev": "vite",
