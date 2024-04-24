@@ -11,7 +11,7 @@ import themeStyle from './ButtonTheme.module.css'
 import style from './Button.module.css'
 
 export type ThemeButtonProps = {
-    button: string;
+    Button: string;
     icon: string;
     rippleWrapper: string;
     accent: string;
