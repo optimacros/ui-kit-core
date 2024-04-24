@@ -72,7 +72,7 @@ export default defineConfig({
         lib: {
             entry: [
                 path.resolve(__dirname, 'src/components/index.ts'),
-                path.resolve(__dirname, 'src/components/Input'),
+                path.resolve(__dirname, 'src/components/Input/index.tsx'),
             ],
             formats: ['es'],
         },
