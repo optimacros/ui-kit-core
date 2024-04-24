@@ -25,7 +25,7 @@ export const Navigation = ({
     className,
     type,
 }: React.PropsWithChildren<NavigationProps>): React.JSX.Element => {
-    const updatedTheme = mergeStyles(theme, themeStyles)
+    const updatedTheme = mergeStyles(themeStyles, theme)
     const classes = classnames(updatedTheme[type ?? 'horizontal'], className)
 
     return (
