@@ -6,7 +6,7 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/index.js",
+  "main": "./dist/components/index.js",
   "types": "./dist/types/components/index.d.ts",
   "scripts": {
     "prepare": "npm run build",
