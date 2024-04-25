@@ -1,5 +1,5 @@
-@import './config.css';
 @import '../../themes/config.css';
+@import './config.css';
 
 .button {
     align-content: center;
