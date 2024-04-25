@@ -6,7 +6,7 @@
   "files": [
     "components"
   ],
-  "main": "./components/index",
+  "main": "./components/index.js",
   "typings": "./components/types/components/index",
   "scripts": {
     "prepare": "npm run build",
