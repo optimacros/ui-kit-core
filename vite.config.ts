@@ -3,8 +3,6 @@ import crypto from 'crypto'
 import { glob } from 'glob'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-// @ts-ignore
-import postcssColorFunction from 'postcss-color-function'
 import postcssCustomProperties from 'postcss-custom-properties'
 import postcssImport from 'postcss-import'
 import postcssNesting from 'postcss-nested'
@@ -66,7 +64,6 @@ export default defineConfig({
                 postcssCustomProperties({
                     preserve: false,
                 }),
-                postcssColorFunction(),
             ],
         },
     },
