@@ -6,8 +6,8 @@
   "files": [
     "components"
   ],
-  "main": "./components/index.js",
-  "typings": "./components/types/components/index",
+  "main": "./components/index",
+  "types": "./types/components/index.d.ts",
   "scripts": {
     "prepare": "npm run build",
     "dev": "vite",
