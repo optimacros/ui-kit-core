@@ -29,13 +29,7 @@ export default defineConfig({
         dts({
             include: ['./src/components/*/!(*.stories).{ts,tsx}'],
             insertTypesEntry: true,
-            // outDir: 'types',
-            // outDir: (path) => {
-            //     const componentDir = path.replace(/^src\/components\//, '');
-            //     return `components/${componentDir}`;
-            // }
-            // outDir: ['./src/components/*/*.d.ts']
-            outDir: '.'
+            outDir: ['.', 'types']
         }),
     ],
     css: {
