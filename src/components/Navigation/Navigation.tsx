@@ -16,12 +16,12 @@ export class Navigation extends React.Component<React.PropsWithChildren<Props>> 
         const theme = mergeStyles(this.props.theme, navigationTheme) as NavigationTheme
 
         const className = classNames(
+            this.props.className,
             {
                 [navigationTheme.NavigationContainer]: true,
                 [navigationTheme.NavigationContainer_Vertical]: this.props?.type === 'vertical',
                 [navigationTheme.NavigationContainer_Wrap]: this.props.wrap,
             },
-            this.props.className,
         )
 
         return (
