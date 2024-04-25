@@ -4,8 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "files": [
-    "components",
-    "types"
+    "components"
   ],
   "main": "./components/index.js",
   "module": "./components/index.js",
