@@ -1,3 +1,5 @@
+@import '../../themes/config.css';
+
 .Container {
     max-height: 200px;
     min-height: 28px;

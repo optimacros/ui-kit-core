@@ -1,6 +1,5 @@
-/* -------------------------------------------------- */
-/* Header Nav */
-/* -------------------------------------------------- */
+@import '../../themes/config.css';
+
 .headerNav {
     display: inline-block;
     vertical-align: middle;

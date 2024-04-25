@@ -1,6 +1,5 @@
-/* -------------------------------------------------- */
-/* Base React Modal Style */
-/* -------------------------------------------------- */
+@import '../../themes/config.css';
+
 .ReactModal {
     &__Overlay {
         padding: 20px;
