@@ -3,7 +3,7 @@ import React from 'react'
 
 import { mergeStyles } from '../../utils/mergeStyle'
 
-import themeStyles from './Navigation.module.css'
+import themeStyles from './theme.module.css'
 
 export type NavigationTheme = {
     button: string;
@@ -25,7 +25,7 @@ export const Navigation = ({
     className,
     type,
 }: React.PropsWithChildren<NavigationProps>): React.JSX.Element => {
-    const updatedTheme = mergeStyles(themeStyles, theme)
+    const updatedTheme = mergeStyles(theme, themeStyles)
     const classes = classnames(updatedTheme[type ?? 'horizontal'], className)
 
     return (

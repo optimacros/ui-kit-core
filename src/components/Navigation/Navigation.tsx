@@ -5,7 +5,7 @@ import type { NavigationProps, NavigationTheme } from './BaseNavigation'
 import { Navigation as BaseNavigation } from './BaseNavigation'
 import { mergeStyles } from '../../utils/mergeStyle'
 
-import navigationTheme from './theme.module.css'
+import navigationTheme from './Navigation.module.css'
 
 interface Props extends Omit<NavigationProps, 'theme'> {
     theme?: Partial<NavigationTheme>;
