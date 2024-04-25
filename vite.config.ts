@@ -27,9 +27,15 @@ export default defineConfig({
         }),
         tsconfigPaths(),
         dts({
-            include: ['./src/components/**/!(*.stories).{ts,tsx}'],
+            include: ['./src/components/*/!(*.stories).{ts,tsx}'],
             insertTypesEntry: true,
-            outDir: 'types',
+            // outDir: 'types',
+            // outDir: (path) => {
+            //     const componentDir = path.replace(/^src\/components\//, '');
+            //     return `components/${componentDir}`;
+            // }
+            // outDir: ['./src/components/*/*.d.ts']
+            outDir: '.'
         }),
     ],
     css: {
