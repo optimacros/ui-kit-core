@@ -3,7 +3,7 @@ import React from 'react'
 
 import { mergeStyles } from '../../utils/mergeStyle'
 
-import themeStyles from './theme.module.css'
+import themeStyles from './Navigation.module.css'
 
 export type NavigationTheme = {
     button: string;
