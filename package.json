@@ -7,7 +7,8 @@
     "components"
   ],
   "main": "./components/index.js",
-  "types": "./components/types/components/index.d.ts",
+  "module": "./components/index.js",
+  "types": "./components/index.d.ts",
   "scripts": {
     "prepare": "npm run build",
     "dev": "vite",
