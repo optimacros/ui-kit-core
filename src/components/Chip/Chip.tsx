@@ -20,7 +20,7 @@ type Props = {
     onDeleteClick: React.MouseEventHandler<SVGSVGElement>;
     theme: Partial<Theme>;
     settingsDialog: React.JSX.Element;
-    incomeDeleteIcon: React.JSX.Element;
+    customDeleteIcon: React.JSX.Element;
 }
 
 export class Chip extends React.Component<React.PropsWithChildren<Partial<Props>>> {
@@ -32,6 +32,7 @@ export class Chip extends React.Component<React.PropsWithChildren<Partial<Props>
             onDeleteClick,
             settingsDialog,
             theme: customTheme,
+            customDeleteIcon,
             ...other
         } = this.props
 
@@ -71,10 +72,10 @@ export class Chip extends React.Component<React.PropsWithChildren<Partial<Props>
     }
 
     renderDeleteIcon(): React.JSX.Element {
-        if (this.props.incomeDeleteIcon) {
+        if (this.props.customDeleteIcon) {
             return (
                 <span className={styles.customIconsContainer}>
-                    {this.props.incomeDeleteIcon}
+                    {this.props.customDeleteIcon}
                 </span>
             )
         }
