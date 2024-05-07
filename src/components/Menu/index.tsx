@@ -2,7 +2,7 @@ import type { MenuItemProps, MenuProps, SubMenuProps } from 'rc-menu'
 import BaseMenu, { Item, SubMenu as BaseSubMenu } from 'rc-menu'
 import React from 'react'
 
-import 'rc-menu/assets/index.css'
+import '../../packages/rc-menu/main.css'
 export { MenuItemGroup } from 'rc-menu'
 export { Divider } from 'rc-menu'
 
