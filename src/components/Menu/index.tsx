@@ -3,6 +3,7 @@ import BaseMenu, { Item, SubMenu as BaseSubMenu } from 'rc-menu'
 import React from 'react'
 
 import 'rc-menu/assets/index.css'
+
 export { MenuItemGroup } from 'rc-menu'
 export { Divider } from 'rc-menu'
 
