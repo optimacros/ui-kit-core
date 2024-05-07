@@ -5,7 +5,7 @@ import React from 'react'
 
 import { Key as KeyboardKey } from '../../types/KeyboardKeyList'
 
-import 'rc-dropdown/assets/index.css'
+import '../../packages/rc-dropdown/main.css'
 import styles from './Dropdown.module.css'
 
 interface Props extends DropdownProps {

@@ -12,7 +12,7 @@ import buttonMenuTheme from './ButtonMenu.module.css'
 
 export type ButtonMenuTheme = Partial<ButtonTheme> & Partial<TooltipTheme>
 
-type TooltipPickedProps = Pick<TooltipProps,
+export type TooltipPickedProps = Pick<TooltipProps,
   | 'tooltip'
   | 'tooltipDelay'
   | 'tooltipHideOnClick'
@@ -21,7 +21,7 @@ type TooltipPickedProps = Pick<TooltipProps,
   | 'tooltipOffset'
 >
 
-type Props = {
+export type Props = {
     label?: string;
     disabled?: boolean;
     className?: string;
