@@ -6,6 +6,8 @@ import '../../packages/rc-menu/main.css'
 export { MenuItemGroup } from 'rc-menu'
 export { Divider } from 'rc-menu'
 
+export { MenuProps, SubMenuProps, MenuItemProps }
+
 export const Menu = (props: MenuProps): React.JSX.Element => {
     return (
         <BaseMenu
