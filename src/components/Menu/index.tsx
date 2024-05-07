@@ -1,13 +1,15 @@
-import type { MenuItemProps, MenuProps, SubMenuProps } from 'rc-menu'
 import BaseMenu, { Item, SubMenu as BaseSubMenu } from 'rc-menu'
 import React from 'react'
+import type { MenuProps } from 'rc-menu/lib/Menu'
+import type{ SubMenuProps } from 'rc-menu/lib/SubMenu'
+import type{ MenuItemProps } from 'rc-menu/lib/MenuItem'
 
 import '../../packages/rc-menu/main.css'
 
 export { MenuItemGroup } from 'rc-menu'
 export { Divider } from 'rc-menu'
 
-export { MenuProps, SubMenuProps, MenuItemProps }
+export type { MenuProps, SubMenuProps, MenuItemProps }
 
 export const Menu = (props: MenuProps): React.JSX.Element => {
     return (
