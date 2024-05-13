@@ -67,7 +67,8 @@
 .rc-menu-submenu-title.rc-menu-item-disabled,
 .rc-menu-item.rc-menu-submenu-disabled,
 .rc-menu-submenu-title.rc-menu-submenu-disabled {
-  color: #777 !important;
+  color: var(--color-scale-gray-3) !important;
+  opacity: .3;
 }
 .rc-menu-item-divider {
   height: 1px;
