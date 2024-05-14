@@ -24,7 +24,6 @@ export type ThemeButtonProps = {
     raised: string;
     inverse: string;
     mini: string;
-    toggle: string;
 }
 
 export type ButtonTheme = ThemeButtonProps & {
@@ -38,6 +37,7 @@ export interface ButtonInitialProps extends ButtonHTMLAttributes<HTMLButtonEleme
     label: string;
     icon: string | React.JSX.Element | null;
     href: string;
+    target: string;
     gray: boolean;
     warning: boolean;
     accent: boolean;
@@ -46,7 +46,6 @@ export interface ButtonInitialProps extends ButtonHTMLAttributes<HTMLButtonEleme
     bordered: boolean;
     uppercase: boolean;
     floating: boolean;
-    flat: boolean;
     raised: boolean;
     inverse: boolean;
     mini: boolean;
