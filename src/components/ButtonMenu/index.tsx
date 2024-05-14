@@ -92,8 +92,8 @@ export class ButtonMenu extends PureComponent<React.PropsWithChildren<Props>> {
         const updatedClassName = classNames(
             {
                 [buttonMenuTheme.ButtonMenu]: true,
-                [buttonMenuTheme.ButtonMenu__uppercase]: uppercase,
-                [buttonMenuTheme.ButtonMenu__showOnlyIcon]: showOnlyIcon,
+                [buttonMenuTheme.ButtonMenu__uppercase]: uppercase ?? false,
+                [buttonMenuTheme.ButtonMenu__showOnlyIcon]: showOnlyIcon ?? false,
             },
             className,
             customTheme.ButtonMenu,
