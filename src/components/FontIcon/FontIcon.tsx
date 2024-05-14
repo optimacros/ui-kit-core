@@ -7,7 +7,7 @@ export type FontIconProps = {
     onClick?: (event: React.MouseEvent) => void;
     title?: string;
     alt?: string;
-    theme?: Record<string, string>;
+    style?: React.CSSProperties;
 }
 
 export const FontIcon = (props: React.PropsWithChildren<FontIconProps>): React.JSX.Element => {
@@ -15,7 +15,6 @@ export const FontIcon = (props: React.PropsWithChildren<FontIconProps>): React.J
         alt = '',
         children,
         className = '',
-        theme,
         value,
         ...other
     } = props
