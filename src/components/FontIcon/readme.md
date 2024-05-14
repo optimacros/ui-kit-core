@@ -50,7 +50,7 @@ import { FontIcon } from 'ui-kit-lite/components/FontIcon';
 
 | Name        | Type                  | Default | Description                                                                            |
 |:------------|:----------------------|:--------|:---------------------------------------------------------------------------------------|
-| `children`  | `Node`                | -       | Child components.                                                                      |
+| `children`  | `Node`                | -       | Child component.                                                                       |
 | `className` | `String`              | `''`    | The class name to give custom styles such as sizing.                                   |
 | `value`     | `String` or `Element` | -       | The key string for the icon you want be displayed or custom icon element.              |
 | `title`     | `String`              | -       | Icon description, visible on icon hover.                                               |
