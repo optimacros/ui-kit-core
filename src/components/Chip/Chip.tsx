@@ -17,7 +17,7 @@ type Theme = {
 type Props = {
     className: string;
     deletable: boolean;
-    onDeleteClick: React.MouseEventHandler<SVGSVGElement>;
+    onDeleteClick: React.MouseEventHandler<SVGSVGElement | HTMLSpanElement>;
     theme: Partial<Theme>;
     settingsDialog: React.JSX.Element;
     customDeleteIcon: React.JSX.Element;
@@ -74,7 +74,10 @@ export class Chip extends React.Component<React.PropsWithChildren<Partial<Props>
     renderDeleteIcon(): React.JSX.Element {
         if (this.props.customDeleteIcon) {
             return (
-                <span className={styles.customIconsContainer}>
+                <span
+                    className={styles.customIconsContainer}
+                    onClick={this.props.onDeleteClick}
+                >
                     {this.props.customDeleteIcon}
                 </span>
             )
