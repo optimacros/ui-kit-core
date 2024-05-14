@@ -1,15 +1,2 @@
 @import './colors.css';
 @import './variables.css';
-@import './appBaseTheme.css';
-
-:root {
-    /* ---------------------------------------------- */
-    /* Fonts */
-    /* ---------------------------------------------- */
-    --preferred-font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
-
-    /* ---------------------------------------------- */
-    /* Border-radius */
-    /* ---------------------------------------------- */
-    --border-radius    : 3px;
-}

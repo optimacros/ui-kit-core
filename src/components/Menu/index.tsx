@@ -1,10 +1,15 @@
-import type { MenuItemProps, MenuProps, SubMenuProps } from 'rc-menu'
 import BaseMenu, { Item, SubMenu as BaseSubMenu } from 'rc-menu'
 import React from 'react'
+import type { MenuProps } from 'rc-menu/lib/Menu'
+import type{ SubMenuProps } from 'rc-menu/lib/SubMenu'
+import type{ MenuItemProps } from 'rc-menu/lib/MenuItem'
 
-import 'rc-menu/assets/index.css'
+import '../../packages/rc-menu/main.css'
+
 export { MenuItemGroup } from 'rc-menu'
 export { Divider } from 'rc-menu'
+
+export type { MenuProps, SubMenuProps, MenuItemProps }
 
 export const Menu = (props: MenuProps): React.JSX.Element => {
     return (
@@ -24,10 +29,10 @@ export const SubMenu = (props: SubMenuProps): React.JSX.Element => {
     )
 }
 
-export const MenuItem = (props: MenuItemProps & { label?: string }): React.JSX.Element => {
+export const MenuItem = (props: MenuItemProps): React.JSX.Element => {
     return (
         <Item {...props}>
-            {props.label || props.title || props.children}
+            {props.title || props.children}
         </Item>
     )
 }

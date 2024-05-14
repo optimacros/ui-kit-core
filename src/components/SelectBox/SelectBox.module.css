@@ -1,14 +1,15 @@
 .Title {
-    color: var(--SelectBox-Title-color);
+    color: var(--secondary-text-color);
     overflow: hidden;
     margin-bottom: -15px;
 }
 
 .value {
     min-height: auto;
+    min-width: 177px;
 
     & > input {
-        color: var(--SelectBox-Title-color);
+        color: var(--secondary-text-color);
         background: none !important;
 
         &:focus {
@@ -18,7 +19,7 @@
     }
 
     & > label {
-        color: var(--SelectBox-Title-color);
+        color: var(--secondary-text-color);
     }
 
     &:after {

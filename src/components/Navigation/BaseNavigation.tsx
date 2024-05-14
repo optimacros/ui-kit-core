@@ -1,5 +1,6 @@
 import classnames from 'classnames'
 import React from 'react'
+import { isEqual } from 'lodash'
 
 import { mergeStyles } from '../../utils/mergeStyle'
 
@@ -19,26 +20,45 @@ export type NavigationProps = {
     wrap?: boolean;
 }
 
-export const Navigation = ({
-    children,
-    theme,
-    className,
-    type,
-}: React.PropsWithChildren<NavigationProps>): React.JSX.Element => {
-    const updatedTheme = mergeStyles(theme, themeStyles)
-    const classes = classnames(updatedTheme[type ?? 'horizontal'], className)
+interface State {
+    theme: NavigationTheme;
+}
 
-    return (
-        <nav
-            data-react-toolbox="navigation"
-            className={classes}
-        >
-            {React.Children.map(children, (child) => (
-                React.isValidElement(child)
-                    ? React.cloneElement<any>(child, { theme: updatedTheme })
+export class BaseNavigation extends React.PureComponent<React.PropsWithChildren<NavigationProps>, State> {
+    state = {
+        theme: {} as NavigationTheme,
+    }
+
+    static getDerivedStateFromProps(props: React.PropsWithChildren<NavigationProps>, state: State) {
+        const updatedTheme = props.theme
+          ? mergeStyles(props.theme, themeStyles)
+          : themeStyles
+        const theme = isEqual(state.theme, updatedTheme)
+          ? state.theme
+          : updatedTheme
+
+        return {
+            theme,
+        }
+    }
+
+    render() {
+        const { theme } = this.state
+
+        const classes = classnames(theme[this.props.type ?? 'horizontal'], this.props.className)
+
+        return (
+            <nav
+                data-react-toolbox="navigation"
+                className={ classes }
+            >
+                { React.Children.map(this.props.children, (child) => (
+                    React.isValidElement(child)
+                        ? React.cloneElement<any>(child, { theme })
                     : null
-            ))}
-        </nav>
-    )
+                )) }
+            </nav>
+        )
+    }
 }
 

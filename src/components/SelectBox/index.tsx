@@ -13,6 +13,7 @@ import type { InputTheme } from '../Input'
 import themeStyle from './theme.module.css'
 // eslint-disable-next-line
 import style from './SelectBox.module.css'
+import { action, makeObservable } from 'mobx'
 
 export interface Props extends Omit<SelectBoxProps, 'theme'> {
     theme?: Partial<SelectBoxTheme & InputTheme>;
@@ -21,6 +22,12 @@ export interface Props extends Omit<SelectBoxProps, 'theme'> {
 }
 
 export class SelectBox extends Component<Props> {
+    constructor(props: Props) {
+        super(props)
+
+        makeObservable(this)
+    }
+
     render(): React.JSX.Element {
         const {
             label,
@@ -86,7 +93,7 @@ export class SelectBox extends Component<Props> {
         })
     }
 
-    private onChange = (value: string | number, event: React.SyntheticEvent): void => {
+    @action private onChange = (value: string | number, event: React.SyntheticEvent): void => {
         let newValue: string | number | (string | number)[] = value
 
         if (this.props.multiSelect && Array.isArray(this.props.value)) {

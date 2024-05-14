@@ -92,7 +92,7 @@ const rippleFactory = (options: RippleFactoryProps): RippleWrapperFC => {
             componentWillUnmount(): void {
                 // Remove document event listeners for ripple if they still exists
                 Object.keys(this.state.ripples).forEach((key) => {
-                    this.state.ripples[key].endRipple()
+                    this.state.ripples[key]?.endRipple()
                 })
             }
 
