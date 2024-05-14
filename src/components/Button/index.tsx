@@ -66,9 +66,9 @@ export class Button extends Component<Partial<ButtonInitialProps>> {
         const className = classNames(
             this.props.className,
             {
-                [theme.button_uppercase]: this.props.uppercase,
-                [theme.gray]: this.props.gray,
-                [theme.warning]: this.props.warning,
+                [theme.button_uppercase]: this.props.uppercase ?? false,
+                [theme.gray]: this.props.gray ?? false,
+                [theme.warning]: this.props.warning ?? false,
             },
             theme.Button,
         )
