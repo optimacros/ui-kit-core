@@ -1,5 +1,5 @@
 // import { Meta, StoryObj } from '@storybook/react'
-//
+
 // import { Navigation } from './index'
 // import { Button } from '../Button'
 
@@ -8,11 +8,11 @@
 //     component: Navigation,
 // }
 // export default meta
-//
+
 // type Story = StoryObj<typeof Navigation>
-//
+
 // const argTypes = {}
-//
+
 // export const NavigationHorizontal: Story = {
 //     args: {
 //         type: 'horizontal',
@@ -25,7 +25,7 @@
 //     },
 //     argTypes,
 // }
-//
+
 // export const NavigationVertical: Story = {
 //     args: {
 //         type: 'vertical',
