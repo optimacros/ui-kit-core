@@ -32,19 +32,25 @@ export const Accent: Story = {
         label: 'Bookmark',
         accent: true,
     },
-    argTypes,
+    argTypes
 }
 
-export const Link: Story = {
+export const Bordered: Story = {
     args: {
-        href: 'http://github.com/',
-        // @ts-ignore
-        target: '_blank',
-        accent: true,
-        label: 'Github',
+        label: 'Apply',
+        bordered: true,
     },
-    argTypes,
+    argTypes
 }
+
+export const Primary: Story = {
+    args: {
+        label: 'Apply',
+        primary: true,
+    },
+    argTypes
+}
+
 
 export const Flat: Story = {
     args: {
@@ -52,7 +58,32 @@ export const Flat: Story = {
         label: 'Inbox',
         flat: true,
     },
-    argTypes,
+    argTypes
+}
+
+export const Floating: Story = {
+    args: {
+        icon: 'add',
+        floating: true,
+    },
+    argTypes
+}
+
+export const Mini: Story = {
+    args: {
+        icon: 'add',
+        floating: true,
+        mini: true,
+    },
+    argTypes
+}
+
+export const Raised: Story = {
+    args: {
+        label: 'Next',
+        raised: true,
+    },
+    argTypes
 }
 
 export const Disabled: Story = {
@@ -62,7 +93,7 @@ export const Disabled: Story = {
         disabled: true,
         accent: true,
     },
-    argTypes,
+    argTypes
 }
 
 export const Gray: Story = {
@@ -70,7 +101,7 @@ export const Gray: Story = {
         label: 'Cancel',
         gray: true,
     },
-    argTypes,
+    argTypes
 }
 
 export const Warning: Story = {
@@ -78,5 +109,35 @@ export const Warning: Story = {
         label: 'Delete',
         warning: true,
     },
-    argTypes,
+    argTypes
+}
+
+export const Inverse: Story = {
+    args: {
+        label: 'Delete',
+        inverse: true,
+        buttonColor: 'black'
+    },
+    argTypes
+}
+
+
+export const Styled: Story = {
+    args: {
+        label: 'Remove',
+        buttonColor: "purple",
+        fontColor: "white",
+        fontSize: 14,
+    },
+    argTypes
+}
+
+export const Link: Story = {
+    args: {
+        href: 'http://github.com/',
+        target: '_blank',
+        accent: true,
+        label: 'Github',
+    },
+    argTypes
 }
