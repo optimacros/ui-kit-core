@@ -48,12 +48,12 @@ import { FontIcon } from 'ui-kit-lite/components/FontIcon';
 
 ## Properties
 
-| Name        | Type                  | Default | Description                                                                            |
-|:------------|:----------------------|:--------|:---------------------------------------------------------------------------------------|
-| `children`  | `Node`                | -       | Child component.                                                                       |
-| `className` | `String`              | `''`    | The class name to give custom styles such as sizing.                                   |
-| `value`     | `String` or `Element` | -       | The key string for the icon you want be displayed or custom icon element.              |
-| `title`     | `String`              | -       | Icon description, visible on icon hover.                                               |
-| `alt`       | `String`              | `''`    | The text used to set the `aria-label` attribute.                                       |
-| `style`     | `Object`              | `''`    | Add styles to component.                                                               |
-| `onClick`   | `Function`            | -       | Callback fired when the delete icon is clicked. If set, the delete icon will be shown. |
+| Name        | Type                  | Default | Description                                                               |
+|:------------|:----------------------|:--------|:--------------------------------------------------------------------------|
+| `children`  | `Node`                | -       | The content of the component.                                             |
+| `className` | `String`              | `''`    | Set a class to style the Component.                                       |
+| `value`     | `String` or `Element` | -       | The key string for the icon you want be displayed or custom icon element. |
+| `title`     | `String`              | -       | Icon description, visible on icon hover.                                  |
+| `alt`       | `String`              | `''`    | The text used to set the `aria-label` attribute.                          |
+| `style`     | `Object`              | `''`    | Add styles to component.                                                  |
+| `onClick`   | `Function`            | -       | Callback fired when the icon is clicked.                                  |
