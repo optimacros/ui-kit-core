@@ -55,4 +55,5 @@ import { FontIcon } from 'ui-kit-lite/components/FontIcon';
 | `value`     | `String` or `Element` | -       | The key string for the icon you want be displayed or custom icon element.              |
 | `title`     | `String`              | -       | Icon description, visible on icon hover.                                               |
 | `alt`       | `String`              | `''`    | The text used to set the `aria-label` attribute.                                       |
+| `style`     | `Object`              | `''`    | Add styles to component.                                                               |
 | `onClick`   | `Function`            | -       | Callback fired when the delete icon is clicked. If set, the delete icon will be shown. |

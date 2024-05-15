@@ -52,6 +52,7 @@ import { Button } from 'ui-kit-lite/components/Button';
 | `theme`        | `Object`          | -        | Theme object with classnames that will be used to style the component.                                   |
 | `type`         | `String`          | `button` | Component root container type.                                                                           |
 | `label`        | `String`          | -        | The text string to use for the name of the button.                                                       |
+| `icon`         | `String`          | -        | Value of the icon (See Font Icon Component).                                                             |
 | `href`         | `String`          | -        | The URL to link to when the button is clicked. If defined, an `a` element will be used as the root node. |
 | `buttonColor`  | `String`          | -        | Background for the button.                                                                               |
 | `fontColor`    | `String`          | -        | Font color for the button.                                                                               |
@@ -63,7 +64,6 @@ import { Button } from 'ui-kit-lite/components/Button';
 | `primary`      | `Boolean`         | `false`  | If `true`, the button will have a primary color.                                                         |
 | `gray`         | `Boolean`         | `false`  | If `true`, the button will have gray color.                                                              |
 | `warning`      | `Boolean`         | `false`  | If `true`, the button will have a warning look.                                                          |
-| `flat`         | `Boolean`         | `false`  | If `true`, the button will have a flat look.                                                             |
 | `floating`     | `Boolean`         | `false`  | If `true`, the button will have a floating look.                                                         |
 | `mini`         | `Boolean`         | `false`  | To be used with floating button. If true, the button will be smaller.                                    |
 | `raised`       | `Boolean`         | `false`  | If `true`, the button will have a raised look.                                                           |
