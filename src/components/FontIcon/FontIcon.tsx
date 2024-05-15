@@ -2,18 +2,17 @@ import classnames from 'classnames'
 import React from 'react'
 
 export type FontIconProps = {
-    className?: string;
     value: string | React.JSX.Element;
+    className?: string;
     onClick?: (event: React.MouseEvent) => void;
     title?: string;
     alt?: string;
     style?: React.CSSProperties;
 }
 
-export const FontIcon = (props: React.PropsWithChildren<FontIconProps>): React.JSX.Element => {
+export const FontIcon = (props: FontIconProps): React.JSX.Element => {
     const {
         alt = '',
-        children,
         className = '',
         value,
         ...other
@@ -26,13 +25,12 @@ export const FontIcon = (props: React.PropsWithChildren<FontIconProps>): React.J
             aria-label={alt}
             className={classnames(
                 {
-                    'material-icons': typeof value === 'string' || typeof children === 'string',
+                    'material-icons': typeof value === 'string',
                 },
                 className,
             )}
         >
             {value}
-            {children}
         </span>
     )
 }
