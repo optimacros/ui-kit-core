@@ -6,24 +6,33 @@ Although we are calling them Inputs they actually correspond to Material Design 
 ```jsx
 import Input from 'react-toolbox/lib/input';
 
-class InputTest extends React.Component {
-  state = { name: '', phone: '', email: '', hint: '' };
+const TestComponent = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        surname: '',
+        age: '',
+        phone: '',
+        email: '',
+        description: '',
+    })
 
-  handleChange = (value, ev) => {
-    this.setState({ [ev.target.name]: value });
-  };
-
-  render () {
+    const handleChange = (value: string, event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setFormData(prev => ({ ...prev, [event.target.name]: value }))
+    }
+    
     return (
-      <section>
-        <Input type='text' label='Name' name='name' value={this.state.name} onChange={this.handleChange} maxLength={16 } />
-        <Input type='text' label='Disabled field' disabled />
-        <Input type='email' label='Email address' name='email' icon='email' value={this.state.email} onChange={this.handleChange} />
-        <Input type='tel' label='Phone' name='phone' icon='phone' value={this.state.phone} onChange={this.handleChange} />
-        <Input type='text' label='Required Field' name='hint' hint='With Hint' required value={this.state.hint} onChange={this.handleChange} icon={<span>J</span>} />
-      </section>
+      <div>
+          <Input label="Readonly" defaultValue="Some text" readOnly />
+          <Input label="Name" name="name" value={formData.name} onChange={handleChange} maxLength={8} placeholder="Enter name" />
+          <Input label="Surname" name="surname" value={formData.surname} onChange={handleChange} placeholder="Enter surname" autoFocus floating={false} />
+          <Input label="Age" name="age" value={formData.age} onChange={handleChange} hint="Enter age" />
+          <Input label="Email" name="email" value={formData.email} onChange={handleChange} placeholder="Enter email" required error="Email is required" />
+          <Input label="Phone" name="phone" value={formData.phone} onChange={handleChange} placeholder="Enter phone" disabled icon="phone" />
+          <Input label="Description" name="description" value={formData.description} onChange={handleChange} placeholder="Enter description" multiline rows={2} />
+          <Input label="Man" type="radio" /> 
+          <Input label="Woman" type="radio" />
+      </div>
     );
-  }
 }
 ```
 
@@ -31,47 +40,55 @@ If you want to provide a theme via context, the component key is `RTInput`.
 
 ## Properties
 
-| Name            | Type                    | Default         | Description|
-|:-----|:-----|:-----|:-----|
-| `className`     | `String`                | `''`            | Sets a class name to give custom styles.|
-| `disabled`      | `Boolean`               | `false`         | If true, component will be disabled.|
-| `error`         | `String` or `Node`      |                 | Give an error node to display under the field.|
-| `floating`      | `Boolean`               | `true`          | Indicates if the label is floating in the input field or not.|
-| `hint`          | `String` or `Node`      | `''`            | The text string to use for hint text element.|
-| `icon`          | `String` or `Element`   |                 | Name of an icon to use as a label for the input.|
-| `label`         | `String` or `Node`      |                 | The text string to use for the floating label element.|
-| `maxLength`     | `Number`                |                 | Specifies the maximum number of characters allowed in the component.|
-| `multiline`     | `Boolean`               | `false`         | If true, a textarea element will be rendered. The textarea also grows and shrinks according to the number of lines.|
-| `rows`          | `Number`                |                 | The number of rows the multiline input field has.|
-| `onBlur`        | `Function`              |                 | Callback function that is fired when component is blurred.|
-| `onChange`      | `Function`              |                 | Callback function that is fired when the component's value changes.|
-| `onFocus`       | `Function`              |                 | Callback function that is fired when component is focused.|
-| `onKeyPress`    | `Function`              |                 | Callback function that is fired when a key is pressed.|
-| `required`      | `Boolean`               | `false`         | If true, the html input has a required attribute.|
-| `type`          | `String`                | `text`          | Type of the input element. It can be a valid HTML5 input type|
-| `value`         | `Any`                   |                 | Current value of the input element.|
+| Name           | Type               | Default | Description                                                                                                                                                                                                          |
+|:---------------|:-------------------|:--------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `className`    | `String`           | `''`    | Sets a class name to give custom styles.                                                                                                                                                                             |
+| `theme`        | `Object`           | -       | Theme object with classnames that will be used to style the component.                                                                                                                                               |
+| `name`         | `String`           | -       | Value for `name` input attribute.                                                                                                                                                                                    |
+| `value`        | `Any`              | -       | Current value of the `input` element, required for a controlled component.                                                                                                                                           |
+| `defaultValue` | `Any`              | -       | The default value. Use when the component is not controlled.                                                                                                                                                         |
+| `label`        | `String`           | -       | The text string to use for the floating label element.                                                                                                                                                               |
+| `placeholder`  | `String`           | -       | The short hint displayed in the input before the user enters a value.                                                                                                                                                |
+| `hint`         | `String` or `Node` | `''`    | The text string to use for hint text element.                                                                                                                                                                        |
+| `multiline`    | `Boolean`          | `false` | If `true`, a textarea element is rendered.                                                                                                                                                                           |
+| `rows`         | `Number`           | `1`     | Number of rows to display when multiline option is set to true.                                                                                                                                                      |
+| `maxLength`    | `Number`           | -       | Specifies the maximum number of characters allowed in the component.                                                                                                                                                 |
+| `disabled`     | `Boolean`          | `false` | If `true`, component will be disabled.                                                                                                                                                                               |
+| `required`     | `Boolean`          | `false` | If `true`, the `input` element is required.                                                                                                                                                                          |
+| `error`        | `String` or `Node` | -       | Give an error content to display under the field.                                                                                                                                                                    |
+| `oneLineError` | `Boolean`          | -       |                                                                                                                                                                                                                      |
+| `collapsed`    | `Boolean`          | `false` | If `true`, the `label` is hidden.                                                                                                                                                                                    |
+| `floating`     | `Boolean`          | `true`  | If `false`, the label is visible only when input value empty.                                                                                                                                                        |
+| `icon`         | `String`           | -       | Value of the icon (See Font Icon Component).                                                                                                                                                                         |
+| `type`         | `String`           | `text`  | Type of the input element. It can be a valid HTML5 input type.                                                                                                                                                       |
+| `autoFocus`    | `Boolean`          | `false` | If `true`, the input will be focused on page load.                                                                                                                                                                   |
+| `tabIndex`     | `Number`           | -       | The tabindex allows input to be focusable, allow or prevent them from being sequentially focusable (usually with the Tab key, hence the name) and determine their relative ordering for sequential focus navigation. |
+| `autoComplete` | `String`           | -       | This prop helps users to fill forms faster, especially on mobile devices. The name can be confusing, as it's more like an autofill.                                                                                  |
+| `readOnly`     | `Boolean`          | `false` | It prevents the user from changing the value of the input.                                                                                                                                                           |
+| `onBlur`       | `Function`         | -       | Callback function that is fired when component is blurred.                                                                                                                                                           |
+| `onChange`     | `Function`         | -       | Callback function that is fired when the component's value changes.                                                                                                                                                  |
+| `onFocus`      | `Function`         | -       | Callback function that is fired when component is focused.                                                                                                                                                           |
+| `onKeyPress`   | `Function`         | -       | Callback function that is fired when a key is pressed.                                                                                                                                                               |
 
 ## Theming
 
-| Name       | Description|
-|:-----------|:-----------|
-| `bar`     | Used for the bar under the input.|
-| `counter` | Used for the counter element.|
-| `disabled` | Added to the root class when input is disabled.|
-| `error` | Used for the text error.|
-| `errored` | Added to the root class when input is errored.|
-| `hidden` | Used when the input is hidden.|
-| `hint` | Used for the hint text.|
-| `icon`   | Used for the icon in case the input has icon.|
-| `input` | Used as root class for the component.|
-| `inputElement` | Used for the HTML input element.|
-| `label` | Used for the label when the input has a label.|
-| `required` | Used in case the input is required.|
-| `withIcon` | Added to the root class if the input has icon.|
+| Name           | Description                                                   |
+|:---------------|:--------------------------------------------------------------|
+| `input`        | Used to the root component.                                   |
+| `bar`          | Used for the bar under the input.                             |
+| `counter`      | Used for the counter element (when input has `maxLength`).    |
+| `disabled`     | Used to the root class when input is disabled.                |
+| `collapsed`    | Used to the root class when input is collapsed.               |
+| `required`     | Used for required symbol component, when input is required.   |
+| `filled`       | Used for the HTML input element when input value presents.    |
+| `fixed`        | Used for label component, when input has `floating` false.    |
+| `error`        | Used for the text error.                                      |
+| `oneLineError` | Used for the root element when input has `oneLineError` true. |
+| `errored`      | Used to the root class when input is errored.                 |
+| `hidden`       | Used when the input is hidden.                                |
+| `hint`         | Used for the hint text.                                       |
+| `icon`         | Used for the icon in case the input has icon.                 |
+| `withIcon`     | Used to the root class if the input has icon.                 |
+| `inputElement` | Used for the HTML input element.                              |
+| `label`        | Used for the label when the input has a label.                |
 
-## Methods
-
-The `Input` component has some imperative methods that are used as a bypass to the native rendered DOM element. To call this methods you will need to retrieve the instance of the component. Check the [Install](http://react-toolbox.io/#/install) section for details on how to do this. The methods included for the `Input` are:
-
-- `blur` used to blur the `input` element.
-- `focus` used to focus the `input` element.
