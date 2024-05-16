@@ -1,6 +1,7 @@
 .field {
     display: flex;
     align-items: center;
+    max-width: fit-content;
 }
 
 .check {
