@@ -68,7 +68,9 @@ export class IconButton extends React.Component<Partial<IconButtonProps & Toolti
                 tooltipShowOnClick={tooltipShowOnClick}
                 tooltipOffset={tooltipOffset}
                 theme={theme}
-            />
+            >
+                {children}
+            </Tooltip>
         )
     }
 }
