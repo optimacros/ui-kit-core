@@ -21,7 +21,6 @@ export type SelectBoxTheme = {
     up: string;
     value: string;
     values: string;
-    Container: string;
     Title: string;
 }
 
