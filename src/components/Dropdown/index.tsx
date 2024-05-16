@@ -66,6 +66,8 @@ export class Dropdown extends React.PureComponent<React.PropsWithChildren<Props>
                     visible={this.state.visible}
                     onVisibleChange={this.onVisibleChange}
                     onOverlayClick={this.onOverlayClick}
+                    // @ts-ignore
+                    destroyPopupOnHide={true}
                     {...otherProps}
                     overlayClassName={overlayClassName}
                 />
