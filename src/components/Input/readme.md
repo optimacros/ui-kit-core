@@ -4,7 +4,8 @@ Although we are calling them Inputs they actually correspond to Material Design 
 
 <!-- example -->
 ```jsx
-import Input from 'react-toolbox/lib/input';
+import { Input } from 'ui-kit-lite/components/Input';
+
 
 const TestComponent = () => {
     const [formData, setFormData] = useState({
@@ -36,7 +37,13 @@ const TestComponent = () => {
 }
 ```
 
-If you want to provide a theme via context, the component key is `RTInput`.
+## Import
+```jsx
+import { Input } from 'ui-kit-lite';
+// or
+import { Input } from 'ui-kit-lite/components/Input';
+```
+
 
 ## Properties
 
