@@ -10,10 +10,9 @@ export type FontIconProps = {
     style?: React.CSSProperties;
 }
 
-export const FontIcon = (props: React.PropsWithChildren<FontIconProps>): React.JSX.Element => {
+export const FontIcon = (props: FontIconProps): React.JSX.Element => {
     const {
         alt = '',
-        children,
         className = '',
         value,
         ...other
@@ -26,13 +25,12 @@ export const FontIcon = (props: React.PropsWithChildren<FontIconProps>): React.J
             aria-label={alt}
             className={classnames(
                 {
-                    'material-icons': typeof value === 'string' || typeof children === 'string',
+                    'material-icons': typeof value === 'string',
                 },
                 className,
             )}
         >
             {value}
-            {children}
         </span>
     )
 }
