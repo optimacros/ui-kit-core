@@ -3,11 +3,17 @@
 <!-- example -->
 ```jsx
 import { Menu } from 'ui-kit-lite/components/Menu';
+import { MenuDivider } from 'ui-kit-lite/components/MenuDivider';
+import { SubMenu } from 'ui-kit-lite/components/SubMenu';
+import { MenuItemGroup } from 'ui-kit-lite/components/MenuItemGroup';
+import { MenuItem } from 'ui-kit-lite/components/MenuItem';
+import { FontIcon } from 'ui-kit-lite/components/FontIcon';
 
 const TestComponent = () => (
   <div>
-      <Menu>
+      <Menu style={{ margin: 20, width: 200 }} expandIcon={(<FontIcon style={{ position: 'absolute', right: '20px' }} value="arrow_right_alt" />)} >
           <MenuItem>Menu item 1</MenuItem>
+          <MenuDivider />
           <SubMenu title="Sub menu 1">
               <MenuItem>MenuItem 1</MenuItem>
               <MenuItem disabled>MenuItem 2 disabled</MenuItem>
@@ -16,6 +22,30 @@ const TestComponent = () => (
           <SubMenu title="Sub menu 2" disabled >
               <MenuItem>MenuItem 1</MenuItem>
           </SubMenu>
+      </Menu>
+
+      <Menu mode="inline" style={{ margin: 20, width: 200 }} expandIcon={(<FontIcon style={{ position: 'absolute', right: '20px' }} value="arrow_drop_down" />)} >
+          <MenuItem>Menu item 1</MenuItem>
+          <SubMenu title="Sub menu 1">
+              <MenuItem>MenuItem 1</MenuItem>
+              <MenuItem disabled>MenuItem 2 disabled</MenuItem>
+              <MenuItem title="MenuItem 3" />
+          </SubMenu>
+      </Menu>
+
+      <Menu style={{ margin: 20, width: 200 }} expandIcon={(<FontIcon style={{ position: 'absolute', right: '20px' }} value="arrow_right_alt" />)} >
+          <MenuItemGroup title="Menu Group 1">
+              <MenuItem>MenuItem 1</MenuItem>
+              <MenuItem>MenuItem 2</MenuItem>
+              <SubMenu title="Sub menu 1">
+                  <MenuItem>MenuItem 1</MenuItem>
+                  <MenuItem>MenuItem 2</MenuItem>
+              </SubMenu>
+          </MenuItemGroup>
+          <MenuItemGroup title="Menu Group 2">
+              <MenuItem>MenuItem 3</MenuItem>
+              <MenuItem>MenuItem 4</MenuItem>
+          </MenuItemGroup>
       </Menu>
   </div>
 );
@@ -82,4 +112,38 @@ import { MenuItem } from 'ui-kit-lite/components/MenuItem';
 
 
 Ui-kit use rc-menu library for MenuItem. Other props can be viewed at the [link](https://react-component.github.io/menu/)
+
+___
+# MenuItemGroup
+
+## Import
+```jsx
+import { MenuItemGroup } from 'ui-kit-lite';
+// or
+import { MenuItemGroup } from 'ui-kit-lite/components/MenuItemGroup';
+```
+
+## Properties
+
+| Name        | Type               | Default | Description                                             |
+|:------------|:-------------------|:--------|:--------------------------------------------------------|
+| `className` | `String`           | `''`    | Override or extend the styles applied to the component. |
+| `children`  | `Node`             | -       | Sub menu's contents. Usually `SubMenu` or `MenuItem`.   |
+| `title`     | `String` or `Node` | -       | Menu item title.                                        |
+
+
+Ui-kit use rc-menu library for MenuItemGroup. Other props can be viewed at the [link](https://react-component.github.io/menu/)
+___
+
+# MenuDivider
+
+MenuDivider used inside Menu, SubMenu, MenuItemGroup components.
+
+## Import
+```jsx
+import { MenuDivider } from 'ui-kit-lite';
+// or
+import { MenuDivider } from 'ui-kit-lite/components/MenuDivider';
+```
+
 

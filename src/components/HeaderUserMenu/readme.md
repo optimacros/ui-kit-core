@@ -3,6 +3,8 @@
 <!-- example -->
 ```jsx
 import { HeaderUserMenu } from 'ui-kit-lite/components/HeaderUserMenu';
+import { HeaderUserSubMenu } from 'ui-kit-lite/components/HeaderUserSubMenu';
+import { HeaderUserMenuElement } from 'ui-kit-lite/components/HeaderUserMenuElement';
 
 const TestComponent = () => (
   <div>
