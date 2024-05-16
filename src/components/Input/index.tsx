@@ -38,6 +38,7 @@ type HTMLAttributes = TextareaHTMLAttributes<HTMLTextAreaElement> & InputHTMLAtt
 interface Props extends Omit<HTMLAttributes, 'onChange' | 'onKeyPress'> {
     onChange?: (value: string, event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
     onKeyPress?: (event: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+    onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
     multiline?: boolean;
     floating?: boolean;
     label?: string | React.JSX.Element;
@@ -107,6 +108,7 @@ export class Input extends React.Component<Props> {
             maxLength,
             theme: customTheme,
             onKeyPress,
+            onKeyDown,
             ...others
         } = this.props
 
@@ -163,7 +165,7 @@ export class Input extends React.Component<Props> {
 
         if (!multiline) {
             elementProps.maxLength = maxLength
-            elementProps.onKeyDown = onKeyPress
+            elementProps.onKeyDown = onKeyDown ?? onKeyPress
         } else {
             elementProps.rows = rows
             elementProps.onKeyDown = this.handleKeyPress
@@ -283,6 +285,7 @@ export class Input extends React.Component<Props> {
             multiline,
             maxLength,
             onKeyPress,
+            onKeyDown,
         } = this.props
 
         if (multiline && maxLength) {
@@ -307,6 +310,10 @@ export class Input extends React.Component<Props> {
 
         if (onKeyPress) {
             onKeyPress(event)
+        }
+
+        if (onKeyDown) {
+            onKeyDown(event)
         }
     }
 

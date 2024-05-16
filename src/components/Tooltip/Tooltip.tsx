@@ -74,7 +74,13 @@ export class Tooltip extends Component<React.PropsWithChildren<TooltipProps>, St
     }
 
     componentWillUnmount(): void {
-        this.deactivate()
+        if (this.tooltipNode.current) {
+            events.removeEventListenerOnTransitionEnded(this.tooltipNode.current, this.onTransformEnd)
+        }
+
+        if (this.timeout) {
+            clearTimeout(this.timeout)
+        }
     }
 
     render() {
