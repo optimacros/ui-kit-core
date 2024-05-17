@@ -20,12 +20,6 @@
         text-size-adjust: 100%;
         -webkit-touch-callout: none;
     }
-
-    & .ripple {
-        background-color: var(--checkbox-color);
-        opacity: 0.3;
-        transition-duration: var(--checkbox-ripple-duration);
-    }
 }
 
 .text {

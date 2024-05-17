@@ -48,9 +48,3 @@
         color: var(--Checkbox-color-disabled) !important;
     }
 }
-
-.ripple {
-    display: none !important;
-}
-
-
