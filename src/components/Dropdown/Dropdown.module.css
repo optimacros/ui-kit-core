@@ -136,4 +136,16 @@
         pointer-events: none;
         opacity: .3;
     }
+
+    .rc-dropdown-menu-item-active,
+    .rc-dropdown-menu-item-selected,
+    .rc-dropdown-menu-submenu-active > .rc-dropdown-menu-submenu-title {
+        background-color: var(--rc-dropdown-menu-item-hover);
+    }
+
+    .rc-dropdown-menu > .rc-dropdown-menu-item-active,
+    .rc-dropdown-menu>.rc-dropdown-menu-item-selected,
+    .rc-dropdown-menu>.rc-dropdown-menu-item:hover {
+        background-color: var(--rc-dropdown-menu-item-hover);
+    }
 }
