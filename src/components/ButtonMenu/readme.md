@@ -51,29 +51,29 @@ import { ButtonMenu } from 'ui-kit-lite/components/ButtonMenu';
 
 ## Props
 
-| Name                         | Type                                                   | Default    | Description                                                                                               |
-|:-----------------------------|:-------------------------------------------------------|:-----------|:----------------------------------------------------------------------------------------------------------|
-| `children`                   | `Node`                                                 | -          | The content of the component.                                                                             |
-| `className`                  | `String`                                               | `''`       | Set a class to style the Component.                                                                       |
-| `menuRootContainerClassName` | `String`                                               | `''`       | Set a class to style the Dropdown Menu (list wrapper) component.                                          |
-| `classNameDropdownContainer` | `String`                                               | `''`       | Set a class to style the Dropdown Container Component.                                                    |
-| `theme`                      | `Object`                                               | -          | Theme object with classnames that will be used to style the component.                                    |
-| `icon`                       | `String`                                               | -          | Value of the icon (See Font Icon Component).                                                              |
-| `dataName`                   | `String`                                               | -          | Set `data-name` attribute for Button and Tooltip Components.                                              |
-| `label`                      | `String`                                               | -          | The text string to use for the name of the button.                                                        |
-| `disabled`                   | `Boolean`                                              | `false`    | If `true`, component will be disabled.                                                                    |
-| `visible`                    | `Boolean`                                              | `false`    | If `true`, the Dropdown will be visible by default.                                                       |
-| `uppercase`                  | `Boolean`                                              | `false`    | If `true`, the text inside the ButtonMenu will be in uppercase.                                           |
-| `showOnlyIcon`               | `Boolean`                                              | `false`    | If `true` and icon used - only icon will be visible in the ButtonMenu.                                    |
-| `arrowUp`                    | `Boolean`                                              | `false`    | If `true`, dropdown arrow icon will point up.                                                             |
-| `tooltip`                    | `String` `Node`                                        | -          | The text string or node to use for the ButtonMenu tooltip.                                                |
-| `tooltipDelay`               | `Number`                                               | -          | Amount of time in milliseconds spent before the tooltip is visible.                                       |
-| `tooltipHideOnClick`         | `Boolean`                                              | `true`     | If `true`, the Tooltip hides after a click on ButtonMenu.                                                 |
-| `tooltipPosition`            | `bottom` `top` `right`  `left` `horizontal` `vertical` | `vertical` | Determines the position of the tooltip.                                                                   |
-| `tooltipShowOnClick`         | `Boolean`                                              | `false`    | If `true`, the tooltip toggled when clicked. This is useful for mobile where there is no mouse enter.     |
-| `tooltipOffset`              | `Number`                                               | -          | If `true` and `tooltipPosition` - `vertical` or `bottom` or `top`, the tooltip moves relative to its axis |
-| `onVisibleChange`            | `Function`                                             | -          | Fires when Dropdown visibility changing.                                                                  |
-
+| Name                         | Type               | Default    | Description                                                                                                                                            |
+|:-----------------------------|:-------------------|:-----------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `children`                   | `Node`             | -          | The content of the component.                                                                                                                          |
+| `className`                  | `String`           | `''`       | Set a class to style the Component.                                                                                                                    |
+| `menuRootContainerClassName` | `String`           | `''`       | Set a class to style the Dropdown Menu (list wrapper) component.                                                                                       |
+| `classNameDropdownContainer` | `String`           | `''`       | Set a class to style the Dropdown Container Component.                                                                                                 |
+| `theme`                      | `Object`           | -          | Theme object with classnames that will be used to style the component.                                                                                 |
+| `icon`                       | `String`           | -          | Value of the icon (See Font Icon Component).                                                                                                           |
+| `dataName`                   | `String`           | -          | Set `data-name` attribute for Button and Tooltip Components.                                                                                           |
+| `label`                      | `String`           | -          | The text string to use for the name of the button.                                                                                                     |
+| `disabled`                   | `Boolean`          | `false`    | If `true`, component will be disabled.                                                                                                                 |
+| `visible`                    | `Boolean`          | `false`    | If `true`, the Dropdown will be visible by default.                                                                                                    |
+| `uppercase`                  | `Boolean`          | `false`    | If `true`, the text inside the ButtonMenu will be in uppercase.                                                                                        |
+| `showOnlyIcon`               | `Boolean`          | `false`    | If `true` and icon used - only icon will be visible in the ButtonMenu.                                                                                 |
+| `arrowUp`                    | `Boolean`          | `false`    | If `true`, dropdown arrow icon will point up.                                                                                                          |
+| `tooltip`                    | `String` or `Node` | -          | The text string or node to use for the ButtonMenu tooltip.                                                                                             |
+| `tooltipDelay`               | `Number`           | `0`        | Amount of time in milliseconds spent before the tooltip is visible.                                                                                    |
+| `tooltipHideOnClick`         | `Boolean`          | `true`     | If `true`, the Tooltip hides after a click on ButtonMenu.                                                                                              |
+| `tooltipPosition`            | `String`           | `vertical` | Determines the position of the tooltip. It can be automatic with `vertical` and `horizontal` values or forced with `bottom`, `top`, `left` or `right`. |
+| `tooltipShowOnClick`         | `Boolean`          | `false`    | If `true`, the tooltip toggled when clicked. This is useful for mobile where there is no mouse enter.                                                  |
+| `tooltipOffset`              | `Number`           | `0`        | If `tooltipPosition` - `vertical`, `bottom` or `top`, the tooltip moves relative to its axis.                                                          |
+| `onVisibleChange`            | `Function`         | -          | Fires when Dropdown visibility changing.                                                                                                               |
+// todo true&&&& offset
 
 ## Theme
 
