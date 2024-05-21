@@ -21,7 +21,7 @@ const TestComponent = () => {
           <SelectBox name="Sort" source={source} label="Sort" value={value} onChange={(val) => setValue(val)} error="Error text" />
       </div> 
     )
-);
+};
 ```
 
 ## Import
