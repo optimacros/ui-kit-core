@@ -1,21 +1,26 @@
 # SelectBox
 
 <!-- example -->
-```jsx
+```typescript jsx
 import { SelectBox } from 'ui-kit-lite/components/SelectBox';
 
 const source = [ { label: 'Newer first', value: 1, }, { label: 'Older first', value: 2, }, { label: 'No sort', value: 3, }, ] 
 const customSource = [ { title: 'One', key: 1, }, { title: 'Two', key: 2, }, ]
 
-const TestComponent = () => (
-  <div>
-      <SelectBox name="Sort" source={source} label="Sort" value={value} onChange={(val) => setValue(val)} />
-      <SelectBox name="Sort" source={source} label="Sort" onChange={(val) => setValue(val)} allowBlank={false} />
-      <SelectBox name="Sort" source={customSource} label="Sort" labelKey="title" value={value} valueKey="key" onChange={(val) => setValue(val)} />
-      <SelectBox name="Sort" source={source} label="Sort" value={multiValue} onChange={(val) => setMultiValue(val)} multiSelect />
-      <SelectBox name="Sort" source={source} label="Sort" value={value} onChange={(val) => setValue(val)} disabled />
-      <SelectBox name="Sort" source={source} label="Sort" value={value} onChange={(val) => setValue(val)} error="Error text" />
-  </div>
+const TestComponent = () => {
+    const [value, setValue] = useState<string | number |(string | number)[]>(1)
+    const [multiValue, setMultiValue] = useState<string | number |(string | number)[]>([1, 2])
+
+    return (
+      <div>
+          <SelectBox name="Sort" source={source} label="Sort" value={value} onChange={(val) => setValue(val)} />
+          <SelectBox name="Sort" source={source} label="Sort" onChange={(val) => setValue(val)} allowBlank={false} />
+          <SelectBox name="Sort" source={customSource} label="Sort" labelKey="title" value={value} valueKey="key" onChange={(val) => setValue(val)} />
+          <SelectBox name="Sort" source={source} label="Sort" value={multiValue} onChange={(val) => setMultiValue(val)} multiSelect />
+          <SelectBox name="Sort" source={source} label="Sort" value={value} onChange={(val) => setValue(val)} disabled />
+          <SelectBox name="Sort" source={source} label="Sort" value={value} onChange={(val) => setValue(val)} error="Error text" />
+      </div> 
+    )
 );
 ```
 

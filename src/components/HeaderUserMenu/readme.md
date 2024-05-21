@@ -9,10 +9,7 @@ import { HeaderUserMenuElement } from 'ui-kit-lite/components/HeaderUserMenuElem
 const TestComponent = () => (
   <div>
       <HeaderUserMenu userName="Some name">
-          <HeaderUserSubMenu
-              label="Sub Menu"
-              onClick={() => console.log('onClick')}
-          >
+          <HeaderUserSubMenu label="Sub Menu" onClick={() => console.log('onClick')} >
               <HeaderUserMenuElement label="Sub Menu 1" />
               <HeaderUserMenuElement label="Sub Menu 2" />
           </HeaderUserSubMenu>
