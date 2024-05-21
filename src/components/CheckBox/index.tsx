@@ -14,7 +14,6 @@ export type Theme = {
     check?: string;
     disabled?: string;
     checked?: string;
-    ripple?: string;
 }
 
 type TooltipPickedProps = Pick<TooltipProps,
