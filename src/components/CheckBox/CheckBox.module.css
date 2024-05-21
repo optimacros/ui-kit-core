@@ -1,6 +1,7 @@
 .field {
     display: flex;
     align-items: center;
+    max-width: fit-content;
 }
 
 .check {
@@ -47,9 +48,3 @@
         color: var(--Checkbox-color-disabled) !important;
     }
 }
-
-.ripple {
-    display: none !important;
-}
-
-

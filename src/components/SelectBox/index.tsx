@@ -12,7 +12,7 @@ import type { InputTheme } from '../Input'
 // eslint-disable-next-line
 import themeStyle from './theme.module.css'
 // eslint-disable-next-line
-import style from './SelectBox.module.css'
+import styles from './SelectBox.module.css'
 import { action, makeObservable } from 'mobx'
 
 export interface Props extends Omit<SelectBoxProps, 'theme'> {
@@ -37,10 +37,10 @@ export class SelectBox extends Component<Props> {
             ...otherProps
         } = this.props
 
-        let theme = mergeStyles(style, customTheme) as Required<SelectBoxTheme>
+        let theme = mergeStyles(customTheme, styles) as Required<SelectBoxTheme>
         theme = mergeStyles(themeStyle, theme) as Required<SelectBoxTheme>
 
-        const classNameContainer = classNames(className, customTheme.Container ?? {})
+        const classNameContainer = classNames(className, styles.Container ?? {})
 
         return (
             <div className={classNameContainer}>

@@ -56,7 +56,6 @@ export const Flat: Story = {
     args: {
         icon: 'inbox',
         label: 'Inbox',
-        flat: true,
     },
     argTypes
 }

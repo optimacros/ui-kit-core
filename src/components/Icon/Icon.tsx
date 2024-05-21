@@ -10,7 +10,6 @@ interface Props {
     onClick?: (event: React.MouseEvent) => void;
     title?: string;
     alt?: string;
-    theme?: Record<string, string>;
     style?: React.CSSProperties;
 }
 

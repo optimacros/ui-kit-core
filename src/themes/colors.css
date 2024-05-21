@@ -44,5 +44,6 @@
   --color-white: rgb(255, 255, 255);
   --color-dark-contrast: var(--color-white);
   --color-light-contrast: var(--color-black);
+  --color-scale-gray-3: #a7a7a7;
   --color-scale-gray-8: #646464;
 }

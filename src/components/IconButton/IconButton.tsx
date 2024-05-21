@@ -6,7 +6,7 @@ import type { IconButtonProps, IconButtonTheme } from './index'
 import { FontIcon } from '../FontIcon'
 
 interface Props extends IconButtonProps {
-    theme: IconButtonTheme;
+    theme: IconButtonTheme & { toggle: string };
 }
 
 export class IconButtonComponent extends Component<Props> {

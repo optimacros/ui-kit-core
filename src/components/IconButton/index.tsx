@@ -4,7 +4,6 @@ import React from 'react'
 import { IconButtonComponent } from './IconButton'
 import { mergeStyles } from '../../utils/mergeStyle'
 import type { ButtonInitialProps, ThemeButtonProps } from '../Button'
-import themedRippleFactory from '../Ripple'
 import { Tooltip, TooltipProps } from '../Tooltip/Tooltip'
 
 // order of styles import is important
@@ -26,9 +25,6 @@ type TooltipPickedProps = Pick<TooltipProps,
   | 'tooltipShowOnClick'
   | 'tooltipOffset'
 >
-
-// eslint-disable-next-line react-refresh/only-export-components
-const RippledIconButton = themedRippleFactory({ centered: true })(IconButtonComponent)
 
 export class IconButton extends React.Component<Partial<IconButtonProps & TooltipPickedProps>> {
     render(): React.JSX.Element {
@@ -59,7 +55,7 @@ export class IconButton extends React.Component<Partial<IconButtonProps & Toolti
 
         return (
             <Tooltip
-                composedComponent={RippledIconButton}
+                composedComponent={IconButtonComponent}
                 composedComponentProps={composedComponentProps}
                 tooltip={this.props.label ?? this.props.tooltip}
                 tooltipDelay={tooltipDelay}
@@ -68,7 +64,9 @@ export class IconButton extends React.Component<Partial<IconButtonProps & Toolti
                 tooltipShowOnClick={tooltipShowOnClick}
                 tooltipOffset={tooltipOffset}
                 theme={theme}
-            />
+            >
+                {children}
+            </Tooltip>
         )
     }
 }

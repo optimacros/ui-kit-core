@@ -6,7 +6,6 @@
 
 .value {
     min-height: auto;
-    min-width: 177px;
 
     & > input {
         color: var(--secondary-text-color);

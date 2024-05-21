@@ -3,17 +3,17 @@ import React from 'react'
 
 import styles from './Counter.module.css'
 
-type CounterProps = {
+export type NavigationComponentProps = React.PropsWithChildren<{
+    route: Record<string, any>;
+    className: string;
+}>
+
+export type CounterProps = {
     value: number;
     maxValue?: number;
     className?: string;
     route?: Record<string, any>;
-    navigationComponent?: React.JSXElementConstructor<
-        React.PropsWithChildren<{
-            route: Record<string, any>;
-            className: string;
-        }>
-    >;
+    navigationComponent?: React.ComponentType<NavigationComponentProps>;
 }
 
 export class Counter extends React.Component<CounterProps> {

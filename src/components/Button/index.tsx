@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 
 import { ButtonComponent } from './Button'
 import { mergeStyles } from '../../utils/mergeStyle'
-import themedRippleFactory from '../Ripple'
 
 // order of styles import is important
 import themeStyle from './ButtonTheme.module.css'
@@ -24,7 +23,6 @@ export type ThemeButtonProps = {
     raised: string;
     inverse: string;
     mini: string;
-    toggle: string;
 }
 
 export type ButtonTheme = ThemeButtonProps & {
@@ -38,6 +36,7 @@ export interface ButtonInitialProps extends ButtonHTMLAttributes<HTMLButtonEleme
     label: string;
     icon: string | React.JSX.Element | null;
     href: string;
+    target: string;
     gray: boolean;
     warning: boolean;
     accent: boolean;
@@ -46,7 +45,6 @@ export interface ButtonInitialProps extends ButtonHTMLAttributes<HTMLButtonEleme
     bordered: boolean;
     uppercase: boolean;
     floating: boolean;
-    flat: boolean;
     raised: boolean;
     inverse: boolean;
     mini: boolean;
@@ -56,9 +54,6 @@ export interface ButtonInitialProps extends ButtonHTMLAttributes<HTMLButtonEleme
     theme: Partial<ThemeButtonProps>;
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
-const RippledButton = themedRippleFactory({ centered: false })(ButtonComponent)
-
 export class Button extends Component<Partial<ButtonInitialProps>> {
     render(): React.JSX.Element {
         let theme = mergeStyles(style, this.props.theme) as ButtonTheme
@@ -67,15 +62,15 @@ export class Button extends Component<Partial<ButtonInitialProps>> {
         const className = classNames(
             this.props.className,
             {
-                [theme.button_uppercase]: this.props.uppercase,
-                [theme.gray]: this.props.gray,
-                [theme.warning]: this.props.warning,
+                [theme.button_uppercase]: this.props.uppercase ?? false,
+                [theme.gray]: this.props.gray ?? false,
+                [theme.warning]: this.props.warning ?? false,
             },
             theme.Button,
         )
 
         return (
-            <RippledButton
+            <ButtonComponent
                 {...this.props}
                 className={className}
                 theme={theme}

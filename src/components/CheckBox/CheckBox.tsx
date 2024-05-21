@@ -4,7 +4,6 @@ import React, { Component } from 'react'
 import { Box } from './Box'
 import type { InitialProps, Theme } from './index'
 import { mergeStyles } from '../../utils/mergeStyle'
-import rippleFactory from '../Ripple'
 
 import checkBoxStyle from './CheckBox.module.css'
 
@@ -44,11 +43,6 @@ export class CheckBoxComponent extends Component<React.PropsWithChildren<CheckBo
             this.props.className,
         )
 
-        const RippledBox = rippleFactory({
-            centered: true,
-            spread: 2.6,
-        })(Box)
-
         return (
             <label
                 data-react-toolbox="checkbox"
@@ -68,12 +62,11 @@ export class CheckBoxComponent extends Component<React.PropsWithChildren<CheckBo
                     type="checkbox"
                 />
 
-                <RippledBox
+                <Box
                     checked={checked}
                     disabled={disabled}
                     style={style}
                     theme={theme}
-                    rippleClassName={theme.ripple}
                 />
 
                 {label && (
