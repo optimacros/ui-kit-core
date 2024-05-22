@@ -75,13 +75,7 @@ export class Tooltip extends Component<TooltipProps, State> {
     }
 
     componentWillUnmount(): void {
-        if (this.tooltipNode.current) {
-            events.removeEventListenerOnTransitionEnded(this.tooltipNode.current, this.onTransformEnd)
-        }
-
-        if (this.timeout) {
-            clearTimeout(this.timeout)
-        }
+        this.deactivate()
     }
 
     render() {

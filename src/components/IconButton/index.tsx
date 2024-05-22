@@ -51,7 +51,7 @@ export class IconButton extends React.Component<IconButtonProps> {
         const composedComponentProps = {
             ...otherProps,
             theme,
-            className: className,
+            className,
             'data-label': label,
         }
 
