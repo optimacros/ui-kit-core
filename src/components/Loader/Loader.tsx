@@ -6,7 +6,7 @@ import prefixer from '../../utils/react-toolbox-utils/prefixer'
 
 import style from './theme.module.css'
 
-type Theme = {
+export type Theme = {
     buffer?: string;
     circle?: string;
     circular?: string;
@@ -17,7 +17,7 @@ type Theme = {
     value?: string;
 }
 
-type Props = {
+export type Props = {
     buffer?: number;
     className?: string;
     max?: number;

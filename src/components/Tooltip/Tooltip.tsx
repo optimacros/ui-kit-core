@@ -17,9 +17,9 @@ const POSITION = {
     VERTICAL: 'vertical',
 } as const
 
-type Position = typeof POSITION[keyof typeof POSITION]
+export type Position = typeof POSITION[keyof typeof POSITION]
 
-type PositionInfo = {
+export type PositionInfo = {
     top: number;
     left: number;
     position: Position;

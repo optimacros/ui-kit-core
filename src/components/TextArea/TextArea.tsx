@@ -3,7 +3,7 @@ import React from 'react'
 
 import styles from './TextArea.module.css'
 
-type Props = {
+export type Props = {
     error?: React.ReactNode;
     label: string;
     className?: string;

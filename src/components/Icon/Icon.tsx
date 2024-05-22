@@ -4,7 +4,7 @@ import { FontIcon } from '../FontIcon'
 
 import IconStyle from './Icon.module.css'
 
-interface Props {
+export interface Props {
     value: React.JSX.Element | string;
     className?: string;
     onClick?: (event: React.MouseEvent) => void;

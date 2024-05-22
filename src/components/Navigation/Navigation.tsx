@@ -8,7 +8,7 @@ import { mergeStyles } from '../../utils/mergeStyle'
 
 import navigationTheme from './Navigation.module.css'
 
-interface Props extends Omit<NavigationProps, 'theme'> {
+export interface Props extends Omit<NavigationProps, 'theme'> {
     theme?: Partial<NavigationTheme>;
 }
 

@@ -35,7 +35,7 @@ export type InputTheme = {
 
 type HTMLAttributes = TextareaHTMLAttributes<HTMLTextAreaElement> & InputHTMLAttributes<HTMLInputElement>
 
-interface Props extends Omit<HTMLAttributes, 'onChange' | 'onKeyPress'> {
+export interface Props extends Omit<HTMLAttributes, 'onChange' | 'onKeyPress'> {
     onChange?: (value: string, event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
     onKeyPress?: (event: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
     onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => void;

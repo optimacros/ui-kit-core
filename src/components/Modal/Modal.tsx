@@ -8,7 +8,7 @@ import { FontIcon } from '../FontIcon'
 
 import styles from './Modal.module.css'
 
-interface Props extends BaseReactModal.Props {
+export interface Props extends BaseReactModal.Props {
     title?: string | React.ReactNode;
     compact?: boolean;
     nonDraggable?: boolean;

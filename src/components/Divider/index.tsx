@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react'
 
 import styles from './Divider.module.css'
 
-type Props = {
+export type Props = {
     vertical?: boolean;
 }
 

@@ -5,7 +5,7 @@ import { mergeStyles } from '../../utils/mergeStyle'
 
 import styles from './theme.module.css'
 
-type Theme = {
+export type Theme = {
     avatar: string;
     chip: string;
     deletable: string;
@@ -14,7 +14,7 @@ type Theme = {
     deleteX: string;
 }
 
-type Props = {
+export type Props = {
     className: string;
     deletable: boolean;
     onDeleteClick: React.MouseEventHandler<SVGSVGElement | HTMLSpanElement>;

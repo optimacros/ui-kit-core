@@ -4,7 +4,7 @@ import React from 'react'
 
 import type { Theme } from './index'
 
-interface BoxProps {
+export interface BoxProps {
     theme: Required<Theme>;
     checked?: boolean;
     disabled?: boolean;
