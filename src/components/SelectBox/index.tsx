@@ -49,9 +49,9 @@ export class SelectBox extends Component<Props> {
                 </div>
 
                 <SelectBoxComponent
+                    auto={false}
                     {...otherProps}
                     theme={theme}
-                    auto={false}
                     source={this.elements}
                     onChange={this.onChange}
                 />
