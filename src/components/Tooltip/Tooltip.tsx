@@ -28,7 +28,6 @@ type PositionInfo = {
 export type TooltipTheme = {
     tooltip: string;
     tooltipActive: string;
-    tooltipWrapper: string;
 }
 
 export type TooltipProps = {

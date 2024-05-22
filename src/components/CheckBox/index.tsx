@@ -36,7 +36,6 @@ export type InitialProps = {
     onChange?: (checked: boolean, event: React.MouseEvent) => void;
     onMouseEnter?: MouseEventHandler<HTMLLabelElement> | undefined;
     onMouseLeave?: MouseEventHandler<HTMLLabelElement> | undefined;
-    onMouseDown?: MouseEventHandler<HTMLDivElement> | undefined;
     theme?: Partial<Theme> & Partial<TooltipTheme>;
 } & TooltipPickedProps
 
