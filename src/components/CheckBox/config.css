@@ -3,7 +3,6 @@
   --checkbox-disabled-color: color(var(--color-black) a(26%));
   --checkbox-field-margin-bottom: calc(1.5 * var(--unit));
   --checkbox-focus-checked-color: color(var(--color-primary) a(26%));
-  --checkbox-ripple-duration: 650ms;
   --checkbox-size: calc(1.8 * var(--unit));
   --checkbox-focus-color: color(var(--color-black) a(1%));
   --checkbox-focus-size: calc(var(--checkbox-size) * 2.3);

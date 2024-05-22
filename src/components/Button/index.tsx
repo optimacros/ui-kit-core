@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 
 import { ButtonComponent } from './Button'
 import { mergeStyles } from '../../utils/mergeStyle'
-import themedRippleFactory from '../Ripple'
 
 // order of styles import is important
 import themeStyle from './ButtonTheme.module.css'
@@ -14,7 +13,6 @@ import classNames from 'classnames'
 export type ThemeButtonProps = {
     button: string;
     icon: string;
-    rippleWrapper: string;
     accent: string;
     bordered: string;
     neutral: string;
@@ -55,9 +53,6 @@ export interface ButtonInitialProps extends ButtonHTMLAttributes<HTMLButtonEleme
     theme: Partial<ThemeButtonProps>;
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
-const RippledButton = themedRippleFactory({ centered: false })(ButtonComponent)
-
 export class Button extends Component<Partial<ButtonInitialProps>> {
     render(): React.JSX.Element {
         let theme = mergeStyles(style, this.props.theme) as ButtonTheme
@@ -74,7 +69,7 @@ export class Button extends Component<Partial<ButtonInitialProps>> {
         )
 
         return (
-            <RippledButton
+            <ButtonComponent
                 {...this.props}
                 className={className}
                 theme={theme}

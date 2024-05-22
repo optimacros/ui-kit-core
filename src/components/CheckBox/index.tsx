@@ -16,7 +16,7 @@ export type Theme = {
     checked?: string;
 }
 
-type TooltipPickedProps = Pick<TooltipProps,
+export type TooltipPickedProps = Pick<TooltipProps,
   'tooltipDelay'
   | 'tooltipHideOnClick'
   | 'tooltipPosition'

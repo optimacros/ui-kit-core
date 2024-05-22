@@ -3,9 +3,8 @@ import type { CSSProperties, TouchEventHandler } from 'react'
 import React from 'react'
 
 import type { Theme } from './index'
-import type { RippleProps } from '../Ripple/Ripple'
 
-interface BoxProps extends Partial<RippleProps> {
+export interface BoxProps {
     theme: Required<Theme>;
     checked?: boolean;
     disabled?: boolean;

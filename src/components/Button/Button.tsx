@@ -4,13 +4,12 @@ import React, { Component } from 'react'
 
 import type { ButtonInitialProps, ButtonTheme } from './index'
 import { FontIcon } from '../FontIcon'
-import type { RippleProps } from '../Ripple/Ripple'
 
-interface ButtonComponentProps extends Partial<ButtonInitialProps> {
+export interface ButtonComponentProps extends Partial<ButtonInitialProps> {
     theme: ButtonTheme;
 }
 
-export class ButtonComponent extends Component<ButtonComponentProps & Partial<RippleProps>> {
+export class ButtonComponent extends Component<ButtonComponentProps> {
     constructor(props: ButtonComponentProps) {
         super(props)
 

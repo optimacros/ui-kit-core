@@ -8,13 +8,13 @@ import { Key as KeyboardKey } from '../../types/KeyboardKeyList'
 import '../../packages/rc-dropdown/main.css'
 import styles from './Dropdown.module.css'
 
-interface Props extends DropdownProps {
+export interface Props extends DropdownProps {
     className?: string;
     disabled?: boolean;
     closeOnSelect?: boolean;
 }
 
-type State = {
+export type State = {
     visible: boolean;
     lastVisible: boolean;
 }

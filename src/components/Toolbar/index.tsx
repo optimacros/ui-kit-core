@@ -3,7 +3,7 @@ import React from 'react'
 
 import styles from './Toolbar.module.css'
 
-type Props = {
+export type Props = {
     className?: string;
     align?: 'right' | 'center' | 'left' | 'rightInRow';
     small?: boolean;
