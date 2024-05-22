@@ -35,7 +35,7 @@ export type InputTheme = {
 
 type HTMLAttributes = TextareaHTMLAttributes<HTMLTextAreaElement> & InputHTMLAttributes<HTMLInputElement>
 
-export interface Props extends Omit<HTMLAttributes, 'onChange' | 'onKeyPress'> {
+export interface InputProps extends Omit<HTMLAttributes, 'onChange' | 'onKeyPress'> {
     onChange?: (value: string, event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
     onKeyPress?: (event: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
     onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
@@ -50,8 +50,8 @@ export interface Props extends Omit<HTMLAttributes, 'onChange' | 'onKeyPress'> {
     theme?: Partial<InputTheme>;
 }
 
-export class Input extends React.Component<Props> {
-    constructor(props: Props) {
+export class Input extends React.Component<InputProps> {
+    constructor(props: InputProps) {
         super(props)
 
         this.inputNode = React.createRef()
@@ -66,7 +66,7 @@ export class Input extends React.Component<Props> {
         }
     }
 
-    componentDidUpdate(prevProps: Props): void {
+    componentDidUpdate(prevProps: InputProps): void {
         // resize the textarea, if necessary
         if (this.props.multiline) {
             window.addEventListener('resize', this.handleAutoresize)

@@ -19,7 +19,9 @@ export interface Props extends BaseReactModal.Props {
     contentClassName?: string;
 }
 
-export class Modal extends Component<React.PropsWithChildren<Props>> {
+export type ModalProps = React.PropsWithChildren<Props>
+
+export class Modal extends Component<ModalProps> {
     render(): React.JSX.Element {
         const containerClassName = classNames({
             [styles.Container]: true,

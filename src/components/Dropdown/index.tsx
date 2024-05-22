@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import BaseDropDown from 'rc-dropdown'
-import type { DropdownProps } from 'rc-dropdown/lib/Dropdown'
+import type { DropdownProps as RCDropdownProps } from 'rc-dropdown/lib/Dropdown'
 import React from 'react'
 
 import { Key as KeyboardKey } from '../../types/KeyboardKeyList'
@@ -8,7 +8,7 @@ import { Key as KeyboardKey } from '../../types/KeyboardKeyList'
 import '../../packages/rc-dropdown/main.css'
 import styles from './Dropdown.module.css'
 
-export interface Props extends DropdownProps {
+export interface Props extends RCDropdownProps {
     className?: string;
     disabled?: boolean;
     closeOnSelect?: boolean;
@@ -19,7 +19,9 @@ export type State = {
     lastVisible: boolean;
 }
 
-export class Dropdown extends React.PureComponent<React.PropsWithChildren<Props>, State> {
+export type DropdownProps = React.PropsWithChildren<Props>
+
+export class Dropdown extends React.PureComponent<DropdownProps, State> {
     constructor(props: React.PropsWithChildren<Props>) {
         super(props)
 

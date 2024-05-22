@@ -37,7 +37,9 @@ export type Props = {
     classNameDropdownContainer?: string;
 } & TooltipPickedProps
 
-export class ButtonMenu extends PureComponent<React.PropsWithChildren<Props>> {
+export type ButtonMenuProps = React.PropsWithChildren<Props>
+
+export class ButtonMenu extends PureComponent<ButtonMenuProps> {
     render(): React.JSX.Element {
         return (
             <Dropdown

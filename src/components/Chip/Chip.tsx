@@ -23,7 +23,9 @@ export type Props = {
     customDeleteIcon: React.JSX.Element;
 }
 
-export class Chip extends React.Component<React.PropsWithChildren<Partial<Props>>> {
+export type ChipProps = React.PropsWithChildren<Partial<Props>>
+
+export class Chip extends React.Component<ChipProps> {
     render(): React.JSX.Element {
         const {
             children,

@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import { find, indexOf, map, without, filter } from 'lodash'
 import React, { Component } from 'react'
 
-import type { SelectBoxTheme, SelectBoxProps } from './SelectBox'
+import type { SelectBoxTheme, SelectBoxProps as Props } from './SelectBox'
 import { SelectBoxComponent } from './SelectBox'
 import { mergeStyles } from '../../utils/mergeStyle'
 import { Chip } from '../Chip/index'
@@ -15,14 +15,14 @@ import themeStyle from './theme.module.css'
 import styles from './SelectBox.module.css'
 import { action, makeObservable } from 'mobx'
 
-export interface Props extends Omit<SelectBoxProps, 'theme'> {
+export interface SelectBoxProps extends Omit<Props, 'theme'> {
     theme?: Partial<SelectBoxTheme & InputTheme>;
     multiSelect?: boolean;
     onChange?: (value: string | number | (string | number)[], event?: React.SyntheticEvent) => void;
 }
 
-export class SelectBox extends Component<Props> {
-    constructor(props: Props) {
+export class SelectBox extends Component<SelectBoxProps> {
+    constructor(props: SelectBoxProps) {
         super(props)
 
         makeObservable(this)

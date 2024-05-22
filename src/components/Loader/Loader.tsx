@@ -17,7 +17,7 @@ export type Theme = {
     value?: string;
 }
 
-export type Props = {
+export type LoaderProps = {
     buffer?: number;
     className?: string;
     max?: number;
@@ -31,7 +31,7 @@ export type Props = {
     disabled?: boolean;
 }
 
-export class Loader extends Component<Props> {
+export class Loader extends Component<LoaderProps> {
     min = 0
     max = 100
 

@@ -30,7 +30,7 @@ export type TooltipTheme = {
     tooltipActive: string;
 }
 
-export type TooltipProps = {
+export type Props = {
     composedComponent: string | React.FunctionComponent<any> | React.ComponentClass<any>;
     composedComponentProps?: Record<string, any>;
     className?: string;
@@ -54,8 +54,10 @@ type State = {
     left: number;
 }
 
-export class Tooltip extends Component<React.PropsWithChildren<TooltipProps>, State> {
-    constructor(props: TooltipProps) {
+export type TooltipProps = React.PropsWithChildren<Props>
+
+export class Tooltip extends Component<TooltipProps, State> {
+    constructor(props: Props) {
         super(props)
 
         this.tooltipNode = React.createRef()

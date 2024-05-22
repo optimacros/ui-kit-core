@@ -2,13 +2,13 @@ import classNames from 'classnames'
 import React from 'react'
 import { isEqual } from 'lodash'
 
-import type { NavigationProps, NavigationTheme } from './BaseNavigation'
+import type { NavigationProps as BaseNavigationProps, NavigationTheme } from './BaseNavigation'
 import { BaseNavigation } from './BaseNavigation'
 import { mergeStyles } from '../../utils/mergeStyle'
 
 import navigationTheme from './Navigation.module.css'
 
-export interface Props extends Omit<NavigationProps, 'theme'> {
+export interface Props extends Omit<BaseNavigationProps, 'theme'> {
     theme?: Partial<NavigationTheme>;
 }
 
@@ -16,7 +16,9 @@ interface State {
     theme: NavigationTheme;
 }
 
-export class Navigation extends React.PureComponent<React.PropsWithChildren<Props>, State> {
+export type NavigationProps = React.PropsWithChildren<Props>
+
+export class Navigation extends React.PureComponent<NavigationProps, State> {
     state = {
         theme: {} as NavigationTheme,
     }

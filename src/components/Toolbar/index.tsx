@@ -9,7 +9,9 @@ export type Props = {
     small?: boolean;
 }
 
-export class Toolbar extends React.PureComponent<React.PropsWithChildren<Props>> {
+export type ToolbarProps = React.PropsWithChildren<Props>
+
+export class Toolbar extends React.PureComponent<ToolbarProps> {
     render(): React.JSX.Element {
         const className = classNames(
             {
