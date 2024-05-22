@@ -3,13 +3,15 @@ import React from 'react'
 
 import styles from './Toolbar.module.css'
 
-type Props = {
+export type Props = {
     className?: string;
     align?: 'right' | 'center' | 'left' | 'rightInRow';
     small?: boolean;
 }
 
-export class Toolbar extends React.PureComponent<React.PropsWithChildren<Props>> {
+export type ToolbarProps = React.PropsWithChildren<Props>
+
+export class Toolbar extends React.PureComponent<ToolbarProps> {
     render(): React.JSX.Element {
         const className = classNames(
             {

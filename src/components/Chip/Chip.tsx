@@ -5,7 +5,7 @@ import { mergeStyles } from '../../utils/mergeStyle'
 
 import styles from './theme.module.css'
 
-type Theme = {
+export type Theme = {
     avatar: string;
     chip: string;
     deletable: string;
@@ -14,7 +14,7 @@ type Theme = {
     deleteX: string;
 }
 
-type Props = {
+export type Props = {
     className: string;
     deletable: boolean;
     onDeleteClick: React.MouseEventHandler<SVGSVGElement | HTMLSpanElement>;
@@ -23,7 +23,9 @@ type Props = {
     customDeleteIcon: React.JSX.Element;
 }
 
-export class Chip extends React.Component<React.PropsWithChildren<Partial<Props>>> {
+export type ChipProps = React.PropsWithChildren<Partial<Props>>
+
+export class Chip extends React.Component<ChipProps> {
     render(): React.JSX.Element {
         const {
             children,

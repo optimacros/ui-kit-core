@@ -13,7 +13,6 @@ import classNames from 'classnames'
 export type ThemeButtonProps = {
     button: string;
     icon: string;
-    rippleWrapper: string;
     accent: string;
     bordered: string;
     neutral: string;
@@ -54,7 +53,9 @@ export interface ButtonInitialProps extends ButtonHTMLAttributes<HTMLButtonEleme
     theme: Partial<ThemeButtonProps>;
 }
 
-export class Button extends Component<Partial<ButtonInitialProps>> {
+export type ButtonProps = Partial<ButtonInitialProps>
+
+export class Button extends Component<ButtonProps> {
     render(): React.JSX.Element {
         let theme = mergeStyles(style, this.props.theme) as ButtonTheme
         theme = mergeStyles(theme, themeStyle) as ButtonTheme

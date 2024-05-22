@@ -3,14 +3,14 @@ import React from 'react'
 
 import styles from './TextArea.module.css'
 
-type Props = {
+export type TextAreaProps = {
     error?: React.ReactNode;
     label: string;
     className?: string;
     classNameContainer?: string;
 }
 
-export class TextArea extends React.PureComponent<Props> {
+export class TextArea extends React.PureComponent<TextAreaProps> {
     render(): React.JSX.Element {
         const {
             error,

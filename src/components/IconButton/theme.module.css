@@ -73,10 +73,6 @@
         pointer-events: none;
     }
 
-    & > .rippleWrapper {
-        overflow: hidden;
-    }
-
     &[disabled] {
         color: var(--button-disabled-text-color);
         cursor: auto;
@@ -145,10 +141,6 @@
         line-height: var(--button-floating-height);
     }
 
-    & > .rippleWrapper {
-        border-radius: 50%;
-    }
-
     &.mini {
         font-size: var(--button-floating-mini-font-size);
         height: var(--button-floating-mini-height);
@@ -172,10 +164,6 @@
         font-size: var(--button-toggle-font-size);
         line-height: var(--button-height);
         vertical-align: top;
-    }
-
-    & > .rippleWrapper {
-        border-radius: 50%;
     }
 }
 

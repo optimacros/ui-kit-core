@@ -13,7 +13,7 @@ import style from './IconButton.module.css'
 
 export type IconButtonTheme = ThemeButtonProps & { IconButton: string }
 
-export interface IconButtonProps extends Partial<ButtonInitialProps> {
+export interface Props extends Partial<ButtonInitialProps> {
     theme: Partial<IconButtonTheme>;
 }
 
@@ -26,7 +26,9 @@ type TooltipPickedProps = Pick<TooltipProps,
   | 'tooltipOffset'
 >
 
-export class IconButton extends React.Component<Partial<IconButtonProps & TooltipPickedProps>> {
+export type IconButtonProps = Partial<Props & TooltipPickedProps>
+
+export class IconButton extends React.Component<IconButtonProps> {
     render(): React.JSX.Element {
         const {
             children,
@@ -49,7 +51,7 @@ export class IconButton extends React.Component<Partial<IconButtonProps & Toolti
         const composedComponentProps = {
             ...otherProps,
             theme,
-            className: className,
+            className,
             'data-label': label,
         }
 

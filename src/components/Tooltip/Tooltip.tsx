@@ -17,9 +17,9 @@ const POSITION = {
     VERTICAL: 'vertical',
 } as const
 
-type Position = typeof POSITION[keyof typeof POSITION]
+export type Position = typeof POSITION[keyof typeof POSITION]
 
-type PositionInfo = {
+export type PositionInfo = {
     top: number;
     left: number;
     position: Position;
@@ -28,10 +28,9 @@ type PositionInfo = {
 export type TooltipTheme = {
     tooltip: string;
     tooltipActive: string;
-    tooltipWrapper: string;
 }
 
-export type TooltipProps = {
+export type Props = {
     composedComponent: string | React.FunctionComponent<any> | React.ComponentClass<any>;
     composedComponentProps?: Record<string, any>;
     className?: string;
@@ -55,8 +54,10 @@ type State = {
     left: number;
 }
 
-export class Tooltip extends Component<React.PropsWithChildren<TooltipProps>, State> {
-    constructor(props: TooltipProps) {
+export type TooltipProps = React.PropsWithChildren<Props>
+
+export class Tooltip extends Component<TooltipProps, State> {
+    constructor(props: Props) {
         super(props)
 
         this.tooltipNode = React.createRef()
@@ -74,13 +75,7 @@ export class Tooltip extends Component<React.PropsWithChildren<TooltipProps>, St
     }
 
     componentWillUnmount(): void {
-        if (this.tooltipNode.current) {
-            events.removeEventListenerOnTransitionEnded(this.tooltipNode.current, this.onTransformEnd)
-        }
-
-        if (this.timeout) {
-            clearTimeout(this.timeout)
-        }
+        this.deactivate()
     }
 
     render() {

@@ -3,7 +3,7 @@ import React from 'react'
 
 import { CheckBoxComponent } from './CheckBox'
 import { mergeStyles } from '../../utils/mergeStyle'
-import { Tooltip, TooltipProps, TooltipTheme } from '../Tooltip/Tooltip'
+import { Tooltip, Props, TooltipTheme } from '../Tooltip/Tooltip'
 
 import themeStyle from './theme.module.css'
 
@@ -16,7 +16,7 @@ export type Theme = {
     checked?: string;
 }
 
-type TooltipPickedProps = Pick<TooltipProps,
+export type TooltipPickedProps = Pick<Props,
   'tooltipDelay'
   | 'tooltipHideOnClick'
   | 'tooltipPosition'
@@ -36,11 +36,12 @@ export type InitialProps = {
     onChange?: (checked: boolean, event: React.MouseEvent) => void;
     onMouseEnter?: MouseEventHandler<HTMLLabelElement> | undefined;
     onMouseLeave?: MouseEventHandler<HTMLLabelElement> | undefined;
-    onMouseDown?: MouseEventHandler<HTMLDivElement> | undefined;
     theme?: Partial<Theme> & Partial<TooltipTheme>;
 } & TooltipPickedProps
 
-export class CheckBox extends React.Component<React.PropsWithChildren<InitialProps>> {
+export type CheckBoxProps = React.PropsWithChildren<InitialProps>
+
+export class CheckBox extends React.Component<CheckBoxProps> {
     render(): React.JSX.Element {
         const {
             tooltipLabel,

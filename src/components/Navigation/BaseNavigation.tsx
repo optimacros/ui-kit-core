@@ -7,9 +7,7 @@ import { mergeStyles } from '../../utils/mergeStyle'
 import themeStyles from './theme.module.css'
 
 export type NavigationTheme = {
-    button: string;
     horizontal: string;
-    link: string;
     vertical: string;
 }
 

@@ -21,10 +21,6 @@
         line-height: normal !important;
     }
 
-    & .rippleWrapper {
-        border-radius: 0 !important;
-    }
-
     &.accent:not([disabled]) {
         color: #767676 !important;
         border: 1px solid #dbdbdb;

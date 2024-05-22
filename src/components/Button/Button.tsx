@@ -5,7 +5,7 @@ import React, { Component } from 'react'
 import type { ButtonInitialProps, ButtonTheme } from './index'
 import { FontIcon } from '../FontIcon'
 
-interface ButtonComponentProps extends Partial<ButtonInitialProps> {
+export interface ButtonComponentProps extends Partial<ButtonInitialProps> {
     theme: ButtonTheme;
 }
 

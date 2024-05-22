@@ -7,7 +7,7 @@ import { mergeStyles } from '../../utils/mergeStyle'
 
 import checkBoxStyle from './CheckBox.module.css'
 
-interface CheckBoxComponentProps extends InitialProps {
+export interface CheckBoxComponentProps extends InitialProps {
     theme: Required<Theme>;
 }
 
