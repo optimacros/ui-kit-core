@@ -101,7 +101,7 @@ export class Loader extends Component<Props> {
     }
 
     renderLinear(theme: Theme): React.JSX.Element {
-        const { buffer = 0, value } = this.linearStyle()
+        const { buffer = {}, value } = this.linearStyle()
 
         return (
             <div>

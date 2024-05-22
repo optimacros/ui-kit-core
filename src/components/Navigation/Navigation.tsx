@@ -16,12 +16,12 @@ interface State {
     theme: NavigationTheme;
 }
 
-export class Navigation extends React.PureComponent<Props, State> {
+export class Navigation extends React.PureComponent<React.PropsWithChildren<Props>, State> {
     state = {
         theme: {} as NavigationTheme,
     }
 
-    static getDerivedStateFromProps(props: NavigationProps, state: State) {
+    static getDerivedStateFromProps(props: React.PropsWithChildren<Props>, state: State) {
         const updatedTheme = props.theme
           ? mergeStyles(props.theme, navigationTheme)
           : navigationTheme
