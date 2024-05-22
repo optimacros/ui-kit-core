@@ -71,10 +71,7 @@ import { Button } from 'ui-kit-lite/components/Button';
 | `uppercase`    | `Boolean`         | `false`  | If `true`, the text inside the button will be in uppercase.                                              |
 | `onMouseEnter` | `Function`        | -        | Fires after the mouse enters the Component.                                                              |
 | `onMouseLeave` | `Function`        | -        | Fires after the mouse leaves the Component.                                                              |
-| `onMouseUp`    | `Function`        | -        | Fires after the mouse is released from the Component.                                                    |        
-By default it will have neutral colors and a flat aspect even though the `flat` property is `false` by default. Also, some properties exclude others, for example a button cannot be `flat` and `raised` at the same time.
-
-The `Button` component also accept children so if you want to provide a custom component and text instead of a `label` and `icon` you can do it too. Just check the examples.
+| `onMouseUp`    | `Function`        | -        | Fires after the mouse is released from the Component.                                                    |
 
 ## Theme
 

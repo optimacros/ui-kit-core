@@ -36,6 +36,7 @@ import { Navigation } from 'ui-kit-lite/components/Navigation';
 | `className` | `String`  | -            | Set a custom class styles to style the navigation.                     |
 | `theme`     | `Object`  | -            | Theme object with classnames that will be used to style the component. |
 | `type`      | `String`  | `horizontal` | Type of the navigation, it can be `vertical` or `horizontal`.          |
+| `wrap`      | `Boolean` | `false`      | If `true`, navigation items can wrap onto multiple lines.              |
 
 ## Theme
 
