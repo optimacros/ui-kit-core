@@ -13,7 +13,6 @@ import classNames from 'classnames'
 export type ThemeButtonProps = {
     button: string;
     icon: string;
-    rippleWrapper: string;
     accent: string;
     bordered: string;
     neutral: string;
