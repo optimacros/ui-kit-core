@@ -1,6 +1,7 @@
 import classNames from 'classnames'
+// @ts-ignore
 import BaseDropDown from 'rc-dropdown'
-import type { DropdownProps as RCDropdownProps } from 'rc-dropdown/lib/Dropdown'
+// import type { DropdownProps as RCDropdownProps } from 'rc-dropdown/lib/Dropdown'
 import React from 'react'
 
 import { Key as KeyboardKey } from '../../types/KeyboardKeyList'
@@ -8,7 +9,7 @@ import { Key as KeyboardKey } from '../../types/KeyboardKeyList'
 import '../../packages/rc-dropdown/main.css'
 import styles from './Dropdown.module.css'
 
-export interface Props extends RCDropdownProps {
+export interface Props {
     className?: string;
     disabled?: boolean;
     closeOnSelect?: boolean;
@@ -19,10 +20,10 @@ export type State = {
     lastVisible: boolean;
 }
 
-export type DropdownProps = React.PropsWithChildren<Props>
+export type DropdownProps = React.PropsWithChildren<any>
 
 export class Dropdown extends React.PureComponent<DropdownProps, State> {
-    constructor(props: React.PropsWithChildren<Props>) {
+    constructor(props: React.PropsWithChildren<any>) {
         super(props)
 
         this.state = {
@@ -37,7 +38,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, State> {
         document.removeEventListener('keydown', this.onGlobalKeyDown)
     }
 
-    static getDerivedStateFromProps(props: React.PropsWithChildren<Props>, state: State): State | null {
+    static getDerivedStateFromProps(props: React.PropsWithChildren<any>, state: State): State | null {
         const isVisible = props.visible ?? false
 
         if (isVisible !== state.lastVisible) {
