@@ -76,11 +76,11 @@ import { Chip } from 'ui-kit-lite/components/Chip';
 
 | Name               | Type       | Default | Description                                                                            |
 |:-------------------|:-----------|:--------|:---------------------------------------------------------------------------------------|
-| `children`         | `Node`     | -       | Child components, usually inline elements.                                             |
+| `children`         | `Node`     | -       | The content of the component.                                                          |
 | `className`        | `String`   | `''`    | Set a class to style the Chip.                                                         |
 | `theme`            | `Object`   | -       | Theme object with classnames that will be used to style the component.                 |
 | `settingsDialog`   | `Node`     | -       | Set block on the right.                                                                |
-| `incomeDeleteIcon` | `Node`     | -       | Override the default delete icon element. Shown only if `deletable` is set.            |
+| `customDeleteIcon` | `Node`     | -       | Override the default delete icon element. Shown only if `deletable` is set.            |
 | `deletable`        | `Boolean`  | `false` | If `true`, the chip will be rendered with delete icon.                                 |
 | `onDeleteClick`    | `Function` | -       | Callback fired when the delete icon is clicked. If set, the delete icon will be shown. |
 
