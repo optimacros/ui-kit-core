@@ -2,29 +2,104 @@ import { Meta, StoryObj } from '@storybook/react'
 
 import { Button } from './index.tsx'
 
+interface ArgumentTypes {
+    [key: string]: {
+        control?: string;
+        description?: string;
+        table?: { 
+            disable?: boolean
+        }
+    }
+}
+
+const argTypes: ArgumentTypes = {
+    accent: {
+        control: "boolean",
+        description: 'If `true`, the button will have an accent color.'
+    },
+    primary: {
+        control: "boolean",
+        description: 'If `true`, the button will have a primary color.'
+    },
+    floating: {
+        control: "boolean",
+        description: 'If `true`, the button will have a floating look.'
+    },
+    mini: {
+        control: "boolean",
+        description: 'To be used with floating button. If true, the button will be smaller.'
+    },
+    raised: {
+        control: "boolean",
+        description: 'If `true`, the button will have a raised look.'
+    },
+    disabled: {
+        control: "boolean",
+        description: 'If `true`, component will be disabled.'
+    },
+    warning: {
+        control: "boolean",
+        description: 'If `true`, the button will have a warning look.'
+    },
+    inverse: {
+        control: "boolean",
+        description: 'If `true`, the neutral colors are inverted. Useful to put a button over a dark background.'
+    },
+    gray: {
+        control: "boolean",
+        description: 'If `true`, the button will have gray color.'
+    },
+    bordered: {
+        control: "boolean",
+        description: 'If `true`, the button will have border.'
+    },
+    neutral: {
+        control: "boolean",
+        description: 'Set it to `false` if you don\'t want the neutral styles to be included.'
+    },
+    uppercase: {
+        control: "boolean",
+        description: 'If `true`, the text inside the button will be in uppercase.    '
+    },
+    href: {
+        control: "text",
+        description: 'The URL to link to when the button is clicked. If defined, an `a` element will be used as the root node.'
+    },
+    buttonColor: {
+        control: "color",
+        description: 'Background for the button.'
+    },
+    fontColor: {
+        control: "color",
+        description: 'Font color for the button.'
+    },
+    fontSize: {
+        control: "number",
+        description: 'Font size for the button.'
+    },
+    icon: {
+        control: "text",
+        description: 'Overwritten description.',
+    },
+    target: {
+        control: "text",
+        description: 'The `target` attribute value for link button.',
+    },
+    label: {
+        control: "text",
+        description: 'The text string to use for the name of the button.',
+    },
+    theme: { table: { disable: true } },
+}
+
 const meta: Meta<typeof Button> = {
     title: 'UI Kit lite/Button',
     component: Button,
+    argTypes
 }
 export default meta
 
 type Story = StoryObj<typeof Button>
-
-const argTypes = {
-    icon: {
-        control: { control: 'text' },
-        description: 'Overwritten description',
-    },
-    fontSize: {
-        control: { control: 'text' },
-        description: 'Overwritten description',
-    },
-    tooltip: {
-        table: {
-            disable: true,
-        },
-    },
-}
 
 export const Accent: Story = {
     args: {
@@ -32,7 +107,6 @@ export const Accent: Story = {
         label: 'Bookmark',
         accent: true,
     },
-    argTypes
 }
 
 export const Bordered: Story = {
@@ -40,7 +114,6 @@ export const Bordered: Story = {
         label: 'Apply',
         bordered: true,
     },
-    argTypes
 }
 
 export const Primary: Story = {
@@ -48,7 +121,6 @@ export const Primary: Story = {
         label: 'Apply',
         primary: true,
     },
-    argTypes
 }
 
 
@@ -57,7 +129,6 @@ export const Flat: Story = {
         icon: 'inbox',
         label: 'Inbox',
     },
-    argTypes
 }
 
 export const Floating: Story = {
@@ -65,7 +136,6 @@ export const Floating: Story = {
         icon: 'add',
         floating: true,
     },
-    argTypes
 }
 
 export const Mini: Story = {
@@ -74,7 +144,6 @@ export const Mini: Story = {
         floating: true,
         mini: true,
     },
-    argTypes
 }
 
 export const Raised: Story = {
@@ -82,7 +151,13 @@ export const Raised: Story = {
         label: 'Next',
         raised: true,
     },
-    argTypes
+}
+
+export const Uppercase: Story = {
+    args: {
+        label: 'Apply',
+        uppercase: true,
+    },
 }
 
 export const Disabled: Story = {
@@ -92,7 +167,6 @@ export const Disabled: Story = {
         disabled: true,
         accent: true,
     },
-    argTypes
 }
 
 export const Gray: Story = {
@@ -100,7 +174,6 @@ export const Gray: Story = {
         label: 'Cancel',
         gray: true,
     },
-    argTypes
 }
 
 export const Warning: Story = {
@@ -108,7 +181,6 @@ export const Warning: Story = {
         label: 'Delete',
         warning: true,
     },
-    argTypes
 }
 
 export const Inverse: Story = {
@@ -117,7 +189,6 @@ export const Inverse: Story = {
         inverse: true,
         buttonColor: 'black'
     },
-    argTypes
 }
 
 
@@ -128,7 +199,6 @@ export const Styled: Story = {
         fontColor: "white",
         fontSize: 14,
     },
-    argTypes
 }
 
 export const Link: Story = {
@@ -138,5 +208,4 @@ export const Link: Story = {
         accent: true,
         label: 'Github',
     },
-    argTypes
 }

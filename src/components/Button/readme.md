@@ -54,6 +54,7 @@ import { Button } from 'ui-kit-lite/components/Button';
 | `label`        | `String`          | -        | The text string to use for the name of the button.                                                       |
 | `icon`         | `String`          | -        | Value of the icon (See Font Icon Component).                                                             |
 | `href`         | `String`          | -        | The URL to link to when the button is clicked. If defined, an `a` element will be used as the root node. |
+| `target`       | `String`          | -        | The `target` attribute value for link button.                                                            |
 | `buttonColor`  | `String`          | -        | Background for the button.                                                                               |
 | `fontColor`    | `String`          | -        | Font color for the button.                                                                               |
 | `fontSize`     | `String` `Number` | -        | Font size for the button.                                                                                |
