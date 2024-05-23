@@ -48,7 +48,7 @@ const argTypes: ArgumentTypes = {
     },
     tooltip: {
         control: "text",
-        description: 'The text string or node to use for the ButtonMenu tooltip. ',
+        description: 'The text string to use for the tooltip.',
     },
     tooltipDelay: {
         control: "number",
@@ -84,6 +84,9 @@ const argTypes: ArgumentTypes = {
     className: {
         table: { disable: true }
     },
+    theme: {
+        table: { disable: true }
+    },
     menuRootContainerClassName: {
         table: { disable: true }
     },
@@ -93,16 +96,12 @@ const argTypes: ArgumentTypes = {
     onVisibleChange: {
         table: { disable: true }
     },
-    theme: {
-        table: { disable: true }
-    },
     dataName: {
         table: { disable: true }
     },
     children: {
         table: { disable: true }
     },
-    
 }
 
 const meta: Meta<typeof ButtonMenu> = {
