@@ -21,17 +21,8 @@ const UserIcon = () => (
 
 const TestComponent = () => (
   <div>
-      <Icon
-          value="add"
-          title="Add"
-          alt="Add icon"
-          style={{ border: '1px solid red' }}
-      />
-
-      <Icon
-          value={<UserIcon />}
-          alt="User icon"
-      />
+      <Icon value="add" title="Add" alt="Add icon" style={{ border: '1px solid red' }} />
+      <Icon value={<UserIcon />} alt="User icon" />
   </div>
 );
 ```
