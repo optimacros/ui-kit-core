@@ -1,28 +1,63 @@
 import { Meta, StoryObj } from '@storybook/react'
 
 import { FontIcon } from './index'
+import { ArgumentType } from "../../types/ArgumentType.ts";
+
+const argTypes: ArgumentType = {
+    value: {
+        control: 'text',
+        description: 'The key string for the icon you want be displayed or custom icon element.'
+    },
+    title: {
+        control: 'text',
+        description: 'Icon description, visible on icon hover.'
+    },
+    alt: {
+        control: 'text',
+        description: 'The text used to set the `aria-label` attribute.'
+    },
+    style: {
+        control: 'object',
+        description: 'Add styles to component.'
+    },
+    className: {
+        table: { disable: true }
+    },
+    onClick: {
+        table: { disable: true }
+    },
+    
+}
 
 const meta: Meta<typeof FontIcon> = {
     title: 'UI Kit lite/FontIcon',
     component: FontIcon,
+    argTypes
 }
 export default meta
 
 type Story = StoryObj<typeof FontIcon>
 
-const argTypes = {}
 
-export const WithoutTooltip: Story = {
+
+export const Basic: Story = {
     args: {
         value: 'close',
+        alt: 'close icon'
     },
-    argTypes,
 }
 
 export const WithTooltip: Story = {
     args: {
-        value: 'home',
+        value: 'search',
         title: 'description',
     },
-    argTypes,
+}
+
+export const CustomStyles: Story = {
+    args: {
+        value: 'home',
+        title: 'description',
+        style: { border: '1px solid black' }
+    },
 }

@@ -22,19 +22,9 @@ const CustomDeleteIcon = () => (
 
 const TestComponent = () => (
   <div>
-      <FontIcon
-          value="home"
-          title="Description home"
-      />
-      <FontIcon
-          value="search"
-          alt="search-icon"
-      />
-      <FontIcon
-          value={<CustomDeleteIcon />}
-          title="Description search"
-          alt="search"
-      />
+      <FontIcon value="home" title="Description home" /> 
+      <FontIcon value="search" alt="search-icon" /> 
+      <FontIcon value={<CustomDeleteIcon />} title="Description search" alt="search" />
   </div>
 );
 ```
@@ -50,7 +40,6 @@ import { FontIcon } from 'ui-kit-lite/components/FontIcon';
 
 | Name        | Type                  | Default | Description                                                               |
 |:------------|:----------------------|:--------|:--------------------------------------------------------------------------|
-| `children`  | `Node`                | -       | The content of the component.                                             |
 | `className` | `String`              | `''`    | Set a class to style the Component.                                       |
 | `value`     | `String` or `Element` | -       | The key string for the icon you want be displayed or custom icon element. |
 | `title`     | `String`              | -       | Icon description, visible on icon hover.                                  |
