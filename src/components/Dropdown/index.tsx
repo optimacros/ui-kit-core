@@ -2,7 +2,6 @@ import classNames from 'classnames'
 import BaseDropDown from 'rc-dropdown'
 import type { DropdownProps as RCDropdownProps } from 'rc-dropdown/lib/Dropdown'
 import React from 'react'
-
 import { Key as KeyboardKey } from '../../types/KeyboardKeyList'
 
 import '../../packages/rc-dropdown/main.css'
@@ -30,11 +29,11 @@ export class Dropdown extends React.PureComponent<DropdownProps, State> {
             lastVisible: props.visible ?? false,
         }
 
-        document.addEventListener('keydown', this.onGlobalKeyDown)
+        document.addEventListener('keydown', this.onGlobalKeyDown, true)
     }
 
     componentWillUnmount(): void {
-        document.removeEventListener('keydown', this.onGlobalKeyDown)
+        document.removeEventListener('keydown', this.onGlobalKeyDown, true)
     }
 
     static getDerivedStateFromProps(props: React.PropsWithChildren<Props>, state: State): State | null {
@@ -63,12 +62,16 @@ export class Dropdown extends React.PureComponent<DropdownProps, State> {
         const overlayClassName = classNames(this.props.overlayClassName, 'wg-dropdown')
 
         return (
-            <div className={className}>
+            <div
+                className={className}
+                onKeyDown={this.onKeyDown}
+            >
                 <BaseDropDown
                     visible={this.state.visible}
                     onVisibleChange={this.onVisibleChange}
                     onOverlayClick={this.onOverlayClick}
                     // @ts-ignore
+                    // eslint-disable-next-line react/jsx-boolean-value
                     destroyPopupOnHide={true}
                     {...otherProps}
                     overlayClassName={overlayClassName}
@@ -88,6 +91,15 @@ export class Dropdown extends React.PureComponent<DropdownProps, State> {
     private onOverlayClick = () => {
         if (this.props.closeOnSelect !== false) {
             this.onVisibleChange(false)
+        }
+    }
+
+    private onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+        if (!this.state.visible && event.key === KeyboardKey.SPACE) {
+            event.preventDefault()
+            event.stopPropagation()
+
+            this.onVisibleChange(!this.state.visible)
         }
     }
 
