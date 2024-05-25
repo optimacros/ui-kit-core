@@ -1,10 +1,10 @@
 .IconButton {
-    height: 30px !important;
-    color: var(--toolbar-icon-color) !important;
+    height: 30px;
+    color: var(--toolbar-icon-color);
     border-radius: var(--border-radius);
     border: 1px solid transparent;
     overflow: hidden;
-    display: inline-flex !important;
+    display: inline-flex;
     align-items: center;
 
     & img {
@@ -16,31 +16,31 @@
 
     & .icon {
         opacity: 1;
-        font-size: 17px !important;
+        font-size: 17px;
         color: inherit;
-        line-height: normal !important;
+        line-height: normal;
     }
 
     &.accent:not([disabled]) {
-        color: #767676 !important;
+        color: #767676;
         border: 1px solid #dbdbdb;
-        background: #e9e9e9 !important;
+        background: #e9e9e9;
     }
 
     &.bordered:not([disabled]) {
-        background: white !important;
-        color: var(--Button-accent-bg) !important;
+        background: white;
+        color: var(--Button-accent-bg);
         border: 1px solid var(--Button-accent-bg);
 
         &:focus:not(:active) {
-            background: var(--Button-accent-bg-hover) !important;
-            color: var(--Button-accent-color) !important;
+            background: var(--Button-accent-bg-hover);
+            color: var(--Button-accent-color);
             border-color: transparent;
         }
 
         &:hover {
-            background: var(--Button-accent-bg-hover) !important;
-            color: var(--Button-accent-color) !important;
+            background: var(--Button-accent-bg-hover);
+            color: var(--Button-accent-color);
         }
     }
 

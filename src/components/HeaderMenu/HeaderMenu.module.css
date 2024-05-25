@@ -107,12 +107,12 @@ https://optimacros.myjetbrains.com/youtrack/issue/OM-1575
 
     &_parent {
         &:not(:first-child) {
-            border-top: 1px solid var(--color-scale-gray-8) !important;
+            border-top: 1px solid var(--color-scale-gray-8);
         }
     }
 
     &_child {
-        padding-left: 10px !important;
+        padding-left: 10px;
     }
 
     & .Element_IconContainer {

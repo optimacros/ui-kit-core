@@ -12,7 +12,7 @@
         border-color: var(--primary-color);
 
         &:after {
-            animation: none !important;
+            animation: none;
         }
     }
 }
@@ -28,13 +28,13 @@
 
 .disabled {
     & > .check {
-        border-color: var(--Checkbox-color-disabled) !important;
+        border-color: var(--Checkbox-color-disabled);
 
         &.checked {
-            background-color: var(--Checkbox-color-disabled) !important;
+            background-color: var(--Checkbox-color-disabled);
 
             &:after {
-                animation: none !important;
+                animation: none;
                 border-color: var(--Checkbox-color);
             }
         }
@@ -45,6 +45,6 @@
     }
 
     & > .text {
-        color: var(--Checkbox-color-disabled) !important;
+        color: var(--Checkbox-color-disabled);
     }
 }

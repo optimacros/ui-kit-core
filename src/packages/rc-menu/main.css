@@ -67,7 +67,7 @@
 .rc-menu-submenu-title.rc-menu-item-disabled,
 .rc-menu-item.rc-menu-submenu-disabled,
 .rc-menu-submenu-title.rc-menu-submenu-disabled {
-  color: var(--color-scale-gray-3) !important;
+  color: var(--color-scale-gray-3);
   opacity: .3;
 }
 .rc-menu-item-divider {
@@ -316,7 +316,7 @@
 .rc-menu-submenu-rtl .rc-menu-open-zoom-enter,
 .rc-menu-submenu-rtl .rc-menu-open-zoom-appear,
 .rc-menu-submenu-rtl .rc-menu-open-zoom-leave {
-  transform-origin: top right !important;
+  transform-origin: top right;
 }
 @keyframes rcMenuOpenZoomIn {
   0% {

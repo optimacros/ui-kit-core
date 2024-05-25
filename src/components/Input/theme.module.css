@@ -26,10 +26,10 @@
 .icon {
     color: var(--input-text-label-color);
     display: block;
-    font-size: var(--input-icon-font-size) !important;
+    font-size: var(--input-icon-font-size);
     height: var(--input-icon-size);
     left: calc(-1 * (var(--input-icon-size) + var(--input-icon-right-space)));
-    line-height: var(--input-icon-size) !important;
+    line-height: var(--input-icon-size);
     position: absolute;
     text-align: center;
     top: var(--input-icon-offset);

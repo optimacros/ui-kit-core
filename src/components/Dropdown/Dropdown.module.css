@@ -39,7 +39,7 @@
     }
 
     .rc-dropdown-menu {
-        color: unset !important;
+        color: unset;
 
         & > .rc-dropdown-menu-item {
             position: relative;
