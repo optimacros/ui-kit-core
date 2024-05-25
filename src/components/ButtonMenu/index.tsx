@@ -93,16 +93,15 @@ export class ButtonMenu extends PureComponent<ButtonMenuProps> {
 
         const updatedClassName = classNames(
             {
-                [buttonMenuTheme.ButtonMenu]: true,
-                [buttonMenuTheme.ButtonMenu__uppercase]: uppercase ?? false,
-                [buttonMenuTheme.ButtonMenu__showOnlyIcon]: showOnlyIcon ?? false,
+                [customTheme.ButtonMenu]: true,
+                [customTheme.ButtonMenu__uppercase]: uppercase ?? false,
+                [customTheme.ButtonMenu__showOnlyIcon]: showOnlyIcon ?? false,
             },
             className,
-            customTheme.ButtonMenu,
         )
 
-        const classNameText = classNames(buttonMenuTheme.buttonText, customTheme.buttonText)
-        const classNameIcon = classNames(buttonMenuTheme.buttonIcon, customTheme.buttonIcon)
+        const classNameText = customTheme.buttonText
+        const classNameIcon = customTheme.buttonIcon
 
         const iconValue = arrowUp
             ? 'arrow_drop_up'
