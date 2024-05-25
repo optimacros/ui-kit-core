@@ -28,7 +28,7 @@
     }
 
     & .icon {
-        font-size: 17px !important;
+        font-size: 17px;
         line-height: normal !important;
         color: inherit;
         opacity: 1;
