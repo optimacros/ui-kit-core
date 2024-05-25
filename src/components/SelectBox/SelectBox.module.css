@@ -9,11 +9,11 @@
 
     & > input {
         color: var(--secondary-text-color);
-        background: none;
+        background: none !important;
 
         &:focus {
-            outline: none;
-            box-shadow: unset;
+            outline: none !important;
+            box-shadow: unset !important;
         }
     }
 

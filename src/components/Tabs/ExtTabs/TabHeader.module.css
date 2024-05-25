@@ -107,7 +107,7 @@
 }
 
 .Icon {
-    display: flex;
+    display: flex !important;
     margin-right: 8px;
     font-size: 14px;
 
@@ -134,9 +134,9 @@
     max-height: 100%;
     width: 100%;
     min-width: 0;
-    padding: 0;
+    padding: 0 !important;
     border-radius: 3px;
-    border: none;
+    border: none !important;
 
     & [data-react-toolbox="font-icon"] {
         margin-top: -2px;
@@ -153,16 +153,16 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-    padding: 6px 12px;
+    padding: 6px 12px !important;
     max-width: 200px;
     min-width: 110px;
 
     &_active {
-        background: var(--primary-color);
-        color: #fff;
+        background: var(--primary-color) !important;
+        color: #fff !important;
 
         * {
-            color: #fff;
+            color: #fff !important;
         }
     }
 
@@ -170,7 +170,7 @@
         opacity: .5;
         pointer-events: none;
         cursor: default;
-        background: none;
+        background: none !important;
     }
 }
 

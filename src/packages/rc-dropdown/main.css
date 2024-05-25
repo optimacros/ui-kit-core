@@ -108,7 +108,7 @@
   animation-duration: 0.3s;
   animation-fill-mode: both;
   transform-origin: 0 0;
-  display: block;
+  display: block !important;
   opacity: 0;
   animation-timing-function: cubic-bezier(0.08, 0.82, 0.17, 1);
   animation-play-state: paused;
@@ -118,7 +118,7 @@
   animation-duration: 0.3s;
   animation-fill-mode: both;
   transform-origin: 0 0;
-  display: block;
+  display: block !important;
   opacity: 1;
   animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.34);
   animation-play-state: paused;

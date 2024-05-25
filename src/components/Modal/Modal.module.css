@@ -12,7 +12,7 @@
         text-align: center;
         vertical-align: middle;
         white-space: nowrap;
-        background-color: var(--Modal-overlay-bg);
+        background-color: var(--Modal-overlay-bg) !important;
         overflow: auto;
 
         &:after {
@@ -26,19 +26,19 @@
 
     &__Content {
         display: inline-block;
-        padding: 0;
-        position: relative;
-        top: auto;
-        left: auto;
-        right: auto;
-        bottom: auto;
+        padding: 0 !important;
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
         vertical-align: middle;
         text-align: left;
         white-space: normal;
-        border: none;
-        background: none;
-        outline: none;
-        overflow: visible;
+        border: none !important;
+        background: none !important;
+        outline: none !important;
+        overflow: visible !important;
         max-width: 1280px;
     }
 }
@@ -47,17 +47,17 @@
 /* Modal Style */
 /* -------------------------------------------------- */
 .Container {
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius) !important;
     border: 1px solid var(--light-divider-color);
     background: var(--Modal-bg);
     outline: none;
 
     &__compact {
-        padding: 0;
+        padding: 0 !important;
 
         & .Header,
         & .Content {
-            padding: 0;
+            padding: 0 !important;
         }
     }
 }

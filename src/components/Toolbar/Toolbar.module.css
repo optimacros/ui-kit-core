@@ -30,7 +30,7 @@
     & > [data-react-toolbox="link"] {
         display: inline-block;
         margin: 0 .8rem 0 0;
-        text-transform: uppercase;
+        text-transform: uppercase !important;
     }
 
     & > [data-react-toolbox="button"]:last-child,

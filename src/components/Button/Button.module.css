@@ -13,7 +13,7 @@
     }
 
     & .icon {
-        line-height: normal;
+        line-height: normal !important;
         color: inherit;
     }
 
