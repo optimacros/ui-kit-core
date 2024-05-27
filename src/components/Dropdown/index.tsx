@@ -1,5 +1,7 @@
 import classNames from 'classnames'
+// @ts-ignore
 import BaseDropDown from 'rc-dropdown'
+// @ts-ignore
 import type { DropdownProps as RCDropdownProps } from 'rc-dropdown/lib/Dropdown'
 import React from 'react'
 import { Key as KeyboardKey } from '../../types/KeyboardKeyList'
@@ -7,10 +9,16 @@ import { Key as KeyboardKey } from '../../types/KeyboardKeyList'
 import '../../packages/rc-dropdown/main.css'
 import styles from './Dropdown.module.css'
 
-export interface Props extends RCDropdownProps {
-    className?: string;
+export interface Props {
+    visible?: boolean;
     disabled?: boolean;
     closeOnSelect?: boolean;
+    className?: string;
+    trigger?: Array<string>
+    overlay?: React.JSX.Element;
+    overlayClassName?: string;
+    onVisibleChange?: (visible: boolean) => boolean | void;
+    children?: React.ReactNode;
 }
 
 export type State = {
@@ -50,7 +58,6 @@ export class Dropdown extends React.PureComponent<DropdownProps, State> {
         const {
             visible,
             onVisibleChange,
-            closeOnSelect,
             ...otherProps
         } = this.props
 
@@ -70,10 +77,10 @@ export class Dropdown extends React.PureComponent<DropdownProps, State> {
                     visible={this.state.visible}
                     onVisibleChange={this.onVisibleChange}
                     onOverlayClick={this.onOverlayClick}
+                    {...otherProps}
                     // @ts-ignore
                     // eslint-disable-next-line react/jsx-boolean-value
                     destroyPopupOnHide={true}
-                    {...otherProps}
                     overlayClassName={overlayClassName}
                 />
             </div>
