@@ -1,9 +1,8 @@
-import { Meta, StoryObj } from "@storybook/react"
+import { ArgTypes, Meta, StoryObj } from "@storybook/react"
 
 import { Button } from "./index.tsx"
-import { ArgumentType } from "../../types/ArgumentType.ts";
 
-const argTypes: ArgumentType = {
+const argTypes: Partial<ArgTypes> = {
     accent: {
         control: "boolean",
         description: "If `true`, the button will have an accent color."

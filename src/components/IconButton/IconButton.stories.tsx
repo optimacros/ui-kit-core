@@ -1,9 +1,8 @@
-import { Meta, StoryObj } from "@storybook/react"
+import { ArgTypes, Meta, StoryObj } from "@storybook/react"
 
 import { IconButton } from "./index"
-import {ArgumentType} from "../../types/ArgumentType.ts";
 
-const argTypes: ArgumentType = {
+const argTypes: Partial<ArgTypes> = {
     icon: {
         control: "text",
         description: "Value of the icon (See Font Icon Component).",

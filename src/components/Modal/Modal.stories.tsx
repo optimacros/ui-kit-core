@@ -1,11 +1,10 @@
-import { Meta, StoryObj } from "@storybook/react"
+import { ArgTypes, Meta, StoryObj } from "@storybook/react"
 
 import { Modal } from "./index"
-import { ArgumentType } from "../../types/ArgumentType.ts";
 import { useState } from "react";
 import { FontIcon } from "../FontIcon";
 
-const argTypes: ArgumentType = {
+const argTypes: Partial<ArgTypes> = {
     isOpen: {
         control: "boolean",
         description: "If `true`, modal is shown."

@@ -1,10 +1,9 @@
-import { Meta } from "@storybook/react"
+import {ArgTypes, Meta, StoryObj} from "@storybook/react"
 
 import { Dropdown } from "./index"
 import { Button } from "../Button";
-import { ArgumentType } from "../../types/ArgumentType.ts";
 
-const argTypes: ArgumentType = {
+const argTypes: Partial<ArgTypes> = {
     disabled: {
         control: "boolean",
         description: "If `true`, component will be disabled."
@@ -140,8 +139,8 @@ const meta: Meta<typeof Dropdown> = {
 export default meta
 
 // todo - fix ts
-// type Story = StoryObj<typeof Dropdown>
-type Story = any
+type Story = StoryObj<typeof Dropdown>
+// type Story = any
 
 const OverlayComponent = () => {
     return (
@@ -156,60 +155,35 @@ export const Basic: Story = {
     args: {
         children: <Button label="Users"/>,
         closeOnSelect: true,
-        overlay: OverlayComponent,
-        overlayStyle: { border: "1px solid gray" },
-        trigger: "hover",
+        overlay: <OverlayComponent />,
+        trigger: ["hover"],
     },
 }
 
 export const TriggerClick: Story = {
     args: {
-        trigger: "click",
+        trigger: ["click"],
         children: <Button label="Users"/>,
-        overlay: OverlayComponent,
-        overlayStyle: { border: "1px solid gray" }
+        overlay: <OverlayComponent />,
     },
 }
 
 export const Disabled: Story = {
     args: {
         children: <Button label="Users"/>,
-        overlay: OverlayComponent,
+        overlay: <OverlayComponent />,
         disabled: true,
-        overlayStyle: { border: "1px solid gray" }
     },
 }
 
 export const Visible: Story = {
     args: {
         children: <Button label="Users"/>,
-        overlay: OverlayComponent,
+        overlay: <OverlayComponent />,
         visible: true,
-        overlayStyle: { border: "1px solid gray" },
-        trigger: "hover",
+        trigger: ["hover"],
     },
 }
-
-export const LessOverlayWidth: Story = {
-    args: {
-        children: <Button label="Some long label"/>,
-        overlay: OverlayComponent,
-        minOverlayWidthMatchTrigger: false,
-        overlayStyle: { border: "1px solid gray" },
-        trigger: "hover",
-    },
-}
-
-export const PointOverlay: Story = {
-    args: {
-        children: <Button label="Label"/>,
-        overlay: OverlayComponent,
-        alignPoint: true,
-        overlayStyle: { border: "1px solid gray" },
-        trigger: "hover",
-    },
-}
-
 
 
 

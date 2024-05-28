@@ -1,9 +1,8 @@
-import { Meta, StoryObj } from "@storybook/react"
+import { ArgTypes, Meta, StoryObj } from "@storybook/react"
 
 import { FontIcon } from "./index"
-import { ArgumentType } from "../../types/ArgumentType.ts";
 
-const argTypes: ArgumentType = {
+const argTypes: Partial<ArgTypes> = {
     value: {
         control: "text",
         description: "The key string for the icon you want be displayed or custom icon element."

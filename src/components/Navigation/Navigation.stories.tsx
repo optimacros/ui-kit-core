@@ -1,16 +1,15 @@
-import { Meta, StoryObj } from "@storybook/react"
+import { ArgTypes, Meta, StoryObj } from "@storybook/react"
 
-import { Navigation } from "./index"
+import { Navigation, NavigationProps } from "./index"
 import { Button } from "../Button"
-import { ArgumentType } from "../../types/ArgumentType.ts";
 
-const argTypes: ArgumentType = {
+const argTypes: Partial<ArgTypes> = {
     wrap: {
         control: "boolean",
         description: "If `true`, navigation items can wrap onto multiple lines. "
     },
     type: {
-        control: "radios",
+        control: "radio",
         options: [ "horizontal", "vertical" ],
         table: {
             defaultValue: { summary: "horizontal" },
@@ -24,12 +23,12 @@ const argTypes: ArgumentType = {
 
 const meta: Meta<typeof Navigation> = {
     title: "UI Kit lite/Navigation",
-    component: Navigation,
+    component: Navigation as unknown as React.ComponentType<NavigationProps>,
     argTypes
 }
 export default meta
 
-type Story = StoryObj<typeof Navigation>
+type Story = StoryObj<NavigationProps>
 
 const Wrapper = ({ children }: { children: JSX.Element }) => (
     <div style={{ width: "300px" }}>

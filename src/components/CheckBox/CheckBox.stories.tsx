@@ -1,9 +1,8 @@
-import { Meta, StoryObj } from "@storybook/react"
+import { ArgTypes, Meta, StoryObj } from "@storybook/react"
 
 import { CheckBox } from "./index"
-import { ArgumentType } from "../../types/ArgumentType.ts";
 
-const argTypes: ArgumentType = {
+const argTypes: Partial<ArgTypes> = {
     label: {
         control: "text",
         description: "The text to use for the label element.",

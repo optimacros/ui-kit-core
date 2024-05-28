@@ -1,10 +1,9 @@
-import { Meta, StoryObj } from "@storybook/react"
+import { ArgTypes, Meta, StoryObj } from "@storybook/react"
 
-import { ArgumentType } from "../../types/ArgumentType.ts";
 import { Tooltip } from "./Tooltip.tsx";
 import { Button } from "../Button";
 
-const argTypes: ArgumentType = {
+const argTypes: Partial<ArgTypes> = {
     composedComponent: {
         control: "text",
         description: "Tooltip reference element.",

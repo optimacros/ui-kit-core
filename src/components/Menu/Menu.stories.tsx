@@ -1,13 +1,9 @@
-import { Meta, StoryObj } from "@storybook/react"
+import { ArgTypes, Meta, StoryObj } from "@storybook/react"
 
 import { Menu, MenuItem, SubMenu, MenuItemGroup } from "./index"
-import { ArgumentType } from "../../types/ArgumentType.ts";
 import { FontIcon } from "../FontIcon";
 
-const argTypes: ArgumentType = {
-    children: { table: { disable: true } },
-    className: { table: { disable: true } },
-    expandIcon: { table: { disable: true } },
+const argTypes: Partial<ArgTypes> = {
     mode: {
         control: "text",
         table: {
@@ -15,6 +11,9 @@ const argTypes: ArgumentType = {
         },
         description: "Mode of menu.",
     },
+    children: { control: "object", table: { disable: true } },
+    className: { table: { disable: true } },
+    expandIcon: { table: { disable: true } },
 }
 
 const meta: Meta<typeof Menu> = {

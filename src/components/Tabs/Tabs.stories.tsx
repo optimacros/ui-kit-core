@@ -1,11 +1,10 @@
-import { Meta, StoryObj } from "@storybook/react"
+import { ArgTypes, Meta, StoryObj } from "@storybook/react"
 
 import { Tabs } from "./index"
 import { Tab } from "./Tab.tsx"
 import { useState } from "react";
-import { ArgumentType } from "../../types/ArgumentType.ts";
 
-const argTypes: ArgumentType = {
+const argTypes: Partial<ArgTypes> = {
     active: {
         control: "number",
         description: "The value of the currently selected `Tab`."

@@ -1,10 +1,9 @@
-import { Meta, StoryObj } from "@storybook/react"
+import { ArgTypes, Meta, StoryObj } from "@storybook/react"
 
 import { Toolbar } from "./index"
 import { Button } from "../Button"
-import { ArgumentType } from "../../types/ArgumentType.ts";
 
-const argTypes: ArgumentType = {
+const argTypes: Partial<ArgTypes> = {
     align: {
         control: "radio",
         options: ["right", "rightInRow", "left", "center"],

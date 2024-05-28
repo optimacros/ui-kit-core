@@ -1,10 +1,8 @@
-import { Meta, StoryObj } from "@storybook/react"
+import { ArgTypes, Meta, StoryObj } from "@storybook/react"
 
 import { Chip } from "./index"
-import { ArgumentType } from "../../types/ArgumentType.ts";
 
-
-const argTypes: ArgumentType = {
+const argTypes: Partial<ArgTypes> = {
     deletable: {
         control: "boolean",
         description: "If `true`, the chip will be rendered with delete icon."

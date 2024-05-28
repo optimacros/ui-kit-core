@@ -1,10 +1,9 @@
-import { Meta, StoryObj } from "@storybook/react"
+import { ArgTypes, Meta, StoryObj } from "@storybook/react"
 
 import { SelectBox } from "./index"
-import { ArgumentType } from "../../types/ArgumentType.ts";
 import { useState } from "react";
 
-const argTypes: ArgumentType = {
+const argTypes: Partial<ArgTypes> = {
     allowBlank: {
         control: "boolean",
         description: "If `true`, the select box value can be empty. If `false` - value is first item of source."
@@ -50,7 +49,7 @@ const argTypes: ArgumentType = {
         description: "If not empty, the error will be shown."
     },
     source: {
-        control: "array",
+        control: "object",
         description: "Array of options for select."
     },
     theme: { table: { disable: true } },
