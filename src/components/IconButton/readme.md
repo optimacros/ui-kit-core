@@ -14,7 +14,7 @@ const GithubIcon = () => (
 const TestComponent = () => (
   <div>
     <IconButton icon='favorite' accent />
-    <IconButton icon={<GithubIcon />} accent />
+    <IconButton icon={<GithubIcon />} accent disabled />
     <IconButton primary><GithubIcon /></IconButton>
   </div>
 );
@@ -30,29 +30,31 @@ import { IconButton } from 'ui-kit-lite/components/IconButton';
 
 ## Properties
 
-| Name                 | Type              | Default    | Description                                                                                                                                            |
-|:---------------------|:------------------|:-----------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `children`           | `Node`            | -          | The content of the component.                                                                                                                          |
-| `className`          | `String`          | `''`       | Set a class to style the Component.                                                                                                                    |
-| `theme`              | `Object`          | -          | Theme object with classnames that will be used to style the component.                                                                                 |
-| `type`               | `String`          | `button`   | Component root container type.                                                                                                                         |
-| `label`              | `String`          | -          | The text string to use for the name of the button.                                                                                                     |
-| `icon`               | `String`          | -          | Value of the icon (See Font Icon Component).                                                                                                           |
-| `href`               | `String`          | -          | The URL to link to when the button is clicked. If defined, an `a` element will be used as the root node.                                               |
-| `disabled`           | `Boolean`         | `false`    | If `true`, component will be disabled.                                                                                                                 |
-| `neutral`            | `Boolean`         | `true`     | Set it to `false` if you don't want the neutral styles to be included.                                                                                 |
-| `inverse`            | `Boolean`         | `false`    | If `true`, the neutral colors are inverted. Useful to put a button over a dark background.                                                             |
-| `accent`             | `Boolean`         | `false`    | If `true`, the button will have an accent color.                                                                                                       |
-| `primary`            | `Boolean`         | `false`    | If `true`, the button will have a primary color.                                                                                                       |
-| `bordered`           | `Boolean`         | `false`    | If `true`, the button will have border.                                                                                                                |
-| `onMouseEnter`       | `Function`        | -          | Fires after the mouse enters the Component.                                                                                                            |
-| `onMouseLeave`       | `Function`        | -          | Fires after the mouse leaves the Component.                                                                                                            |
-| `onMouseUp`          | `Function`        | -          | Fires after the mouse is released from the Component.                                                                                                  |        
-| `tooltipDelay`       | `Number`          | `0`        | Amount of time in milliseconds spent before the tooltip is visible.                                                                                    |
-| `tooltipOffset`      | `Number`          | `0`        | If `tooltipPosition` - `vertical`, `bottom` or `top`, the tooltip moves relative to its axis.                                                          |
-| `tooltipHideOnClick` | `Boolean`         | `true`     | If `true`, the Tooltip hides after a click in the host component.                                                                                      |
-| `tooltipPosition`    | `String`          | `vertical` | Determines the position of the tooltip. It can be automatic with `vertical` and `horizontal` values or forced with `bottom`, `top`, `left` or `right`. |
-| `tooltipShowOnClick` | `Boolean`         | `false`    | If `true`, the tooltip also toggled when clicked. This is useful for mobile where there is no mouse enter.                                             |
+| Name                 | Type               | Default    | Description                                                                                                                                            |
+|:---------------------|:-------------------|:-----------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `children`           | `Node`             | -          | The content of the component.                                                                                                                          |
+| `className`          | `String`           | `''`       | Set a class to style the Component.                                                                                                                    |
+| `theme`              | `Object`           | -          | Theme object with classnames that will be used to style the component.                                                                                 |
+| `type`               | `String`           | `button`   | Component root container type.                                                                                                                         |
+| `label`              | `String`           | -          | The text string to use for the name of the button.                                                                                                     |
+| `icon`               | `String`           | -          | Value of the icon (See Font Icon Component).                                                                                                           |
+| `href`               | `String`           | -          | The URL to link to when the button is clicked. If defined, an `a` element will be used as the root node.                                               |
+| `target`             | `String`           | -          | The `target` attribute value for link button.                                                                                                          |
+| `disabled`           | `Boolean`          | `false`    | If `true`, component will be disabled.                                                                                                                 |
+| `neutral`            | `Boolean`          | `true`     | Set it to `false` if you don't want the neutral styles to be included.                                                                                 |
+| `inverse`            | `Boolean`          | `false`    | If `true`, the neutral colors are inverted. Useful to put a button over a dark background.                                                             |
+| `accent`             | `Boolean`          | `false`    | If `true`, the button will have an accent color.                                                                                                       |
+| `primary`            | `Boolean`          | `false`    | If `true`, the button will have a primary color.                                                                                                       |
+| `bordered`           | `Boolean`          | `false`    | If `true`, the button will have border.                                                                                                                |
+| `onMouseEnter`       | `Function`         | -          | Fires after the mouse enters the Component.                                                                                                            |
+| `onMouseLeave`       | `Function`         | -          | Fires after the mouse leaves the Component.                                                                                                            |
+| `onMouseUp`          | `Function`         | -          | Fires after the mouse is released from the Component.                                                                                                  |        
+| `tooltip`            | `String` or `Node` | -          | The text string or node to use for the tooltip.                                                                                                        |
+| `tooltipDelay`       | `Number`           | `0`        | Amount of time in milliseconds spent before the tooltip is visible.                                                                                    |
+| `tooltipOffset`      | `Number`           | `0`        | If `tooltipPosition` - `vertical`, `bottom` or `top`, the tooltip moves relative to its axis.                                                          |
+| `tooltipHideOnClick` | `Boolean`          | `true`     | If `true`, the Tooltip hides after a click in the host component.                                                                                      |
+| `tooltipPosition`    | `String`           | `vertical` | Determines the position of the tooltip. It can be automatic with `vertical` and `horizontal` values or forced with `bottom`, `top`, `left` or `right`. |
+| `tooltipShowOnClick` | `Boolean`          | `false`    | If `true`, the tooltip also toggled when clicked. This is useful for mobile where there is no mouse enter.                                             |
 
 
 ## Theme
