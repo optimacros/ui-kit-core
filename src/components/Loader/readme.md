@@ -26,19 +26,19 @@ import { Loader } from 'ui-kit-lite/components/Loader';
 
 ## Properties
 
-| Name         | Type      | Default         | Description                                                                                                          |
-|:-------------|:----------|:----------------|:---------------------------------------------------------------------------------------------------------------------|
-| `className`  | `String`  | `''`            | Additional class name to provide custom styling.                                                                     |
-| `theme`      | `String`  | -               | Theme object with classnames that will be used to style the component.                                               |
-| `value`      | `Number`  | `0`             | Value of the current progress.                                                                                       |
-| `max`        | `Number`  | `100`           | Maximum value permitted.                                                                                             |
-| `min`        | `Number`  | `0`             | Minimum value permitted.                                                                                             |
-| `buffer`     | `Number`  | `0`             | Value of a secondary progress bar useful for buffering.                                                              |
-| `mode`       | `String`  | `indeterminate` | Mode of the progress bar, it can be `determinate` or `indeterminate`.                                                |
-| `type`       | `String`  | `linear`        | Type of the progress bar, it can be `circular` or `linear`.                                                          |
-| `disabled`   | `Boolean` | `false`         | If `true`, component will be disabled.                                                                               |
-| `multicolor` | `Boolean` | `false`         | If `true`, the circular progress bar will be changing its color. When type is `circular` and node is `indeterminate` |
-| `innerRef`   | `Node`    | -               | Used for ref Loader Component.                                                                                       |
+| Name         | Type      | Default         | Description                                                                                                           |
+|:-------------|:----------|:----------------|:----------------------------------------------------------------------------------------------------------------------|
+| `className`  | `String`  | `''`            | Additional class name to provide custom styling.                                                                      |
+| `theme`      | `String`  | -               | Theme object with classnames that will be used to style the component.                                                |
+| `value`      | `Number`  | `0`             | Value of the current progress.                                                                                        |
+| `max`        | `Number`  | `100`           | Maximum value permitted.                                                                                              |
+| `min`        | `Number`  | `0`             | Minimum value permitted.                                                                                              |
+| `buffer`     | `Number`  | `0`             | Value of a secondary progress bar useful for buffering.                                                               |
+| `mode`       | `String`  | `indeterminate` | Mode of the progress bar, it can be `determinate` or `indeterminate`.                                                 |
+| `type`       | `String`  | `linear`        | Type of the progress bar, it can be `circular` or `linear`.                                                           |
+| `disabled`   | `Boolean` | `false`         | If `true`, component will be disabled.                                                                                |
+| `multicolor` | `Boolean` | `false`         | If `true`, the circular progress bar will be changing its color. When type is `circular` and node is `indeterminate`. |
+| `innerRef`   | `Node`    | -               | Used for ref Loader Component.                                                                                        |
 
 ## Theme
 
