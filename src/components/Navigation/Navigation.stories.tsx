@@ -1,21 +1,21 @@
-import { Meta, StoryObj } from '@storybook/react'
+import { Meta, StoryObj } from "@storybook/react"
 
-import { Navigation } from './index'
-import { Button } from '../Button'
+import { Navigation } from "./index"
+import { Button } from "../Button"
 import { ArgumentType } from "../../types/ArgumentType.ts";
 
 const argTypes: ArgumentType = {
     wrap: {
         control: "boolean",
-        description: 'If `true`, navigation items can wrap onto multiple lines. '
+        description: "If `true`, navigation items can wrap onto multiple lines. "
     },
     type: {
         control: "radios",
         options: [ "horizontal", "vertical" ],
         table: {
-            defaultValue: { summary: 'horizontal' },
+            defaultValue: { summary: "horizontal" },
         },
-        description: 'Type of the navigation.',
+        description: "Type of the navigation.",
     },
     theme: { table: { disable: true } },
     className: { table: { disable: true } },
@@ -23,7 +23,7 @@ const argTypes: ArgumentType = {
 }
 
 const meta: Meta<typeof Navigation> = {
-    title: 'UI Kit lite/Navigation',
+    title: "UI Kit lite/Navigation",
     component: Navigation,
     argTypes
 }
@@ -32,7 +32,7 @@ export default meta
 type Story = StoryObj<typeof Navigation>
 
 const Wrapper = ({ children }: { children: JSX.Element }) => (
-    <div style={{ width: '300px' }}>
+    <div style={{ width: "300px" }}>
         {children}
     </div>
 );
@@ -40,7 +40,7 @@ const Wrapper = ({ children }: { children: JSX.Element }) => (
 
 export const Horizontal: Story = {
     args: {
-        type: 'horizontal',
+        type: "horizontal",
         children: (
             <>
                 <Button label="Portfolio" />
@@ -52,7 +52,7 @@ export const Horizontal: Story = {
 
 export const Vertical: Story = {
     args: {
-        type: 'vertical',
+        type: "vertical",
         children: (
             <>
                 <Button label="Portfolio" />
@@ -64,7 +64,7 @@ export const Vertical: Story = {
 
 export const Wrap: Story = {
     args: {
-        type: 'horizontal',
+        type: "horizontal",
         wrap: true,
         children: (
             <>
