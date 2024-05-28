@@ -75,4 +75,4 @@ import { Dropdown } from 'ui-kit-lite/components/Dropdown';
 | `mouseLeaveDelay`             | `Number`                           | `0.1`                             | Delay time to hide when mouse leave. Unit: s.                                               |
 | `onPopupAlign`                | `function(popupDomNode, align)`    | -                                 | Callback when popup node is aligned.                                                        |
 
-Dropdown use `rc-dropdown`. You can read more at the [link](https://github.com/react-component/dropdown).'
+Ui-kit using `rc-dropdown`. You can read more at the [link](https://github.com/react-component/dropdown).

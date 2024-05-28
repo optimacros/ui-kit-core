@@ -127,7 +127,14 @@ const meta: Meta<typeof Dropdown> = {
     title: "UI Kit lite/Dropdown",
     // @ts-ignore
     component: Dropdown,
-    argTypes
+    argTypes,
+    parameters: {
+        docs: {
+            description: {
+                component: "Ui-kit using `rc-dropdown`. You can read more at the [link](https://github.com/react-component/dropdown)."
+            },
+        },
+    },
 }
 
 export default meta

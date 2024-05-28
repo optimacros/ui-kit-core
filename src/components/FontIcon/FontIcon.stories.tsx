@@ -1,24 +1,24 @@
-import { Meta, StoryObj } from '@storybook/react'
+import { Meta, StoryObj } from "@storybook/react"
 
-import { FontIcon } from './index'
+import { FontIcon } from "./index"
 import { ArgumentType } from "../../types/ArgumentType.ts";
 
 const argTypes: ArgumentType = {
     value: {
-        control: 'text',
-        description: 'The key string for the icon you want be displayed or custom icon element.'
+        control: "text",
+        description: "The key string for the icon you want be displayed or custom icon element."
     },
     title: {
-        control: 'text',
-        description: 'Icon description, visible on icon hover.'
+        control: "text",
+        description: "Icon description, visible on icon hover."
     },
     alt: {
-        control: 'text',
-        description: 'The text used to set the `aria-label` attribute.'
+        control: "text",
+        description: "The text used to set the `aria-label` attribute."
     },
     style: {
-        control: 'object',
-        description: 'Add styles to component.'
+        control: "object",
+        description: "Add styles to component."
     },
     className: {
         table: { disable: true }
@@ -30,7 +30,7 @@ const argTypes: ArgumentType = {
 }
 
 const meta: Meta<typeof FontIcon> = {
-    title: 'UI Kit lite/FontIcon',
+    title: "UI Kit lite/FontIcon",
     component: FontIcon,
     argTypes
 }
@@ -42,22 +42,21 @@ type Story = StoryObj<typeof FontIcon>
 
 export const Basic: Story = {
     args: {
-        value: 'close',
-        alt: 'close icon'
+        value: "close",
+        alt: "close icon"
     },
 }
 
 export const WithTooltip: Story = {
     args: {
-        value: 'search',
-        title: 'description',
+        value: "search",
+        title: "description",
     },
 }
 
 export const CustomStyles: Story = {
     args: {
-        value: 'home',
-        title: 'description',
-        style: { border: '1px solid black' }
+        value: "home",
+        style: { border: "1px solid black" }
     },
 }
