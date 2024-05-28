@@ -56,12 +56,16 @@ import { ButtonMenu } from 'ui-kit-lite/components/ButtonMenu';
 | `tooltipShowOnClick`         | `Boolean`          | `false`    | If `true`, the tooltip toggled when clicked. This is useful for mobile where there is no mouse enter.                                                  |
 | `tooltipOffset`              | `Number`           | `0`        | If `tooltipPosition` - `vertical`, `bottom` or `top`, the tooltip moves relative to its axis.                                                          |
 | `onVisibleChange`            | `Function`         | -          | Fires when Dropdown visibility changing.                                                                                                               |
-// todo true&&&& offset
 
 ## Theme
 
-| Name            | Description                                  |
-|:----------------|:---------------------------------------------|
-| `button`        | Used for the root ButtonMenu element.        |
-| `tooltip`       | Used to the tooltip element wrapper.         |
-| `tooltipActive` | Used to the root when the tooltip is active. |
+| Name      | Description                |
+|:----------|:---------------------------|
+| `button`  | Used for the root element. |
+| `Button`  | Used for the root element. |
+| `flat`    | Used for the root element. |
+| `neutral` | Used for the root element. |
+| `icon`    | Used for the icon element. |
+
+
+ButtonMenu use `Tooltip`, to see more themes - read `Tooltip` `readme.md`.
