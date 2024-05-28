@@ -43,7 +43,7 @@ const argTypes: ArgumentType = {
     },
     tooltipHideOnClick: {
         control: "boolean",
-        description: "If `true`, the Tooltip hides after a click on ButtonMenu.",
+        description: "If `true`, the Tooltip hides after a click on element.",
     },
     tooltipPosition: {
         control: "radio",

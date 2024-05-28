@@ -1,72 +1,52 @@
-import { Meta, StoryObj } from '@storybook/react'
+import { Meta, StoryObj } from "@storybook/react"
 
-import { CheckBox } from './index'
+import { CheckBox } from "./index"
+import { ArgumentType } from "../../types/ArgumentType.ts";
 
-interface ArgumentTypes {
-    [key: string]: {
-        control?: string;
-        description?: string;
-        table?: {
-            disable?: boolean;
-            defaultValue?: { summary: string};
-        }
-        labels?: {
-            [key:string]: string;
-        }
-    }
-}
-
-const argTypes: ArgumentTypes = {
+const argTypes: ArgumentType = {
     label: {
         control: "text",
-        description: 'The text to use for the label element.',
+        description: "The text to use for the label element.",
     },
     name: {
         control: "text",
-        description: 'Value for `name` input attribute.',
+        description: "Value for `name` input attribute.",
     },
     disabled: {
         control: "boolean",
-        description: 'If `true`, component will be disabled.'
+        description: "If `true`, component will be disabled."
     },
     checked: {
         control: "boolean",
-        description: ' If `true`, component will be checked.'
+        description: " If `true`, component will be checked."
     },
     tooltipLabel: {
         control: "text",
-        description: 'The text string to use for the tooltip.',
+        description: "The text string to use for the tooltip.",
     },
     tooltipDelay: {
         control: "number",
-        description: 'Amount of time in milliseconds spent before the tooltip is visible.',
+        description: "Amount of time in milliseconds spent before the tooltip is visible.",
     },
     tooltipHideOnClick: {
         control: "boolean",
-        description: 'If `true`, the Tooltip hides after a click on ButtonMenu.',
+        description: "If `true`, the Tooltip hides after a click on element.",
     },
     tooltipPosition: {
-        control: "select",
-        labels: {
-            vertical: 'vertical',
-            horizontal: 'horizontal',
-            bottom: 'bottom',
-            top: 'top',
-            left: 'left',
-            right: 'right',
-        },
+        control: "radio",
+        options: [ "vertical", "horizontal", "bottom", "top", "left", "right" ],
         table: {
-            defaultValue: { summary: 'vertical' },
+            defaultValue: { summary: "vertical" },
         },
-        description: 'Determines the position of the tooltip.',
+        description: "Determines the position of the tooltip.",
     },
     tooltipShowOnClick: {
         control: "boolean",
-        description: 'If `true`, the tooltip toggled when clicked. This is useful for mobile where there is no mouse enter.',
+        description: "If `true`, the tooltip toggled when clicked. This is useful for mobile where there is no mouse enter.",
     },
     tooltipOffset: {
         control: "number",
-        description: ' If `tooltipPosition` - `vertical`, `bottom` or `top`, the tooltip moves relative to its axis.',
+        description: " If `tooltipPosition` - `vertical`, `bottom` or `top`, the tooltip moves relative to its axis.",
     },
     className: {
         table: { disable: true }
@@ -95,7 +75,7 @@ const argTypes: ArgumentTypes = {
 }
 
 const meta: Meta<typeof CheckBox> = {
-    title: 'UI Kit lite/CheckBox',
+    title: "UI Kit lite/CheckBox",
     component: CheckBox,
     argTypes
 }
@@ -105,7 +85,7 @@ type Story = StoryObj<typeof CheckBox>
 
 export const Basic: Story = {
     args: { 
-        name: 'Basic'
+        name: "Basic"
     },
 }
 
@@ -123,17 +103,17 @@ export const Disabled: Story = {
 
 export const Label: Story = {
     args: {
-        label: 'Label',
+        label: "Label",
         checked: true,
     },
 }
 
 export const WithTooltip: Story = {
     args: {
-        label: 'Label',
-        tooltipLabel: 'Tooltip text',
+        label: "Label",
+        tooltipLabel: "Tooltip text",
         tooltipDelay: 50,
-        tooltipPosition: 'bottom',
+        tooltipPosition: "bottom",
         tooltipHideOnClick: true,
         tooltipShowOnClick: false,
         tooltipOffset: 0,
