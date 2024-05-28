@@ -1,26 +1,17 @@
-import { Meta, StoryObj } from '@storybook/react'
+import { Meta, StoryObj } from "@storybook/react"
 
-import { Chip } from './index'
-
-interface ArgumentTypes {
-    [key: string]: {
-        control?: string;
-        description?: string;
-        table?: {
-            disable?: boolean;
-        }
-    }
-}
+import { Chip } from "./index"
+import { ArgumentType } from "../../types/ArgumentType.ts";
 
 
-const argTypes: ArgumentTypes = {
+const argTypes: ArgumentType = {
     deletable: {
         control: "boolean",
-        description: 'If `true`, the chip will be rendered with delete icon.'
+        description: "If `true`, the chip will be rendered with delete icon."
     },
     children: {
-        control: 'text',
-        description: 'The content of the component.  '
+        control: "text",
+        description: "The content of the component.  "
     },
     className: {
         table: { disable: true }
@@ -41,7 +32,7 @@ const argTypes: ArgumentTypes = {
 
 
 const meta: Meta<typeof Chip> = {
-    title: 'UI Kit lite/Chip',
+    title: "UI Kit lite/Chip",
     component: Chip,
     argTypes
 }
@@ -50,38 +41,28 @@ export default meta
 type Story = StoryObj<typeof Chip>
 
 const DeleteIcon = () => (
-    <svg width="24"
-         height="24"
-         viewBox="0 0 24 24"
-         fill="none"
-         xmlns="http://www.w3.org/2000/svg"
-    >
-        <path d="M14.8284 14.8284L9.17158 9.17158M9.17157 14.8284L14.8284 9.17158M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-              stroke="#28303F"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-        />
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" >
+        <path d="M14.8284 14.8284L9.17158 9.17158M9.17157 14.8284L14.8284 9.17158M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#28303F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
 )
 
 export const Basic: Story = {
     args: {
-        children: 'Basic',
+        children: "Basic",
     },
 }
 
 export const Deletable: Story = {
     args: {
         deletable: true,
-        children: 'Deletable',
+        children: "Deletable",
     },
 }
 
 export const CustomDeleteIcon: Story = {
     args: {
         deletable: true,
-        children: 'Deletable',
+        children: "Deletable",
         customDeleteIcon: <DeleteIcon />
     },
 }
@@ -89,7 +70,7 @@ export const CustomDeleteIcon: Story = {
 // todo rename
 export const SettingsDialog: Story = {
     args: {
-        children: 'Chip',
+        children: "Chip",
         settingsDialog: <div>Settings</div>
     },
 }
