@@ -66,7 +66,7 @@ import { Menu } from 'ui-kit-lite/components/Menu';
 | `children`  | `Node`    | -       | Menu contents. Usually `SubMenu` or `MenuItem`.         |
 
 
-Ui-kit use rc-menu library for Menu. Other props can be viewed at the [link](https://react-component.github.io/menu/)
+Ui-kit using rc-menu library for Menu. Other props can be viewed at the [link](https://react-component.github.io/menu/)
 ___
 
 # SubMenu
@@ -87,7 +87,7 @@ import { SubMenu } from 'ui-kit-lite/components/SubMenu';
 | `title`      | `String` or `Node` | -       | Sub menu's title.                                       |
 | `disabled`   | `Boolean`          | `false` | If `true`, component will be disabled.                  |
 
-Ui-kit use rc-menu library for SubMenu. Other props can be viewed at the [link](https://react-component.github.io/menu/)
+Ui-kit using rc-menu library for SubMenu. Other props can be viewed at the [link](https://react-component.github.io/menu/)
 ___
 
 
@@ -111,7 +111,7 @@ import { MenuItem } from 'ui-kit-lite/components/MenuItem';
 | `onClick`   | `Function`         | -       | Callback fired when the menu item clicked.              |
 
 
-Ui-kit use rc-menu library for MenuItem. Other props can be viewed at the [link](https://react-component.github.io/menu/)
+Ui-kit using rc-menu library for MenuItem. Other props can be viewed at the [link](https://react-component.github.io/menu/)
 
 ___
 # MenuItemGroup
@@ -132,7 +132,7 @@ import { MenuItemGroup } from 'ui-kit-lite/components/MenuItemGroup';
 | `title`     | `String` or `Node` | -       | Menu item title.                                        |
 
 
-Ui-kit use rc-menu library for MenuItemGroup. Other props can be viewed at the [link](https://react-component.github.io/menu/)
+Ui-kit using rc-menu library for MenuItemGroup. Other props can be viewed at the [link](https://react-component.github.io/menu/)
 ___
 
 # MenuDivider
