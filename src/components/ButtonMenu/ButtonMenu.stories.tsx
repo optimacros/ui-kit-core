@@ -1,85 +1,65 @@
-import { Meta, StoryObj } from '@storybook/react'
+import { Meta, StoryObj } from "@storybook/react"
 
-import { ButtonMenu } from './index'
-import { MenuItem } from '../Menu'
+import { ButtonMenu } from "./index"
+import { MenuItem } from "../Menu"
+import { ArgumentType } from "../../types/ArgumentType.ts";
 
-interface ArgumentTypes {
-    [key: string]: {
-        control?: string;
-        description?: string;
-        table?: {
-            disable?: boolean;
-            defaultValue?: { summary: string};
-        }
-        labels?: {
-            [key:string]: string;
-        }
-    }
-}
-
-const argTypes: ArgumentTypes = {
+const argTypes: ArgumentType = {
     disabled: {
         control: "boolean",
-        description: 'If `true`, component will be disabled.'
+        description: "If `true`, component will be disabled."
     },
     visible: {
         control: "boolean",
-        description: ' If `true`, the Menu Dropdown will be visible by default.'
+        description: " If `true`, the Menu Dropdown will be visible by default."
     },
     uppercase: {
         control: "boolean",
-        description: 'If `true`, the text inside the ButtonMenu will be in uppercase.'
+        description: "If `true`, the text inside the ButtonMenu will be in uppercase."
     },
     showOnlyIcon: {
         control: "boolean",
-        description: 'If `true` and icon used - only icon will be visible in the ButtonMenu.'
+        description: "If `true` and icon used - only icon will be visible in the ButtonMenu."
     },
     arrowUp: {
         control: "boolean",
-        description: 'If `true`, dropdown arrow icon will point up.'
+        description: "If `true`, dropdown arrow icon will point up."
     },
     label: {
         control: "text",
-        description: 'The text string to use for the name of the button.',
+        description: "The text string to use for the name of the button.",
     },
     icon: {
         control: "text",
-        description: 'Value of the icon (See Font Icon Component).',
+        description: "Value of the icon (See Font Icon Component).",
     },
     tooltip: {
         control: "text",
-        description: 'The text string to use for the tooltip.',
+        description: "The text string to use for the tooltip.",
     },
     tooltipDelay: {
         control: "number",
-        description: 'Amount of time in milliseconds spent before the tooltip is visible.',
+        description: "Amount of time in milliseconds spent before the tooltip is visible.",
     },
     tooltipHideOnClick: {
         control: "boolean",
-        description: 'If `true`, the Tooltip hides after a click on ButtonMenu.',
+        description: "If `true`, the Tooltip hides after a click on ButtonMenu.",
     },
     tooltipPosition: {
-        control: "select",
-        labels: {
-            vertical: 'vertical',
-            horizontal: 'horizontal',
-            bottom: 'bottom',
-            top: 'top',
-            left: 'left',
-            right: 'right',
-        },
+        control: "radio",
+        options: [ "vertical", "horizontal", "bottom", "top", "left", "right" ],
         table: {
-            defaultValue: { summary: 'vertical' },
+            defaultValue: { summary: "vertical" },
         },
-        description: 'Determines the position of the tooltip.',
+        description: "Determines the position of the tooltip.",
     },
     tooltipShowOnClick: {
         control: "boolean",
-        description: 'If `true`, the tooltip toggled when clicked. This is useful for mobile where there is no mouse enter.',
+        description: "If `true`, the tooltip toggled when clicked. This is useful for mobile where there is no mouse enter.",
     },
     tooltipOffset: {
         control: "number",
-        description: ' If `tooltipPosition` - `vertical`, `bottom` or `top`, the tooltip moves relative to its axis.',
+        description: " If `tooltipPosition` - `vertical`, `bottom` or `top`, the tooltip moves relative to its axis.",
     },
     className: {
         table: { disable: true }
@@ -105,14 +85,9 @@ const argTypes: ArgumentTypes = {
 }
 
 const meta: Meta<typeof ButtonMenu> = {
-    title: 'UI Kit lite/ButtonMenu',
+    title: "UI Kit lite/ButtonMenu",
     component: ButtonMenu,
     argTypes,
-    decorators: [(story) => <div style={{ padding: '3rem' }}>{story()}</div>],
-    parameters: {
-        docs: { source: { type: 'code' } }
-    }
-    
 }
 export default meta
 
@@ -120,8 +95,8 @@ type Story = StoryObj<typeof ButtonMenu>
 
 export const Basic: Story = {
     args: {
-        label: 'Menu',
-        icon: 'print',
+        label: "Menu",
+        icon: "print",
         arrowUp: false,
         children:
             <>
@@ -137,7 +112,7 @@ export const Basic: Story = {
 
 export const Uppercase: Story = {
     args: {
-        label: 'Menu',
+        label: "Menu",
         uppercase: true,
         children:
             <>
@@ -153,10 +128,10 @@ export const Uppercase: Story = {
 
 export const WithTooltip: Story = {
     args: {
-        label: 'Menu',
-        tooltip: 'Tooltip text',
+        label: "Menu",
+        tooltip: "Tooltip text",
         tooltipDelay: 50,
-        tooltipPosition: 'bottom',
+        tooltipPosition: "bottom",
         tooltipHideOnClick: true,
         tooltipShowOnClick: false,
         tooltipOffset: 0,
@@ -174,7 +149,7 @@ export const WithTooltip: Story = {
 
 export const Disabled: Story = {
     args: {
-        label: 'Menu',
+        label: "Menu",
         disabled: true,
         children:
             <>
@@ -190,7 +165,7 @@ export const Disabled: Story = {
 
 export const Visible: Story = {
     args: {
-        label: 'Menu',
+        label: "Menu",
         visible: true,
         children:
             <>
