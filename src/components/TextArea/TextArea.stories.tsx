@@ -1,42 +1,41 @@
-import { Meta, StoryObj } from '@storybook/react'
+import { Meta, StoryObj } from "@storybook/react"
 
-import { TextArea } from './index'
+import { TextArea } from "./index"
+import { ArgumentType } from "../../types/ArgumentType.ts";
+
+const argTypes: ArgumentType = {
+    label: {
+        control: "text",
+        description: "The label content."
+    },
+    error: {
+        control: "text",
+        description: "The error content."
+    },
+    className: { table: { disable: true } },
+    classNameContainer: { table: { disable: true } },
+}
+
 
 const meta: Meta<typeof TextArea> = {
-    title: 'UI Kit lite/TextArea',
+    title: "UI Kit lite/TextArea",
     component: TextArea,
+    argTypes
 }
 export default meta
 
 type Story = StoryObj<typeof TextArea>
 
-const argTypes = {}
 
-export const TextAreaWithLabel: Story = {
+export const Basic: Story = {
     args: {
-        label: 'description',
+        label: "Description",
     },
-    argTypes,
-    decorators: [
-        (Story) => (
-            <div style={{ width: '200px', color: 'black' }}>
-                <Story />
-            </div>
-        ),
-    ],
 }
 
-export const TextAreaWithError: Story = {
+export const Error: Story = {
     args: {
-        label: '',
-        error: 'error description',
+        label: "Description",
+        error: "Error description",
     },
-    argTypes,
-    decorators: [
-        (Story) => (
-            <div style={{ width: '200px' }}>
-                <Story />
-            </div>
-        ),
-    ],
 }
