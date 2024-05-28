@@ -1,7 +1,5 @@
 # Input
 
-Although we are calling them Inputs they actually correspond to Material Design [Text fields](https://material.google.com/components/text-fields.html). It allows a user to input text and it's the base for other components like the autocomplete.
-
 <!-- example -->
 ```jsx
 import { Input } from 'ui-kit-lite/components/Input';
@@ -76,6 +74,7 @@ import { Input } from 'ui-kit-lite/components/Input';
 | `onChange`     | `Function`         | -       | Callback function that is fired when the component's value changes.                                                                                                                                                  |
 | `onFocus`      | `Function`         | -       | Callback function that is fired when component is focused.                                                                                                                                                           |
 | `onKeyPress`   | `Function`         | -       | Callback function that is fired when a key is pressed.                                                                                                                                                               |
+| `onKeyDown`    | `Function`         | -       | Callback function that is fired when a key is down.                                                                                                                                                                  |
 
 ## Theming
 
