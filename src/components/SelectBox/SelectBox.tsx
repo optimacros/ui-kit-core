@@ -68,9 +68,13 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
     private readonly refNode: React.RefObject<HTMLDivElement>
     private readonly dropdownNode: React.RefObject<HTMLUListElement>
 
-    componentDidUpdate(props: SelectBoxProps, state: State): void {
-        if (!this.state.active && state.active) {
+    componentDidUpdate(prevProps: SelectBoxProps, prevState: State): void {
+        if (!prevState.active && this.state.active) {
             events.addEventsToDocument(this.getDocumentEvents())
+        }
+
+        if (prevState.active && !this.state.active) {
+            events.removeEventsFromDocument(this.getDocumentEvents())
         }
     }
 

@@ -66,10 +66,17 @@ export class Loader extends Component<LoaderProps> {
             className,
         )
 
+        const disabledProps = disabled
+            ? {
+                'data-disabled': true,
+                disabled: true,
+            }
+            : {}
+
         return (
             <div
                 ref={innerRef}
-                data-disabled={disabled}
+                {...disabledProps}
                 data-react-toolbox="progress-bar"
                 aria-valuenow={value}
                 aria-valuemin={this.min}

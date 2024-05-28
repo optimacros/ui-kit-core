@@ -204,9 +204,9 @@ export class Tooltip extends Component<TooltipProps, State> {
             events.addEventListenerOnTransitionEnded(this.tooltipNode.current, this.onTransformEnd)
 
             this.setState({ active: false })
-        } else if (this.state.visible) {
-            this.setState({ visible: false })
         }
+
+        this.setState({ visible: false })
     }
 
     calculatePosition(element: HTMLElement): PositionInfo {
