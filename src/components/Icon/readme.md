@@ -5,17 +5,8 @@
 import { Icon } from 'ui-kit-lite/components/Icon';
 
 const UserIcon = () => (
-    <svg fill="none"
-         height="24"
-         viewBox="0 0 24 24"
-         width="24"
-         xmlns="http://www.w3.org/2000/svg"
-    >
-        <path d="m12 11c2.2091 0 4-1.79086 4-4s-1.7909-4-4-4c-2.20914 0-4 1.79086-4 4s1.79086 4 4 4zm0 10c3.866 0 7-1.7909 7-4s-3.134-4-7-4c-3.86599 0-7 1.7909-7 4s3.13401 4 7 4z"
-              fill="#28303f"
-              clipRule="evenodd"
-              fillRule="evenodd"
-        />
+    <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" >
+        <path d="m12 11c2.2091 0 4-1.79086 4-4s-1.7909-4-4-4c-2.20914 0-4 1.79086-4 4s1.79086 4 4 4zm0 10c3.866 0 7-1.7909 7-4s-3.134-4-7-4c-3.86599 0-7 1.7909-7 4s3.13401 4 7 4z" fill="#28303f" clipRule="evenodd" fillRule="evenodd" />
     </svg>
 )
 
