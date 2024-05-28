@@ -10,49 +10,24 @@ const OverlayComponent = () => {
 
 const TestComponent = () => (
     <div>
-        <Dropdown
-            trigger="click"
-            closeOnSelect
-            overlay={OverlayComponent}
-            overlayStyle={{ background: 'gray' }}
-        >
-            <Button label="Users"/>
+        <Dropdown trigger="click" closeOnSelect overlay={OverlayComponent} overlayStyle={{ background: 'gray' }} > 
+            <Button label="Users"/> 
         </Dropdown>
 
-        <Dropdown
-            overlay={OverlayComponent}
-            visible
-            overlayStyle={{ border: '1px solid gray' }}
-        >
-            <Button label="Visible"/>
+        <Dropdown overlay={OverlayComponent} visible overlayStyle={{ border: '1px solid gray' }} > 
+            <Button label="Visible"/> 
         </Dropdown>
 
-        <Dropdown
-            trigger="click"
-            disabled
-        >
-            <Button label="Disabled"/>
+        <Dropdown trigger="click" disabled > 
+            <Button label="Disabled"/> 
         </Dropdown>
 
-        <Dropdown
-            trigger="click"
-            overlay={OverlayComponent}
-            minOverlayWidthMatchTrigger={false}
-            align={{
-                points: ['tc', 'bc'],
-            }}
-            overlayStyle={{ border: '1px solid gray' }}
-        >
-            <Button label="Overlay width less"/>
+        <Dropdown trigger="click" overlay={OverlayComponent} minOverlayWidthMatchTrigger={false} align={{ points: ['tc', 'bc'], }} overlayStyle={{ border: '1px solid gray' }} > 
+            <Button label="Overlay width less"/> 
         </Dropdown>
 
-        <Dropdown
-            trigger="click"
-            overlay={OverlayComponent}
-            alignPoint
-            overlayStyle={{ background: 'gray' }}
-        >
-            <Button label="Point overlay"/>
+        <Dropdown trigger="click" overlay={OverlayComponent} alignPoint overlayStyle={{ background: 'gray' }} > 
+            <Button label="Point overlay"/> 
         </Dropdown>
     </div>
 );
@@ -71,18 +46,18 @@ import { Dropdown } from 'ui-kit-lite/components/Dropdown';
 |:------------------------------|:-----------------------------------|:----------------------------------|:--------------------------------------------------------------------------------------------|
 | `children`                    | `Node`                             | -                                 | The content of the component.                                                               |
 | `className`                   | `String`                           | `''`                              | Dropdown button wrapper class name.                                                         |
-| `disabled`                    | `Boolean`                          | `false`                           | If `true`, the component is disabled.                                                       |
-| `closeOnSelect`               | `Boolean`                          | `true`                            | If `true` , popup close after select.                                                       |
+| `disabled`                    | `Boolean`                          | `false`                           | If `true`, component will be disabled.                                                      |
+| `closeOnSelect`               | `Boolean`                          | `true`                            | If `true`, overlay close after select.                                                      |
 | `overlayClassName`            | `String`                           | -                                 | Overlay class name.                                                                         |
 | `openClassName`               | `String`                           | `${prefixCls}-open`               | Overlay class name when dropdown is opened.                                                 |
-| `overlayStyle`                | `String`                           | `''`                              | Overlay styles.                                                                             |
+| `overlayStyle`                | `Object`                           | -                                 | Overlay styles.                                                                             |
 | `prefixCls`                   | `String`                           | `rc-dropdown`                     | Dropdown prefix class name.                                                                 |
 | `transitionName`              | `String`                           | -                                 | Dropdown menu's animation css class name.                                                   |
 | `minOverlayWidthMatchTrigger` | `Boolean`                          | `true(false when set alignPoint)` | Whether overlay's width must not be less than trigger's.                                    |
 | `arrow`                       | `Boolean`                          | `false`                           |                                                                                             |
 | `alignPoint`                  | `Boolean`                          | `false`                           | Popup will align with mouse position (support action of `click`, `hover` and `contextMenu`) |
 | `autoFocus`                   | `Boolean`                          | -                                 |                                                                                             |
-| `visible`                     | `Boolean`                          | `false`                           | Overlay visible by default.                                                                 |
+| `visible`                     | `Boolean`                          | `false`                           | If `true`, overlay will be visible by default.                                              |
 | `overlay`                     | `Node`                             | -                                 | Popup component, which is shown by trigger.                                                 |
 | `onVisibleChange`             | `Function(visible: boolean)`       | -                                 | Call when overlay visibility is changed.                                                    |
 | `onOverlayClick`              | `Function(e: event)`               | -                                 | Call when overlay is clicked.                                                               |
@@ -99,3 +74,5 @@ import { Dropdown } from 'ui-kit-lite/components/Dropdown';
 | `mouseEnterDelay`             | `Number`                           | `0`                               | Delay time to show when mouse enter. Unit: s.                                               |
 | `mouseLeaveDelay`             | `Number`                           | `0.1`                             | Delay time to hide when mouse leave. Unit: s.                                               |
 | `onPopupAlign`                | `function(popupDomNode, align)`    | -                                 | Callback when popup node is aligned.                                                        |
+
+Dropdown use `rc-dropdown`. You can read more at the [link](https://github.com/react-component/dropdown).'
