@@ -44,4 +44,4 @@ import { Modal } from 'ui-kit-lite/components/Modal';
 | `customHeaderButton` | `Node`    | -       | Modal header button. Visible if `title` not empty.                                                                                                      |
                                                                                     |
 
-Ui-kit use react-modal library for Modal. Other props can be viewed at the [link](https://reactcommunity.org/react-modal/)
+Ui-kit using react-modal library for Modal. Other props can be viewed at the [link](https://reactcommunity.org/react-modal/)
