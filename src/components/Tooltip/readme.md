@@ -26,7 +26,7 @@ const TestComponent = () => (
               <Button label="bottom" /> 
           </Tooltip> 
       </div> 
-      <Tooltip composedComponent={Button} tooltip="Text" composedComponentProps={{ label: 'Node', }} /> 
+      <Tooltip composedComponent={Button} tooltip="Text" composedComponentProps={{ label: 'Apply', }} /> 
       <Tooltip composedComponent="div" tooltip="Text" tooltipDelay={300} > 
           <Button label="delayed" /> 
       </Tooltip> 
@@ -68,7 +68,7 @@ In any component you decorate with the Tooltip you'd get some additional props:
 | `onMouseEnter`           | `Function`         | -          | Callback called when the mouse enters the Component.                                                                                                   |
 | `onMouseLeave`           | `Function`         | -          | Callback called when the mouse leaves the Component.                                                                                                   |
 
-## Theming
+## Theme
 
 | Name             | Description                                                                     |
 |:-----------------|:--------------------------------------------------------------------------------|
