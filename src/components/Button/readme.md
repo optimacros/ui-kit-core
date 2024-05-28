@@ -1,7 +1,5 @@
 # Button
 
-A [button](https://material.google.com/components/buttons.html) clearly communicates what action will occur when the user touches it. It consists of text, an image, or both, designed in accordance with your app’s color theme.
-
 <!-- example -->
 ```jsx
 import { Button } from 'ui-kit-lite/components/Button';
@@ -76,15 +74,16 @@ import { Button } from 'ui-kit-lite/components/Button';
 
 ## Theme
 
-| Name            | Description                                  |
-|:----------------|:---------------------------------------------|
-| `button`        | Used for the root element in any button.     |
-| `flat`          | Use when the button is flat.                 |
-| `floating`      | Use when the button is floating.             |
-| `raised`        | Use when the button is raised.               |
-| `inverse`       | Use when the button is inverted.             |
-| `mini`          | Use for mini floating button.                |
-| `neutral`       | Use for neutral colored button.              |
-| `accent`        | Use when the button is neutral and accent.   |
-| `primary`       | Use when the button is neutral and primary.  |
-| `bordered`      | Use when the button is neutral and bordered. |
+| Name       | Description                                  |
+|:-----------|:---------------------------------------------|
+| `button`   | Used for the root element.                   |
+| `icon`     | Used for the icon element.                   |
+| `flat`     | Use when the button is flat.                 |
+| `floating` | Use when the button is floating.             |
+| `raised`   | Use when the button is raised.               |
+| `inverse`  | Use when the button is inverted.             |
+| `mini`     | Use for mini floating button.                |
+| `neutral`  | Use for neutral colored button.              |
+| `accent`   | Use when the button is neutral and accent.   |
+| `primary`  | Use when the button is neutral and primary.  |
+| `bordered` | Use when the button is neutral and bordered. |
