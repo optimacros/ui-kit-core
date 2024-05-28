@@ -1,27 +1,18 @@
 import classNames from 'classnames'
-// @ts-ignore
 import BaseDropDown from 'rc-dropdown'
-// @ts-ignore
-import type { DropdownProps as RCDropdownProps } from 'rc-dropdown/lib/Dropdown'
+import type { DropdownProps as RCDropdownProps } from 'rc-dropdown'
 import React from 'react'
 import { Key as KeyboardKey } from '../../types/KeyboardKeyList'
 
 import '../../packages/rc-dropdown/main.css'
 import styles from './Dropdown.module.css'
 
-export interface Props {
-    visible?: boolean;
+interface Props extends RCDropdownProps {
     disabled?: boolean;
     closeOnSelect?: boolean;
-    className?: string;
-    trigger?: Array<string>
-    overlay?: React.JSX.Element;
-    overlayClassName?: string;
-    onVisibleChange?: (visible: boolean) => boolean | void;
-    children?: React.ReactNode;
 }
 
-export type State = {
+type State = {
     visible: boolean;
     lastVisible: boolean;
 }
@@ -78,8 +69,6 @@ export class Dropdown extends React.PureComponent<DropdownProps, State> {
                     onVisibleChange={this.onVisibleChange}
                     onOverlayClick={this.onOverlayClick}
                     {...otherProps}
-                    // @ts-ignore
-                    // eslint-disable-next-line react/jsx-boolean-value
                     destroyPopupOnHide={true}
                     overlayClassName={overlayClassName}
                 />
