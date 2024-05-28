@@ -35,5 +35,5 @@ import { Toolbar } from 'ui-kit-lite/components/Toolbar';
 | `children`  | `Node`    | -       | Toolbar content.                                                              |
 | `className` | `String`  | -       | Set a custom class styles to style the root component.                        |
 | `align`     | `String`  | `left`  | The variant of position. It can be `right`, `rightInRow`, `left` or `center`. |
-| `small`     | `Boolean` | `false` | If `true`, toolbar will have small margin top.                                |
+| `small`     | `Boolean` | `false` | If `true`, toolbar will have less margin top.                                 |
 
