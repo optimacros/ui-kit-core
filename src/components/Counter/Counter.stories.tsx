@@ -1,34 +1,24 @@
-import { Meta, StoryObj } from '@storybook/react'
+import { Meta, StoryObj } from "@storybook/react"
+import { Counter, NavigationComponentProps } from "./index"
+import { ArgumentType } from "../../types/ArgumentType.ts";
 
-import {Counter, NavigationComponentProps} from './index'
-import React from "react";
 
-interface ArgumentTypes {
-    [key: string]: {
-        control?: string;
-        description?: string;
-        table?: {
-            disable?: boolean;
-        }
-    }
-}
-
-const argTypes: ArgumentTypes = {
+const argTypes: ArgumentType = {
     value: {
         control: "number",
-        description: 'Count to show.',
+        description: "Count to show.",
     },
     maxValue: {
         control: "number",
-        description: 'Max count to show.',
+        description: "Max count to show.",
     },
     navigationComponent: {
         control: "text",
-        description: 'Navigation component, displayed only if there is a `route` prop exists.',
+        description: "Navigation component, displayed only if there is a `route` prop exists.",
     },
     route: {
         control: "object",
-        description: 'Object contains custom properties for the `navigationComponent`. Passed as a `prop` to the `navigationComponent`.',
+        description: "Object contains custom properties for the `navigationComponent`. Passed as a `prop` to the `navigationComponent`.",
     },
     className: {
         table: { disable: true }
@@ -37,7 +27,7 @@ const argTypes: ArgumentTypes = {
 
 
 const meta: Meta<typeof Counter> = {
-    title: 'UI Kit lite/Counter',
+    title: "UI Kit lite/Counter",
     component: Counter,
     argTypes
 }
@@ -45,13 +35,13 @@ export default meta
 
 type Story = StoryObj<typeof Counter>
 
-const MyWrapper = ({ children }: { children: JSX.Element }) => (
-    <div style={{ background: '#c3c3c3' }}>
+const Wrapper = ({ children }: { children: JSX.Element }) => (
+    <div style={{ background: "#c3c3c3" }}>
         {children}
     </div>
 );
 
-const Link = (props: NavigationComponentProps): React.JSX.Element => {
+const Link = (props: NavigationComponentProps): JSX.Element => {
     const { route, className, children } = props
 
     return (
@@ -66,7 +56,7 @@ export const Basic: Story = {
         value: 65,
     },
     decorators: [
-        (Story) => <MyWrapper>{Story()}</MyWrapper>,
+        (Story) => <Wrapper>{Story()}</Wrapper>,
     ],
 }
 
@@ -76,7 +66,7 @@ export const MaxValue: Story = {
         maxValue: 3,
     },
     decorators: [
-        (Story) => <MyWrapper>{Story()}</MyWrapper>,
+        (Story) => <Wrapper>{Story()}</Wrapper>,
     ]
 }
 
@@ -84,9 +74,9 @@ export const NavigationLink: Story = {
     args: {
         value: 12,
         navigationComponent: Link,
-        route: { href: 'https://google.com' }
+        route: { href: "https://google.com" }
     },
     decorators: [
-        (Story) => <MyWrapper>{Story()}</MyWrapper>,
+        (Story) => <Wrapper>{Story()}</Wrapper>,
     ]
 }
