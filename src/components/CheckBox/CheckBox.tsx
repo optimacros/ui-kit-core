@@ -31,6 +31,7 @@ export class CheckBoxComponent extends Component<React.PropsWithChildren<CheckBo
             onChange,
             onMouseEnter,
             onMouseLeave,
+            onClick,
             theme: customTheme,
             ...others
         } = this.props
@@ -49,11 +50,12 @@ export class CheckBoxComponent extends Component<React.PropsWithChildren<CheckBo
                 className={className}
                 onMouseEnter={onMouseEnter}
                 onMouseLeave={onMouseLeave}
-                onClick={this.props.onClick}
+                onClick={onClick}
             >
                 <input
                     {...others}
-                    defaultChecked={this.props.checked}
+                    defaultChecked={checked}
+                    checked={checked}
                     className={theme.input}
                     disabled={disabled}
                     name={name}
@@ -63,7 +65,7 @@ export class CheckBoxComponent extends Component<React.PropsWithChildren<CheckBo
                 />
 
                 <Box
-                    checked={this.props.checked}
+                    checked={checked}
                     disabled={disabled}
                     style={style}
                     theme={theme}
