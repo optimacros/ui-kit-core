@@ -161,8 +161,8 @@ declare module 'rc-menu' {
         level?: number;
     }>
 
-    export type MenuItemGroupProps = {
-        renderMenuItem: (
+    export type MenuItemGroupProps = React.PropsWithChildren<{
+        renderMenuItem?: (
             item: React.ReactElement,
             index: number,
             key: string,
@@ -172,7 +172,7 @@ declare module 'rc-menu' {
         subMenuKey?: string;
         rootPrefixCls?: string;
         title?: string;
-    }
+    }>
 
     export type DividerProps = {
         className?: string;
