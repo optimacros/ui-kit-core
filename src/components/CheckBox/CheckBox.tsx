@@ -54,11 +54,11 @@ export class CheckBoxComponent extends Component<React.PropsWithChildren<CheckBo
             >
                 <input
                     {...others}
-                    defaultChecked={checked}
                     checked={checked}
                     className={theme.input}
                     disabled={disabled}
                     name={name}
+                    onChange={() => {}}
                     onClick={this.handleToggle}
                     ref={this.inputNode}
                     type="checkbox"
