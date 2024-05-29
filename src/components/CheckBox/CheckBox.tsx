@@ -53,7 +53,7 @@ export class CheckBoxComponent extends Component<React.PropsWithChildren<CheckBo
             >
                 <input
                     {...others}
-                    defaultChecked={checked}
+                    defaultChecked={this.props.checked}
                     className={theme.input}
                     disabled={disabled}
                     name={name}
@@ -63,7 +63,7 @@ export class CheckBoxComponent extends Component<React.PropsWithChildren<CheckBo
                 />
 
                 <Box
-                    checked={checked}
+                    checked={this.props.checked}
                     disabled={disabled}
                     style={style}
                     theme={theme}
