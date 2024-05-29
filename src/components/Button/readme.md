@@ -1,10 +1,8 @@
 # Button
 
-A [button](https://material.google.com/components/buttons.html) clearly communicates what action will occur when the user touches it. It consists of text, an image, or both, designed in accordance with your app’s color theme.
-
 <!-- example -->
 ```jsx
-import {Button, IconButton} from 'react-toolbox/lib/button';
+import { Button } from 'ui-kit-lite/components/Button';
 
 const GithubIcon = () => (
   <svg viewBox="0 0 284 277">
@@ -12,72 +10,80 @@ const GithubIcon = () => (
   </svg>
 );
 
-const TestButtons = () => (
+const TestComponent = () => (
   <div>
-    <Button href='http://github.com/javivelasco' target='_blank' raised>
+    <Button className='CustomButton'>Click me</Button>
+    <Button label={'custom accent'} accent theme={{ accent: 'accent' }} />
+    <Button href='http://github.com' target='_blank'>
       <GithubIcon /> Github
     </Button>
-    <Button icon='bookmark' label='Bookmark' accent />
-    <Button icon='bookmark' label='Bookmark' raised primary />
-    <Button icon='inbox' label='Inbox' flat />
-    <Button icon='add' floating />
-    <Button icon='add' floating accent mini />
-    <IconButton icon='favorite' accent />
-    <IconButton icon={<GithubIcon />} accent />
-    <IconButton primary><GithubIcon /></IconButton>
-    <Button icon='add' label='Add this' flat primary />
-    <Button icon='add' label='Add this' flat disabled />
+    <Button label='styled' buttonColor='purple' fontColor='white' fontSize={14} />
+    <Button label='disabled' disabled />
+    <Button label='inverse' inverse buttonColor='black'/>
+    <Button accent>Accent</Button>
+    <Button label='primary' primary />
+    <Button label='flat' flat />
+    <Button label='+' floating />
+    <Button label='+' floating accent mini />
+    <Button label='raised' raised />
+    <Button label='gray' gray />
+    <Button label='warning' warning />
+    <Button label='bordered' bordered uppercase/>
+    
   </div>
 );
 ```
 
-If you want to provide a theme via context, the component key is `RTButton`.
+## Import
+```jsx
+import { Button } from 'ui-kit-lite';
+// or
+import { Button } from 'ui-kit-lite/components/Button';
+```
 
-## Properties
+## Props
 
-| Name              | Type                  | Default     | Description|
-|:-----|:-----|:-----|:-----|
-| `accent`          | `Boolean`             | `false`     | Indicates if the button should have accent color.|
-| `className`       | `String`              | `''`        | Set a class to style the Component.|
-| `disabled`        | `Boolean`             | `false`     | If true, component will be disabled.|
-| `flat`            | `Boolean`             | `false`     | If true, the button will have a flat look. |
-| `floating`        | `Boolean`             | `false`     | If true, the button will have a floating look. |
-| `href`            | `String`              |             | Creates a link for the button. |
-| `icon`            | `String` or `Element` |             | Value of the icon (See Font Icon Component). |
-| `inverse`         | `Boolean`             |             | If true, the neutral colors are inverted. Useful to put a button over a dark background. |
-| `label`           | `String`              |             | The text string to use for the name of the button.|
-| `mini`            | `Boolean`             | `false`     | To be used with floating button. If true, the button will be smaller.|
-| `neutral`         | `Boolean`             | `true`      | Set it to `false` if you don't want the neutral styles to be included.|
-| `onMouseEnter`    | `Function`            |             | Fires after the mouse enters the Component.|
-| `onMouseLeave`    | `Function`            |             | Fires after the mouse leaves the Component.|
-| `onMouseUp`       | `Function`            |             | Fires after the mouse is released from the Component.|
-| `primary`         | `Boolean`             | `false`     | Indicates if the button should have primary color.|
-| `raised`          | `Boolean`             | `false`     | If true, the button will have a raised look. |
-| `ripple`          | `Boolean`             | `true`      | If true, component will have a ripple effect on click.|
-| `theme`           | `Object`              |             | Theme object with classnames that will be used to style the component.|
-| `type`            | `String`              | `button`    | Component root container type.|
-
-By default it will have neutral colors and a flat aspect even though the `flat` property is `false` by default. Also, some properties exclude others, for example a button cannot be `flat` and `raised` at the same time.
-
-The `Button` component also accept children so if you want to provide a custom component and text instead of a `label` and `icon` you can do it too. Just check the examples.
+| Name           | Type              | Default  | Description                                                                                              |
+|:---------------|:------------------|:---------|:---------------------------------------------------------------------------------------------------------|
+| `children`     | `Node`            | -        | The content of the component.                                                                            |
+| `className`    | `String`          | `''`     | Set a class to style the Component.                                                                      |
+| `theme`        | `Object`          | -        | Theme object with classnames that will be used to style the component.                                   |
+| `type`         | `String`          | `button` | Component root container type.                                                                           |
+| `label`        | `String`          | -        | The text string to use for the name of the button.                                                       |
+| `icon`         | `String`          | -        | Value of the icon (See Font Icon Component).                                                             |
+| `href`         | `String`          | -        | The URL to link to when the button is clicked. If defined, an `a` element will be used as the root node. |
+| `target`       | `String`          | -        | The `target` attribute value for link button.                                                            |
+| `buttonColor`  | `String`          | -        | Background for the button.                                                                               |
+| `fontColor`    | `String`          | -        | Font color for the button.                                                                               |
+| `fontSize`     | `String` `Number` | -        | Font size for the button.                                                                                |
+| `disabled`     | `Boolean`         | `false`  | If `true`, component will be disabled.                                                                   |
+| `neutral`      | `Boolean`         | `true`   | Set it to `false` if you don't want the neutral styles to be included.                                   |
+| `inverse`      | `Boolean`         | `false`  | If `true`, the neutral colors are inverted. Useful to put a button over a dark background.               |
+| `accent`       | `Boolean`         | `false`  | If `true`, the button will have an accent color.                                                         |
+| `primary`      | `Boolean`         | `false`  | If `true`, the button will have a primary color.                                                         |
+| `gray`         | `Boolean`         | `false`  | If `true`, the button will have gray color.                                                              |
+| `warning`      | `Boolean`         | `false`  | If `true`, the button will have a warning look.                                                          |
+| `floating`     | `Boolean`         | `false`  | If `true`, the button will have a floating look.                                                         |
+| `mini`         | `Boolean`         | `false`  | To be used with floating button. If true, the button will be smaller.                                    |
+| `raised`       | `Boolean`         | `false`  | If `true`, the button will have a raised look.                                                           |
+| `bordered`     | `Boolean`         | `false`  | If `true`, the button will have border.                                                                  |
+| `uppercase`    | `Boolean`         | `false`  | If `true`, the text inside the button will be in uppercase.                                              |
+| `onMouseEnter` | `Function`        | -        | Fires after the mouse enters the Component.                                                              |
+| `onMouseLeave` | `Function`        | -        | Fires after the mouse leaves the Component.                                                              |
+| `onMouseUp`    | `Function`        | -        | Fires after the mouse is released from the Component.                                                    |
 
 ## Theme
 
-| Name       | Description|
-|:-----------|:-----------|
-| `accent`   | Used for the root in case button is accent.|
-| `button`   | Used for the root element in any button.|
-| `flat`     | Used when the button is flat for the root element.|
-| `floating` | Used when the button is floating for the root element.|
-| `icon`     | For the icon inside a button.|
-| `inverse`  | Used when colors are inverted.|
-| `mini`     | Used for mini floating buttons.|
-| `neutral`  | Used for neutral colored buttons.|
-| `primary`  | Used for primary buttons when button is primary.|
-| `raised`   | Used when the button is raised for root element.|
-| `ripple`   | Used for the ripple element.|
-| `toggle`   | Used for toggle buttons in the root element.|
-
-## Icon Button
-
-Icons are appropriate for toggle buttons that allow a single choice to be selected or deselected, such as adding or removing a star to an item. They are best located in app bars, toolbars, action buttons or toggles. We provide an `IconButton` component bundled with `Button` component. They share a similar API excluding onMouseLeave, onMouseUp and aspect properties.
+| Name       | Description                                  |
+|:-----------|:---------------------------------------------|
+| `button`   | Used for the root element.                   |
+| `icon`     | Used for the icon element.                   |
+| `flat`     | Use when the button is flat.                 |
+| `floating` | Use when the button is floating.             |
+| `raised`   | Use when the button is raised.               |
+| `inverse`  | Use when the button is inverted.             |
+| `mini`     | Use for mini floating button.                |
+| `neutral`  | Use for neutral colored button.              |
+| `accent`   | Use when the button is neutral and accent.   |
+| `primary`  | Use when the button is neutral and primary.  |
+| `bordered` | Use when the button is neutral and bordered. |

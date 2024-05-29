@@ -1,5 +1,7 @@
 import { Preview } from '@storybook/react'
 
+import '../src/themes/appBaseTheme.css';
+
 export const parameters: Preview = {
     parameters: {
         actions: { argTypesRegex: '^on[A-Z].*' },
