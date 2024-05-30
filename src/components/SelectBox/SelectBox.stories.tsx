@@ -2,6 +2,7 @@ import { ArgTypes, Meta, StoryObj } from "@storybook/react"
 
 import { SelectBox } from "./index"
 import { useState } from "react";
+import { SelectBoxProps } from 'components/SelectBox/SelectBox.tsx'
 
 const argTypes: Partial<ArgTypes> = {
     allowBlank: {
@@ -81,16 +82,16 @@ const Wrapper = ({ children }: { children: JSX.Element }) => (
 
 const Template: Story = {
     render: ({ ...args }) => {
-        const [value, setValue] = useState<string | number |(string | number)[]>(1)
-        
+        const [value, setValue] = useState<SelectBoxProps['value']>(1)
+
         return <SelectBox {...args} value={value} onChange={(val) => setValue(val)}/>
-           
+
     },
 };
 
 const MultiTemplate: Story = {
     render: ({ ...args }) => {
-        const [value, setValue] = useState<string | number |(string | number)[]>([1, 2])
+        const [value, setValue] = useState<SelectBoxProps['value']>([1, 2])
 
         return (
             <div>
