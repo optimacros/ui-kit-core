@@ -122,6 +122,6 @@ export class SelectBox extends Component<SelectBoxProps> {
     }
 
     private get source(): SelectBoxProps['source'] {
-        return this.props.source || []
+        return this.props.source
     }
 }

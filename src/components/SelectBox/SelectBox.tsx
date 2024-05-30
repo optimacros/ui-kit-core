@@ -24,25 +24,28 @@ export type SelectBoxTheme = {
     Title: string;
 }
 
+type SelectBoxSourceLabel = keyof SelectBoxProps['source'][number]
+type SelectBoxSourceValue = SelectBoxProps['source'][number][SelectBoxSourceLabel]
+
 export interface SelectBoxProps {
-    source: { [key: string]: string | number}[];
+    source: { [key: string]: any}[];
+    labelKey?: string;
+    valueKey?: string;
+    name?: string;
+    label?: string;
+    value?: SelectBoxSourceValue | SelectBoxSourceValue[];
     theme: SelectBoxTheme;
     allowBlank?: boolean;
     auto?: boolean;
     className?: string;
     disabled?: boolean;
     error?: string | null;
-    label?: string;
-    labelKey?: string;
-    name?: string;
     onBlur?: (event: React.SyntheticEvent) => void;
     onChange?: (value: string | number, event: React.SyntheticEvent) => void;
     onClick?: (event: React.MouseEvent) => void;
     onFocus?: React.FocusEventHandler<HTMLDivElement>;
     required?: boolean;
     template?: (item: SelectBoxProps['source'][number] | undefined) => React.ReactNode;
-    value?: string | number | (string | number)[];
-    valueKey?: string;
 }
 
 type State = {
