@@ -17,7 +17,7 @@ import styles from './SelectBox.module.css'
 export interface SelectBoxProps extends Omit<Props, 'theme'> {
     theme?: Partial<SelectBoxTheme & InputTheme>;
     multiSelect?: boolean;
-    onChange?: (value: string | number | (string | number)[], event?: React.SyntheticEvent) => void;
+    onChange?: (value: string | number | (string | number | null)[] | null, event?: React.SyntheticEvent) => void;
 }
 
 export class SelectBox extends Component<SelectBoxProps> {
@@ -86,8 +86,8 @@ export class SelectBox extends Component<SelectBoxProps> {
         })
     }
 
-    private onChange = (value: string | number, event: React.SyntheticEvent): void => {
-        let newValue: string | number | (string | number)[] = value
+    private onChange = (value: string | number | null, event: React.SyntheticEvent): void => {
+        let newValue: Props['value'] = value
 
         if (this.props.multiSelect && Array.isArray(this.props.value)) {
             newValue = [...this.props.value, value]
@@ -98,7 +98,7 @@ export class SelectBox extends Component<SelectBoxProps> {
         }
     }
 
-    private onDelete(value: string | number): void {
+    private onDelete(value: string | number | null): void {
         if (!Array.isArray(this.props.value)) {
             return
         }
@@ -113,7 +113,7 @@ export class SelectBox extends Component<SelectBoxProps> {
     private get elements(): SelectBoxProps['source'] {
         if (this.props.multiSelect && Array.isArray(this.props.value)) {
             return filter(this.source, (option) => indexOf(
-                this.props.value as (string | number)[],
+                this.props.value as (string | number | null)[],
                 option.value,
             ) == -1)
         }

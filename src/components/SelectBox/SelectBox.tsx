@@ -25,7 +25,7 @@ export type SelectBoxTheme = {
 }
 
 export interface SelectBoxProps {
-    source: { [key: string]: string | number }[];
+    source: { [key: string]: string | number | null }[];
     theme: SelectBoxTheme;
     allowBlank?: boolean;
     auto?: boolean;
@@ -36,12 +36,12 @@ export interface SelectBoxProps {
     labelKey?: string;
     name?: string;
     onBlur?: (event: React.SyntheticEvent) => void;
-    onChange?: (value: string | number, event: React.SyntheticEvent) => void;
+    onChange?: (value: string | number | null, event: React.SyntheticEvent) => void;
     onClick?: (event: React.MouseEvent) => void;
     onFocus?: React.FocusEventHandler<HTMLDivElement>;
     required?: boolean;
     template?: (item: SelectBoxProps['source'][number] | undefined) => React.ReactNode;
-    value?: string | number | (string | number)[];
+    value?: string | number | (string | number | null)[] | null;
     valueKey?: string;
 }
 
@@ -137,7 +137,7 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
                     theme={theme}
                     value={
                         selected && selected[labelKey ?? 'label']
-                            ? selected[labelKey ?? 'label']
+                            ? selected[labelKey ?? 'label'] ?? ''
                             : ''
                     }
                 />
@@ -281,7 +281,7 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
     }
 
     private handleSelect = (
-        item: string | number,
+        item: string | number | null,
         event: React.SyntheticEvent,
     ): void => {
         if (this.props.onBlur) {
