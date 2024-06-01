@@ -15,9 +15,7 @@ export type ButtonMenuTheme = Partial<ButtonTheme> & Partial<TooltipTheme>
 export type TooltipPickedProps = Pick<TooltipProps,
   | 'tooltip'
   | 'tooltipDelay'
-  | 'tooltipHideOnClick'
   | 'tooltipPosition'
-  | 'tooltipShowOnClick'
   | 'tooltipOffset'
 >
 
@@ -71,9 +69,7 @@ export class ButtonMenu extends PureComponent<ButtonMenuProps> {
         const {
             tooltip,
             tooltipDelay,
-            tooltipHideOnClick,
             tooltipPosition,
-            tooltipShowOnClick,
             tooltipOffset,
             theme,
             showOnlyIcon,
@@ -120,9 +116,7 @@ export class ButtonMenu extends PureComponent<ButtonMenuProps> {
                     tooltip={tooltip}
                     theme={customTheme}
                     tooltipDelay={tooltipDelay}
-                    tooltipHideOnClick={tooltipHideOnClick}
                     tooltipPosition={tooltipPosition}
-                    tooltipShowOnClick={tooltipShowOnClick}
                     tooltipOffset={tooltipOffset}
                 >
                     {this.renderContent(classNameText, classNameIcon, iconValue)}

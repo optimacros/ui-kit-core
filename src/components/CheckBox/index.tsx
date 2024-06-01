@@ -18,9 +18,7 @@ export type Theme = {
 
 export type TooltipPickedProps = Pick<Props,
   'tooltipDelay'
-  | 'tooltipHideOnClick'
   | 'tooltipPosition'
-  | 'tooltipShowOnClick'
   | 'tooltipOffset'
 >
 
@@ -47,9 +45,7 @@ export class CheckBox extends React.Component<CheckBoxProps> {
             tooltipLabel,
             theme,
             tooltipDelay,
-            tooltipHideOnClick,
             tooltipPosition,
-            tooltipShowOnClick,
             tooltipOffset,
             ...otherProps
         } = this.props
@@ -62,9 +58,7 @@ export class CheckBox extends React.Component<CheckBoxProps> {
                     tooltip={tooltipLabel}
                     theme={customTheme}
                     tooltipDelay={tooltipDelay}
-                    tooltipHideOnClick={tooltipHideOnClick}
                     tooltipPosition={tooltipPosition}
-                    tooltipShowOnClick={tooltipShowOnClick}
                     tooltipOffset={tooltipOffset}
                     composedComponent={CheckBoxComponent}
                     composedComponentProps={{ ...otherProps, theme: customTheme }}

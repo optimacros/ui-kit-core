@@ -40,9 +40,7 @@ export type Props = {
     theme?: Record<string, string>;
     tooltip?: string | React.ReactNode;
     tooltipDelay?: number;
-    tooltipHideOnClick?: boolean;
     tooltipPosition?: Position;
-    tooltipShowOnClick?: boolean;
     tooltipOffset?: number;
 }
 
@@ -98,9 +96,7 @@ export class Tooltip extends Component<TooltipProps, State> {
             onMouseLeave,
             tooltip,
             tooltipDelay,
-            tooltipHideOnClick,
             tooltipPosition,
-            tooltipShowOnClick,
             composedComponent,
             composedComponentProps,
             tooltipOffset,
@@ -267,12 +263,8 @@ export class Tooltip extends Component<TooltipProps, State> {
     }
 
     handleClick = (event: React.MouseEvent<HTMLElement>): void => {
-        if ((this.props.tooltipHideOnClick ?? true) && this.state.active) {
+        if (this.state.active) {
             this.deactivate()
-        }
-
-        if ((this.props.tooltipShowOnClick ?? false) && !this.state.active) {
-            this.activate(this.calculatePosition(event.currentTarget as HTMLElement))
         }
 
         if (this.props.onClick) {

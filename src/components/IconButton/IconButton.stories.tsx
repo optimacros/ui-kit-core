@@ -58,10 +58,6 @@ const argTypes: Partial<ArgTypes> = {
         control: "number",
         description: "Amount of time in milliseconds spent before the tooltip is visible.",
     },
-    tooltipHideOnClick: {
-        control: "boolean",
-        description: "If `true`, the Tooltip hides after a click on element.",
-    },
     tooltipPosition: {
         control: "radio",
         options: [ "vertical", "horizontal", "bottom", "top", "left", "right" ],
@@ -69,10 +65,6 @@ const argTypes: Partial<ArgTypes> = {
             defaultValue: { summary: "vertical" },
         },
         description: "Determines the position of the tooltip.",
-    },
-    tooltipShowOnClick: {
-        control: "boolean",
-        description: "If `true`, the tooltip toggled when clicked. This is useful for mobile where there is no mouse enter.",
     },
     tooltipOffset: {
         control: "number",
@@ -191,8 +183,6 @@ export const WithTooltip: Story = {
         tooltip: "Like",
         tooltipDelay: 50,
         tooltipPosition: "right",
-        tooltipHideOnClick: true,
-        tooltipShowOnClick: false,
         tooltipOffset: 0,
     },
 }

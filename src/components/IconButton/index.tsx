@@ -20,9 +20,7 @@ export interface Props extends Partial<ButtonInitialProps> {
 type TooltipPickedProps = Pick<TooltipProps,
   | 'tooltip'
   | 'tooltipDelay'
-  | 'tooltipHideOnClick'
   | 'tooltipPosition'
-  | 'tooltipShowOnClick'
   | 'tooltipOffset'
 >
 
@@ -36,9 +34,7 @@ export class IconButton extends React.Component<IconButtonProps> {
             theme: customTheme,
             tooltip,
             tooltipDelay,
-            tooltipHideOnClick,
             tooltipPosition,
-            tooltipShowOnClick,
             tooltipOffset,
             ...otherProps
         } = this.props
@@ -61,9 +57,7 @@ export class IconButton extends React.Component<IconButtonProps> {
                 composedComponentProps={composedComponentProps}
                 tooltip={this.props.label ?? this.props.tooltip}
                 tooltipDelay={tooltipDelay}
-                tooltipHideOnClick={tooltipHideOnClick}
                 tooltipPosition={tooltipPosition}
-                tooltipShowOnClick={tooltipShowOnClick}
                 tooltipOffset={tooltipOffset}
                 theme={theme}
             >

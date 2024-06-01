@@ -19,7 +19,7 @@ const TestComponent = () => (
       <ButtonMenu label='Visible' visible />
       <ButtonMenu label='Uppercase' uppercase />
       <ButtonMenu label='With Icon' icon='add' showOnlyIcon arrowUp />
-      <ButtonMenu label='Tooltip' tooltip='Tooltip text' tooltipDelay={250} tooltipHideOnClick={false} tooltipPosition='top' tooltipShowOnClick tooltipOffset={50} /> <ButtonMenu label='ButtonMenu' tooltip='Tooltip text' theme={{ button: 'CustomButtonTheme', tooltip: 'CustomTooltipTheme', tooltipActive: 'CustomTooltipActiveTheme', }} />
+      <ButtonMenu label='Tooltip' tooltip='Tooltip text' tooltipDelay={250} tooltipPosition='top' tooltipOffset={50} /> <ButtonMenu label='ButtonMenu' tooltip='Tooltip text' theme={{ button: 'CustomButtonTheme', tooltip: 'CustomTooltipTheme', tooltipActive: 'CustomTooltipActiveTheme', }} />
     
   </div>
 );
@@ -51,9 +51,7 @@ import { ButtonMenu } from 'ui-kit-lite/components/ButtonMenu';
 | `arrowUp`                    | `Boolean`          | `false`    | If `true`, dropdown arrow icon will point up.                                                                                                          |
 | `tooltip`                    | `String` or `Node` | -          | The text string or node to use for the tooltip.                                                                                                        |
 | `tooltipDelay`               | `Number`           | `0`        | Amount of time in milliseconds spent before the tooltip is visible.                                                                                    |
-| `tooltipHideOnClick`         | `Boolean`          | `true`     | If `true`, the Tooltip hides after a click on element.                                                                                                 |
 | `tooltipPosition`            | `String`           | `vertical` | Determines the position of the tooltip. It can be automatic with `vertical` and `horizontal` values or forced with `bottom`, `top`, `left` or `right`. |
-| `tooltipShowOnClick`         | `Boolean`          | `false`    | If `true`, the tooltip toggled when clicked. This is useful for mobile where there is no mouse enter.                                                  |
 | `tooltipOffset`              | `Number`           | `0`        | If `tooltipPosition` - `vertical`, `bottom` or `top`, the tooltip moves relative to its axis.                                                          |
 | `onVisibleChange`            | `Function`         | -          | Fires when Dropdown visibility changing.                                                                                                               |
 

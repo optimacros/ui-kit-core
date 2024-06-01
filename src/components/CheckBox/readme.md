@@ -48,9 +48,7 @@ import { CheckBox } from 'ui-kit-lite/components/CheckBox';
 | `tooltipLabel`       | `String`           | -          | The text string to use for the tooltip.                                                                                                                  |
 | `tooltipDelay`       | `Number`           | `0`        | Amount of time in milliseconds spent before the tooltip is visible.                                                                                      |
 | `tooltipOffset`      | `Number`           | `0`        | If `tooltipPosition` - `vertical`, `bottom` or `top`, the tooltip moves relative to its axis.                                                            |
-| `tooltipHideOnClick` | `Boolean`          | `true`     | If `true`, the Tooltip hides after a click in the host component.                                                                                        |
 | `tooltipPosition`    | `String`           | `vertical` | Determines the position of the tooltip. It can be automatic with `vertical` and `horizontal` values or forced with `bottom`, `top`, `left` or `right`.   |
-| `tooltipShowOnClick` | `Boolean`          | `false`    | If `true`, the tooltip also toggled when clicked. This is useful for mobile where there is no mouse enter.                                               |
 
 ## Theme
 
