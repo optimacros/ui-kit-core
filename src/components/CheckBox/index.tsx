@@ -47,6 +47,7 @@ export class CheckBox extends React.Component<CheckBoxProps> {
             tooltipDelay,
             tooltipPosition,
             tooltipOffset,
+            onClick,
             ...otherProps
         } = this.props
 
@@ -55,6 +56,7 @@ export class CheckBox extends React.Component<CheckBoxProps> {
         return tooltipLabel
             ? (
                 <Tooltip
+                    onClick={onClick}
                     tooltip={tooltipLabel}
                     theme={customTheme}
                     tooltipDelay={tooltipDelay}
@@ -67,6 +69,7 @@ export class CheckBox extends React.Component<CheckBoxProps> {
             : (
                 <CheckBoxComponent
                     {...otherProps}
+                    onClick={onClick}
                     theme={customTheme}
                 />
             )

@@ -36,6 +36,7 @@ export class IconButton extends React.Component<IconButtonProps> {
             tooltipDelay,
             tooltipPosition,
             tooltipOffset,
+            onClick,
             ...otherProps
         } = this.props
 
@@ -55,6 +56,7 @@ export class IconButton extends React.Component<IconButtonProps> {
             <Tooltip
                 composedComponent={IconButtonComponent}
                 composedComponentProps={composedComponentProps}
+                onClick={onClick}
                 tooltip={this.props.label ?? this.props.tooltip}
                 tooltipDelay={tooltipDelay}
                 tooltipPosition={tooltipPosition}

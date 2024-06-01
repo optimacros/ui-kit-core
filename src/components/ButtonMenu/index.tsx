@@ -17,6 +17,7 @@ export type TooltipPickedProps = Pick<TooltipProps,
   | 'tooltipDelay'
   | 'tooltipPosition'
   | 'tooltipOffset'
+  | 'onClick'
 >
 
 export type Props = {
@@ -67,6 +68,7 @@ export class ButtonMenu extends PureComponent<ButtonMenuProps> {
 
     renderButton(): React.JSX.Element {
         const {
+            onClick,
             tooltip,
             tooltipDelay,
             tooltipPosition,
@@ -114,6 +116,7 @@ export class ButtonMenu extends PureComponent<ButtonMenuProps> {
                     }}
                     className={updatedClassName}
                     tooltip={tooltip}
+                    onClick={onClick}
                     theme={customTheme}
                     tooltipDelay={tooltipDelay}
                     tooltipPosition={tooltipPosition}
@@ -127,6 +130,7 @@ export class ButtonMenu extends PureComponent<ButtonMenuProps> {
         return (
             <Button
                 {...otherProps}
+                onClick={onClick}
                 theme={customTheme}
                 className={updatedClassName}
                 data-label={label}
