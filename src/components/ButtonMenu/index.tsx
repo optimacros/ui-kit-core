@@ -6,19 +6,11 @@ import { Button, ButtonTheme } from '../Button'
 import { Dropdown } from '../Dropdown'
 import { FontIcon } from '../FontIcon'
 import { Menu } from '../Menu'
-import { Tooltip, TooltipProps, TooltipTheme } from '../Tooltip/Tooltip'
+import { Tooltip, TooltipProps, TooltipTheme } from '../Tooltip'
 
 import buttonMenuTheme from './ButtonMenu.module.css'
 
 export type ButtonMenuTheme = Partial<ButtonTheme> & Partial<TooltipTheme>
-
-export type TooltipPickedProps = Pick<TooltipProps,
-  | 'tooltip'
-  | 'tooltipDelay'
-  | 'tooltipPosition'
-  | 'tooltipOffset'
-  | 'onClick'
->
 
 export type Props = {
     label?: string;
@@ -34,7 +26,7 @@ export type Props = {
     icon?: string | React.JSX.Element;
     dataName?: string;
     classNameDropdownContainer?: string;
-} & TooltipPickedProps
+} & TooltipProps
 
 export type ButtonMenuProps = React.PropsWithChildren<Props>
 
@@ -69,6 +61,8 @@ export class ButtonMenu extends PureComponent<ButtonMenuProps> {
     renderButton(): React.JSX.Element {
         const {
             onClick,
+            onMouseEnter,
+            onMouseLeave,
             tooltip,
             tooltipDelay,
             tooltipPosition,
@@ -115,9 +109,11 @@ export class ButtonMenu extends PureComponent<ButtonMenuProps> {
                         'data-name': dataName,
                     }}
                     className={updatedClassName}
-                    tooltip={tooltip}
                     onClick={onClick}
+                    onMouseEnter={onMouseEnter}
+                    onMouseLeave={onMouseLeave}
                     theme={customTheme}
+                    tooltip={tooltip}
                     tooltipDelay={tooltipDelay}
                     tooltipPosition={tooltipPosition}
                     tooltipOffset={tooltipOffset}
@@ -131,10 +127,12 @@ export class ButtonMenu extends PureComponent<ButtonMenuProps> {
             <Button
                 {...otherProps}
                 onClick={onClick}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
                 theme={customTheme}
                 className={updatedClassName}
                 data-label={label}
-                data-name={this.props.dataName}
+                data-name={dataName}
             >
                 {this.renderContent(classNameText, classNameIcon, iconValue)}
             </Button>

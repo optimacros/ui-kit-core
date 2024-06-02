@@ -4,7 +4,7 @@ import React from 'react'
 import { IconButtonComponent } from './IconButton'
 import { mergeStyles } from '../../utils/mergeStyle'
 import type { ButtonInitialProps, ThemeButtonProps } from '../Button'
-import { Tooltip, TooltipProps } from '../Tooltip/Tooltip'
+import { Tooltip, TooltipProps } from '../Tooltip'
 
 // order of styles import is important
 import themeStyle from './theme.module.css'
@@ -17,14 +17,7 @@ export interface Props extends Partial<ButtonInitialProps> {
     theme: Partial<IconButtonTheme>;
 }
 
-type TooltipPickedProps = Pick<TooltipProps,
-  | 'tooltip'
-  | 'tooltipDelay'
-  | 'tooltipPosition'
-  | 'tooltipOffset'
->
-
-export type IconButtonProps = Partial<Props & TooltipPickedProps>
+export type IconButtonProps = Partial<Props & TooltipProps>
 
 export class IconButton extends React.Component<IconButtonProps> {
     render(): React.JSX.Element {
@@ -37,26 +30,28 @@ export class IconButton extends React.Component<IconButtonProps> {
             tooltipPosition,
             tooltipOffset,
             onClick,
+            onMouseEnter,
+            onMouseLeave,
+            className,
             ...otherProps
         } = this.props
 
         let theme = mergeStyles(style, customTheme) as IconButtonTheme
         theme = mergeStyles(theme, themeStyle) as IconButtonTheme
 
-        const className = classNames(theme.IconButton, this.props.className)
-
-        const composedComponentProps = {
-            ...otherProps,
-            theme,
-            className,
-            'data-label': label,
-        }
+        const updatedClassName = classNames(theme.IconButton, this.props.className)
 
         return (
             <Tooltip
                 composedComponent={IconButtonComponent}
-                composedComponentProps={composedComponentProps}
+                composedComponentProps={{
+                    ...otherProps,
+                    'data-label': label,
+                }}
                 onClick={onClick}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
+                className={updatedClassName}
                 tooltip={this.props.label ?? this.props.tooltip}
                 tooltipDelay={tooltipDelay}
                 tooltipPosition={tooltipPosition}

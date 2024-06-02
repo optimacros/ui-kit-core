@@ -3,7 +3,7 @@ import React from 'react'
 
 import { CheckBoxComponent } from './CheckBox'
 import { mergeStyles } from '../../utils/mergeStyle'
-import { Tooltip, Props, TooltipTheme } from '../Tooltip/Tooltip'
+import { Tooltip, TooltipProps, TooltipTheme } from '../Tooltip'
 
 import themeStyle from './theme.module.css'
 
@@ -15,12 +15,6 @@ export type Theme = {
     disabled?: string;
     checked?: string;
 }
-
-export type TooltipPickedProps = Pick<Props,
-  'tooltipDelay'
-  | 'tooltipPosition'
-  | 'tooltipOffset'
->
 
 export type InitialProps = {
     checked?: boolean;
@@ -35,7 +29,7 @@ export type InitialProps = {
     onMouseEnter?: MouseEventHandler<HTMLLabelElement> | undefined;
     onMouseLeave?: MouseEventHandler<HTMLLabelElement> | undefined;
     theme?: Partial<Theme> & Partial<TooltipTheme>;
-} & TooltipPickedProps
+} & TooltipProps
 
 export type CheckBoxProps = React.PropsWithChildren<InitialProps>
 
@@ -48,6 +42,9 @@ export class CheckBox extends React.Component<CheckBoxProps> {
             tooltipPosition,
             tooltipOffset,
             onClick,
+            onMouseEnter,
+            onMouseLeave,
+            className,
             ...otherProps
         } = this.props
 
@@ -57,19 +54,25 @@ export class CheckBox extends React.Component<CheckBoxProps> {
             ? (
                 <Tooltip
                     onClick={onClick}
-                    tooltip={tooltipLabel}
+                    onMouseEnter={onMouseEnter}
+                    onMouseLeave={onMouseLeave}
+                    className={className}
                     theme={customTheme}
+                    tooltip={tooltipLabel}
                     tooltipDelay={tooltipDelay}
                     tooltipPosition={tooltipPosition}
                     tooltipOffset={tooltipOffset}
                     composedComponent={CheckBoxComponent}
-                    composedComponentProps={{ ...otherProps, theme: customTheme }}
+                    composedComponentProps={otherProps}
                 />
             )
             : (
                 <CheckBoxComponent
                     {...otherProps}
                     onClick={onClick}
+                    onMouseEnter={onMouseEnter}
+                    onMouseLeave={onMouseLeave}
+                    className={className}
                     theme={customTheme}
                 />
             )
