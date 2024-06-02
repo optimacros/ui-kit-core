@@ -29,7 +29,7 @@ export type InitialProps = {
     onMouseEnter?: MouseEventHandler<HTMLLabelElement> | undefined;
     onMouseLeave?: MouseEventHandler<HTMLLabelElement> | undefined;
     theme?: Partial<Theme> & Partial<TooltipTheme>;
-} & TooltipProps
+} & Partial<TooltipProps>
 
 export type CheckBoxProps = React.PropsWithChildren<InitialProps>
 
