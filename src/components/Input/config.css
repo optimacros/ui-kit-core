@@ -6,7 +6,7 @@
     --input-label-font-size: calc(1.2 * var(--unit));
     --input-focus-label-top: calc(0.6 * var(--unit));
     --input-text-background-color: transparent;
-    --input-text-label-color: color(var(--primary-text-color) a(26%));
+    --input-text-label-color: color(var(--color-text) a(26%));
     --input-text-input-element-color: var(--color-text);
     --input-text-bottom-border-color: rgb(189, 189, 189);
     --input-text-highlight-color: var(--color-primary);
