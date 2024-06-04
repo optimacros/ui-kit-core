@@ -1,16 +1,52 @@
 import classNames from 'classnames'
 import type { MouseEvent } from 'react'
-import React, { Component } from 'react'
+import React, { ButtonHTMLAttributes, Component } from 'react'
 
-import type { ButtonInitialProps, ButtonTheme } from './index'
 import { FontIcon } from '../FontIcon'
+import { mergeStyles } from "../../utils/mergeStyle.ts";
+import styles from './Button.module.css'
 
-export interface ButtonComponentProps extends Partial<ButtonInitialProps> {
-    theme: ButtonTheme;
+export type ButtonTheme = {
+    button: string;
+    icon: string;
+    accent: string;
+    bordered: string;
+    neutral: string;
+    primary: string;
+    flat: string;
+    floating: string;
+    raised: string;
+    inverse: string;
+    mini: string;
+    button_uppercase: string;
+    gray: string;
+    warning: string;
 }
 
-export class ButtonComponent extends Component<ButtonComponentProps> {
-    constructor(props: ButtonComponentProps) {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
+    label: string;
+    icon: string | React.JSX.Element | null;
+    href: string;
+    target: string;
+    gray: boolean;
+    warning: boolean;
+    accent: boolean;
+    neutral: boolean;
+    primary: boolean;
+    bordered: boolean;
+    uppercase: boolean;
+    floating: boolean;
+    raised: boolean;
+    inverse: boolean;
+    mini: boolean;
+    buttonColor: string;
+    fontColor: string;
+    fontSize: string | number;
+    theme: Partial<ButtonTheme>;
+}
+
+export class Button extends Component<Partial<ButtonProps>> {
+    constructor(props: Partial<ButtonProps>) {
         super(props)
 
         this.buttonNode = React.createRef()
@@ -20,12 +56,10 @@ export class ButtonComponent extends Component<ButtonComponentProps> {
 
     render(): React.JSX.Element {
         const {
-            className = '',
             type = 'button',
             label,
             icon,
             href,
-            theme,
             inverse,
             mini,
             neutral,
@@ -43,7 +77,9 @@ export class ButtonComponent extends Component<ButtonComponentProps> {
             raised,
             ...otherProps
         } = this.props
-
+        
+        const theme = mergeStyles(styles, this.props.theme) as ButtonTheme
+        
         const element = href
             ? 'a'
             : 'button'
@@ -55,15 +91,18 @@ export class ButtonComponent extends Component<ButtonComponentProps> {
             onMouseLeave: this.handleMouseLeave,
         }
 
-        const classList = classNames(
+        const className = classNames(
             theme.button,
             [theme[shape]],
             {
                 [theme[level]]: neutral ?? true,
                 [theme.mini]: mini ?? false,
                 [theme.inverse]: inverse ?? false,
+                [theme.button_uppercase]: this.props.uppercase ?? false,
+                [theme.gray]: this.props.gray ?? false,
+                [theme.warning]: this.props.warning ?? false,
             },
-            className,
+            this.props.className,
         )
 
         const style = {
@@ -77,7 +116,7 @@ export class ButtonComponent extends Component<ButtonComponentProps> {
             ...mouseEvents,
             href,
             ref: this.buttonNode,
-            className: classList,
+            className,
             type: !href
                 ? type
                 : null,

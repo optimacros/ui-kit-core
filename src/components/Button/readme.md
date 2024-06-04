@@ -22,7 +22,7 @@ const TestComponent = () => (
     <Button label='inverse' inverse buttonColor='black'/>
     <Button accent>Accent</Button>
     <Button label='primary' primary />
-    <Button label='flat' flat />
+    <Button label='flat' />
     <Button label='+' floating />
     <Button label='+' floating accent mini />
     <Button label='raised' raised />
@@ -74,16 +74,19 @@ import { Button } from 'ui-kit-lite/components/Button';
 
 ## Theme
 
-| Name       | Description                                  |
-|:-----------|:---------------------------------------------|
-| `button`   | Used for the root element.                   |
-| `icon`     | Used for the icon element.                   |
-| `flat`     | Use when the button is flat.                 |
-| `floating` | Use when the button is floating.             |
-| `raised`   | Use when the button is raised.               |
-| `inverse`  | Use when the button is inverted.             |
-| `mini`     | Use for mini floating button.                |
-| `neutral`  | Use for neutral colored button.              |
-| `accent`   | Use when the button is neutral and accent.   |
-| `primary`  | Use when the button is neutral and primary.  |
-| `bordered` | Use when the button is neutral and bordered. |
+| Name               | Description                                  |
+|:-------------------|:---------------------------------------------|
+| `button`           | Used for the root element.                   |
+| `icon`             | Used for the icon element.                   |
+| `flat`             | Use when the button is flat.                 |
+| `floating`         | Use when the button is floating.             |
+| `raised`           | Use when the button is raised.               |
+| `inverse`          | Use when the button is inverted.             |
+| `mini`             | Use for mini floating button.                |
+| `neutral`          | Use for neutral colored button.              |
+| `accent`           | Use when the button is neutral and accent.   |
+| `primary`          | Use when the button is neutral and primary.  |
+| `bordered`         | Use when the button is neutral and bordered. |
+| `gray`             | Use when the button is gray.                 |
+| `warning`          | Use when the button is warning.              |
+| `button_uppercase` | Use when the button is uppercase.            |
