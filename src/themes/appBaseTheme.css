@@ -22,6 +22,7 @@
     --Button-primary-color: #2da274;
     --Button-primary-bg-hover: rgba(45, 162, 116, 0.1);
     --Button-neutral-bg-hover: rgba(33,33,33,.2);
+    --Button-neutral-color: rgb(33, 33, 33);
     --Button-disabled-bg: #f0f0f0;
     --Button-disabled-color: #c9c9c9;
     --Button-disabled-bg-hover: #f0f0f0;
