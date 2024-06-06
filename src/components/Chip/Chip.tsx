@@ -3,7 +3,7 @@ import React from 'react'
 
 import { mergeStyles } from '../../utils/mergeStyle'
 
-import styles from './theme.module.css'
+import styles from './Chip.module.css'
 
 export type Theme = {
     avatar: string;

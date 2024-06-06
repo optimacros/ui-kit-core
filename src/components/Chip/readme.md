@@ -26,7 +26,7 @@ const TestComponent = () => (
       <Chip deletable theme={{ deletable: 'CustomDeletable' }} onDeleteClick={() => console.log('delete')} >
           Deletable Chip
       </Chip>
-      <Chip deletable incomeDeleteIcon={<CustomDeleteIcon />} >
+      <Chip deletable customDeleteIcon={<CustomDeleteIcon />} >
           Deletable Chip With Custom Delete Icon
       </Chip>
       <Chip>
