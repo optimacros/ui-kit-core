@@ -13,7 +13,7 @@ const GithubIcon = () => (
 
 const TestComponent = () => (
   <div>
-    <IconButton icon='favorite' accent />
+    <IconButton icon='favorite' accent tooltip='Favorite' />
     <IconButton icon={<GithubIcon />} accent disabled />
     <IconButton primary><GithubIcon /></IconButton>
   </div>

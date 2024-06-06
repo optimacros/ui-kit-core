@@ -1,109 +1,62 @@
-import classnames from 'classnames'
-import type { MouseEvent } from 'react'
-import React, { Component } from 'react'
+﻿import classNames from 'classnames'
+import React from 'react'
 
-import type { IconButtonProps, IconButtonTheme } from './index'
-import { FontIcon } from '../FontIcon'
+import { IconButtonContent } from './IconButtonContent'
+import { mergeStyles } from '../../utils/mergeStyle'
+import type { ButtonProps, ButtonTheme } from '../Button'
+import { Tooltip, TooltipProps } from '../Tooltip'
 
-export interface Props extends IconButtonProps {
-    theme: IconButtonTheme & { toggle: string };
+import style from './IconButton.module.css'
+
+
+export type IconButtonTheme = ButtonTheme & { IconButton: string }
+
+export interface Props extends Partial<ButtonProps> {
+    theme: Partial<IconButtonTheme>;
 }
 
-export class IconButtonComponent extends Component<Props> {
-    constructor(props: Props) {
-        super(props)
+export type IconButtonProps = Partial<Props & TooltipProps>
 
-        this.buttonNode = React.createRef()
-    }
-
-    buttonNode: React.RefObject<HTMLButtonElement>
-
+export class IconButton extends React.Component<IconButtonProps> {
     render(): React.JSX.Element {
         const {
-            inverse = false,
-            neutral = true,
-            disabled = false,
-            type = 'button',
-            accent,
             children,
-            className = '',
-            href,
-            icon,
-            primary,
-            theme,
-            bordered,
-            ...others
+            label,
+            theme: customTheme,
+            tooltip,
+            tooltipDelay,
+            tooltipPosition,
+            tooltipOffset,
+            onClick,
+            onMouseEnter,
+            onMouseLeave,
+            className,
+            ...otherProps
         } = this.props
 
-        const element = href
-            ? 'a'
-            : 'button'
+        const theme = mergeStyles(style, customTheme) as IconButtonTheme
 
-        const level = this.getLevel()
-        const classes = classnames(
-            [theme.toggle],
-            {
-                [theme[level]]: neutral,
-                [theme.inverse]: inverse,
-            },
-            className,
+        const updatedClassName = classNames(theme.IconButton, this.props.className)
+
+        return (
+            <Tooltip
+                composedComponent={IconButtonContent}
+                composedComponentProps={{
+                    ...otherProps,
+                    'data-label': label,
+                }}
+                onClick={onClick}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
+                className={updatedClassName}
+                tooltip={this.props.label ?? this.props.tooltip}
+                tooltipDelay={tooltipDelay}
+                tooltipPosition={tooltipPosition}
+                tooltipOffset={tooltipOffset}
+                theme={theme}
+            >
+                {children}
+            </Tooltip>
         )
-
-        const props = {
-            ...others,
-            href,
-            ref: this.buttonNode,
-            className: classes,
-            disabled: disabled,
-            onMouseUp: this.handleMouseUp,
-            onMouseLeave: this.handleMouseLeave,
-            type: !href
-                ? type
-                : null,
-            'data-react-toolbox': 'button',
-        }
-
-        const iconElement = typeof icon === 'string'
-            ? (
-                <FontIcon
-                    className={theme.icon}
-                    value={icon}
-                />
-            )
-            : icon
-
-        return React.createElement(element, props, icon && iconElement, children)
-    }
-
-    getLevel = (): 'primary' | 'accent' | 'bordered' | 'neutral' => {
-        if (this.props.primary) {
-            return 'primary'
-        }
-
-        if (this.props.accent) {
-            return 'accent'
-        }
-
-        if (this.props.bordered) {
-            return 'bordered'
-        }
-
-        return 'neutral'
-    }
-
-    handleMouseUp = (event: MouseEvent<HTMLButtonElement>): void => {
-        this.buttonNode.current?.blur()
-
-        if (this.props.onMouseUp) {
-            this.props.onMouseUp(event)
-        }
-    }
-
-    handleMouseLeave = (event: MouseEvent<HTMLButtonElement>): void => {
-        this.buttonNode.current?.blur()
-
-        if (this.props.onMouseLeave) {
-            this.props.onMouseLeave(event)
-        }
     }
 }
