@@ -7,11 +7,7 @@ import { mergeStyles } from '../../utils/mergeStyle'
 import { isValuePresent } from '../../utils/react-toolbox-utils'
 import { FontIcon } from '../FontIcon'
 
-// order of styles import is important
-// eslint-disable-next-line
-import inputThemeStyle from './theme.module.css'
-// eslint-disable-next-line
-import inputDefaultStyle from './Input.module.css'
+import style from './Input.module.css'
 
 export type InputTheme = {
     bar: string;
@@ -120,8 +116,7 @@ export class Input extends React.Component<InputProps> {
             ? label
             : ''
 
-        let theme = mergeStyles(inputThemeStyle, customTheme) as InputTheme
-        theme = mergeStyles(theme, inputDefaultStyle) as InputTheme
+        const theme = mergeStyles(style, customTheme) as InputTheme
 
         const labelClassName = classNames(theme.label, {
             [theme.fixed]: !floating,
