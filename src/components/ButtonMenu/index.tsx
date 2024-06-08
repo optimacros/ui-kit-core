@@ -26,7 +26,7 @@ export type Props = {
     icon?: string | React.JSX.Element;
     dataName?: string;
     classNameDropdownContainer?: string;
-    closeOnSelect: boolean;
+    closeOnSelect?: boolean;
 } & Partial<TooltipProps>
 
 export type ButtonMenuProps = React.PropsWithChildren<Props>
