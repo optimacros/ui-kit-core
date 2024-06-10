@@ -2,7 +2,7 @@ import classnames from 'classnames'
 import type { CSSProperties, TouchEventHandler } from 'react'
 import React from 'react'
 
-import type { Theme } from './index'
+import type { Theme } from './CheckBox'
 
 export interface BoxProps {
     theme: Required<Theme>;

@@ -5,7 +5,7 @@ import { Box } from './Box'
 import { mergeStyles } from '../../utils/mergeStyle'
 
 import checkBoxStyle from './CheckBox.module.css'
-import { CheckBoxProps, Theme} from "./CheckBox.tsx";
+import { CheckBoxProps, Theme} from "./CheckBox";
 
 
 export class CheckBoxContent extends Component<CheckBoxProps> {

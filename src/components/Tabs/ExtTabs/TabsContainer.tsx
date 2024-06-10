@@ -6,7 +6,7 @@ import { TabContent } from './TabContent'
 import type { TabHeaderTheme } from './TabHeader'
 import { TabHeader } from './TabHeader'
 import { mergeStyles } from '../../../utils/mergeStyle'
-import { ButtonMenuTheme } from '../../ButtonMenu'
+import type { ButtonMenuTheme } from '../../ButtonMenu'
 import type { TabProps } from '../Tab'
 
 import styles from './TabsContainer.module.css'

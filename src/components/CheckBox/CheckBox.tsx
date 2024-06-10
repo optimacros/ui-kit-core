@@ -3,7 +3,7 @@ import React from 'react'
 
 import { Tooltip, TooltipProps, TooltipTheme } from '../Tooltip'
 
-import { CheckBoxContent } from "./CheckBoxContent.tsx";
+import { CheckBoxContent } from "./CheckBoxContent";
 
 export type Theme = {
     field?: string;
