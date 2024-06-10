@@ -75,10 +75,11 @@ export class Button extends Component<Partial<ButtonProps>> {
             bordered,
             floating,
             raised,
+            theme: customTheme,
             ...otherProps
         } = this.props
         
-        const theme = mergeStyles(styles, this.props.theme) as ButtonTheme
+        const theme = mergeStyles(styles, customTheme) as ButtonTheme
         
         const element = href
             ? 'a'
