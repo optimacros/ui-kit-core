@@ -26,6 +26,7 @@ export type Props = {
     icon?: string | React.JSX.Element;
     dataName?: string;
     classNameDropdownContainer?: string;
+    closeOnSelect?: boolean;
 } & Partial<TooltipProps>
 
 export type ButtonMenuProps = React.PropsWithChildren<Props>
@@ -40,6 +41,7 @@ export class ButtonMenu extends PureComponent<ButtonMenuProps> {
                 onVisibleChange={this.props.onVisibleChange}
                 visible={this.props.visible}
                 className={this.props.classNameDropdownContainer}
+                closeOnSelect={this.props.closeOnSelect}
             >
                 {this.renderButton()}
             </Dropdown>
@@ -78,6 +80,7 @@ export class ButtonMenu extends PureComponent<ButtonMenuProps> {
             classNameDropdownContainer,
             uppercase,
             label,
+            closeOnSelect,
             ...otherProps
         } = this.props
 
