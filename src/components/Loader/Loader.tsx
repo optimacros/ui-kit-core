@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { mergeStyles } from '../../utils/mergeStyle'
 import prefixer from '../../utils/react-toolbox-utils/prefixer'
 
-import style from './theme.module.css'
+import style from './Loader.module.css'
 
 export type Theme = {
     buffer?: string;

@@ -6,7 +6,7 @@ import { mergeStyles } from '../../utils/mergeStyle'
 import events from '../../utils/react-toolbox-utils/events'
 import { getViewport } from '../../utils/react-toolbox-utils/utils'
 
-import styles from './theme.module.css'
+import styles from './Tooltip.module.css'
 
 const POSITION = {
     BOTTOM: 'bottom',

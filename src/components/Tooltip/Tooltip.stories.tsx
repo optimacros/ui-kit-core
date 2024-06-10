@@ -1,6 +1,6 @@
 import { ArgTypes, Meta, StoryObj } from "@storybook/react"
 
-import { Tooltip } from "./Tooltip.tsx";
+import { Tooltip } from "./Tooltip";
 import { Button } from "../Button";
 
 const argTypes: Partial<ArgTypes> = {

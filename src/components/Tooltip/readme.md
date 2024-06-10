@@ -29,10 +29,7 @@ const TestComponent = () => (
       <Tooltip composedComponent={Button} tooltip="Text" composedComponentProps={{ label: 'Apply', }} /> 
       <Tooltip composedComponent="div" tooltip="Text" tooltipDelay={300} > 
           <Button label="delayed" /> 
-      </Tooltip> 
-      <Tooltip composedComponent="div" tooltip="Text" tooltipShowOnClick > 
-          <Button label="Show on click" /> 
-      </Tooltip> 
+      </Tooltip>
       <Tooltip composedComponent="div" tooltip="Text" tooltipOffset={20} > 
           <Button label="Offset" /> 
       </Tooltip>

@@ -2,18 +2,24 @@ import classNames from 'classnames'
 import React from 'react'
 import { isEqual } from 'lodash'
 
-import type { NavigationProps as BaseNavigationProps, NavigationTheme } from './BaseNavigation'
-import { BaseNavigation } from './BaseNavigation'
 import { mergeStyles } from '../../utils/mergeStyle'
 
 import navigationTheme from './Navigation.module.css'
 
-export interface Props extends Omit<BaseNavigationProps, 'theme'> {
-    theme?: Partial<NavigationTheme>;
+export type NavigationTheme = {
+    horizontal: string;
+    vertical: string;
 }
 
 interface State {
     theme: NavigationTheme;
+}
+
+export interface Props {
+    type?: 'vertical' | 'horizontal';
+    className?: string;
+    wrap?: boolean;
+    theme?: Partial<NavigationTheme>;
 }
 
 export type NavigationProps = React.PropsWithChildren<Props>
@@ -40,20 +46,26 @@ export class Navigation extends React.PureComponent<NavigationProps, State> {
         const { theme } = this.state
 
         const className = classNames(
-            this.props.className,
             {
                 [navigationTheme.NavigationContainer]: true,
                 [navigationTheme.NavigationContainer_Vertical]: this.props?.type === 'vertical',
                 [navigationTheme.NavigationContainer_Wrap]: this.props.wrap,
             },
+            this.props.className,
+            theme[this.props.type ?? 'horizontal'],
         )
-
+        
         return (
-            <BaseNavigation
-                {...this.props}
-                theme={theme}
+            <nav
+                data-react-toolbox="navigation"
                 className={className}
-            />
+            >
+                { React.Children.map(this.props.children, (child) => (
+                    React.isValidElement(child)
+                        ? React.cloneElement<any>(child, { theme })
+                        : null
+                )) }
+            </nav>
         )
     }
 }
