@@ -1,8 +1,6 @@
 import react from '@vitejs/plugin-react-swc'
 import crypto from 'crypto'
-import { glob } from 'glob'
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
 import postcssCustomProperties from 'postcss-custom-properties'
 import postcssImport from 'postcss-import'
 import postcssNesting from 'postcss-nested'
@@ -27,9 +25,7 @@ export default defineConfig({
         }),
         tsconfigPaths(),
         dts({
-            include: ['./src/components/**/!(*.stories).{ts,tsx}'],
-            insertTypesEntry: true,
-            outDir: ['.']
+            exclude: ['./src/components/**/*.stories.{ts,tsx}'],
         }),
     ],
     css: {
@@ -68,33 +64,17 @@ export default defineConfig({
         },
     },
     build: {
-        copyPublicDir: false,
         lib: {
-            entry: path.resolve(__dirname, 'src/components/index.ts'),
-            formats: ['es'],
+            entry: {
+                index: path.resolve(__dirname, 'src', 'index.tsx'),
+            },
+            formats: ['es', 'cjs'],
         },
         rollupOptions: {
-            external: [ 'react', 'react-dom', 'react/jsx-runtime'],
-            input: Object.fromEntries(
-                glob.sync(
-                    './src/components/**/!(*.stories).{ts,tsx}',
-                    { ignore: 'src/components/**/*.stories.tsx' },
-                ).map(file => [
-                    // The name of the entry point
-                    // src/components/nested/foo.ts becomes nested/foo
-                    path.relative(
-                        'src/components',
-                        file.slice(0, file.length - path.extname(file).length),
-                    ),
-                    // The absolute path to the entry file
-                    // src/components/nested/foo.ts becomes /project/src/components/nested/foo.ts
-                    fileURLToPath(new URL(file, import.meta.url)),
-                ]),
-            ),
+            external: ['react', 'react-dom'],
             output: {
                 assetFileNames: 'assets/index[extname]',
                 entryFileNames: '[name].js',
-                dir: 'components',
                 globals: {
                     react: 'React',
                     'react-dom': 'ReactDOM',

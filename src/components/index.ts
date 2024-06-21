@@ -25,4 +25,4 @@ export { TextArea } from './TextArea'
 export { Toolbar } from './Toolbar'
 export { Tooltip } from './Tooltip/Tooltip'
 
-export { mergeStyles } from '../utils/mergeStyle'
+// export { mergeStyles } from '../utils/mergeStyle'

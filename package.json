@@ -3,11 +3,11 @@
   "private": false,
   "version": "0.0.0",
   "files": [
-    "components"
+    "dist"
   ],
-  "main": "./components/index.js",
-  "module": "./components/index.js",
-  "types": "./components/index.d.ts",
+  "main": "./dist/components/index.js",
+  "module": "./dist/components/index.js",
+  "types": "./dist/components/index.d.ts",
   "scripts": {
     "prepare": "npm run build",
     "dev": "vite",
