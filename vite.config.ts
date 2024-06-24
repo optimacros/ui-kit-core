@@ -29,7 +29,7 @@ export default defineConfig({
         dts({
             include: ['./src/components/**/!(*.stories).{ts,tsx}'],
             insertTypesEntry: true,
-            outDir: ['.']
+            outDir: ['.'],
         }),
     ],
     css: {
@@ -74,7 +74,7 @@ export default defineConfig({
             formats: ['es'],
         },
         rollupOptions: {
-            external: [ 'react', 'react-dom', 'react/jsx-runtime'],
+            external: [/node_modules/],
             input: Object.fromEntries(
                 glob.sync(
                     './src/components/**/!(*.stories).{ts,tsx}',
@@ -92,6 +92,7 @@ export default defineConfig({
                 ]),
             ),
             output: {
+                chunkFileNames: 'helpers/[name].[hash].js',
                 assetFileNames: 'assets/index[extname]',
                 entryFileNames: '[name].js',
                 dir: 'components',
