@@ -74,7 +74,7 @@ export default defineConfig({
             formats: ['es'],
         },
         rollupOptions: {
-            external: [/node_modules/],
+            external: ['react', 'react-dom', 'react/jsx-runtime'],
             input: Object.fromEntries(
                 glob.sync(
                     './src/components/**/!(*.stories).{ts,tsx}',
