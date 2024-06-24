@@ -93,8 +93,6 @@ export default defineConfig({
             ),
             output: {
                 chunkFileNames: (chunkInfo) => {
-                    console.log(chunkInfo)
-
                     if (chunkInfo.name === 'TabHeaderState') {
                         return 'Tabs/ExtTabs/[name].js'
                     }
