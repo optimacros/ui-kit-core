@@ -1,6 +1,10 @@
 import react from '@vitejs/plugin-react-swc'
 import crypto from 'crypto'
+// @ts-ignore
+import { glob } from 'glob'
 import path from 'node:path'
+// @ts-ignore
+import { fileURLToPath } from 'node:url'
 import postcssCustomProperties from 'postcss-custom-properties'
 import postcssImport from 'postcss-import'
 import postcssNesting from 'postcss-nested'
@@ -68,10 +72,36 @@ export default defineConfig({
             entry: {
                 index: path.resolve(__dirname, 'src', 'index.tsx'),
             },
-            formats: ['es', 'cjs'],
+            formats: ['es'],
         },
         rollupOptions: {
-            external: ['react', 'react-dom'],
+            external: ['react', 'react-dom', 'lodash', 'mobx'],
+            // input: {
+            //     'components/Button/index': 'src/components/Button/index.tsx',
+            //     'components/CheckBox/index': 'src/components/CheckBox/index.tsx',
+            // },
+            input: Object.fromEntries(
+                glob.sync(
+                    './src/components/**/*.{ts,tsx}',
+                    { ignore: 'src/components/**/*.stories.tsx' },
+                ).map(file => {
+                    const entryName = path.relative(
+                        'src',
+                        file.slice(0, file.length - path.extname(file).length),
+                    )
+                    const newPath = fileURLToPath(new URL(file, import.meta.url))
+
+                    // console.log([
+                    //     entryName,
+                    //     newPath,
+                    // ])
+
+                    return [
+                        entryName,
+                        newPath,
+                    ]
+                }),
+            ),
             output: {
                 assetFileNames: 'assets/index[extname]',
                 entryFileNames: '[name].js',
