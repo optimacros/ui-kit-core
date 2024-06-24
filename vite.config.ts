@@ -65,9 +65,7 @@ export default defineConfig({
     },
     build: {
         lib: {
-            entry: {
-                index: path.resolve(__dirname, 'src', 'index.tsx'),
-            },
+            entry: path.resolve(__dirname, 'src/components/index.ts'),
             formats: ['es'],
         },
         rollupOptions: {
