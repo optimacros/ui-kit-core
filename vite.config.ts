@@ -71,7 +71,7 @@ export default defineConfig({
             formats: ['es'],
         },
         rollupOptions: {
-            external: ['react', 'react-dom', 'lodash', 'mobx'],
+            external: ['react', 'react-dom'],
             // todo
             // input: Object.fromEntries(
             //     glob.sync(
