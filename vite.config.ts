@@ -93,23 +93,17 @@ export default defineConfig({
             ),
             output: {
                 chunkFileNames: (chunkInfo) => {
-                    if (chunkInfo.name === 'TabHeaderState') {
-                        return 'Tabs/ExtTabs/[name].js'
+                    switch (chunkInfo.name) {
+                        case 'TabHeaderState':
+                            return 'Tabs/ExtTabs/[name].js'
+                        case 'react-lifecycles-compat.es':
+                            return 'Modal/[name].js'
+                        case '_commonjsHelpers':
+                        case 'index':
+                            return 'Menu/[name].js'
+                        default:
+                            return 'helpers/[name].js'
                     }
-
-                    if (chunkInfo.name === 'react-lifecycles-compat.es') {
-                        return 'Modal/[name].js'
-                    }
-
-                    if (chunkInfo.name === '_commonjsHelpers') {
-                        return 'Menu/[name].js'
-                    }
-
-                    if (chunkInfo.name === 'index') {
-                        return 'Menu/[name].js'
-                    }
-
-                    return 'helpers/[name].js'
                 },
                 assetFileNames: 'assets/index[extname]',
                 entryFileNames: '[name].js',
