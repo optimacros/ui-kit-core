@@ -20,7 +20,7 @@ reports
 coverage
 
 lib
-dist
+/components
 
 src/version.json
 

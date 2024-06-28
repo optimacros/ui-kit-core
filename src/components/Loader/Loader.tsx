@@ -6,7 +6,7 @@ import prefixer from '../../utils/react-toolbox-utils/prefixer'
 
 import style from './theme.module.css'
 
-type Theme = {
+export type Theme = {
     buffer?: string;
     circle?: string;
     circular?: string;
@@ -17,7 +17,7 @@ type Theme = {
     value?: string;
 }
 
-type Props = {
+export type LoaderProps = {
     buffer?: number;
     className?: string;
     max?: number;
@@ -27,9 +27,11 @@ type Props = {
     value?: number;
     multicolor?: boolean;
     theme?: Theme;
+    innerRef?: React.RefObject<HTMLDivElement>;
+    disabled?: boolean;
 }
 
-export class Loader extends Component<Props> {
+export class Loader extends Component<LoaderProps> {
     min = 0
     max = 100
 
@@ -49,6 +51,8 @@ export class Loader extends Component<Props> {
             type = 'linear',
             theme: userTheme,
             value = 0,
+            innerRef,
+            disabled,
         } = this.props
 
         const theme = mergeStyles(userTheme, style) as Required<Theme>
@@ -62,8 +66,17 @@ export class Loader extends Component<Props> {
             className,
         )
 
+        const disabledProps = disabled
+            ? {
+                'data-disabled': true,
+                disabled: true,
+            }
+            : {}
+
         return (
             <div
+                ref={innerRef}
+                {...disabledProps}
                 data-react-toolbox="progress-bar"
                 aria-valuenow={value}
                 aria-valuemin={this.min}
@@ -95,7 +108,7 @@ export class Loader extends Component<Props> {
     }
 
     renderLinear(theme: Theme): React.JSX.Element {
-        const { buffer = 0, value } = this.linearStyle()
+        const { buffer = {}, value } = this.linearStyle()
 
         return (
             <div>

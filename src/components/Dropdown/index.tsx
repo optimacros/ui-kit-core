@@ -1,40 +1,45 @@
 import classNames from 'classnames'
 import BaseDropDown from 'rc-dropdown'
-import type { DropdownProps } from 'rc-dropdown/lib/Dropdown'
+import type { DropdownProps as RCDropdownProps } from 'rc-dropdown'
 import React from 'react'
-
 import { Key as KeyboardKey } from '../../types/KeyboardKeyList'
 
-import 'rc-dropdown/assets/index.css'
+import '../../packages/rc-dropdown/main.css'
 import styles from './Dropdown.module.css'
 
-interface Props extends DropdownProps {
-    className?: string;
+interface Props extends RCDropdownProps {
     disabled?: boolean;
+    closeOnSelect?: boolean;
 }
 
 type State = {
     visible: boolean;
+    lastVisible: boolean;
 }
 
-export class Dropdown extends React.PureComponent<React.PropsWithChildren<Props>, State> {
+export type DropdownProps = React.PropsWithChildren<Props>
+
+export class Dropdown extends React.PureComponent<DropdownProps, State> {
     constructor(props: React.PropsWithChildren<Props>) {
         super(props)
 
         this.state = {
             visible: props.visible ?? false,
+            lastVisible: props.visible ?? false,
         }
 
-        document.addEventListener('keydown', this.onGlobalKeyDown)
+        document.addEventListener('keydown', this.onGlobalKeyDown, true)
     }
 
     componentWillUnmount(): void {
-        document.removeEventListener('keydown', this.onGlobalKeyDown)
+        document.removeEventListener('keydown', this.onGlobalKeyDown, true)
     }
 
     static getDerivedStateFromProps(props: React.PropsWithChildren<Props>, state: State): State | null {
-        if (props.visible !== state.visible) {
-            return { visible: props.visible ?? false }
+        const isVisible = props.visible ?? false
+
+        if (isVisible !== state.lastVisible) {
+            return { visible: isVisible, lastVisible: isVisible }
         }
 
         return null
@@ -42,6 +47,7 @@ export class Dropdown extends React.PureComponent<React.PropsWithChildren<Props>
 
     render(): React.ReactNode {
         const {
+            visible,
             onVisibleChange,
             ...otherProps
         } = this.props
@@ -51,12 +57,20 @@ export class Dropdown extends React.PureComponent<React.PropsWithChildren<Props>
         }
 
         const className = classNames(this.props.className, styles.Container)
+        const overlayClassName = classNames(this.props.overlayClassName, 'wg-dropdown')
 
         return (
-            <div className={className}>
+            <div
+                className={className}
+                onKeyDown={this.onKeyDown}
+            >
                 <BaseDropDown
-                    {...otherProps}
+                    visible={this.state.visible}
                     onVisibleChange={this.onVisibleChange}
+                    onOverlayClick={this.onOverlayClick}
+                    {...otherProps}
+                    destroyPopupOnHide={true}
+                    overlayClassName={overlayClassName}
                 />
             </div>
         )
@@ -68,6 +82,21 @@ export class Dropdown extends React.PureComponent<React.PropsWithChildren<Props>
         }
 
         this.setState({ visible })
+    }
+
+    private onOverlayClick = () => {
+        if (this.props.closeOnSelect !== false) {
+            this.onVisibleChange(false)
+        }
+    }
+
+    private onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+        if (!this.state.visible && event.key === KeyboardKey.SPACE) {
+            event.preventDefault()
+            event.stopPropagation()
+
+            this.onVisibleChange(!this.state.visible)
+        }
     }
 
     private onGlobalKeyDown = (event: KeyboardEvent): void => {

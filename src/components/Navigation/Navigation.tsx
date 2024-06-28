@@ -1,26 +1,51 @@
 import classNames from 'classnames'
 import React from 'react'
+import { isEqual } from 'lodash'
 
-import type { NavigationProps, NavigationTheme } from './BaseNavigation'
-import { Navigation as BaseNavigation } from './BaseNavigation'
+import type { NavigationProps as BaseNavigationProps, NavigationTheme } from './BaseNavigation'
+import { BaseNavigation } from './BaseNavigation'
 import { mergeStyles } from '../../utils/mergeStyle'
 
 import navigationTheme from './Navigation.module.css'
 
-interface Props extends Omit<NavigationProps, 'theme'> {
+export interface Props extends Omit<BaseNavigationProps, 'theme'> {
     theme?: Partial<NavigationTheme>;
 }
 
-export class Navigation extends React.Component<React.PropsWithChildren<Props>> {
+interface State {
+    theme: NavigationTheme;
+}
+
+export type NavigationProps = React.PropsWithChildren<Props>
+
+export class Navigation extends React.PureComponent<NavigationProps, State> {
+    state = {
+        theme: {} as NavigationTheme,
+    }
+
+    static getDerivedStateFromProps(props: React.PropsWithChildren<Props>, state: State) {
+        const updatedTheme = props.theme
+          ? mergeStyles(props.theme, navigationTheme)
+          : navigationTheme
+        const theme = isEqual(state.theme, updatedTheme)
+          ? state.theme
+          : updatedTheme
+
+        return {
+            theme,
+        }
+    }
+
     render(): React.JSX.Element {
-        const theme = mergeStyles(this.props.theme, navigationTheme) as NavigationTheme
+        const { theme } = this.state
 
         const className = classNames(
+            this.props.className,
             {
                 [navigationTheme.NavigationContainer]: true,
                 [navigationTheme.NavigationContainer_Vertical]: this.props?.type === 'vertical',
+                [navigationTheme.NavigationContainer_Wrap]: this.props.wrap,
             },
-            this.props.className,
         )
 
         return (

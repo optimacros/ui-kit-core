@@ -8,7 +8,7 @@ import { FontIcon } from '../FontIcon'
 
 import styles from './Modal.module.css'
 
-interface Props extends BaseReactModal.Props {
+export interface Props extends BaseReactModal.Props {
     title?: string | React.ReactNode;
     compact?: boolean;
     nonDraggable?: boolean;
@@ -19,7 +19,9 @@ interface Props extends BaseReactModal.Props {
     contentClassName?: string;
 }
 
-export class Modal extends Component<React.PropsWithChildren<Props>> {
+export type ModalProps = React.PropsWithChildren<Props>
+
+export class Modal extends Component<ModalProps> {
     render(): React.JSX.Element {
         const containerClassName = classNames({
             [styles.Container]: true,
@@ -44,12 +46,17 @@ export class Modal extends Component<React.PropsWithChildren<Props>> {
             ...rest
         } = this.props
 
+        const className = classNames(this.props.className, styles.ReactModal__Content)
+        const overlayClassName = classNames(this.props.overlayClassName, styles.ReactModal__Overlay)
+
         return (
             <ReactModal
+                {...rest}
                 contentLabel="optimacros-modal"
                 shouldCloseOnOverlayClick={false}
                 ariaHideApp={false}
-                {...rest}
+                className={className}
+                overlayClassName={overlayClassName}
             >
                 <Draggable draggableTarget={this.props.draggableTarget ?? `.${styles.Header}`}>
                     <div className={containerClassName}>

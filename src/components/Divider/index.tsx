@@ -3,15 +3,15 @@ import React, { PureComponent } from 'react'
 
 import styles from './Divider.module.css'
 
-type Props = {
-    vertical: boolean;
+export type DividerProps = {
+    vertical?: boolean;
 }
 
-export class Divider extends PureComponent<Props> {
+export class Divider extends PureComponent<DividerProps> {
     render(): React.JSX.Element {
         const className = classNames({
             [styles.Divider]: true,
-            [styles.Divider__vertical]: this.props.vertical,
+            [styles.Divider__vertical]: this.props.vertical ?? false,
         })
 
         return <hr className={className} />

@@ -1,3 +1,4 @@
+@import '../../themes/config.css';
 @import './config.css';
 
 .horizontal {
@@ -18,7 +19,6 @@
 
 .vertical,
 .horizontal {
-    padding: calc(var(--navigation-space) / 2);
     box-sizing: border-box;
     font-family: var(--preferred-font);
     -webkit-font-smoothing: antialiased;

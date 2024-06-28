@@ -1,3 +1,4 @@
+@import '../../themes/config.css';
 @import './config.css';
 
 .linear {
@@ -63,8 +64,8 @@
     }
 }
 
-.circular[disabled],
-.linear[disabled] {
+.circular[data-disabled],
+.linear[data-disabled] {
     & .value {
         background-color: var(--progress-disabled-color);
     }

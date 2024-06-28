@@ -4,51 +4,76 @@ A Tooltip is useful to show information on hover in any kind of component. We ha
 
 <!-- example -->
 ```jsx
-import Button from 'react-toolbox/lib/button';
-import Input from 'react-toolbox/lib/input';
-import Link from 'react-toolbox/lib/link';
-import Tooltip from 'react-toolbox/lib/tooltip';
+import { Tooltip } from 'ui-kit-lite/components/Tooltip';
+import { Button } from 'ui-kit-lite/components/Button';
 
-const TooltipButton = Tooltip(Button);
-const TooltipInput = Tooltip(Input);
-const TooltipLink = Tooltip(Link);
 
-const TooltipTest = () => (
+
+const TestComponent = () => (
   <div>
-    <TooltipButton label='Bookmark' icon='bookmark' raised primary tooltip='Bookmark Tooltip' tooltipDelay={1000} />
-    <TooltipButton icon='add' floating accent tooltip='Floating Tooltip' />
-    <TooltipLink count={42} href="#" label="The answer is" icon='speaker_notes' tooltip='Question - universe?'/>
-    <TooltipInput tooltip='lorem ipsum...' />
+      <div style={{ padding: '100px', display: 'flex', justifyContent: 'space-between' }}>
+          <Tooltip composedComponent="div" tooltip="Text" tooltipPosition="left" > 
+              <Button label="left" /> 
+          </Tooltip> 
+          <Tooltip composedComponent="div" tooltip="Text" tooltipPosition="right" > 
+              <Button label="right" /> 
+          </Tooltip>
+
+          <Tooltip composedComponent="div" tooltip="Text" tooltipPosition="top" > 
+              <Button label="top" /> 
+          </Tooltip> 
+          <Tooltip composedComponent="div" tooltip="Text" tooltipPosition="bottom" > 
+              <Button label="bottom" /> 
+          </Tooltip> 
+      </div> 
+      <Tooltip composedComponent={Button} tooltip="Text" composedComponentProps={{ label: 'Apply', }} /> 
+      <Tooltip composedComponent="div" tooltip="Text" tooltipDelay={300} > 
+          <Button label="delayed" /> 
+      </Tooltip> 
+      <Tooltip composedComponent="div" tooltip="Text" tooltipShowOnClick > 
+          <Button label="Show on click" /> 
+      </Tooltip> 
+      <Tooltip composedComponent="div" tooltip="Text" tooltipOffset={20} > 
+          <Button label="Offset" /> 
+      </Tooltip>
   </div>
 );
 ```
 
-This component can be styled by context providing a theme with the key `RTTooltip` through the theme provider.
+## Import
+```jsx
+import { Tooltip } from 'ui-kit-lite';
+// or
+import { Tooltip } from 'ui-kit-lite/components/Tooltip';
+```
 
 ## Properties
 
 In any component you decorate with the Tooltip you'd get some additional props:
 
-| Name                  | Type          | Default       | Description|
-|:-----|:-----|:-----|:-----|
-| `className`           | `String`      | `''`          | Sets a class to give customized styles to the tooltip.|
-| `onClick`             | `Function`    |               | Callback to be invoked when Component is clicked.|
-| `onMouseEnter`        | `Function`    |               | Callback called when the mouse enters the Component.|
-| `onMouseLeave`        | `Function`    |               | Callback called when the mouse leaves the Component.|
-| `tooltip`             | `String`      |               | The text string to use for the tooltip.|
-| `tooltipDelay`        | `Number`      |               | Amount of time in miliseconds spent before the tooltip is visible.|
-| `tooltipHideOnClick`  | `Boolean`     | `true`        | If true, the Tooltip hides after a click in the host component.|
-| `tooltipPosition`     | `String`      | `vertical`    | Determines the position of the tooltip. It can be automatic with `vertical` and `horizontal` values or forced with `bottom`, `top`, `left` or `right`.|
-| `tooltipShowOnClick`  | `Boolean`     | `false`       | Determines the tooltip should be toggled when clicked. This is useful for mobile where there is no mouse enter.|
+| Name                     | Type               | Default    | Description                                                                                                                                            |
+|:-------------------------|:-------------------|:-----------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `children`               | `Element`          | -          | Tooltip reference element.                                                                                                                             |
+| `className`              | `String`           | `''`       | Sets a class to give customized styles to the tooltip.                                                                                                 | 
+| `theme`                  | `Object`           | -          | Theme object with classnames that will be used to style the component.                                                                                 |
+| `composedComponent`      | `String` or `Node` | -          | Tooltip reference element.                                                                                                                             | 
+| `composedComponentProps` | `Object`           | -          | Props to composed component.                                                                                                                           | 
+| `tooltip`                | `String` or `Node` | -          | The text string or node to use for the tooltip.                                                                                                        |
+| `tooltipDelay`           | `Number`           | `0`        | Amount of time in milliseconds spent before the tooltip is visible.                                                                                    |
+| `tooltipOffset`          | `Number`           | `0`        | If `tooltipPosition` - `vertical`, `bottom` or `top`, the tooltip moves relative to its axis.                                                          |
+| `tooltipPosition`        | `String`           | `vertical` | Determines the position of the tooltip. It can be automatic with `vertical` and `horizontal` values or forced with `bottom`, `top`, `left` or `right`. |
+| `onClick`                | `Function`         | -          | Callback to be invoked when Component is clicked.                                                                                                      |
+| `onMouseEnter`           | `Function`         | -          | Callback called when the mouse enters the Component.                                                                                                   |
+| `onMouseLeave`           | `Function`         | -          | Callback called when the mouse leaves the Component.                                                                                                   |
 
-## Theming
+## Theme
 
-| Name     | Description|
-|:---------|:-----------|
-| `tooltip` | Added to the tooltip element wrapper.|
-| `tooltipActive` | Added to the root when the tooltip is active.|
-| `tooltipBottom` | Added to the root in case the tooltip is being positioned at bottom.|
-| `tooltipInner` | Added to the inner element which sets the background, font and rounded borders.|
-| `tooltipLeft` | Added to the root in case the tooltip is being positioned at left.|
-| `tooltipRight` | Added to the root in case the tooltip is being positioned at right.|
-| `tooltipTop` | Added to the root in case the tooltip is being positioned at top.|
+| Name             | Description                                                                     |
+|:-----------------|:--------------------------------------------------------------------------------|
+| `tooltip`        | Added to the tooltip element wrapper.                                           |
+| `tooltipActive`  | Added to the root when the tooltip is active.                                   |
+| `tooltipInner`   | Added to the inner element which sets the background, font and rounded borders. |
+| `tooltipBottom`  | Added to the root in case the tooltip is being positioned at bottom.            |
+| `tooltipLeft`    | Added to the root in case the tooltip is being positioned at left.              |
+| `tooltipRight`   | Added to the root in case the tooltip is being positioned at right.             |
+| `tooltipTop`     | Added to the root in case the tooltip is being positioned at top.               |

@@ -3,9 +3,9 @@ import React from 'react'
 
 import { CheckBoxComponent } from './CheckBox'
 import { mergeStyles } from '../../utils/mergeStyle'
-import { tooltip } from '../Tooltip'
+import { Tooltip, TooltipProps, TooltipTheme } from '../Tooltip'
 
-import style from './CheckBox.module.css'
+import themeStyle from './theme.module.css'
 
 export type Theme = {
     field?: string;
@@ -14,10 +14,9 @@ export type Theme = {
     check?: string;
     disabled?: string;
     checked?: string;
-    ripple?: string;
 }
 
-export interface InitialProps {
+export type InitialProps = {
     checked?: boolean;
     name?: string;
     label?: React.ReactNode | string;
@@ -25,27 +24,57 @@ export interface InitialProps {
     className?: string;
     style?: CSSProperties;
     disabled?: boolean;
-    onChange: (checked: boolean, event: React.MouseEvent) => void;
+    onClick?: () => void;
+    onChange?: (checked: boolean, event: React.MouseEvent) => void;
     onMouseEnter?: MouseEventHandler<HTMLLabelElement> | undefined;
     onMouseLeave?: MouseEventHandler<HTMLLabelElement> | undefined;
-    onMouseDown?: MouseEventHandler<HTMLDivElement> | undefined;
-    theme?: Partial<Theme>;
-    children?: React.ReactNode;
-}
+    theme?: Partial<Theme> & Partial<TooltipTheme>;
+} & Partial<TooltipProps>
 
-export class CheckBox extends React.Component<InitialProps> {
+export type CheckBoxProps = React.PropsWithChildren<InitialProps>
+
+export class CheckBox extends React.Component<CheckBoxProps> {
     render(): React.JSX.Element {
-        const ThemedCheckboxComponent = this.props.tooltipLabel
-            ? tooltip(CheckBoxComponent)
-            : CheckBoxComponent
+        const {
+            tooltipLabel,
+            theme,
+            tooltipDelay,
+            tooltipPosition,
+            tooltipOffset,
+            onClick,
+            onMouseEnter,
+            onMouseLeave,
+            className,
+            ...otherProps
+        } = this.props
 
-        const theme = mergeStyles(style, this.props.theme) as Required<Theme>
+        const customTheme = mergeStyles(themeStyle, this.props.theme) as Required<Theme>
 
-        return (
-            <ThemedCheckboxComponent
-                {...this.props}
-                theme={theme}
-            />
-        )
+        return tooltipLabel
+            ? (
+                <Tooltip
+                    onClick={onClick}
+                    onMouseEnter={onMouseEnter}
+                    onMouseLeave={onMouseLeave}
+                    className={className}
+                    theme={customTheme}
+                    tooltip={tooltipLabel}
+                    tooltipDelay={tooltipDelay}
+                    tooltipPosition={tooltipPosition}
+                    tooltipOffset={tooltipOffset}
+                    composedComponent={CheckBoxComponent}
+                    composedComponentProps={otherProps}
+                />
+            )
+            : (
+                <CheckBoxComponent
+                    {...otherProps}
+                    onClick={onClick}
+                    onMouseEnter={onMouseEnter}
+                    onMouseLeave={onMouseLeave}
+                    className={className}
+                    theme={customTheme}
+                />
+            )
     }
 }

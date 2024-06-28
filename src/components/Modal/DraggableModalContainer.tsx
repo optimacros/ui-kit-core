@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 
 import styles from './DraggableModalContainer.module.css'
 
-type Props = React.PropsWithChildren<{
+export type Props = React.PropsWithChildren<{
     draggableTarget: string;
 }>
 

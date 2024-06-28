@@ -3,14 +3,14 @@ import React from 'react'
 
 import styles from './TextArea.module.css'
 
-type Props = {
+export type TextAreaProps = {
     error?: React.ReactNode;
     label: string;
     className?: string;
     classNameContainer?: string;
 }
 
-export class TextArea extends React.PureComponent<Props> {
+export class TextArea extends React.PureComponent<TextAreaProps> {
     render(): React.JSX.Element {
         const {
             error,
@@ -19,10 +19,10 @@ export class TextArea extends React.PureComponent<Props> {
         } = this.props
 
         const classNameContainer = classnames(styles.Container, this.props.classNameContainer)
-        const classNameField = classnames(this.props.className, {
+        const classNameField = classnames({
             [styles.Input]: true,
             [styles.Input_error]: error,
-        })
+        }, this.props.className)
 
         return (
             <div className={classNameContainer}>

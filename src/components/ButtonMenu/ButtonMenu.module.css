@@ -1,3 +1,5 @@
+@import '../../themes/config.css';
+
 .ButtonMenu {
     display: inline-flex !important;
     height: 30px !important;
@@ -8,10 +10,6 @@
     border-radius: var(--border-radius);
     border: 1px solid transparent;
     overflow: hidden;
-
-    & .rippleWrapper {
-        border-radius: 0 !important;
-    }
 
     & .buttonText {
         display: inline-flex;
@@ -30,7 +28,7 @@
     }
 
     & .icon {
-        font-size: 17px !important;
+        font-size: 17px;
         line-height: normal !important;
         color: inherit;
         opacity: 1;

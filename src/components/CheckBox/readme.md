@@ -1,66 +1,64 @@
-# Checkbox
-
-[Checkboxes](https://material.google.com/components/selection-controls.html#selection-controls-checkbox) allow the user to select multiple options from a set. If you have multiple options appearing in a list, you can preserve space by using checkboxes instead of on/off switches. If you have a single option, avoid using a checkbox and use an on/off switch instead.
+# CheckBox
 
 <!-- example -->
 ```jsx
-import Checkbox from 'react-toolbox/lib/checkbox';
+import { CheckBox } from 'ui-kit-lite/components/CheckBox';
 
-class TestCheckbox extends React.Component {
-  state = { check1: true, check2: false };
+const TestComponent = () => {
+    const [checked, setChecked] = useState(false)
 
-  handleChange = (field, value) => {
-    this.setState({...this.state, [field]: value});
-  };
-
-  render () {
     return (
       <div>
-        <Checkbox
-          checked={this.state.check1}
-          label="Checked option"
-          onChange={this.handleChange.bind(this, 'check1')}
-        />
-        <Checkbox
-          checked={this.state.check2}
-          label="Unchecked option"
-          onChange={this.handleChange.bind(this, 'check2')}
-        />
-        <Checkbox
-          checked
-          disabled
-          label="Disabled checkbox"
-        />
+          <CheckBox checked /> 
+          <CheckBox /> 
+          <CheckBox disabled /> 
+          <CheckBox disabled checked /> 
+          <CheckBox checked label="Label" /> 
+          <CheckBox disabled label="Disabled" /> 
+          <CheckBox label="Tooltip" tooltipLabel="Text" /> 
+          <CheckBox label="Controlled" checked={checked} onChange={(isChecked) => setChecked(isChecked)} />
       </div>
     );
-  }
+  
 }
 ```
-
-If you want to provide a theme via context, the component key is `RTCheckbox`.
+## Import
+```jsx
+import { CheckBox } from 'ui-kit-lite';
+// or
+import { CheckBox } from 'ui-kit-lite/components/CheckBox';
+```
 
 ## Properties
 
-| Name              | Type          | Default         | Description|
-|:-----|:-----|:-----|:-----|
-| `checked`       | `Boolean`       | `false`         | Value for the checkbox, can be `true` or `false`. |
-| `children`      | `String`, `Element` or `Array` |  | Children to pass through the component. |
-| `className`     | `String`        | `''`            | Sets a class to give customized styles to the checkbox field.|
-| `disabled`      | `Boolean`       | `false`         | If true, the checkbox shown as disabled and cannot be modified.|
-| `label`         | `String` or `node`        |                 | Text label to attach next to the checkbox element.|
-| `name`          | `String`        | `false`         | The name of the field to set in the input checkbox.|
-| `onBlur`        | `Function`      |                 | Callback called when the checkbox is blurred.|
-| `onChange`      | `Function`      |                 | Callback called when the checkbox value is changed.|
-| `onFocus`       | `Function`      |                 | Callback called when the checkbox is focused |
+| Name                 | Type               | Default    | Description                                                                                                                                              |
+|:---------------------|:-------------------|:-----------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `children`           | `String` or `Node` | -          | The content of the component.                                                                                                                            |
+| `className`          | `String`           | `''`       | Sets a class to give customized styles to the CheckBox field.                                                                                            |
+| `theme`              | `Object`           | -          | Theme object with classnames that will be used to style the component.                                                                                   |
+| `style`              | `Object`           | -          | Custom component styles.                                                                                                                                 |
+| `label`              | `String` or `Node` | -          | The text or node to use for the label element.                                                                                                           |
+| `name`               | `String`           | `''`       | Value for `name` input attribute.                                                                                                                        |
+| `checked`            | `Boolean`          | `false`    | If `true`, component will be checked.                                                                                                                    |
+| `disabled`           | `Boolean`          | `false`    | If `true`, component will be disabled.                                                                                                                   | |
+| `onClick`            | `Function`         | -          | Callback called when the CheckBox is clicked.                                                                                                            |
+| `onChange`           | `Function`         | -          | Callback called when the CheckBox value is changed.                                                                                                      |
+| `onMouseEnter`       | `Function`         | -          | Callback called when the mouse enters the Component.                                                                                                     |
+| `onMouseLeave`       | `Function`         | -          | Callback called when the mouse leaves the Component.                                                                                                     |
+| `tooltipLabel`       | `String`           | -          | The text string to use for the tooltip.                                                                                                                  |
+| `tooltipDelay`       | `Number`           | `0`        | Amount of time in milliseconds spent before the tooltip is visible.                                                                                      |
+| `tooltipOffset`      | `Number`           | `0`        | If `tooltipPosition` - `vertical`, `bottom` or `top`, the tooltip moves relative to its axis.                                                            |
+| `tooltipPosition`    | `String`           | `vertical` | Determines the position of the tooltip. It can be automatic with `vertical` and `horizontal` values or forced with `bottom`, `top`, `left` or `right`.   |
 
 ## Theme
 
-| Name     | Description|
-|:---------|:-----------|
-| `check`  | Used as root in the check element.|
-| `checked`  | Used for the check element when it's checked.|
-| `disabled`   | Used when the component is disabled.|
-| `field`   | Used as the root class of the component.|
-| `input`   | Used for the input element.|
-| `ripple`   | Used for the ripple component.|
-| `text`   | Used for the text label.|
+| Name            | Description                                   |
+|:----------------|:----------------------------------------------|
+| `check`         | Used as root in the check element.            |
+| `checked`       | Used for the check element when it's checked. |
+| `disabled`      | Used when the component is disabled.          |
+| `field`         | Used as the root class of the component.      |
+| `input`         | Used for the input element.                   |
+| `text`          | Used for the text label.                      |
+| `tooltip`       | Added to the tooltip element wrapper.         |
+| `tooltipActive` | Added to the root when the tooltip is active. |

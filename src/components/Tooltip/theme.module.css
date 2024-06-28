@@ -1,3 +1,4 @@
+@import '../../themes/config.css';
 @import './config.css';
 
 .tooltip {
@@ -17,7 +18,6 @@
     transition: var(--animation-curve-default) var(--tooltip-animation-duration) transform;
     z-index: var(--z-index-higher);
     box-sizing: border-box;
-    font-family: var(--preferred-font);
     -webkit-font-smoothing: antialiased;
     text-size-adjust: 100%;
 
@@ -84,6 +84,7 @@
         border-radius: var(--border-radius);
         background: #3b3b3b;
         max-width: 200px;
+        word-wrap: break-word;
     }
 
     &.tooltipRight {

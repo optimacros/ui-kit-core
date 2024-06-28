@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import { find, indexOf, map, without, filter } from 'lodash'
 import React, { Component } from 'react'
 
-import type { SelectBoxTheme, SelectBoxProps } from './SelectBox'
+import type { SelectBoxTheme, SelectBoxProps as Props } from './SelectBox'
 import { SelectBoxComponent } from './SelectBox'
 import { mergeStyles } from '../../utils/mergeStyle'
 import { Chip } from '../Chip/index'
@@ -12,15 +12,15 @@ import type { InputTheme } from '../Input'
 // eslint-disable-next-line
 import themeStyle from './theme.module.css'
 // eslint-disable-next-line
-import style from './SelectBox.module.css'
+import styles from './SelectBox.module.css'
 
-export interface Props extends Omit<SelectBoxProps, 'theme'> {
+export interface SelectBoxProps extends Omit<Props, 'theme'> {
     theme?: Partial<SelectBoxTheme & InputTheme>;
     multiSelect?: boolean;
     onChange?: (value: string | number | (string | number)[], event?: React.SyntheticEvent) => void;
 }
 
-export class SelectBox extends Component<Props> {
+export class SelectBox extends Component<SelectBoxProps> {
     render(): React.JSX.Element {
         const {
             label,
@@ -30,10 +30,10 @@ export class SelectBox extends Component<Props> {
             ...otherProps
         } = this.props
 
-        let theme = mergeStyles(style, customTheme) as Required<SelectBoxTheme>
+        let theme = mergeStyles(customTheme, styles) as Required<SelectBoxTheme>
         theme = mergeStyles(themeStyle, theme) as Required<SelectBoxTheme>
 
-        const classNameContainer = classNames(className, customTheme.Container ?? {})
+        const classNameContainer = classNames(className, styles.Container ?? {})
 
         return (
             <div className={classNameContainer}>
@@ -42,9 +42,9 @@ export class SelectBox extends Component<Props> {
                 </div>
 
                 <SelectBoxComponent
+                    auto={false}
                     {...otherProps}
                     theme={theme}
-                    auto={false}
                     source={this.elements}
                     onChange={this.onChange}
                 />
@@ -87,7 +87,7 @@ export class SelectBox extends Component<Props> {
     }
 
     private onChange = (value: string | number, event: React.SyntheticEvent): void => {
-        let newValue: string | number | (string | number)[] = value
+        let newValue: Props['value'] = value
 
         if (this.props.multiSelect && Array.isArray(this.props.value)) {
             newValue = [...this.props.value, value]
@@ -122,6 +122,6 @@ export class SelectBox extends Component<Props> {
     }
 
     private get source(): SelectBoxProps['source'] {
-        return this.props.source || []
+        return this.props.source
     }
 }

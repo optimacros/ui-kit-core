@@ -21,29 +21,31 @@ export type SelectBoxTheme = {
     up: string;
     value: string;
     values: string;
-    Container: string;
     Title: string;
 }
 
+type SelectBoxSourceLabel = keyof SelectBoxProps['source'][number]
+type SelectBoxSourceValue = SelectBoxProps['source'][number][SelectBoxSourceLabel]
+
 export interface SelectBoxProps {
-    source: { [key: string]: string | number }[];
+    source: { [key: string]: any}[];
+    labelKey?: string;
+    valueKey?: string;
+    name?: string;
+    label?: string;
+    value?: SelectBoxSourceValue | SelectBoxSourceValue[];
     theme: SelectBoxTheme;
     allowBlank?: boolean;
     auto?: boolean;
     className?: string;
     disabled?: boolean;
     error?: string | null;
-    label?: string;
-    labelKey?: string;
-    name?: string;
     onBlur?: (event: React.SyntheticEvent) => void;
     onChange?: (value: string | number, event: React.SyntheticEvent) => void;
     onClick?: (event: React.MouseEvent) => void;
     onFocus?: React.FocusEventHandler<HTMLDivElement>;
     required?: boolean;
     template?: (item: SelectBoxProps['source'][number] | undefined) => React.ReactNode;
-    value?: string | number | (string | number)[];
-    valueKey?: string;
 }
 
 type State = {
@@ -69,9 +71,13 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
     private readonly refNode: React.RefObject<HTMLDivElement>
     private readonly dropdownNode: React.RefObject<HTMLUListElement>
 
-    componentDidUpdate(props: SelectBoxProps, state: State): void {
-        if (!this.state.active && state.active) {
+    componentDidUpdate(prevProps: SelectBoxProps, prevState: State): void {
+        if (!prevState.active && this.state.active) {
             events.addEventsToDocument(this.getDocumentEvents())
+        }
+
+        if (prevState.active && !this.state.active) {
+            events.removeEventsFromDocument(this.getDocumentEvents())
         }
     }
 
@@ -195,7 +201,7 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
         const { focusedItemIndex } = this.state
         const className = classnames({
             [theme.selected]: item[valueKey ?? 'value'] === this.props.value,
-            [theme.disabled]: item.disabled,
+            [theme.disabled]: item.disabled ?? false,
             [theme.focused]: idx === focusedItemIndex,
         })
 
@@ -251,7 +257,7 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
             ? focusedItemIndex + 1
             : 0
 
-        while (source[nextIndex].disabled && nextIndex !== focusedItemIndex) {
+        while (source[nextIndex]?.disabled && nextIndex !== focusedItemIndex) {
             nextIndex = nextIndex != lastItemIndex
                 ? nextIndex + 1
                 : 0
@@ -268,7 +274,7 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
             ? focusedItemIndex - 1
             : lastItemIndex
 
-        while (source[previousIndex].disabled && previousIndex !== focusedItemIndex) {
+        while (source[previousIndex]?.disabled && previousIndex !== focusedItemIndex) {
             previousIndex = previousIndex != 0
                 ? previousIndex - 1
                 : lastItemIndex
@@ -392,7 +398,7 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
 
         let firstFocusableItem = focusedItemIndex || 0
 
-        if (source && source[firstFocusableItem].disabled) {
+        if (source && source[firstFocusableItem]?.disabled) {
             firstFocusableItem = this.getNextSelectableItemIndex(firstFocusableItem)
         }
 

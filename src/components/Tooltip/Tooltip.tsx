@@ -1,54 +1,47 @@
 import classnames from 'classnames'
 import React, { Component } from 'react'
+import { createPortal } from 'react-dom'
 
-import Portal from './Portal'
 import { mergeStyles } from '../../utils/mergeStyle'
 import events from '../../utils/react-toolbox-utils/events'
 import { getViewport } from '../../utils/react-toolbox-utils/utils'
 
-enum Position {
-    bottom = 'BOTTOM',
-    horizontal = 'HORIZONTAL',
-    left = 'LEFT',
-    right = 'RIGHT',
-    top = 'TOP',
-    vertical = 'VERTICAL',
-}
+import styles from './theme.module.css'
 
-type PositionInfo = {
+const POSITION = {
+    BOTTOM: 'bottom',
+    HORIZONTAL: 'horizontal',
+    LEFT: 'left',
+    RIGHT: 'right',
+    TOP: 'top',
+    VERTICAL: 'vertical',
+} as const
+
+export type Position = typeof POSITION[keyof typeof POSITION]
+
+export type PositionInfo = {
     top: number;
     left: number;
-    position: Position;
-}
-
-export type OptionList = {
-    className: string;
-    delay: number;
-    hideOnClick: boolean;
-    showOnClick: boolean;
-    passthrough: boolean;
     position: Position;
 }
 
 export type TooltipTheme = {
     tooltip: string;
     tooltipActive: string;
-    tooltipWrapper: string;
 }
 
-type TooltipFactoryProps = Partial<OptionList> & { theme: TooltipTheme }
-
-type TooltipProps = {
-    className: string;
-    onClick: React.MouseEventHandler<HTMLElement>;
-    onMouseEnter: React.MouseEventHandler<HTMLElement>;
-    onMouseLeave: React.MouseEventHandler<HTMLElement>;
-    theme: Record<string, string>;
-    tooltip: string | React.ReactNode;
-    tooltipDelay: number;
-    tooltipHideOnClick: boolean;
-    tooltipPosition: Position;
-    tooltipShowOnClick: boolean;
+export type Props = {
+    composedComponent: string | React.FunctionComponent<any> | React.ComponentClass<any>;
+    composedComponentProps?: Record<string, any>;
+    className?: string;
+    onClick?: React.MouseEventHandler<HTMLElement>;
+    onMouseEnter?: React.MouseEventHandler<HTMLElement>;
+    onMouseLeave?: React.MouseEventHandler<HTMLElement>;
+    theme?: Record<string, string>;
+    tooltip?: string | React.ReactNode;
+    tooltipDelay?: number;
+    tooltipPosition?: Position;
+    tooltipOffset?: number;
 }
 
 type State = {
@@ -59,252 +52,223 @@ type State = {
     left: number;
 }
 
-export type TooltipWrapperFC = <T extends React.PropsWithChildren<Partial<TooltipProps>>>(
-    ComposedComponent: React.ComponentClass<T> | string
-) => React.ComponentClass<T, State>;
+export type TooltipProps = React.PropsWithChildren<Props>
 
-const tooltipFactory = (options: TooltipFactoryProps): TooltipWrapperFC => {
-    const {
-        className: defaultClassName = '',
-        delay: defaultDelay = 0,
-        hideOnClick: defaultHideOnClick = true,
-        showOnClick: defaultShowOnClick = false,
-        passthrough: defaultPassthrough = true,
-        position: defaultPosition = Position.vertical,
-        theme: defaultTheme = {},
-    } = { ...options }
+export class Tooltip extends Component<TooltipProps, State> {
+    constructor(props: Props) {
+        super(props)
 
-    return function <T extends React.PropsWithChildren<Partial<TooltipProps>>>(
-        ComposedComponent: React.ComponentClass<T> | string,
-    ): React.ComponentClass<T, State> {
-        return class TooltippedComponent extends Component<T, State> {
-            constructor(props: T) {
-                super(props)
+        this.tooltipNode = React.createRef()
+    }
 
-                this.tooltipNode = React.createRef()
-            }
+    private tooltipNode: React.RefObject<HTMLSpanElement>
+    private timeout: ReturnType<typeof setTimeout> | undefined
 
-            private tooltipNode: React.RefObject<HTMLSpanElement>
-            private timeout: ReturnType<typeof setTimeout> | undefined
+    state = {
+        active: false,
+        position: this.props.tooltipPosition ?? POSITION.VERTICAL,
+        visible: false,
+        top: 0,
+        left: 0,
+    }
 
-            state = {
-                active: false,
-                position: this.props.tooltipPosition ?? defaultPosition,
-                visible: false,
-                top: 0,
-                left: 0,
-            }
+    componentWillUnmount(): void {
+        this.deactivate()
+    }
 
-            componentWillUnmount(): void {
-                if (this.tooltipNode.current) {
-                    events.removeEventListenerOnTransitionEnded(this.tooltipNode.current, this.onTransformEnd)
-                }
+    render() {
+        const {
+            active,
+            left,
+            top,
+            position,
+            visible,
+        } = this.state
 
-                if (this.timeout) {
-                    clearTimeout(this.timeout)
-                }
-            }
+        const positionClass = `tooltip${position.charAt(0).toUpperCase() + position.slice(1)}`
 
-            render() {
-                const {
-                    active,
-                    left,
-                    top,
+        const {
+            children,
+            className,
+            theme: customTheme,
+            onClick,
+            onMouseEnter,
+            onMouseLeave,
+            tooltip,
+            tooltipDelay,
+            tooltipPosition,
+            composedComponent,
+            composedComponentProps,
+            tooltipOffset,
+            ...other
+        } = this.props
+
+        const theme = mergeStyles(styles, customTheme)
+
+        const tooltipsClassName = classnames(theme.tooltip, {
+            [theme.tooltipActive]: active,
+            [theme[positionClass]]: theme[positionClass],
+        })
+
+        const childProps = {
+            ...other,
+            className,
+            onClick: this.handleClick,
+            onMouseEnter: this.handleMouseEnter,
+            onMouseLeave: this.handleMouseLeave,
+        }
+
+        const shouldPass = typeof composedComponent !== 'string'
+        const finalProps = (
+            shouldPass
+                ? { ...childProps, theme }
+                : childProps
+        )
+
+        return React.createElement(
+            composedComponent,
+            { ...finalProps, ...composedComponentProps },
+            children,
+            visible && !!tooltip && createPortal(
+                <span
+                    ref={this.tooltipNode}
+                    className={tooltipsClassName}
+                    data-react-toolbox="tooltip"
+                    style={{ top, left }}
+                >
+                    <span className={theme.tooltipInner}>
+                        { tooltip }
+                    </span>
+                </span>,
+                document.body,
+            ),
+        )
+    }
+
+    onTransformEnd = (event: TransitionEvent): void => {
+        if (event.propertyName === 'transform') {
+            events.removeEventListenerOnTransitionEnded(this.tooltipNode.current, this.onTransformEnd)
+
+            this.setState({ visible: false })
+        }
+    }
+
+    getPosition(element: HTMLElement): Position {
+        const tooltipPosition = this.props.tooltipPosition ?? POSITION.VERTICAL
+
+        if (tooltipPosition === POSITION.HORIZONTAL) {
+            const origin = element.getBoundingClientRect()
+            const { width: ww } = getViewport()
+            const toRight = origin.left < ww / 2 - origin.width / 2
+
+            return toRight
+                ? POSITION.RIGHT
+                : POSITION.LEFT
+        }
+
+        if (tooltipPosition === POSITION.VERTICAL) {
+            const origin = element.getBoundingClientRect()
+            const { height: wh } = getViewport()
+            const toBottom = origin.top < wh / 2 - origin.height / 2
+
+            return toBottom
+                ? POSITION.BOTTOM
+                : POSITION.TOP
+        }
+
+        return tooltipPosition
+    }
+
+    activate({ top, left, position }: PositionInfo): void {
+        if (this.timeout) {
+            clearTimeout(this.timeout)
+        }
+
+        this.setState({ visible: true, position })
+
+        this.timeout = setTimeout(() => {
+            this.setState({ active: true, top, left })
+        }, this.props.tooltipDelay ?? 0)
+    }
+
+    deactivate(): void {
+        if (this.timeout) {
+            clearTimeout(this.timeout)
+        }
+
+        if (this.state.active) {
+            events.addEventListenerOnTransitionEnded(this.tooltipNode.current, this.onTransformEnd)
+
+            this.setState({ active: false })
+        }
+
+        this.setState({ visible: false })
+    }
+
+    calculatePosition(element: HTMLElement): PositionInfo {
+        const position = this.getPosition(element)
+        const { top, left, height, width } = element.getBoundingClientRect()
+        const xOffset = window.scrollX || window.pageXOffset
+        const yOffset = window.scrollY || window.pageYOffset
+        const tooltipOffset = this.props.tooltipOffset || 0
+
+        switch (position) {
+            case (POSITION.BOTTOM):
+                return {
+                    top: top + height + yOffset,
+                    left: left + width / 2 + xOffset + tooltipOffset,
                     position,
-                    visible,
-                } = this.state
-
-                const positionClass = `tooltip${position.charAt(0).toUpperCase() + position.slice(1)}`
-
-                const {
-                    children,
-                    className = defaultClassName,
-                    theme: customTheme,
-                    onClick,
-                    onMouseEnter,
-                    onMouseLeave,
-                    tooltip,
-                    tooltipDelay,
-                    tooltipHideOnClick,
-                    tooltipPosition,
-                    tooltipShowOnClick,
-                    ...other
-                } = this.props
-
-                const theme = mergeStyles(defaultTheme, this.props.theme)
-
-                const _className = classnames(theme.tooltip, {
-                    [theme.tooltipActive]: active,
-                    [theme[positionClass]]: theme[positionClass],
-                })
-
-                const childProps = {
-                    ...other,
-                    className,
-                    onClick: this.handleClick,
-                    onMouseEnter: this.handleMouseEnter,
-                    onMouseLeave: this.handleMouseLeave,
                 }
-
-                const shouldPass = typeof ComposedComponent !== 'string' && defaultPassthrough
-                const finalProps = (
-                    shouldPass
-                        ? { ...childProps, theme }
-                        : childProps
-                ) as T
-
-                return React.createElement(
-                    ComposedComponent,
-                    finalProps,
-                    children,
-                    visible && (
-                        <Portal>
-                            <span
-                                ref={this.tooltipNode}
-                                className={_className}
-                                data-react-toolbox="tooltip"
-                                style={{ top, left }}
-                            >
-                                <span className={theme.tooltipInner}>
-                                    {tooltip}
-                                </span>
-                            </span>
-                        </Portal>
-                    ),
-                )
-            }
-
-            onTransformEnd = (event: TransitionEvent): void => {
-                if (event.propertyName === 'transform') {
-                    events.removeEventListenerOnTransitionEnded(this.tooltipNode.current, this.onTransformEnd)
-
-                    this.setState({ visible: false })
+            case (POSITION.TOP):
+                return {
+                    top: top + yOffset,
+                    left: left + width / 2 + xOffset + tooltipOffset,
+                    position,
                 }
-            }
-
-            getPosition(element: HTMLElement): Position {
-                const tooltipPosition = this.props.tooltipPosition ?? defaultPosition
-
-                if (tooltipPosition === Position.horizontal) {
-                    const origin = element.getBoundingClientRect()
-                    const { width: ww } = getViewport()
-                    const toRight = origin.left < ww / 2 - origin.width / 2
-
-                    return toRight
-                        ? Position.right
-                        : Position.left
+            case (POSITION.LEFT):
+                return {
+                    top: top + height / 2 + yOffset,
+                    left: left + xOffset,
+                    position,
                 }
-
-                if (tooltipPosition === Position.vertical) {
-                    const origin = element.getBoundingClientRect()
-                    const { height: wh } = getViewport()
-                    const toBottom = origin.top < wh / 2 - origin.height / 2
-
-                    return toBottom
-                        ? Position.bottom
-                        : Position.top
+            case (POSITION.RIGHT):
+                return {
+                    top: top + height / 2 + yOffset,
+                    left: left + width + xOffset,
+                    position,
                 }
-
-                return tooltipPosition
-            }
-
-            activate({ top, left, position }: PositionInfo): void {
-                if (this.timeout) {
-                    clearTimeout(this.timeout)
+            default:
+                return {
+                    top: 0,
+                    left: 0,
+                    position,
                 }
+        }
+    }
 
-                this.setState({ visible: true, position })
+    handleMouseEnter = (event: React.MouseEvent<HTMLElement>): void => {
+        this.activate(this.calculatePosition(event.currentTarget as HTMLElement))
 
-                this.timeout = setTimeout(() => {
-                    this.setState({ active: true, top, left })
-                }, this.props.tooltipDelay ?? defaultDelay)
-            }
+        if (this.props.onMouseEnter) {
+            this.props.onMouseEnter(event)
+        }
+    }
 
-            deactivate(): void {
-                if (this.timeout) {
-                    clearTimeout(this.timeout)
-                }
+    handleMouseLeave = (event: React.MouseEvent<HTMLElement>): void => {
+        this.deactivate()
 
-                if (this.state.active) {
-                    events.addEventListenerOnTransitionEnded(this.tooltipNode.current, this.onTransformEnd)
+        if (this.props.onMouseLeave) {
+            this.props.onMouseLeave(event)
+        }
+    }
 
-                    this.setState({ active: false })
-                } else if (this.state.visible) {
-                    this.setState({ visible: false })
-                }
-            }
+    handleClick = (event: React.MouseEvent<HTMLElement>): void => {
+        if (this.state.active) {
+            this.deactivate()
+        }
 
-            calculatePosition(element: HTMLElement): PositionInfo {
-                const position = this.getPosition(element)
-                const { top, left, height, width } = element.getBoundingClientRect()
-                const xOffset = window.scrollX || window.pageXOffset
-                const yOffset = window.scrollY || window.pageYOffset
-
-                switch (position) {
-                    case (Position.bottom):
-                        return {
-                            top: top + height + yOffset,
-                            left: left + width / 2 + xOffset,
-                            position,
-                        }
-                    case (Position.top):
-                        return {
-                            top: top + yOffset,
-                            left: left + width / 2 + xOffset,
-                            position,
-                        }
-                    case (Position.left):
-                        return {
-                            top: top + height / 2 + yOffset,
-                            left: left + xOffset,
-                            position,
-                        }
-                    case (Position.right):
-                        return {
-                            top: top + height / 2 + yOffset,
-                            left: left + width + xOffset,
-                            position,
-                        }
-                    default:
-                        return {
-                            top: 0,
-                            left: 0,
-                            position,
-                        }
-                }
-            }
-
-            handleMouseEnter = (event: React.MouseEvent<HTMLElement>): void => {
-                this.activate(this.calculatePosition(event.currentTarget as HTMLElement))
-
-                if (this.props.onMouseEnter) {
-                    this.props.onMouseEnter(event)
-                }
-            }
-
-            handleMouseLeave = (event: React.MouseEvent<HTMLElement>): void => {
-                this.deactivate()
-
-                if (this.props.onMouseLeave) {
-                    this.props.onMouseLeave(event)
-                }
-            }
-
-            handleClick = (event: React.MouseEvent<HTMLElement>): void => {
-                if ((this.props.tooltipHideOnClick ?? defaultHideOnClick) && this.state.active) {
-                    this.deactivate()
-                }
-
-                if ((this.props.tooltipShowOnClick ?? defaultShowOnClick) && !this.state.active) {
-                    this.activate(this.calculatePosition(event.currentTarget as HTMLElement))
-                }
-
-                if (this.props.onClick) {
-                    this.props.onClick(event)
-                }
-            }
+        if (this.props.onClick) {
+            this.props.onClick(event)
         }
     }
 }
-
-export default tooltipFactory

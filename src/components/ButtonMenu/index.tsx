@@ -2,36 +2,46 @@ import classNames from 'classnames'
 import React, { PureComponent } from 'react'
 
 import { mergeStyles } from '../../utils/mergeStyle'
-import { Button } from '../Button'
+import { Button, ButtonTheme } from '../Button'
 import { Dropdown } from '../Dropdown'
 import { FontIcon } from '../FontIcon'
 import { Menu } from '../Menu'
-import { tooltip } from '../Tooltip'
+import { Tooltip, TooltipProps, TooltipTheme } from '../Tooltip'
 
 import buttonMenuTheme from './ButtonMenu.module.css'
 
-type Props = {
+export type ButtonMenuTheme = Partial<ButtonTheme> & Partial<TooltipTheme>
+
+export type Props = {
     label?: string;
     disabled?: boolean;
     className?: string;
     uppercase?: boolean;
     showOnlyIcon?: boolean;
-    tooltip?: string;
     arrowUp?: boolean;
     menuRootContainerClassName?: string;
-    theme?: Record<string, string>;
+    onVisibleChange?: (visible: boolean) => void;
+    visible?: boolean;
+    theme?: ButtonMenuTheme;
     icon?: string | React.JSX.Element;
+    dataName?: string;
     classNameDropdownContainer?: string;
-}
+    closeOnSelect?: boolean;
+} & Partial<TooltipProps>
 
-export class ButtonMenu extends PureComponent<React.PropsWithChildren<Props>> {
+export type ButtonMenuProps = React.PropsWithChildren<Props>
+
+export class ButtonMenu extends PureComponent<ButtonMenuProps> {
     render(): React.JSX.Element {
         return (
             <Dropdown
                 overlay={this.renderMenu()}
                 trigger={['click']}
                 disabled={this.props.disabled}
+                onVisibleChange={this.props.onVisibleChange}
+                visible={this.props.visible}
                 className={this.props.classNameDropdownContainer}
+                closeOnSelect={this.props.closeOnSelect}
             >
                 {this.renderButton()}
             </Dropdown>
@@ -51,37 +61,90 @@ export class ButtonMenu extends PureComponent<React.PropsWithChildren<Props>> {
     }
 
     renderButton(): React.JSX.Element {
-        const TooltipButton = this.props.tooltip
-            ? tooltip(Button)
-            : Button
+        const {
+            onClick,
+            onMouseEnter,
+            onMouseLeave,
+            tooltip,
+            tooltipDelay,
+            tooltipPosition,
+            tooltipOffset,
+            theme,
+            showOnlyIcon,
+            arrowUp,
+            dataName,
+            onVisibleChange,
+            visible,
+            className,
+            menuRootContainerClassName,
+            classNameDropdownContainer,
+            uppercase,
+            label,
+            closeOnSelect,
+            ...otherProps
+        } = this.props
 
-        const theme = mergeStyles(this.props.theme, buttonMenuTheme)
+        const customTheme = mergeStyles(theme, buttonMenuTheme)
 
-        const className = classNames(
+        const updatedClassName = classNames(
             {
-                [buttonMenuTheme.ButtonMenu]: true,
-                [buttonMenuTheme.ButtonMenu__uppercase]: this.props.uppercase,
-                [buttonMenuTheme.ButtonMenu__showOnlyIcon]: this.props.showOnlyIcon,
+                [customTheme.ButtonMenu]: true,
+                [customTheme.ButtonMenu__uppercase]: uppercase ?? false,
+                [customTheme.ButtonMenu__showOnlyIcon]: showOnlyIcon ?? false,
             },
-            this.props.className,
-            theme.ButtonMenu,
+            className,
         )
 
-        const classNameText = classNames(buttonMenuTheme.buttonText, theme.buttonText)
-        const classNameIcon = classNames(buttonMenuTheme.buttonIcon, theme.buttonIcon)
+        const classNameText = customTheme.buttonText
+        const classNameIcon = customTheme.buttonIcon
 
-        const iconValue = this.props.arrowUp
+        const iconValue = arrowUp
             ? 'arrow_drop_up'
             : 'arrow_drop_down'
 
+        if (tooltip) {
+            return (
+                <Tooltip
+                    composedComponent={Button}
+                    composedComponentProps={{
+                        ...otherProps,
+                        'data-label': label,
+                        'data-name': dataName,
+                    }}
+                    className={updatedClassName}
+                    onClick={onClick}
+                    onMouseEnter={onMouseEnter}
+                    onMouseLeave={onMouseLeave}
+                    theme={customTheme}
+                    tooltip={tooltip}
+                    tooltipDelay={tooltipDelay}
+                    tooltipPosition={tooltipPosition}
+                    tooltipOffset={tooltipOffset}
+                >
+                    {this.renderContent(classNameText, classNameIcon, iconValue)}
+                </Tooltip>
+            )
+        }
+
         return (
-            <TooltipButton
-                className={className}
-                icon={this.props.icon}
-                disabled={this.props.disabled}
-                tooltip={this.props.tooltip}
-                data-label={this.props.label}
+            <Button
+                {...otherProps}
+                onClick={onClick}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
+                theme={customTheme}
+                className={updatedClassName}
+                data-label={label}
+                data-name={dataName}
             >
+                {this.renderContent(classNameText, classNameIcon, iconValue)}
+            </Button>
+        )
+    }
+
+    renderContent = (classNameText: string, classNameIcon: string, iconValue: string): React.JSX.Element => {
+        return (
+            <>
                 {!this.props.showOnlyIcon && (
                     <div className={classNameText}>
                         {this.props.label}
@@ -91,7 +154,7 @@ export class ButtonMenu extends PureComponent<React.PropsWithChildren<Props>> {
                 <div className={classNameIcon}>
                     <FontIcon value={iconValue} />
                 </div>
-            </TooltipButton>
+            </>
         )
     }
 }

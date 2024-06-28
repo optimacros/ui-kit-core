@@ -1,5 +1,5 @@
-@import './config.css';
 @import '../../themes/config.css';
+@import './config.css';
 
 .button {
     align-content: center;
@@ -73,10 +73,6 @@
         pointer-events: none;
     }
 
-    & > .rippleWrapper {
-        overflow: hidden;
-    }
-
     &[disabled] {
         color: var(--button-disabled-text-color);
         cursor: auto;
@@ -145,10 +141,6 @@
         line-height: var(--button-floating-height);
     }
 
-    & > .rippleWrapper {
-        border-radius: 50%;
-    }
-
     &.mini {
         font-size: var(--button-floating-mini-font-size);
         height: var(--button-floating-mini-height);
@@ -160,25 +152,6 @@
     }
 }
 
-.toggle {
-    background: transparent;
-    border-radius: 50%;
-    composes: button;
-    vertical-align: middle;
-    width: var(--button-height);
-
-    & > .icon,
-    & svg {
-        font-size: var(--button-toggle-font-size);
-        line-height: var(--button-height);
-        vertical-align: top;
-    }
-
-    & > .rippleWrapper {
-        border-radius: 50%;
-    }
-}
-
 .primary:not([disabled]) {
     &.raised,
     &.floating {
@@ -186,8 +159,7 @@
         color: var(--button-primary-color-contrast);
     }
 
-    &.flat,
-    &.toggle {
+    &.flat {
         color: var(--button-primary-color);
 
         &:focus:not(:active) {
@@ -207,8 +179,7 @@
         color: var(--button-accent-color-contrast);
     }
 
-    &.flat,
-    &.toggle {
+    &.flat {
         color: var(--button-accent-color);
 
         &:focus:not(:active) {
@@ -228,8 +199,7 @@
         color: var(--button-neutral-color-contrast);
     }
 
-    &.flat,
-    &.toggle {
+    &.flat {
         color: var(--button-neutral-color-contrast);
 
         &:focus:not(:active) {
@@ -248,8 +218,7 @@
             color: var(--button-neutral-color);
         }
 
-        &.flat,
-        &.toggle {
+        &.flat {
             color: var(--button-neutral-color);
 
             &:focus:not(:active) {

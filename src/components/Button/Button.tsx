@@ -2,15 +2,14 @@ import classNames from 'classnames'
 import type { MouseEvent } from 'react'
 import React, { Component } from 'react'
 
-import type { ButtonInitialProps, Theme } from './index'
+import type { ButtonInitialProps, ButtonTheme } from './index'
 import { FontIcon } from '../FontIcon'
-import type { RippleProps } from '../Ripple/Ripple'
 
-interface ButtonComponentProps extends Partial<ButtonInitialProps> {
-    theme: Theme;
+export interface ButtonComponentProps extends Partial<ButtonInitialProps> {
+    theme: ButtonTheme;
 }
 
-export class ButtonComponent extends Component<ButtonComponentProps & Partial<RippleProps>> {
+export class ButtonComponent extends Component<ButtonComponentProps> {
     constructor(props: ButtonComponentProps) {
         super(props)
 
@@ -28,11 +27,11 @@ export class ButtonComponent extends Component<ButtonComponentProps & Partial<Ri
             href,
             theme,
             inverse,
-            mini = false,
-            neutral = true,
-            uppercase = false,
-            gray = false,
-            warning = false,
+            mini,
+            neutral,
+            uppercase,
+            gray,
+            warning,
             buttonColor,
             fontSize,
             fontColor,
@@ -60,12 +59,9 @@ export class ButtonComponent extends Component<ButtonComponentProps & Partial<Ri
             theme.button,
             [theme[shape]],
             {
-                [theme[level]]: neutral,
-                [theme.mini]: mini,
-                [theme.inverse]: inverse,
-                [theme.button_uppercase]: uppercase,
-                [theme.gray]: gray,
-                [theme.warning]: warning,
+                [theme[level]]: neutral ?? true,
+                [theme.mini]: mini ?? false,
+                [theme.inverse]: inverse ?? false,
             },
             className,
         )
@@ -140,12 +136,22 @@ export class ButtonComponent extends Component<ButtonComponentProps & Partial<Ri
     }
 
     handleMouseUp = (event: MouseEvent<HTMLButtonElement>): void => {
+        if (this.buttonNode.current) {
+            // TODO проверить не сломает ли это тесты в АМ
+            this.buttonNode.current.blur()
+        }
+
         if (this.props.onMouseUp) {
             this.props.onMouseUp(event)
         }
     }
 
     handleMouseLeave = (event: MouseEvent<HTMLButtonElement>): void => {
+        if (this.buttonNode.current) {
+            // TODO проверить не сломает ли это тесты в АМ
+            this.buttonNode.current.blur()
+        }
+
         if (this.props.onMouseLeave) {
             this.props.onMouseLeave(event)
         }

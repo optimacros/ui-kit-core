@@ -1,3 +1,4 @@
+@import '../../themes/config.css';
 @import './config.css';
 
 .input {
@@ -173,7 +174,7 @@
 
 .disabled > .inputElement {
     border-bottom-style: dashed;
-    color: var(--input-text-disabled-text-color);
+    color: var(--input-text-disabled-color);
 }
 
 .errored {
@@ -196,4 +197,18 @@
 
 .hidden {
     display: none;
+}
+
+.oneLineError {
+    & > .inputElement {
+        margin-top: 0;
+    }
+
+    & > .label {
+        pointer-events: visible;
+        width: calc(100%);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }

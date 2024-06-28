@@ -1,12 +1,10 @@
 import classNames from 'classnames'
-import { isString } from 'lodash'
 import React from 'react'
 
 import { IconButtonComponent } from './IconButton'
 import { mergeStyles } from '../../utils/mergeStyle'
 import type { ButtonInitialProps, ThemeButtonProps } from '../Button'
-import themedRippleFactory from '../Ripple'
-import { tooltip } from '../Tooltip'
+import { Tooltip, TooltipProps } from '../Tooltip'
 
 // order of styles import is important
 import themeStyle from './theme.module.css'
@@ -15,50 +13,53 @@ import style from './IconButton.module.css'
 
 export type IconButtonTheme = ThemeButtonProps & { IconButton: string }
 
-export interface IconButtonProps extends Partial<ButtonInitialProps> {
+export interface Props extends Partial<ButtonInitialProps> {
     theme: Partial<IconButtonTheme>;
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
-const RippledIconButton = themedRippleFactory({ centered: true })(IconButtonComponent)
+export type IconButtonProps = Partial<Props & TooltipProps>
 
-export class IconButton extends React.Component<Partial<IconButtonProps>> {
+export class IconButton extends React.Component<IconButtonProps> {
     render(): React.JSX.Element {
         const {
-            icon,
             children,
             label,
             theme: customTheme,
+            tooltip,
+            tooltipDelay,
+            tooltipPosition,
+            tooltipOffset,
+            onClick,
+            onMouseEnter,
+            onMouseLeave,
+            className,
             ...otherProps
         } = this.props
 
         let theme = mergeStyles(style, customTheme) as IconButtonTheme
         theme = mergeStyles(theme, themeStyle) as IconButtonTheme
 
-        const TooltipIconButton = this.props.tooltip
-            ? tooltip(RippledIconButton)
-            : RippledIconButton
-
-        const iconIsString = isString(icon)
-        const className = classNames(theme.IconButton, this.props.className)
+        const updatedClassName = classNames(theme.IconButton, this.props.className)
 
         return (
-            <TooltipIconButton
-                {...otherProps}
-                theme={theme}
-                className={className}
-                icon={
-                    iconIsString
-                        ? icon
-                        : null
-                }
+            <Tooltip
+                composedComponent={IconButtonComponent}
+                composedComponentProps={{
+                    ...otherProps,
+                    'data-label': label,
+                }}
+                onClick={onClick}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
+                className={updatedClassName}
                 tooltip={this.props.label ?? this.props.tooltip}
-                data-label={label}
+                tooltipDelay={tooltipDelay}
+                tooltipPosition={tooltipPosition}
+                tooltipOffset={tooltipOffset}
+                theme={theme}
             >
-                {!iconIsString && icon}
-
                 {children}
-            </TooltipIconButton>
+            </Tooltip>
         )
     }
 }

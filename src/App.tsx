@@ -1,12 +1,38 @@
 import React from 'react'
 
-import { ButtonMenu, Input } from './components'
+import { SelectBox, FontIcon, Input } from './components'
 
 function App(): React.JSX.Element {
+    const renderEntityItem = ({ value, label }: any) => {
+        return (
+            <div>
+                {value && (
+                    <FontIcon
+                        value={'list'}
+                    />
+                )}
+
+                <span>
+                    {label}
+                </span>
+            </div>
+        )
+    }
+
     return (
         <div>
-            <ButtonMenu icon="bookmark">Click me</ButtonMenu>
-            <Input label={'djdkdjk'}/>
+            <Input placeholder={'djdkdjk'}/>
+            <SelectBox
+                auto
+                value={null}
+                label={'filterBySubsetLabel'}
+                name={'filterBySubsetLabel'}
+                template={renderEntityItem}
+                source={[{
+                    value: null,
+                    label: 'None',
+                }]}
+            />
         </div>
     )
 }

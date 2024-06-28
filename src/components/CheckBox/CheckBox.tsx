@@ -4,15 +4,14 @@ import React, { Component } from 'react'
 import { Box } from './Box'
 import type { InitialProps, Theme } from './index'
 import { mergeStyles } from '../../utils/mergeStyle'
-import rippleFactory from '../Ripple'
 
-import themeStyle from './theme.module.css'
+import checkBoxStyle from './CheckBox.module.css'
 
-interface CheckBoxComponentProps extends InitialProps {
+export interface CheckBoxComponentProps extends InitialProps {
     theme: Required<Theme>;
 }
 
-export class CheckBoxComponent extends Component<CheckBoxComponentProps> {
+export class CheckBoxComponent extends Component<React.PropsWithChildren<CheckBoxComponentProps>> {
     constructor(props: CheckBoxComponentProps) {
         super(props)
 
@@ -32,11 +31,12 @@ export class CheckBoxComponent extends Component<CheckBoxComponentProps> {
             onChange,
             onMouseEnter,
             onMouseLeave,
+            onClick,
             theme: customTheme,
             ...others
         } = this.props
 
-        const theme = mergeStyles(themeStyle, customTheme) as Required<Theme>
+        const theme = mergeStyles(customTheme, checkBoxStyle) as Required<Theme>
 
         const className = classnames(
             theme.field,
@@ -44,17 +44,13 @@ export class CheckBoxComponent extends Component<CheckBoxComponentProps> {
             this.props.className,
         )
 
-        const RippledBox = rippleFactory({
-            centered: true,
-            spread: 2.6,
-        })(Box)
-
         return (
             <label
                 data-react-toolbox="checkbox"
                 className={className}
                 onMouseEnter={onMouseEnter}
                 onMouseLeave={onMouseLeave}
+                onClick={onClick}
             >
                 <input
                     {...others}
@@ -67,12 +63,11 @@ export class CheckBoxComponent extends Component<CheckBoxComponentProps> {
                     type="checkbox"
                 />
 
-                <RippledBox
+                <Box
                     checked={checked}
                     disabled={disabled}
                     style={style}
                     theme={theme}
-                    rippleClassName={theme.ripple}
                 />
 
                 {label && (

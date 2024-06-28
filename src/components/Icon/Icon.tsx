@@ -1,82 +1,36 @@
 import React from 'react'
 
-import {
-    iconCube,
-    iconDataBase,
-    iconView,
-    iconPersonalView,
-    iconModule,
-    iconFormula,
-    iconDashboard,
-    iconWorkspaces,
-    iconCopy,
-    iconRename,
-    iconList,
-    iconListView,
-} from './iconsList'
 import { FontIcon } from '../FontIcon'
 
-enum IconValue {
-    IconCube = 'iconCube',
-    IconDataBase = 'iconDataBase',
-    IconView = 'iconView',
-    IconPersonalView = 'iconPersonalView',
-    IconModule = 'iconModule',
-    IconFormula = 'iconFormula',
-    IconDashboard = 'iconDashboard',
-    IconWorkspaces = 'iconWorkspaces',
-    IconCopy = 'iconCopy',
-    IconRename = 'iconRename',
-    IconList = 'iconList',
-    IconListView = 'iconListView',
-}
+import IconStyle from './Icon.module.css'
 
-interface Props {
+export interface IconProps {
+    value: React.JSX.Element | string;
     className?: string;
-    value: string;
     onClick?: (event: React.MouseEvent) => void;
     title?: string;
     alt?: string;
-    children?: React.JSX.Element;
-    theme?: Record<string, string>;
     style?: React.CSSProperties;
 }
 
-export class Icon extends React.Component<Props> {
-    render(): React.JSX.Element {
-        const { value, ...otherProps } = this.props
+export const Icon = (props: IconProps): React.JSX.Element => {
+    const { value, ...otherProps } = props
 
-        if (this.props.value in this.icons) {
-            return (
-                <div {...otherProps}>
-                    <img
-                        src={this.icons[value as IconValue]}
-                        alt=""
-                    />
-                </div>
-            )
-        }
-
+    if (typeof value === 'string') {
         return (
             <FontIcon
-                value={value}
                 {...otherProps}
+                value={value}
             />
         )
     }
 
-    icons = {
-        iconCube: iconCube,
-        iconDataBase: iconDataBase,
-        iconView: iconView,
-        iconPersonalView: iconPersonalView,
-        iconModule: iconModule,
-        iconFormula: iconFormula,
-        iconDashboard: iconDashboard,
-        iconWorkspaces: iconWorkspaces,
-        iconCopy: iconCopy,
-        iconRename: iconRename,
-        iconList: iconList,
-        iconListView: iconListView,
-    }
+    return (
+        <div
+            {...otherProps}
+            className={otherProps.className ?? IconStyle.Container}
+        >
+            {value}
+        </div>
+    )
 }
