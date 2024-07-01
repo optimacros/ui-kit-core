@@ -98,9 +98,6 @@ export default defineConfig({
                             return 'Tabs/ExtTabs/[name].js'
                         case 'react-lifecycles-compat.es':
                             return 'Modal/[name].js'
-                        // case '_commonjsHelpers':
-                        // case 'index':
-                        //     return 'Menu/[name].js'
                         default:
                             return 'helpers/[name].js'
                     }
