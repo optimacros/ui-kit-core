@@ -1,13 +1,12 @@
 {
-  "name": "ui-kit-lite",
+  "name": "ui-kit-core",
   "private": false,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "files": [
     "components"
   ],
   "type": "module",
   "main": "./components/index.js",
-  "module": "./components/index.js",
   "types": "./components/index.d.ts",
   "scripts": {
     "prepare": "npm run build",
