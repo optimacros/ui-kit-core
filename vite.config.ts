@@ -70,6 +70,7 @@ export default defineConfig({
     },
     build: {
         target: 'ie11',
+        minify: false,
         copyPublicDir: false,
         lib: {
             entry: path.resolve(__dirname, 'src/components/index.ts'),
