@@ -83,9 +83,11 @@ export default defineConfig({
                         [
                             '@babel/preset-env',
                             {
-                                targets: '> 0.25%, not dead, IE 11',
-                                useBuiltIns: false,
-                                modules: false,
+                                corejs: 2,
+                                useBuiltIns: 'usage',
+                                targets: {
+                                    ie: '11',
+                                },
                             },
                         ],
                     ],
