@@ -36,7 +36,7 @@ export class IconButton extends React.Component<IconButtonProps> {
             ...otherProps
         } = this.props
 
-        let theme = mergeStyles(style, customTheme) as IconButtonTheme
+        let theme = mergeStyles(style, customTheme ?? {}) as IconButtonTheme
         theme = mergeStyles(theme, themeStyle) as IconButtonTheme
 
         const updatedClassName = classNames(theme.IconButton, this.props.className)

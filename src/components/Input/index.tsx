@@ -120,7 +120,7 @@ export class Input extends React.Component<InputProps> {
             ? label
             : ''
 
-        let theme = mergeStyles(inputThemeStyle, customTheme) as InputTheme
+        let theme = mergeStyles(inputThemeStyle, customTheme ?? {}) as InputTheme
         theme = mergeStyles(theme, inputDefaultStyle) as InputTheme
 
         const labelClassName = classNames(theme.label, {

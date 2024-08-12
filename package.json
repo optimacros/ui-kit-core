@@ -19,6 +19,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@rollup/plugin-babel": "^6.0.4",
     "mobx": "6.12.3",
     "mobx-react": "9.1.1",
     "rc-dropdown": "2.4.1",

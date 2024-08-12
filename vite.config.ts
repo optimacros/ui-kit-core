@@ -14,6 +14,8 @@ import dts from 'vite-plugin-dts'
 import eslint from 'vite-plugin-eslint'
 import { libInjectCss } from 'vite-plugin-lib-inject-css'
 import tsconfigPaths from 'vite-tsconfig-paths'
+import { getBabelOutputPlugin } from '@rollup/plugin-babel'
+
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -68,12 +70,40 @@ export default defineConfig({
         },
     },
     build: {
+        target: 'ie11',
         copyPublicDir: false,
         lib: {
             entry: path.resolve(__dirname, 'src/components/index.ts'),
             formats: ['es'],
         },
         rollupOptions: {
+            plugins: [
+                /**
+                 * Running Babel on the generated code:
+                 *  https://github.com/rollup/plugins/blob/master/packages/babel/README.md#running-babel-on-the-generated-code
+                 *
+                 * Transforming ES6+ syntax to ES5 is not supported yet, there are two ways to do:
+                 *  https://github.com/evanw/esbuild/issues/1010#issuecomment-803865232
+                 * We choose to run Babel on the output files after esbuild.
+                 *
+                 * @vitejs/plugin-legacy does not support library mode:
+                 *  https://github.com/vitejs/vite/issues/1639
+                 */
+                getBabelOutputPlugin({
+                    allowAllFormats: true,
+                    presets: [
+                        [
+                            '@babel/preset-env',
+                            {
+                                targets: '> 0.25%, not dead, IE 11',
+                                useBuiltIns: false, // Default：false
+                                // // https://babeljs.io/docs/en/babel-preset-env#modules
+                                modules: false
+                            },
+                        ]
+                    ]
+                }),
+            ],
             external: ['react', 'react-dom', 'react/jsx-runtime'],
             input: Object.fromEntries(
                 glob.sync(

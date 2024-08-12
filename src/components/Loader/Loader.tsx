@@ -55,7 +55,7 @@ export class Loader extends Component<LoaderProps> {
             disabled,
         } = this.props
 
-        const theme = mergeStyles(userTheme, style) as Required<Theme>
+        const theme = mergeStyles(userTheme ?? {}, style) as Required<Theme>
 
         const _className = classnames(
             theme[type],
