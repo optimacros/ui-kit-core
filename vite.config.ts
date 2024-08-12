@@ -69,7 +69,7 @@ export default defineConfig({
         },
     },
     build: {
-        target: 'ie11',
+        target: 'ES2015',
         minify: false,
         copyPublicDir: false,
         lib: {
