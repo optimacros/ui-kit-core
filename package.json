@@ -6,7 +6,7 @@
     "components"
   ],
   "type": "module",
-  "main": "./components/index.js",
+  "main": "./components/index.cjs",
   "types": "./components/index.d.ts",
   "scripts": {
     "prepare": "npm run build",
