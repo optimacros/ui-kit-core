@@ -74,7 +74,7 @@ export default defineConfig({
         copyPublicDir: false,
         lib: {
             entry: path.resolve(__dirname, 'src/components/index.ts'),
-            formats: ['es'],
+            formats: ['cjs'],
         },
         rollupOptions: {
             plugins: [
