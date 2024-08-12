@@ -5,8 +5,8 @@
   "files": [
     "components"
   ],
-  "type": "module",
-  "main": "./components/index.cjs",
+  "main": "./components/index.js",
+  "module": "./components/index.js",
   "types": "./components/index.d.ts",
   "scripts": {
     "prepare": "npm run build",
