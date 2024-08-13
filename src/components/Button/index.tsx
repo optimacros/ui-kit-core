@@ -57,7 +57,7 @@ export type ButtonProps = Partial<ButtonInitialProps>
 
 export class Button extends Component<ButtonProps> {
     render(): React.JSX.Element {
-        let theme = mergeStyles(style, this.props.theme ?? {}) as ButtonTheme
+        let theme = mergeStyles(style, this.props.theme) as ButtonTheme
         theme = mergeStyles(theme, themeStyle) as ButtonTheme
 
         const className = classNames(

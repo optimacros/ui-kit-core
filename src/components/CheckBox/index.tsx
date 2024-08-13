@@ -48,7 +48,7 @@ export class CheckBox extends React.Component<CheckBoxProps> {
             ...otherProps
         } = this.props
 
-        const customTheme = mergeStyles(themeStyle, this.props.theme ?? {}) as Required<Theme>
+        const customTheme = mergeStyles(themeStyle, this.props.theme) as Required<Theme>
 
         return tooltipLabel
             ? (

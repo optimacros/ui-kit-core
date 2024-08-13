@@ -50,7 +50,7 @@ export class ButtonMenu extends PureComponent<ButtonMenuProps> {
 
     renderMenu(): React.JSX.Element {
         const { menuRootContainerClassName } = this.props
-        const theme = mergeStyles(this.props.theme ?? {}, buttonMenuTheme)
+        const theme = mergeStyles(this.props.theme, buttonMenuTheme)
         const className = classNames(menuRootContainerClassName, theme.MenuRootContainerClassName)
 
         return (
@@ -84,7 +84,7 @@ export class ButtonMenu extends PureComponent<ButtonMenuProps> {
             ...otherProps
         } = this.props
 
-        const customTheme = mergeStyles(theme ?? {}, buttonMenuTheme)
+        const customTheme = mergeStyles(theme, buttonMenuTheme)
 
         const updatedClassName = classNames(
             {

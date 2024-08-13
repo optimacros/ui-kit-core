@@ -38,7 +38,7 @@ export class Chip extends React.Component<ChipProps> {
             ...other
         } = this.props
 
-        const theme = mergeStyles(customTheme ?? {}, styles) as Required<Theme>
+        const theme = mergeStyles(customTheme, styles) as Required<Theme>
 
         const isStringChildren = typeof children === 'string'
         const classes = classnames(
