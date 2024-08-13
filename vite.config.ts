@@ -1,4 +1,3 @@
-import { getBabelOutputPlugin } from '@rollup/plugin-babel'
 import react from '@vitejs/plugin-react-swc'
 import crypto from 'crypto'
 import { glob } from 'glob'
@@ -69,29 +68,12 @@ export default defineConfig({
         },
     },
     build: {
-        target: 'ES2015',
-        minify: false,
         copyPublicDir: false,
         lib: {
             entry: path.resolve(__dirname, 'src/components/index.ts'),
             formats: ['es'],
         },
         rollupOptions: {
-            plugins: [
-                getBabelOutputPlugin({
-                    allowAllFormats: true,
-                    presets: [
-                        [
-                            '@babel/preset-env',
-                            {
-                                targets: '> 0.25%, not dead, IE 11',
-                                useBuiltIns: false,
-                                modules: false,
-                            },
-                        ],
-                    ],
-                }),
-            ],
             external: ['react', 'react-dom', 'react/jsx-runtime'],
             input: Object.fromEntries(
                 glob.sync(
@@ -110,8 +92,15 @@ export default defineConfig({
                 ]),
             ),
             output: {
-                chunkFileNames: () => {
-                    return 'helpers/[name].js'
+                chunkFileNames: (chunkInfo) => {
+                    switch (chunkInfo.name) {
+                        case 'TabHeaderState':
+                            return 'Tabs/ExtTabs/[name].js'
+                        case 'react-lifecycles-compat.es':
+                            return 'Modal/[name].js'
+                        default:
+                            return 'helpers/[name].js'
+                    }
                 },
                 assetFileNames: 'assets/index[extname]',
                 entryFileNames: '[name].js',
