@@ -110,15 +110,8 @@ export default defineConfig({
                 ]),
             ),
             output: {
-                chunkFileNames: (chunkInfo) => {
-                    switch (chunkInfo.name) {
-                        case 'TabHeaderState':
-                            return 'Tabs/ExtTabs/[name].js'
-                        case 'react-lifecycles-compat.es':
-                            return 'Modal/[name].js'
-                        default:
-                            return 'helpers/[name].js'
-                    }
+                chunkFileNames: () => {
+                    return 'helpers/[name].js'
                 },
                 assetFileNames: 'assets/index[extname]',
                 entryFileNames: '[name].js',
