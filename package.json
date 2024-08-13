@@ -5,7 +5,6 @@
   "files": [
     "components"
   ],
-  "type": "module",
   "main": "./components/index.cjs",
   "module": "./components/index.cjs",
   "types": "./components/index.d.ts",
