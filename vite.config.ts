@@ -68,6 +68,7 @@ export default defineConfig({
         },
     },
     build: {
+        minify: false,
         copyPublicDir: false,
         lib: {
             entry: path.resolve(__dirname, 'src/components/index.cjs'),
