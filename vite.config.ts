@@ -70,8 +70,8 @@ export default defineConfig({
     build: {
         copyPublicDir: false,
         lib: {
-            entry: path.resolve(__dirname, 'src/components/index.ts'),
-            formats: ['es'],
+            entry: path.resolve(__dirname, 'src/components/index.cjs'),
+            formats: ['cjs'],
         },
         rollupOptions: {
             external: ['react', 'react-dom', 'react/jsx-runtime'],
@@ -95,15 +95,15 @@ export default defineConfig({
                 chunkFileNames: (chunkInfo) => {
                     switch (chunkInfo.name) {
                         case 'TabHeaderState':
-                            return 'Tabs/ExtTabs/[name].js'
+                            return 'Tabs/ExtTabs/[name].cjs'
                         case 'react-lifecycles-compat.es':
-                            return 'Modal/[name].js'
+                            return 'Modal/[name].cjs'
                         default:
-                            return 'helpers/[name].js'
+                            return 'helpers/[name].cjs'
                     }
                 },
                 assetFileNames: 'assets/index[extname]',
-                entryFileNames: '[name].js',
+                entryFileNames: '[name].cjs',
                 dir: 'components',
                 globals: {
                     react: 'React',

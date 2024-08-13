@@ -6,8 +6,8 @@
     "components"
   ],
   "type": "module",
-  "main": "./components/index.js",
-  "module": "./components/index.js",
+  "main": "./components/index.cjs",
+  "module": "./components/index.cjs",
   "types": "./components/index.d.ts",
   "scripts": {
     "prepare": "npm run build",
