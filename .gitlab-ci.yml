@@ -1,10 +1,10 @@
 variables:
-    runner: "am-FE"    #дефолтный раннер, переопределяется по правилам в разделе workflow в зависимости от окружения. В дальшейшем также можно использовать докер-раннер
-    GIT_CLONE_PATH: '$CI_BUILDS_DIR/$CI_PROJECT_NAME/$CI_PIPELINE_ID/$CI_COMMIT_SHORT_SHA'  #Билды храняться в папках по именни комминта/id пайплайна. Если необходимо хранить билды, необходимо переопределить $CI_BUILDS_DIR.
-    GIT_STRATEGY: fetch
-    GIT_FETCH_EXTRA_FLAGS: --tags --depth=1000
-    DEPLOY_HOSTNAME: $DEPLOY_HOSTNAME_storybook_optimacros_com
-    DEPLOY_USERNAME: $DEPLOY_USERNAME_storybook_optimacros_com
+  runner: "ui-kit"
+  GIT_CLONE_PATH: "$CI_BUILDS_DIR/$CI_PROJECT_NAME/$CI_PIPELINE_ID/$CI_COMMIT_SHORT_SHA"
+  GIT_STRATEGY: fetch
+  GIT_FETCH_EXTRA_FLAGS: --tags --depth=1000
+  DEPLOY_HOSTNAME: $DEPLOY_HOSTNAME_storybook_optimacros_com
+  DEPLOY_USERNAME: $DEPLOY_USERNAME_storybook_optimacros_com
 
 workflow:
   rules:
@@ -14,25 +14,21 @@ workflow:
     - if: ( $CI_PIPELINE_SOURCE == "merge_request_event") # При MR
       variables:
         pr: "true"
-    - if: ( $CI_PIPELINE_SOURCE == "web") # при ручком запуске из  webui
+    - if: ( $CI_PIPELINE_SOURCE == "web") # при ручном запуске из  webui
 
 stages:
   - build
   - test
   - deploy
 
-
 build:
   stage: build
   script:
-    - export NVM_DIR=$(dirname $(find / 2>/dev/null -name nvm.sh)) && [[ -s $NVM_DIR/nvm.sh ]] && . $NVM_DIR/nvm.sh 
-      && . "$NVM_DIR/bash_completion"
-      && export PATH="$(npm bin):$PATH" && nvm install && export PATH="$(npm bin):$PATH" && nvm use && npm ci && npm run build-storybook
+    - nvm use && npm ci && npm run build-storybook
     - mv storybook-static $CI_PROJECT_NAME
     - tar -czvf $CI_PROJECT_NAME.tar.gz $CI_PROJECT_NAME
   tags:
     - ${runner}
-
 
 # tests
 lint-test:
@@ -42,10 +38,7 @@ lint-test:
   tags:
     - ${runner}
   script:
-   - export NVM_DIR=$(dirname $(find / 2>/dev/null -name nvm.sh)) && [[ -s $NVM_DIR/nvm.sh ]] && . $NVM_DIR/nvm.sh 
-      && . "$NVM_DIR/bash_completion"
-      && export PATH="$(npm bin):$PATH" && nvm use && npm run lint
-
+    - nvm use && npm run lint
 
 #deploy
 deploy:
@@ -76,4 +69,3 @@ deploy:
       rm -rf $CI_PROJECT_NAME &&
       tar -xvf $CI_PROJECT_NAME.tar.gz &&
       rm -rf $CI_PROJECT_NAME.tar.gz"
-
