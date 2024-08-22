@@ -22,7 +22,7 @@ const argTypes: Partial<ArgTypes> = {
 }
 
 const meta: Meta<typeof Navigation> = {
-    title: "UI Kit lite/Navigation",
+    title: "UI Kit core/Navigation",
     component: Navigation as unknown as React.ComponentType<NavigationProps>,
     argTypes
 }

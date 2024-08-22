@@ -17,7 +17,7 @@ const argTypes: Partial<ArgTypes> = {
 }
 
 const meta: Meta<typeof Menu> = {
-    title: "UI Kit lite/Menu",
+    title: "UI Kit core/Menu",
     component: Menu,
     argTypes,
     parameters: {

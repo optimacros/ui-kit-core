@@ -30,7 +30,7 @@ const argTypes: Partial<ArgTypes> = {
 
 
 const meta: Meta<typeof Chip> = {
-    title: "UI Kit lite/Chip",
+    title: "UI Kit core/Chip",
     component: Chip,
     argTypes
 }

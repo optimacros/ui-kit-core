@@ -11,7 +11,7 @@ const argTypes: Partial<ArgTypes> = {
 
 
 const meta: Meta<typeof Divider> = {
-    title: "UI Kit lite/Divider",
+    title: "UI Kit core/Divider",
     component: Divider,
     argTypes
 }
