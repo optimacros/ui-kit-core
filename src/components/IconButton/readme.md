@@ -3,7 +3,7 @@
 
 <!-- example -->
 ```jsx
-import { IconButton } from 'ui-kit-lite/components/IconButton';
+import { IconButton } from 'ui-kit-core/components/IconButton';
 
 const GithubIcon = () => (
   <svg viewBox="0 0 284 277">
@@ -22,9 +22,9 @@ const TestComponent = () => (
 
 ## Import
 ```jsx
-import { IconButton } from 'ui-kit-lite';
+import { IconButton } from 'ui-kit-core';
 // or
-import { IconButton } from 'ui-kit-lite/components/IconButton';
+import { IconButton } from 'ui-kit-core/components/IconButton';
 ```
 
 

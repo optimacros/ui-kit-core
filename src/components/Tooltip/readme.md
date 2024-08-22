@@ -4,8 +4,8 @@ A Tooltip is useful to show information on hover in any kind of component. We ha
 
 <!-- example -->
 ```jsx
-import { Tooltip } from 'ui-kit-lite/components/Tooltip';
-import { Button } from 'ui-kit-lite/components/Button';
+import { Tooltip } from 'ui-kit-core/components/Tooltip';
+import { Button } from 'ui-kit-core/components/Button';
 
 
 
@@ -42,9 +42,9 @@ const TestComponent = () => (
 
 ## Import
 ```jsx
-import { Tooltip } from 'ui-kit-lite';
+import { Tooltip } from 'ui-kit-core';
 // or
-import { Tooltip } from 'ui-kit-lite/components/Tooltip';
+import { Tooltip } from 'ui-kit-core/components/Tooltip';
 ```
 
 ## Properties

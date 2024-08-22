@@ -4,7 +4,7 @@ Chips represent complex entities in small blocks, such as a contact. Chips can b
 
 <!-- example -->
 ```jsx
-import { Chip } from 'ui-kit-lite/components/Chip';
+import { Chip } from 'ui-kit-core/components/Chip';
 
 
 const UserIcon = () => (
@@ -39,9 +39,9 @@ const TestComponent = () => (
 
 ## Import
 ```jsx
-import { Chip } from 'ui-kit-lite';
+import { Chip } from 'ui-kit-core';
 // or
-import { Chip } from 'ui-kit-lite/components/Chip';
+import { Chip } from 'ui-kit-core/components/Chip';
 ```
 
 ## Properties

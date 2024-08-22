@@ -2,7 +2,7 @@
 
 <!-- example -->
 ```jsx
-import { CheckBox } from 'ui-kit-lite/components/CheckBox';
+import { CheckBox } from 'ui-kit-core/components/CheckBox';
 
 const TestComponent = () => {
     const [checked, setChecked] = useState(false)
@@ -24,9 +24,9 @@ const TestComponent = () => {
 ```
 ## Import
 ```jsx
-import { CheckBox } from 'ui-kit-lite';
+import { CheckBox } from 'ui-kit-core';
 // or
-import { CheckBox } from 'ui-kit-lite/components/CheckBox';
+import { CheckBox } from 'ui-kit-core/components/CheckBox';
 ```
 
 ## Properties

@@ -2,7 +2,7 @@
 
 <!-- example -->
 ```jsx 
-import { Dropdown } from 'ui-kit-lite/components/Dropdown';
+import { Dropdown } from 'ui-kit-core/components/Dropdown';
 
 const OverlayComponent = () => {
     return <div><div>item1</div><div>item2</div></div>
@@ -35,9 +35,9 @@ const TestComponent = () => (
 
 ## Import
 ```jsx
-import { Dropdown } from 'ui-kit-lite';
+import { Dropdown } from 'ui-kit-core';
 // or
-import { Dropdown } from 'ui-kit-lite/components/Dropdown';
+import { Dropdown } from 'ui-kit-core/components/Dropdown';
 ```
 
 ## Properties
