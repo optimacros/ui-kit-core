@@ -76,23 +76,21 @@ export const MenuWithSubMenu: Story = {
     args: {
         mode: "vertical",
         expandIcon: <FontIcon style={{ position: "absolute", right: "20px" }} value="arrow_right_alt" />,
-        children: (
-            <>
-                <MenuItem>1</MenuItem>
-                <SubMenu title="2">
-                    <MenuItem>2-1</MenuItem>
-                    <SubMenu title="3">
-                        <MenuItem>3-1</MenuItem>
-                        <SubMenu title="4">
-                            <MenuItem>4-1</MenuItem>
-                            <MenuItem>4-2</MenuItem>
-                            <MenuItem>4-3</MenuItem>
-                            <MenuItem>4-4</MenuItem>
-                        </SubMenu>
+        children: [
+            <MenuItem>1</MenuItem>,
+            <SubMenu title="2">
+                <MenuItem>2-1</MenuItem>
+                <SubMenu title="3">
+                    <MenuItem>3-1</MenuItem>
+                    <SubMenu title="4">
+                        <MenuItem>4-1</MenuItem>
+                        <MenuItem>4-2</MenuItem>
+                        <MenuItem>4-3</MenuItem>
+                        <MenuItem>4-4</MenuItem>
                     </SubMenu>
                 </SubMenu>
-            </>
-        ),
+            </SubMenu>
+        ]
     },
 }
 
@@ -103,26 +101,20 @@ export const MenuWithSubGroup: Story = {
     args: {
         mode: "vertical",
         expandIcon: <FontIcon style={{ position: "absolute", right: "20px" }} value="arrow_right_alt" />,
-        children: (
-            <>
-                <MenuItemGroup title="Menu Group 1">
-                    <MenuItem>1</MenuItem>
-                    <MenuItem>2</MenuItem>
-                    <SubMenu title="3">
-                        <MenuItem>3-1</MenuItem>
-                        <MenuItem>3-2</MenuItem>
-                    </SubMenu>
-                    <SubMenu title="4">
-                        <MenuItem>4-1</MenuItem>
-                        <MenuItem>4-2</MenuItem>
-                    </SubMenu>
-                </MenuItemGroup>
-                <MenuItemGroup title="Menu Group 2">
-                    <MenuItem>3</MenuItem>
-                    <MenuItem>4</MenuItem>
-                </MenuItemGroup>
-            </>
-        ),
+        children: [
+            <MenuItemGroup title="Menu Group 1">
+                <MenuItem>1</MenuItem>
+                <MenuItem>2</MenuItem>
+                <SubMenu title="3">
+                    <MenuItem>3-1</MenuItem>
+                    <MenuItem>3-2</MenuItem>
+                </SubMenu>
+            </MenuItemGroup>,
+            <MenuItemGroup title="Menu Group 2">
+                <MenuItem>3</MenuItem>
+                <MenuItem>4</MenuItem>
+            </MenuItemGroup>
+        ]
     },
 }
 
@@ -133,15 +125,13 @@ export const Inline: Story = {
     args: {
         mode: "inline",
         expandIcon: <FontIcon style={{ position: "absolute", right: "20px" }} value="arrow_drop_down" />,
-        children: (
-            <>
-                <MenuItem>1</MenuItem>
-                <SubMenu title="2">
-                    <MenuItem>2-1</MenuItem>
-                    <MenuItem>2-2</MenuItem>
-                    <MenuItem>2-3</MenuItem>
-                </SubMenu>
-            </>
-        ),
+        children: [
+            <MenuItem>1</MenuItem>,
+            <SubMenu title="2">
+                <MenuItem>2-1</MenuItem>
+                <MenuItem>2-2</MenuItem>
+                <MenuItem>2-3</MenuItem>
+            </SubMenu>
+        ]
     },
 }
