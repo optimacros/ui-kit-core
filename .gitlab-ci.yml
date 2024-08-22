@@ -1,5 +1,5 @@
 variables:
-  runner: "am-FE"
+  runner: "ui-kit"
   GIT_CLONE_PATH: "$CI_BUILDS_DIR/$CI_PROJECT_NAME/$CI_PIPELINE_ID/$CI_COMMIT_SHORT_SHA"
   GIT_STRATEGY: fetch
   GIT_FETCH_EXTRA_FLAGS: --tags --depth=1000
