@@ -3,7 +3,7 @@
 
 <!-- example -->
 ```jsx
-import { Modal } from 'ui-kit-lite/components/Modal';
+import { Modal } from 'ui-kit-core/components/Modal';
 
 const TestComponent = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -23,9 +23,9 @@ const TestComponent = () => {
 
 ## Import
 ```jsx
-import { Modal } from 'ui-kit-lite';
+import { Modal } from 'ui-kit-core';
 // or
-import { Modal } from 'ui-kit-lite/components/Modal';
+import { Modal } from 'ui-kit-core/components/Modal';
 ```
 
 ## Properties

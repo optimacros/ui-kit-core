@@ -2,7 +2,7 @@
 
 <!-- example -->
 ```jsx
-import { Tabs } from 'ui-kit-lite/components/Tabs';
+import { Tabs } from 'ui-kit-core/components/Tabs';
 
 const UserIcon = () => (
     <svg fill="none" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" >
@@ -61,9 +61,9 @@ const TestComponent = () => {
 
 ## Import
 ```jsx
-import { Tabs } from 'ui-kit-lite';
+import { Tabs } from 'ui-kit-core';
 // or
-import { Tabs } from 'ui-kit-lite/components/Tabs';
+import { Tabs } from 'ui-kit-core/components/Tabs';
 ```
 
 ## Properties
@@ -104,9 +104,9 @@ ___
 
 ## Import
 ```jsx
-import { Tab } from 'ui-kit-lite';
+import { Tab } from 'ui-kit-core';
 // or
-import { Tab } from 'ui-kit-lite/components/Tab';
+import { Tab } from 'ui-kit-core/components/Tab';
 ```
 
 ## Properties

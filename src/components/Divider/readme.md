@@ -2,7 +2,7 @@
 
 <!-- example -->
 ```jsx 
-import { Divider } from 'ui-kit-lite/components/Divider';
+import { Divider } from 'ui-kit-core/components/Divider';
 
 const TestComponent = () => (
     <div>
@@ -14,9 +14,9 @@ const TestComponent = () => (
 
 ## Import
 ```jsx
-import { Divider } from 'ui-kit-lite';
+import { Divider } from 'ui-kit-core';
 // or
-import { Divider } from 'ui-kit-lite/components/Divider';
+import { Divider } from 'ui-kit-core/components/Divider';
 ```
 
 ## Properties

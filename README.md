@@ -1,4 +1,4 @@
-# ui-kit-lite
+# ui-kit-core
 
 
 
@@ -15,14 +15,14 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
-git remote add origin https://gitlab.optimacros.com/am/ui-kit-lite.git
+git remote add origin https://gitlab.optimacros.com/am/ui-kit-core.git
 git branch -M main
 git push -uf origin main
 ```
 
 ## Integrate with your tools
 
-- [ ] [Set up project integrations](https://gitlab.optimacros.com/am/ui-kit-lite/-/settings/integrations)
+- [ ] [Set up project integrations](https://gitlab.optimacros.com/am/ui-kit-core/-/settings/integrations)
 
 ## Collaborate with your team
 

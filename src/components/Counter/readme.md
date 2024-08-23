@@ -2,7 +2,7 @@
 
 <!-- example -->
 ```typescript jsx 
-import { Counter } from 'ui-kit-lite/components/Counter';
+import { Counter } from 'ui-kit-core/components/Counter';
 
 interface NavigationLinkProps {
     children: React.JSX.Element | null;
@@ -31,9 +31,9 @@ const TestComponent = () => (
 
 ## Import
 ```jsx
-import { Counter } from 'ui-kit-lite';
+import { Counter } from 'ui-kit-core';
 // or
-import { Counter } from 'ui-kit-lite/components/Counter';
+import { Counter } from 'ui-kit-core/components/Counter';
 ```
 
 ## Properties

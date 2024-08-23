@@ -2,7 +2,7 @@
 
 <!-- example -->
 ```jsx
-import { Input } from 'ui-kit-lite/components/Input';
+import { Input } from 'ui-kit-core/components/Input';
 
 
 const TestComponent = () => {
@@ -37,9 +37,9 @@ const TestComponent = () => {
 
 ## Import
 ```jsx
-import { Input } from 'ui-kit-lite';
+import { Input } from 'ui-kit-core';
 // or
-import { Input } from 'ui-kit-lite/components/Input';
+import { Input } from 'ui-kit-core/components/Input';
 ```
 
 
