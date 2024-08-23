@@ -89,15 +89,14 @@ export const Basic: Story = {
         label: "Menu",
         icon: "print",
         arrowUp: false,
-        children:
-            <>
-                <MenuItem>
-                    <span>option</span>
-                </MenuItem>
-                <MenuItem>
-                    <span>option</span>
-                </MenuItem>
-            </>,
+        children:[
+            <MenuItem>
+                <span>Option</span>
+            </MenuItem>,
+            <MenuItem>
+                <span>Option</span>
+            </MenuItem>
+        ]
     },
 }
 
@@ -105,15 +104,14 @@ export const Uppercase: Story = {
     args: {
         label: "Menu",
         uppercase: true,
-        children:
-            <>
-                <MenuItem>
-                    <span>option</span>
-                </MenuItem>
-                <MenuItem>
-                    <span>option</span>
-                </MenuItem>
-            </>,
+        children: [
+            <MenuItem>
+                <span>Option</span>
+            </MenuItem>,
+            <MenuItem>
+                <span>Option</span>
+            </MenuItem>
+        ]
     },
 }
 
@@ -124,15 +122,14 @@ export const WithTooltip: Story = {
         tooltipDelay: 50,
         tooltipPosition: "bottom",
         tooltipOffset: 0,
-        children:
-            <>
-                <MenuItem>
-                    <span>option</span>
-                </MenuItem>
-                <MenuItem>
-                    <span>option</span>
-                </MenuItem>
-            </>,
+        children: [
+            <MenuItem>
+                <span>Option</span>
+            </MenuItem>,
+            <MenuItem>
+                <span>Option</span>
+            </MenuItem>
+        ]
     },
 }
 
@@ -140,15 +137,14 @@ export const Disabled: Story = {
     args: {
         label: "Menu",
         disabled: true,
-        children:
-            <>
-                <MenuItem>
-                    <span>option</span>
-                </MenuItem>
-                <MenuItem>
-                    <span>option</span>
-                </MenuItem>
-            </>,
+        children: [
+            <MenuItem>
+                <span>Option</span>
+            </MenuItem>,
+            <MenuItem>
+                <span>Option</span>
+            </MenuItem>
+        ]
     },
 }
 
@@ -156,14 +152,13 @@ export const Visible: Story = {
     args: {
         label: "Menu",
         visible: true,
-        children:
-            <>
-                <MenuItem>
-                    <span>option</span>
-                </MenuItem>
-                <MenuItem>
-                    <span>option</span>
-                </MenuItem>
-            </>,
+        children: [
+            <MenuItem>
+                <span>Option</span>
+            </MenuItem>,
+            <MenuItem>
+                <span>Option</span>
+            </MenuItem>
+        ]
     },
 }

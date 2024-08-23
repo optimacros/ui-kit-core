@@ -38,19 +38,18 @@ const Wrapper = ({ children }: { children: JSX.Element }) => (
     </div>
 );
 
-
+// todo - mode inline, because another return error "any"
 export const Basic: Story = {
     decorators: [
         (Story) => <Wrapper>{Story()}</Wrapper>,
     ],
     args: {
-        children: (
-            <>
-                <MenuItem>1</MenuItem>
-                <MenuItem>2</MenuItem>
-                <MenuItem>3</MenuItem>
-            </>
-        ),
+        mode: 'inline',
+        children: [
+            <MenuItem>1</MenuItem>,
+            <MenuItem>2</MenuItem>,
+            <MenuItem>3</MenuItem>,
+        ],
     },
 }
 
@@ -59,48 +58,47 @@ export const DisabledMenuItem: Story = {
         (Story) => <Wrapper>{Story()}</Wrapper>,
     ],
     args: {
-        children: (
-            <>
-                <MenuItem disabled={true}>1</MenuItem>
-                <MenuItem>2</MenuItem>
-                <MenuItem>3</MenuItem>
-            </>
-        ),
-    },
-}
-
-export const MenuWithSubMenu: Story = {
-    decorators: [
-        (Story) => <Wrapper>{Story()}</Wrapper>,
-    ],
-    args: {
-        mode: "vertical",
-        expandIcon: <FontIcon style={{ position: "absolute", right: "20px" }} value="arrow_right_alt" />,
+        mode: 'inline',
         children: [
-            <MenuItem>1</MenuItem>,
-            <SubMenu title="2">
-                <MenuItem>2-1</MenuItem>
-                <SubMenu title="3">
-                    <MenuItem>3-1</MenuItem>
-                    <SubMenu title="4">
-                        <MenuItem>4-1</MenuItem>
-                        <MenuItem>4-2</MenuItem>
-                        <MenuItem>4-3</MenuItem>
-                        <MenuItem>4-4</MenuItem>
-                    </SubMenu>
-                </SubMenu>
-            </SubMenu>
+            <MenuItem disabled={true}>1</MenuItem>,
+            <MenuItem>2</MenuItem>,
+            <MenuItem>3</MenuItem>,
         ]
     },
 }
 
+// export const MenuWithSubMenu: Story = {
+//     decorators: [
+//         (Story) => <Wrapper>{Story()}</Wrapper>,
+//     ],
+//     args: {
+//         mode: "vertical",
+//         expandIcon: <FontIcon style={{ position: "absolute", right: "20px" }} value="arrow_right_alt" />,
+//         children: [
+//             <MenuItem key="1">1</MenuItem>,
+//             <SubMenu key="sub2" title="2">
+//                 <MenuItem key="2-1">2-1</MenuItem>
+//                 <SubMenu key="sub3" title="3">
+//                     <MenuItem key="3-1">3-1</MenuItem>
+//                     <SubMenu key="sub4" title="4">
+//                         <MenuItem key="4-1">4-1</MenuItem>
+//                         <MenuItem key="4-2">4-2</MenuItem>
+//                         <MenuItem key="4-3">4-3</MenuItem>
+//                         <MenuItem key="4-4">4-4</MenuItem>
+//                     </SubMenu>
+//                 </SubMenu>
+//             </SubMenu>
+//         ]
+//     },
+// }
+//
 export const MenuWithSubGroup: Story = {
     decorators: [
         (Story) => <Wrapper>{Story()}</Wrapper>,
     ],
     args: {
-        mode: "vertical",
-        expandIcon: <FontIcon style={{ position: "absolute", right: "20px" }} value="arrow_right_alt" />,
+        mode: "inline",
+        expandIcon: <FontIcon style={{ position: "absolute", right: "20px" }} value="arrow_drop_down" />,
         children: [
             <MenuItemGroup title="Menu Group 1">
                 <MenuItem>1</MenuItem>
