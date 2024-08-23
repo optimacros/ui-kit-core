@@ -2,12 +2,12 @@
 
 <!-- example -->
 ```jsx
-import { Menu } from 'ui-kit-lite/components/Menu';
-import { MenuDivider } from 'ui-kit-lite/components/MenuDivider';
-import { SubMenu } from 'ui-kit-lite/components/SubMenu';
-import { MenuItemGroup } from 'ui-kit-lite/components/MenuItemGroup';
-import { MenuItem } from 'ui-kit-lite/components/MenuItem';
-import { FontIcon } from 'ui-kit-lite/components/FontIcon';
+import { Menu } from 'ui-kit-core/components/Menu';
+import { MenuDivider } from 'ui-kit-core/components/MenuDivider';
+import { SubMenu } from 'ui-kit-core/components/SubMenu';
+import { MenuItemGroup } from 'ui-kit-core/components/MenuItemGroup';
+import { MenuItem } from 'ui-kit-core/components/MenuItem';
+import { FontIcon } from 'ui-kit-core/components/FontIcon';
 
 const TestComponent = () => (
   <div>
@@ -53,9 +53,9 @@ const TestComponent = () => (
 
 ## Import
 ```jsx
-import { Menu } from 'ui-kit-lite';
+import { Menu } from 'ui-kit-core';
 // or
-import { Menu } from 'ui-kit-lite/components/Menu';
+import { Menu } from 'ui-kit-core/components/Menu';
 ```
 
 ## Properties
@@ -73,9 +73,9 @@ ___
 
 ## Import
 ```jsx
-import { SubMenu } from 'ui-kit-lite';
+import { SubMenu } from 'ui-kit-core';
 // or
-import { SubMenu } from 'ui-kit-lite/components/SubMenu';
+import { SubMenu } from 'ui-kit-core/components/SubMenu';
 ```
 
 ## Properties
@@ -95,9 +95,9 @@ ___
 
 ## Import
 ```jsx
-import { MenuItem } from 'ui-kit-lite';
+import { MenuItem } from 'ui-kit-core';
 // or
-import { MenuItem } from 'ui-kit-lite/components/MenuItem';
+import { MenuItem } from 'ui-kit-core/components/MenuItem';
 ```
 
 ## Properties
@@ -118,9 +118,9 @@ ___
 
 ## Import
 ```jsx
-import { MenuItemGroup } from 'ui-kit-lite';
+import { MenuItemGroup } from 'ui-kit-core';
 // or
-import { MenuItemGroup } from 'ui-kit-lite/components/MenuItemGroup';
+import { MenuItemGroup } from 'ui-kit-core/components/MenuItemGroup';
 ```
 
 ## Properties
@@ -141,9 +141,9 @@ MenuDivider used inside Menu, SubMenu, MenuItemGroup components.
 
 ## Import
 ```jsx
-import { MenuDivider } from 'ui-kit-lite';
+import { MenuDivider } from 'ui-kit-core';
 // or
-import { MenuDivider } from 'ui-kit-lite/components/MenuDivider';
+import { MenuDivider } from 'ui-kit-core/components/MenuDivider';
 ```
 
 

@@ -2,7 +2,7 @@
 
 <!-- example -->
 ```typescript jsx
-import { SelectBox } from 'ui-kit-lite/components/SelectBox';
+import { SelectBox } from 'ui-kit-core/components/SelectBox';
 
 const source = [ { label: 'Newer first', value: 1, }, { label: 'Older first', value: 2, }, { label: 'No sort', value: 3, }, ] 
 const customSource = [ { title: 'One', key: 1, }, { title: 'Two', key: 2, }, ]
@@ -26,9 +26,9 @@ const TestComponent = () => {
 
 ## Import
 ```jsx
-import { SelectBox } from 'ui-kit-lite';
+import { SelectBox } from 'ui-kit-core';
 // or
-import { SelectBox } from 'ui-kit-lite/components/SelectBox';
+import { SelectBox } from 'ui-kit-core/components/SelectBox';
 ```
 
 ## Properties

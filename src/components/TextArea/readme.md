@@ -2,7 +2,7 @@
 
 <!-- example -->
 ```jsx
-import { TextArea } from 'ui-kit-lite/components/TextArea';
+import { TextArea } from 'ui-kit-core/components/TextArea';
 
 const TestComponent = () => {
     return (
@@ -17,9 +17,9 @@ const TestComponent = () => {
 
 ## Import
 ```jsx
-import { TextArea } from 'ui-kit-lite';
+import { TextArea } from 'ui-kit-core';
 // or
-import { TextArea } from 'ui-kit-lite/components/TextArea';
+import { TextArea } from 'ui-kit-core/components/TextArea';
 ```
 
 ## Properties

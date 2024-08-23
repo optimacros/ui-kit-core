@@ -2,7 +2,7 @@
 
 <!-- example -->
 ```jsx
-import { Icon } from 'ui-kit-lite/components/Icon';
+import { Icon } from 'ui-kit-core/components/Icon';
 
 const UserIcon = () => (
     <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" >
@@ -20,9 +20,9 @@ const TestComponent = () => (
 
 ## Import
 ```jsx
-import { Icon } from 'ui-kit-lite';
+import { Icon } from 'ui-kit-core';
 // or
-import { Icon } from 'ui-kit-lite/components/Icon';
+import { Icon } from 'ui-kit-core/components/Icon';
 ```
 
 ## Properties

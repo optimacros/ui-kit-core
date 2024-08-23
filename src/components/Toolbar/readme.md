@@ -2,7 +2,7 @@
 
 <!-- example -->
 ```jsx
-import { Toolbar } from 'ui-kit-lite/components/Toolbar';
+import { Toolbar } from 'ui-kit-core/components/Toolbar';
 
 const TestComponent = () => {
     return (
@@ -23,9 +23,9 @@ const TestComponent = () => {
 
 ## Import
 ```jsx
-import { Toolbar } from 'ui-kit-lite';
+import { Toolbar } from 'ui-kit-core';
 // or
-import { Toolbar } from 'ui-kit-lite/components/Toolbar';
+import { Toolbar } from 'ui-kit-core/components/Toolbar';
 ```
 
 ## Properties

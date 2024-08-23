@@ -4,7 +4,7 @@ This component is intended to be a common wrapper for a group of links or button
 
 <!-- example -->
 ```jsx
-import { Navigation } from 'ui-kit-lite/components/Navigation';
+import { Navigation } from 'ui-kit-core/components/Navigation';
 
 const TestComponent = () => (
   <div>
@@ -23,9 +23,9 @@ const TestComponent = () => (
 
 ## Import
 ```jsx
-import { Navigation } from 'ui-kit-lite';
+import { Navigation } from 'ui-kit-core';
 // or
-import { Navigation } from 'ui-kit-lite/components/Navigation';
+import { Navigation } from 'ui-kit-core/components/Navigation';
 ```
 
 ## Properties

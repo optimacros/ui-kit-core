@@ -4,7 +4,7 @@ Minimize visual changes that occur while your app loads content by representing 
 
 <!-- example -->
 ```jsx
-import { Loader } from 'ui-kit-lite/components/Loader';
+import { Loader } from 'ui-kit-core/components/Loader';
 
 const TestComponent = () => (
   <div>
@@ -19,9 +19,9 @@ const TestComponent = () => (
 
 ## Import
 ```jsx
-import { Loader } from 'ui-kit-lite';
+import { Loader } from 'ui-kit-core';
 // or
-import { Loader } from 'ui-kit-lite/components/Loader';
+import { Loader } from 'ui-kit-core/components/Loader';
 ```
 
 ## Properties
