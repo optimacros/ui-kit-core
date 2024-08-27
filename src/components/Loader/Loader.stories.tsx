@@ -49,7 +49,7 @@ const argTypes: Partial<ArgTypes> = {
 }
 
 const meta: Meta<typeof Loader> = {
-    title: "UI Kit lite/Loader",
+    title: "UI Kit core/Loader",
     component: Loader,
     argTypes
 }

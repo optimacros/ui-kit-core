@@ -41,7 +41,7 @@ const argTypes: Partial<ArgTypes> = {
 }
 
 const meta: Meta<typeof Tooltip> = {
-    title: "UI Kit lite/Tooltip",
+    title: "UI Kit core/Tooltip",
     component: Tooltip,
     argTypes
 }

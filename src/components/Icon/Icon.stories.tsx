@@ -30,7 +30,7 @@ const argTypes: Partial<ArgTypes> = {
 
 
 const meta: Meta<typeof Icon> = {
-    title: "UI Kit lite/Icon",
+    title: "UI Kit core/Icon",
     component: Icon,
     argTypes
 }

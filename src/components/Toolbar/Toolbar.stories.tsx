@@ -22,7 +22,7 @@ const argTypes: Partial<ArgTypes> = {
 }
 
 const meta: Meta<typeof Toolbar> = {
-    title: "UI Kit lite/Toolbar",
+    title: "UI Kit core/Toolbar",
     component: Toolbar,
     argTypes
 }

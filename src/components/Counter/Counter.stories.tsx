@@ -25,7 +25,7 @@ const argTypes: Partial<ArgTypes> = {
 
 
 const meta: Meta<typeof Counter> = {
-    title: "UI Kit lite/Counter",
+    title: "UI Kit core/Counter",
     component: Counter,
     argTypes
 }

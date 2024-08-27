@@ -123,7 +123,7 @@ const argTypes: Partial<ArgTypes> = {
 
 
 const meta: Meta<typeof Dropdown> = {
-    title: "UI Kit lite/Dropdown",
+    title: "UI Kit core/Dropdown",
     // @ts-ignore
     component: Dropdown,
     argTypes,
