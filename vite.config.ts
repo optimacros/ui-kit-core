@@ -27,7 +27,7 @@ export default defineConfig({
         }),
         tsconfigPaths(),
         dts({
-            include: ['./src/components/**/!(*.stories).{ts,tsx}'],
+            include: ['./src/components/**/*.{ts,tsx}'],
             insertTypesEntry: true,
             outDir: ['.'],
         }),
@@ -77,8 +77,7 @@ export default defineConfig({
             external: ['react', 'react-dom', 'react/jsx-runtime'],
             input: Object.fromEntries(
                 glob.sync(
-                    './src/components/**/!(*.stories).{ts,tsx}',
-                    { ignore: 'src/components/**/*.stories.tsx' },
+                    './src/components/**/*.{ts,tsx}',
                 ).map(file => [
                     // The name of the entry point
                     // src/components/nested/foo.ts becomes nested/foo
