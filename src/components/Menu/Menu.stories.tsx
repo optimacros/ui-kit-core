@@ -67,6 +67,7 @@ export const DisabledMenuItem: Story = {
     },
 }
 
+// todo - uncomment, when update rc-menu, mode 'vertical' -> error rc-menu
 // export const MenuWithSubMenu: Story = {
 //     decorators: [
 //         (Story) => <Wrapper>{Story()}</Wrapper>,
@@ -91,7 +92,7 @@ export const DisabledMenuItem: Story = {
 //         ]
 //     },
 // }
-//
+
 export const MenuWithSubGroup: Story = {
     decorators: [
         (Story) => <Wrapper>{Story()}</Wrapper>,
