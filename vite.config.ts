@@ -29,7 +29,7 @@ export default defineConfig({
         dts({
             include: ['./src/components/**/*.{ts,tsx}'],
             insertTypesEntry: true,
-            outDir: ['dist/'],
+            entryRoot: './src/components',
         }),
     ],
     css: {
@@ -103,7 +103,7 @@ export default defineConfig({
                 },
                 assetFileNames: 'assets/index[extname]',
                 entryFileNames: '[name].js',
-                dir: 'dist/components',
+                dir: 'dist',
                 globals: {
                     react: 'React',
                     'react-dom': 'ReactDOM',
