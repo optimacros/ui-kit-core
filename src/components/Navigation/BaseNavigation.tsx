@@ -1,6 +1,6 @@
 import classnames from 'classnames'
-import React from 'react'
 import { isEqual } from 'lodash'
+import React from 'react'
 
 import { mergeStyles } from '../../utils/mergeStyle'
 
@@ -29,11 +29,11 @@ export class BaseNavigation extends React.PureComponent<React.PropsWithChildren<
 
     static getDerivedStateFromProps(props: React.PropsWithChildren<NavigationProps>, state: State) {
         const updatedTheme = props.theme
-          ? mergeStyles(props.theme, themeStyles)
-          : themeStyles
+            ? mergeStyles(props.theme, themeStyles)
+            : themeStyles
         const theme = isEqual(state.theme, updatedTheme)
-          ? state.theme
-          : updatedTheme
+            ? state.theme
+            : updatedTheme
 
         return {
             theme,
@@ -48,12 +48,12 @@ export class BaseNavigation extends React.PureComponent<React.PropsWithChildren<
         return (
             <nav
                 data-react-toolbox="navigation"
-                className={ classes }
+                className={classes}
             >
                 { React.Children.map(this.props.children, (child) => (
                     React.isValidElement(child)
                         ? React.cloneElement<any>(child, { theme })
-                    : null
+                        : null
                 )) }
             </nav>
         )

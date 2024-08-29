@@ -1,20 +1,21 @@
-import { ArgTypes, Meta, StoryObj } from "@storybook/react"
+import { ArgTypes, Meta, StoryObj } from '@storybook/react'
+import { ComponentType, ReactNode } from 'react'
 
-import { Navigation, NavigationProps } from "./index"
-import { Button } from "../Button"
+import { Navigation, NavigationProps } from './index'
+import { Button } from '../Button'
 
 const argTypes: Partial<ArgTypes> = {
     wrap: {
-        control: "boolean",
-        description: "If `true`, navigation items can wrap onto multiple lines. "
+        control: 'boolean',
+        description: 'If `true`, navigation items can wrap onto multiple lines. ',
     },
     type: {
-        control: "radio",
-        options: [ "horizontal", "vertical" ],
+        control: 'radio',
+        options: [ 'horizontal', 'vertical' ],
         table: {
-            defaultValue: { summary: "horizontal" },
+            defaultValue: { summary: 'horizontal' },
         },
-        description: "Type of the navigation.",
+        description: 'Type of the navigation.',
     },
     theme: { table: { disable: true } },
     className: { table: { disable: true } },
@@ -22,24 +23,23 @@ const argTypes: Partial<ArgTypes> = {
 }
 
 const meta: Meta<typeof Navigation> = {
-    title: "UI Kit core/Navigation",
-    component: Navigation as unknown as React.ComponentType<NavigationProps>,
-    argTypes
+    title: 'UI Kit core/Navigation',
+    component: Navigation as unknown as ComponentType<NavigationProps>,
+    argTypes,
 }
 export default meta
 
 type Story = StoryObj<NavigationProps>
 
-const Wrapper = ({ children }: { children: JSX.Element }) => (
-    <div style={{ width: "300px" }}>
+const Wrapper = ({ children }: { children: ReactNode }) => (
+    <div style={{ width: '300px' }}>
         {children}
     </div>
-);
-
+)
 
 export const Horizontal: Story = {
     args: {
-        type: "horizontal",
+        type: 'horizontal',
         children: (
             <>
                 <Button label="Portfolio" />
@@ -51,7 +51,7 @@ export const Horizontal: Story = {
 
 export const Vertical: Story = {
     args: {
-        type: "vertical",
+        type: 'vertical',
         children: (
             <>
                 <Button label="Portfolio" />
@@ -63,7 +63,7 @@ export const Vertical: Story = {
 
 export const Wrap: Story = {
     args: {
-        type: "horizontal",
+        type: 'horizontal',
         wrap: true,
         children: (
             <>
@@ -76,6 +76,7 @@ export const Wrap: Story = {
         ),
     },
     decorators: [
+        // eslint-disable-next-line new-cap
         (Story) => <Wrapper>{Story()}</Wrapper>,
     ],
 }
