@@ -2,9 +2,9 @@
   "name": "ui-kit-core",
   "private": false,
   "version": "1.1.0",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/components/index.js",
+  "module": "dist/components/index.js",
+  "types": "dist/components/index.d.ts",
   "files": [
     "dist"
   ],
