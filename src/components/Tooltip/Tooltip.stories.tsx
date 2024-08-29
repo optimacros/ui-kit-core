@@ -1,35 +1,36 @@
-import { ArgTypes, Meta, StoryObj } from "@storybook/react"
+import { ArgTypes, Meta, StoryObj } from '@storybook/react'
+import { ReactNode } from 'react'
 
-import { Tooltip } from "./Tooltip.tsx";
-import { Button } from "../Button";
+import { Tooltip } from './Tooltip.tsx'
+import { Button } from '../Button'
 
 const argTypes: Partial<ArgTypes> = {
     composedComponent: {
-        control: "text",
-        description: "Tooltip reference element.",
+        control: 'text',
+        description: 'Tooltip reference element.',
     },
     composedComponentProps: {
-        control: "object",
-        description: "Props to composed component."
+        control: 'object',
+        description: 'Props to composed component.',
     },
     tooltip: {
-        control: "text",
+        control: 'text',
         description: 'The text string to use for the tooltip.',
     },
     tooltipDelay: {
-        control: "number",
+        control: 'number',
         description: 'Amount of time in milliseconds spent before the tooltip is visible.',
     },
     tooltipPosition: {
-        control: "radio",
-        options: [ "vertical", "horizontal", "bottom", "top", "left", "right" ],
+        control: 'radio',
+        options: [ 'vertical', 'horizontal', 'bottom', 'top', 'left', 'right' ],
         table: {
-            defaultValue: { summary: "vertical" },
+            defaultValue: { summary: 'vertical' },
         },
-        description: "Determines the position of the tooltip.",
+        description: 'Determines the position of the tooltip.',
     },
     tooltipOffset: {
-        control: "number",
+        control: 'number',
         description: ' If `tooltipPosition` - `vertical`, `bottom` or `top`, the tooltip moves relative to its axis.',
     },
     children: { table: { disable: true } },
@@ -41,31 +42,32 @@ const argTypes: Partial<ArgTypes> = {
 }
 
 const meta: Meta<typeof Tooltip> = {
-    title: "UI Kit core/Tooltip",
+    title: 'UI Kit core/Tooltip',
     component: Tooltip,
-    argTypes
+    argTypes,
 }
 export default meta
 
 type Story = StoryObj<typeof Tooltip>
 
-const Wrapper = ({ children }: { children: JSX.Element }) => (
-    <div style={{ marginLeft: '100px'  }}>
+const Wrapper = ({ children }: { children: ReactNode }) => (
+    <div style={{ marginLeft: '100px' }}>
         {children}
     </div>
-);
+)
 
 export const Basic: Story = {
     args: {
-        composedComponent: "div",
-        tooltip: "Tooltip text",
-        tooltipPosition: "left",
+        composedComponent: 'div',
+        tooltip: 'Tooltip text',
+        tooltipPosition: 'left',
         tooltipDelay: 50,
         tooltipOffset: 0,
         // @ts-ignore
-        children: <Button label="Left" />
+        children: <Button label="Left" />,
     },
     decorators: [
+        // eslint-disable-next-line new-cap
         (Story) => <Wrapper>{Story()}</Wrapper>,
     ],
 }
@@ -73,8 +75,8 @@ export const Basic: Story = {
 export const Component: Story = {
     args: {
         composedComponent: Button,
-        composedComponentProps: { label: 'Apply', accent: true,},
-        tooltip: "Tooltip text",
+        composedComponentProps: { label: 'Apply', accent: true },
+        tooltip: 'Tooltip text',
         tooltipDelay: 50,
         tooltipPosition: 'bottom',
         tooltipOffset: 0,
@@ -84,10 +86,11 @@ export const Component: Story = {
         composedComponent: {
             table: {
                 disable: true,
-            }
+            },
         },
     },
     decorators: [
+        // eslint-disable-next-line new-cap
         (Story) => <Wrapper>{Story()}</Wrapper>,
     ],
 }

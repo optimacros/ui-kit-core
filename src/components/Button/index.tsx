@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import type { ButtonHTMLAttributes } from 'react'
 import React, { Component } from 'react'
 
@@ -8,7 +9,6 @@ import { mergeStyles } from '../../utils/mergeStyle'
 import themeStyle from './ButtonTheme.module.css'
 // eslint-disable-next-line
 import style from './Button.module.css'
-import classNames from 'classnames'
 
 export type ThemeButtonProps = {
     button: string;

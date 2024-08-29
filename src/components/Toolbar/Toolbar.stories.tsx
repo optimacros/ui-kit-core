@@ -1,30 +1,30 @@
-import { ArgTypes, Meta, StoryObj } from "@storybook/react"
+import { ArgTypes, Meta, StoryObj } from '@storybook/react'
 
-import { Toolbar } from "./index"
-import { Button } from "../Button"
+import { Toolbar } from './index'
+import { Button } from '../Button'
 
 const argTypes: Partial<ArgTypes> = {
     align: {
-        control: "radio",
-        options: ["right", "rightInRow", "left", "center"],
+        control: 'radio',
+        options: ['right', 'rightInRow', 'left', 'center'],
         table: {
             defaultValue: {
-                summary: "left"
-            }
-        }
+                summary: 'left',
+            },
+        },
     },
     small: {
-        control: "boolean",
-        description: "If `true`, toolbar will have less margin top."
+        control: 'boolean',
+        description: 'If `true`, toolbar will have less margin top.',
     },
     children: { table: { disable: true } },
     className: { table: { disable: true } },
 }
 
 const meta: Meta<typeof Toolbar> = {
-    title: "UI Kit core/Toolbar",
+    title: 'UI Kit core/Toolbar',
     component: Toolbar,
-    argTypes
+    argTypes,
 }
 export default meta
 
@@ -32,7 +32,7 @@ type Story = StoryObj<typeof Toolbar>
 
 export const Basic: Story = {
     args: {
-        align: "left",
+        align: 'left',
         children: (
             <>
                 <Button
@@ -50,7 +50,7 @@ export const Basic: Story = {
 
 export const Center: Story = {
     args: {
-        align: "center",
+        align: 'center',
         children: (
             <>
                 <Button
@@ -68,7 +68,7 @@ export const Center: Story = {
 
 export const Small: Story = {
     args: {
-        align: "left",
+        align: 'left',
         small: true,
         children: (
             <>

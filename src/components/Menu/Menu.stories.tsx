@@ -1,29 +1,31 @@
-import { ArgTypes, Meta, StoryObj } from "@storybook/react"
+import { ArgTypes, Meta, StoryObj } from '@storybook/react'
+import { ReactNode } from 'react'
 
-import { Menu, MenuItem, SubMenu, MenuItemGroup } from "./index"
-import { FontIcon } from "../FontIcon";
+import { Menu, MenuItem, SubMenu, MenuItemGroup } from './index'
+import { FontIcon } from '../FontIcon'
 
 const argTypes: Partial<ArgTypes> = {
     mode: {
-        control: "text",
+        control: 'text',
         table: {
-            defaultValue: { summary: "vertical" },
+            defaultValue: { summary: 'vertical' },
         },
-        description: "Mode of menu.",
+        description: 'Mode of menu.',
     },
-    children: { control: "object", table: { disable: true } },
+    children: { control: 'object', table: { disable: true } },
     className: { table: { disable: true } },
     expandIcon: { table: { disable: true } },
 }
 
 const meta: Meta<typeof Menu> = {
-    title: "UI Kit core/Menu",
+    title: 'UI Kit core/Menu',
     component: Menu,
     argTypes,
     parameters: {
         docs: {
             description: {
-                component: "Ui-kit using rc-menu library for Menu, SubMenu, MenuItemGroup, MenuItem and MenuDivider. Other props can be viewed at the [link](https://react-component.github.io/menu/)."
+                component: 'Ui-kit using rc-menu library for Menu, SubMenu, MenuItemGroup, MenuItem and MenuDivider. '
+                    + 'Other props can be viewed at the [link](https://react-component.github.io/menu/).',
             },
         },
     },
@@ -32,38 +34,45 @@ export default meta
 
 type Story = StoryObj<typeof Menu>
 
-const Wrapper = ({ children }: { children: JSX.Element }) => (
-    <div style={{  width: "200px", marginLeft: "20px"  }}>
+const Wrapper = ({ children }: { children: ReactNode }) => (
+    <div style={{ width: '200px', marginLeft: '20px' }}>
         {children}
     </div>
-);
+)
 
 // todo - mode inline, because another return error "any"
 export const Basic: Story = {
     decorators: [
+        // eslint-disable-next-line new-cap
         (Story) => <Wrapper>{Story()}</Wrapper>,
     ],
     args: {
         mode: 'inline',
         children: [
-            <MenuItem>1</MenuItem>,
-            <MenuItem>2</MenuItem>,
-            <MenuItem>3</MenuItem>,
+            <MenuItem key={1}>1</MenuItem>,
+            <MenuItem key={2}>2</MenuItem>,
+            <MenuItem key={3}>3</MenuItem>,
         ],
     },
 }
 
 export const DisabledMenuItem: Story = {
     decorators: [
+        // eslint-disable-next-line new-cap
         (Story) => <Wrapper>{Story()}</Wrapper>,
     ],
     args: {
         mode: 'inline',
         children: [
-            <MenuItem disabled={true}>1</MenuItem>,
-            <MenuItem>2</MenuItem>,
-            <MenuItem>3</MenuItem>,
-        ]
+            <MenuItem
+                disabled
+                key={1}
+            >
+                1
+            </MenuItem>,
+            <MenuItem key={2}>2</MenuItem>,
+            <MenuItem key={3}>3</MenuItem>,
+        ],
     },
 }
 
@@ -95,42 +104,61 @@ export const DisabledMenuItem: Story = {
 
 export const MenuWithSubGroup: Story = {
     decorators: [
+        // eslint-disable-next-line new-cap
         (Story) => <Wrapper>{Story()}</Wrapper>,
     ],
     args: {
-        mode: "inline",
-        expandIcon: <FontIcon style={{ position: "absolute", right: "20px" }} value="arrow_drop_down" />,
+        mode: 'inline',
+        expandIcon: (
+            <FontIcon
+                style={{ position: 'absolute', right: '20px' }}
+                value="arrow_drop_down"
+            />
+        ),
         children: [
-            <MenuItemGroup title="Menu Group 1">
-                <MenuItem>1</MenuItem>
-                <MenuItem>2</MenuItem>
+            <MenuItemGroup title="Menu Group 1"
+                key={1.1}
+            >
+                <MenuItem key={1}>1</MenuItem>
+                <MenuItem key={2}>2</MenuItem>
                 <SubMenu title="3">
-                    <MenuItem>3-1</MenuItem>
-                    <MenuItem>3-2</MenuItem>
+                    <MenuItem key={3}>3-1</MenuItem>
+                    <MenuItem key={4}>3-2</MenuItem>
                 </SubMenu>
             </MenuItemGroup>,
-            <MenuItemGroup title="Menu Group 2">
-                <MenuItem>3</MenuItem>
-                <MenuItem>4</MenuItem>
-            </MenuItemGroup>
-        ]
+            <MenuItemGroup title="Menu Group 2"
+                key={2.2}
+            >
+                <MenuItem key={5}>3</MenuItem>
+                <MenuItem key={6}>4</MenuItem>
+            </MenuItemGroup>,
+        ],
     },
 }
 
 export const Inline: Story = {
     decorators: [
+        // eslint-disable-next-line new-cap
         (Story) => <Wrapper>{Story()}</Wrapper>,
     ],
     args: {
-        mode: "inline",
-        expandIcon: <FontIcon style={{ position: "absolute", right: "20px" }} value="arrow_drop_down" />,
+        mode: 'inline',
+        expandIcon: (
+            <FontIcon
+                style={{ position: 'absolute', right: '20px' }}
+                value="arrow_drop_down"
+            />
+        ),
         children: [
-            <MenuItem>1</MenuItem>,
-            <SubMenu title="2">
-                <MenuItem>2-1</MenuItem>
-                <MenuItem>2-2</MenuItem>
-                <MenuItem>2-3</MenuItem>
-            </SubMenu>
-        ]
+            <MenuItem key={1}>1</MenuItem>,
+            <SubMenu
+                title="2"
+                key={2.0}
+            >
+                <MenuItem key={2}>2-1</MenuItem>
+                <MenuItem key={3}>2-2</MenuItem>
+                <MenuItem key={4}>2-3</MenuItem>
+            </SubMenu>,
+        ],
     },
 }

@@ -1,136 +1,135 @@
-import {ArgTypes, Meta, StoryObj} from "@storybook/react"
+import { ArgTypes, Meta, StoryObj } from '@storybook/react'
 
-import { Dropdown } from "./index"
-import { Button } from "../Button";
+import { Dropdown } from './index'
+import { Button } from '../Button'
 
 const argTypes: Partial<ArgTypes> = {
     disabled: {
-        control: "boolean",
-        description: "If `true`, component will be disabled."
+        control: 'boolean',
+        description: 'If `true`, component will be disabled.',
     },
     closeOnSelect: {
-        control: "boolean",
-        description: "If `true`, overlay close after select."
+        control: 'boolean',
+        description: 'If `true`, overlay close after select.',
     },
     overlayStyle: {
-        control: "object",
-        description: "Overlay styles."
+        control: 'object',
+        description: 'Overlay styles.',
     },
     minOverlayWidthMatchTrigger: {
-        control: "boolean",
-        description: "Whether overlay\"s width must not be less than trigger\"s."
+        control: 'boolean',
+        description: 'Whether overlay"s width must not be less than trigger"s.',
     },
     arrow: {
-        control: "boolean",
+        control: 'boolean',
     },
     alignPoint: {
-        control: "boolean",
-        description: "Popup will align with mouse position (support action of `click`, `hover` and `contextMenu`)"
+        control: 'boolean',
+        description: 'Popup will align with mouse position (support action of `click`, `hover` and `contextMenu`)',
     },
     visible: {
-        control: "boolean",
-        description: "If `true`, overlay will be visible by default. "
+        control: 'boolean',
+        description: 'If `true`, overlay will be visible by default. ',
     },
     trigger: {
-        control: "radio",
-        options: [ "click", "hover", "contextMenu", "focus" ],
+        control: 'radio',
+        options: [ 'click', 'hover', 'contextMenu', 'focus' ],
         table: {
-            defaultValue: { summary: "hover" },
+            defaultValue: { summary: 'hover' },
         },
-        description: "Which actions cause popup shown.",
+        description: 'Which actions cause popup shown.',
     },
     showAction: {
-        control: "radio",
-        options: [ "click", "hover", "contextMenu", "focus" ],
+        control: 'radio',
+        options: [ 'click', 'hover', 'contextMenu', 'focus' ],
         table: {
-            defaultValue: { summary: "hover" },
+            defaultValue: { summary: 'hover' },
         },
-        description: "Which actions cause popup shown.",
+        description: 'Which actions cause popup shown.',
     },
     hideAction: {
-        control: "radio",
-        options: [ "click", "hover", "contextMenu", "focus" ],
+        control: 'radio',
+        options: [ 'click', 'hover', 'contextMenu', 'focus' ],
         table: {
-            defaultValue: { summary: "hover" },
+            defaultValue: { summary: 'hover' },
         },
-        description: "Which actions cause popup hide.",
+        description: 'Which actions cause popup hide.',
     },
     mouseEnterDelay: {
-        control: "number",
-        description: "Delay time to show when mouse enter. Unit: s."
+        control: 'number',
+        description: 'Delay time to show when mouse enter. Unit: s.',
     },
     mouseLeaveDelay: {
-        control: "number",
-        description: "Delay time to hide when mouse leave. Unit: s."
+        control: 'number',
+        description: 'Delay time to hide when mouse leave. Unit: s.',
     },
     overlay: {
-        table: { disable: true }
+        table: { disable: true },
     },
     className: {
-        table: { disable: true }
+        table: { disable: true },
     },
     overlayClassName: {
-        table: { disable: true }
+        table: { disable: true },
     },
     openClassName: {
-        table: { disable: true }
+        table: { disable: true },
     },
     prefixCls: {
-        table: { disable: true }
+        table: { disable: true },
     },
     transitionName: {
-        table: { disable: true }
+        table: { disable: true },
     },
     autoFocus: {
-        table: { disable: true }
+        table: { disable: true },
     },
     children: {
-        table: { disable: true }
+        table: { disable: true },
     },
     onVisibleChange: {
-        table: { disable: true }
+        table: { disable: true },
     },
     onOverlayClick: {
-        table: { disable: true }
+        table: { disable: true },
     },
     autoDestroy: {
-        table: { disable: true }
+        table: { disable: true },
     },
     animation: {
-        table: { disable: true }
+        table: { disable: true },
     },
     align: {
-        table: { disable: true }
+        table: { disable: true },
     },
     placement: {
-        table: { disable: true }
+        table: { disable: true },
     },
     placements: {
-        table: { disable: true }
+        table: { disable: true },
     },
     builtinPlacements: {
-        table: { disable: true }
+        table: { disable: true },
     },
     getPopupContainer: {
-        table: { disable: true }
+        table: { disable: true },
     },
     onPopupAlign: {
-        table: { disable: true }
+        table: { disable: true },
     },
-   
+
 }
 
-
-
 const meta: Meta<typeof Dropdown> = {
-    title: "UI Kit core/Dropdown",
+    title: 'UI Kit core/Dropdown',
     // @ts-ignore
     component: Dropdown,
     argTypes,
     parameters: {
         docs: {
             description: {
-                component: "Ui-kit using `rc-dropdown`. You can read more at the [link](https://github.com/react-component/dropdown)."
+                component: 'Ui-kit using `rc-dropdown`. You can read more '
+                    + 'at the [link](https://github.com/react-component/dropdown).',
             },
         },
     },
@@ -156,13 +155,13 @@ export const Basic: Story = {
         children: <Button label="Users"/>,
         closeOnSelect: true,
         overlay: <OverlayComponent />,
-        trigger: ["hover"],
+        trigger: ['hover'],
     },
 }
 
 export const TriggerClick: Story = {
     args: {
-        trigger: ["click"],
+        trigger: ['click'],
         children: <Button label="Users"/>,
         overlay: <OverlayComponent />,
     },
@@ -181,9 +180,7 @@ export const Visible: Story = {
         children: <Button label="Users"/>,
         overlay: <OverlayComponent />,
         visible: true,
-        trigger: ["hover"],
+        trigger: ['hover'],
     },
 }
-
-
 

@@ -8,6 +8,7 @@ import { getViewport } from '../../utils/react-toolbox-utils/utils'
 
 import styles from './theme.module.css'
 
+// eslint-disable-next-line react-refresh/only-export-components
 const POSITION = {
     BOTTOM: 'bottom',
     HORIZONTAL: 'horizontal',
