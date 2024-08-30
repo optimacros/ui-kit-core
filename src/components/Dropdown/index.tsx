@@ -2,6 +2,7 @@ import classNames from 'classnames'
 import BaseDropDown from 'rc-dropdown'
 import type { DropdownProps as RCDropdownProps } from 'rc-dropdown'
 import React from 'react'
+
 import { Key as KeyboardKey } from '../../types/KeyboardKeyList'
 
 import '../../packages/rc-dropdown/main.css'
@@ -69,7 +70,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, State> {
                     onVisibleChange={this.onVisibleChange}
                     onOverlayClick={this.onOverlayClick}
                     {...otherProps}
-                    destroyPopupOnHide={true}
+                    destroyPopupOnHide
                     overlayClassName={overlayClassName}
                 />
             </div>

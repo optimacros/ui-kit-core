@@ -1,6 +1,6 @@
 import classNames from 'classnames'
-import React from 'react'
 import { isEqual } from 'lodash'
+import React from 'react'
 
 import type { NavigationProps as BaseNavigationProps, NavigationTheme } from './BaseNavigation'
 import { BaseNavigation } from './BaseNavigation'
@@ -25,11 +25,11 @@ export class Navigation extends React.PureComponent<NavigationProps, State> {
 
     static getDerivedStateFromProps(props: React.PropsWithChildren<Props>, state: State) {
         const updatedTheme = props.theme
-          ? mergeStyles(props.theme, navigationTheme)
-          : navigationTheme
+            ? mergeStyles(props.theme, navigationTheme)
+            : navigationTheme
         const theme = isEqual(state.theme, updatedTheme)
-          ? state.theme
-          : updatedTheme
+            ? state.theme
+            : updatedTheme
 
         return {
             theme,

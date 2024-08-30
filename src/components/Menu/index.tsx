@@ -1,6 +1,6 @@
 import BaseMenu, { Item, SubMenu as BaseSubMenu } from 'rc-menu'
-import React from 'react'
 import type { MenuProps, SubMenuProps, MenuItemProps, MenuItemGroupProps, DividerProps } from 'rc-menu'
+import React from 'react'
 
 import '../../packages/rc-menu/main.css'
 

@@ -2,17 +2,17 @@ module.exports = {
   root: true,
   env: { browser: true, es2020: true, node: true },
   extends: ['react-app', 'eslint:recommended', 'plugin:react-hooks/recommended', 'plugin:react/recommended', 'plugin:react/jsx-runtime', 'plugin:jsx-a11y/recommended', 'plugin:import/errors', 'plugin:import/warnings', 'plugin:import/typescript', 'plugin:storybook/recommended'],
-  ignorePatterns: ['components', '.eslintrc.cjs'],
+  ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh', 'eslint-plugin-react', 'jsx-a11y', 'unused-imports'],
   overrides: [
     {
       files: ['*.ts', '*.tsx'], // Your TypeScript files extension
-      
+
       // As mentioned in the comments, you should extend TypeScript plugins here,
       // instead of extending them outside the `overrides`.
       // If you don't want to extend any rules, you don't need an `extends` attribute.
-      
+
       parserOptions: {
         project: ['./tsconfig.json'], // Specify it only for TypeScript files
       },
@@ -331,7 +331,7 @@ module.exports = {
       "allowLiteral": false,
       "allowObject": true,
     }],
-    
+
     'max-depth': [2, 3],
     'max-len': [2, 120, 2],
     'max-params': 0,
@@ -341,7 +341,7 @@ module.exports = {
     'jsx-a11y/mouse-events-have-key-events': 'off',
     'jsx-a11y/alt-text': 'off',
     'jsx-a11y/no-autofocus': 'off',
-    
+
     // NOTE: Import
     'import/extensions': 'off',
     'import/no-cycle': 'off',
