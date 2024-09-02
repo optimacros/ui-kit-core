@@ -26,11 +26,7 @@ export default defineConfig({
             exclude: [],
         }),
         tsconfigPaths(),
-        dts({
-            include: ['./src/components/**/*.{ts,tsx}'],
-            insertTypesEntry: true,
-            entryRoot: './src/components',
-        }),
+        dts(),
     ],
     css: {
         modules: {
@@ -70,19 +66,19 @@ export default defineConfig({
     build: {
         copyPublicDir: false,
         lib: {
-            entry: path.resolve(__dirname, 'src/components/index.ts'),
+            entry: path.resolve(__dirname, 'src/index.ts'),
             formats: ['es'],
         },
         rollupOptions: {
             external: ['react', 'react-dom', 'react/jsx-runtime'],
             input: Object.fromEntries(
                 glob.sync(
-                    './src/components/**/*.{ts,tsx}',
+                    './src/**/*.{ts,tsx}',
                 ).map(file => [
                     // The name of the entry point
                     // src/components/nested/foo.ts becomes nested/foo
                     path.relative(
-                        'src/components',
+                        'src',
                         file.slice(0, file.length - path.extname(file).length),
                     ),
                     // The absolute path to the entry file
@@ -91,16 +87,7 @@ export default defineConfig({
                 ]),
             ),
             output: {
-                chunkFileNames: (chunkInfo) => {
-                    switch (chunkInfo.name) {
-                        case 'TabHeaderState':
-                            return 'Tabs/ExtTabs/[name].js'
-                        case 'react-lifecycles-compat.es':
-                            return 'Modal/[name].js'
-                        default:
-                            return 'helpers/[name].js'
-                    }
-                },
+                chunkFileNames: 'helpers/[name].js',
                 assetFileNames: 'assets/index[extname]',
                 entryFileNames: '[name].js',
                 dir: 'dist',

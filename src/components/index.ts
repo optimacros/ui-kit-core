@@ -17,5 +17,3 @@ export { TextArea } from './TextArea'
 export { Toolbar } from './Toolbar'
 export { Tooltip } from './Tooltip/Tooltip'
 export { LayoutFixedContainer } from './LayoutFixedContainer'
-
-export { mergeStyles } from '../utils/mergeStyle'
