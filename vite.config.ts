@@ -89,7 +89,7 @@ export default defineConfig({
                 )),
                 ...(Object.fromEntries(
                     glob.sync(
-                        './src/fonts/*.{css}',
+                        './src/fonts/*.css',
                     ).map(file => [
                         path.relative(
                             'src',
