@@ -71,24 +71,45 @@ export default defineConfig({
         },
         rollupOptions: {
             external: ['react', 'react-dom', 'react/jsx-runtime'],
-            input: Object.fromEntries(
-                glob.sync(
-                    './src/**/*.{ts,tsx}',
-                ).map(file => [
-                    // The name of the entry point
-                    // src/components/nested/foo.ts becomes nested/foo
-                    path.relative(
-                        'src',
-                        file.slice(0, file.length - path.extname(file).length),
+            input: {
+                ...(Object.fromEntries(
+                    glob.sync(
+                        './src/**/*.{ts,tsx}',
+                    ).map(file => [
+                        // The name of the entry point
+                        // src/components/nested/foo.ts becomes nested/foo
+                        path.relative(
+                            'src',
+                            file.slice(0, file.length - path.extname(file).length),
+                        ),
+                        // The absolute path to the entry file
+                        // src/components/nested/foo.ts becomes /project/src/components/nested/foo.ts
+                        fileURLToPath(new URL(file, import.meta.url)),
+                    ]),
+                )),
+                ...(Object.fromEntries(
+                    glob.sync(
+                        './src/fonts/*.{css}',
+                    ).map(file => [
+                        path.relative(
+                            'src',
+                            file.slice(0, file.length - path.extname(file).length),
+                        ),
+                        fileURLToPath(new URL(file, import.meta.url)),
+                    ],
                     ),
-                    // The absolute path to the entry file
-                    // src/components/nested/foo.ts becomes /project/src/components/nested/foo.ts
-                    fileURLToPath(new URL(file, import.meta.url)),
-                ]),
-            ),
+                )),
+            },
+
             output: {
                 chunkFileNames: 'helpers/[name].js',
-                assetFileNames: 'assets/index[extname]',
+                assetFileNames: (assetInfo) => {
+                    if (assetInfo.name && assetInfo.name.includes('fonts.css')) {
+                        return '[name][extname]'
+                    }
+
+                    return 'assets/index[extname]'
+                },
                 entryFileNames: '[name].js',
                 dir: 'dist',
                 globals: {
