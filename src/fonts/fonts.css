@@ -33,7 +33,3 @@
     /* Support for IE. */
     font-feature-settings: 'liga';
 }
-
-body, html {
-    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
-}
