@@ -98,7 +98,7 @@ export class Tooltip extends Component<TooltipProps, State> {
             tooltip,
             tooltipDelay,
             tooltipPosition,
-            composedComponent,
+            composedComponent = 'div',
             composedComponentProps,
             tooltipOffset,
             ...other
