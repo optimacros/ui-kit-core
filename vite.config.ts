@@ -43,7 +43,7 @@ export default defineConfig({
                     .replace(/[^\d\w]+/, '')
                     .substring(0, 5)
 
-                return `${componentName?.replace('.module.css', '-module')}__${name}__${hash}`
+                return `${componentName?.replace('.module.css', '-module')}__${name}___${hash}`
             },
         },
         postcss: {
