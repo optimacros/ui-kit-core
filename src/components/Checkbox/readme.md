@@ -1,22 +1,22 @@
-# CheckBox
+# Checkbox
 
 <!-- example -->
 ```jsx
-import { CheckBox } from 'ui-kit-core/components/CheckBox';
+import { Checkbox } from 'ui-kit-core/components/Checkbox';
 
 const TestComponent = () => {
     const [checked, setChecked] = useState(false)
 
     return (
       <div>
-          <CheckBox checked /> 
-          <CheckBox /> 
-          <CheckBox disabled /> 
-          <CheckBox disabled checked /> 
-          <CheckBox checked label="Label" /> 
-          <CheckBox disabled label="Disabled" /> 
-          <CheckBox label="Tooltip" tooltipLabel="Text" /> 
-          <CheckBox label="Controlled" checked={checked} onChange={(isChecked) => setChecked(isChecked)} />
+          <Checkbox checked /> 
+          <Checkbox /> 
+          <Checkbox disabled /> 
+          <Checkbox disabled checked /> 
+          <Checkbox checked label="Label" /> 
+          <Checkbox disabled label="Disabled" /> 
+          <Checkbox label="Tooltip" tooltipLabel="Text" /> 
+          <Checkbox label="Controlled" checked={checked} onChange={(isChecked) => setChecked(isChecked)} />
       </div>
     );
   
@@ -24,9 +24,9 @@ const TestComponent = () => {
 ```
 ## Import
 ```jsx
-import { CheckBox } from 'ui-kit-core';
+import { Checkbox } from 'ui-kit-core';
 // or
-import { CheckBox } from 'ui-kit-core/components/CheckBox';
+import { Checkbox } from 'ui-kit-core/components/Checkbox';
 ```
 
 ## Properties
@@ -34,15 +34,15 @@ import { CheckBox } from 'ui-kit-core/components/CheckBox';
 | Name                 | Type               | Default    | Description                                                                                                                                              |
 |:---------------------|:-------------------|:-----------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `children`           | `String` or `Node` | -          | The content of the component.                                                                                                                            |
-| `className`          | `String`           | `''`       | Sets a class to give customized styles to the CheckBox field.                                                                                            |
+| `className`          | `String`           | `''`       | Sets a class to give customized styles to the Checkbox field.                                                                                            |
 | `theme`              | `Object`           | -          | Theme object with classnames that will be used to style the component.                                                                                   |
 | `style`              | `Object`           | -          | Custom component styles.                                                                                                                                 |
 | `label`              | `String` or `Node` | -          | The text or node to use for the label element.                                                                                                           |
 | `name`               | `String`           | `''`       | Value for `name` input attribute.                                                                                                                        |
 | `checked`            | `Boolean`          | `false`    | If `true`, component will be checked.                                                                                                                    |
 | `disabled`           | `Boolean`          | `false`    | If `true`, component will be disabled.                                                                                                                   | |
-| `onClick`            | `Function`         | -          | Callback called when the CheckBox is clicked.                                                                                                            |
-| `onChange`           | `Function`         | -          | Callback called when the CheckBox value is changed.                                                                                                      |
+| `onClick`            | `Function`         | -          | Callback called when the Checkbox is clicked.                                                                                                            |
+| `onChange`           | `Function`         | -          | Callback called when the Checkbox value is changed.                                                                                                      |
 | `onMouseEnter`       | `Function`         | -          | Callback called when the mouse enters the Component.                                                                                                     |
 | `onMouseLeave`       | `Function`         | -          | Callback called when the mouse leaves the Component.                                                                                                     |
 | `tooltipLabel`       | `String`           | -          | The text string to use for the tooltip.                                                                                                                  |

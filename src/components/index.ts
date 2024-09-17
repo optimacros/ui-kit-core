@@ -1,6 +1,6 @@
 export { Button } from './Button'
 export { ButtonMenu } from './ButtonMenu'
-export { CheckBox } from './CheckBox'
+export { Checkbox } from './Checkbox'
 export { Chip } from './Chip'
 export { Counter } from './Counter'
 export { Divider } from './Divider'

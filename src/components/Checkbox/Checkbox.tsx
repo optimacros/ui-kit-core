@@ -5,14 +5,14 @@ import { Box } from './Box'
 import type { InitialProps, Theme } from './index'
 import { mergeStyles } from '../../utils/mergeStyle'
 
-import checkBoxStyle from './CheckBox.module.css'
+import checkBoxStyle from './Checkbox.module.css'
 
-export interface CheckBoxComponentProps extends InitialProps {
+export interface CheckboxComponentProps extends InitialProps {
     theme: Required<Theme>;
 }
 
-export class CheckBoxComponent extends Component<React.PropsWithChildren<CheckBoxComponentProps>> {
-    constructor(props: CheckBoxComponentProps) {
+export class CheckboxComponent extends Component<React.PropsWithChildren<CheckboxComponentProps>> {
+    constructor(props: CheckboxComponentProps) {
         super(props)
 
         this.inputNode = React.createRef()

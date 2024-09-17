@@ -1,6 +1,6 @@
 import { ArgTypes, Meta, StoryObj } from '@storybook/react'
 
-import { CheckBox } from './index'
+import { Checkbox } from './index'
 
 const argTypes: Partial<ArgTypes> = {
     label: {
@@ -65,14 +65,14 @@ const argTypes: Partial<ArgTypes> = {
     },
 }
 
-const meta: Meta<typeof CheckBox> = {
-    title: 'UI Kit core/CheckBox',
-    component: CheckBox,
+const meta: Meta<typeof Checkbox> = {
+    title: 'UI Kit core/Checkbox',
+    component: Checkbox,
     argTypes,
 }
 export default meta
 
-type Story = StoryObj<typeof CheckBox>
+type Story = StoryObj<typeof Checkbox>
 
 export const Basic: Story = {
     args: {

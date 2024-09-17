@@ -1,7 +1,7 @@
 import type { CSSProperties, MouseEventHandler } from 'react'
 import React from 'react'
 
-import { CheckBoxComponent } from './CheckBox'
+import { CheckboxComponent } from './Checkbox'
 import { mergeStyles } from '../../utils/mergeStyle'
 import { Tooltip, TooltipProps, TooltipTheme } from '../Tooltip'
 
@@ -31,9 +31,9 @@ export type InitialProps = {
     theme?: Partial<Theme> & Partial<TooltipTheme>;
 } & Partial<TooltipProps>
 
-export type CheckBoxProps = React.PropsWithChildren<InitialProps>
+export type CheckboxProps = React.PropsWithChildren<InitialProps>
 
-export class CheckBox extends React.Component<CheckBoxProps> {
+export class Checkbox extends React.Component<CheckboxProps> {
     render(): React.JSX.Element {
         const {
             tooltipLabel,
@@ -62,12 +62,12 @@ export class CheckBox extends React.Component<CheckBoxProps> {
                     tooltipDelay={tooltipDelay}
                     tooltipPosition={tooltipPosition}
                     tooltipOffset={tooltipOffset}
-                    composedComponent={CheckBoxComponent}
+                    composedComponent={CheckboxComponent}
                     composedComponentProps={otherProps}
                 />
             )
             : (
-                <CheckBoxComponent
+                <CheckboxComponent
                     {...otherProps}
                     onClick={onClick}
                     onMouseEnter={onMouseEnter}
