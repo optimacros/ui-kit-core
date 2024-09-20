@@ -6,7 +6,7 @@ import { ButtonComponent } from './Button'
 import { mergeStyles } from '../../utils/mergeStyle'
 
 // order of styles import is important
-import themeStyle from './ButtonTheme.module.css'
+import themeStyle from './buttonTheme.module.css'
 // eslint-disable-next-line
 import style from './Button.module.css'
 

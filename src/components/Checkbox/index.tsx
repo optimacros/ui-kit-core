@@ -5,7 +5,7 @@ import { CheckboxComponent } from './Checkbox'
 import { mergeStyles } from '../../utils/mergeStyle'
 import { Tooltip, TooltipProps, TooltipTheme } from '../Tooltip'
 
-import themeStyle from './theme.module.css'
+import themeStyle from './checkboxTheme.module.css'
 
 export type Theme = {
     field?: string;
