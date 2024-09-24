@@ -3,10 +3,6 @@ import crypto from 'crypto'
 import { glob } from 'glob'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import postcssCustomProperties from 'postcss-custom-properties'
-import postcssImport from 'postcss-import'
-import postcssNesting from 'postcss-nested'
-import postcssPresetEnv from 'postcss-preset-env'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 // TODO https://github.com/gxmari007/vite-plugin-eslint/issues/84
@@ -45,22 +41,6 @@ export default defineConfig({
 
                 return `${componentName?.replace('.module.css', '-module')}__${name}___${hash}`
             },
-        },
-        postcss: {
-            plugins: [
-                postcssImport({ path: ['src'] }),
-                postcssNesting,
-                postcssPresetEnv({
-                    stage: 3,
-                    features: {
-                        'nesting-rules': true,
-                        'custom-media-queries': true,
-                    },
-                }),
-                postcssCustomProperties({
-                    preserve: false,
-                }),
-            ],
         },
     },
     build: {
