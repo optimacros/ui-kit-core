@@ -1,4 +1,3 @@
-// @ts-ignore
 module.exports = {
 	parser: 'postcss-comment',
 	plugins: {
@@ -23,7 +22,6 @@ module.exports = {
             ],
         },
         'postcss-color-function': {},
-        'postcss-calc': {},
-        cssnano: {},
+        'postcss-calc': {}
     },
 }
