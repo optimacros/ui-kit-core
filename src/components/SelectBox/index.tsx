@@ -10,7 +10,7 @@ import type { InputTheme } from '../Input'
 
 // order of styles import is important
 // eslint-disable-next-line
-import themeStyle from './theme.module.css'
+import themeStyle from './selectBoxTheme.module.css'
 // eslint-disable-next-line
 import styles from './SelectBox.module.css'
 

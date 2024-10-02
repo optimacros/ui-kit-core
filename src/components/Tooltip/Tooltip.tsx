@@ -6,7 +6,7 @@ import { mergeStyles } from '../../utils/mergeStyle'
 import events from '../../utils/react-toolbox-utils/events'
 import { getViewport } from '../../utils/react-toolbox-utils/utils'
 
-import styles from './theme.module.css'
+import styles from './tooltipTheme.module.css'
 
 // eslint-disable-next-line react-refresh/only-export-components
 const POSITION = {
@@ -98,7 +98,7 @@ export class Tooltip extends Component<TooltipProps, State> {
             tooltip,
             tooltipDelay,
             tooltipPosition,
-            composedComponent,
+            composedComponent = 'div',
             composedComponentProps,
             tooltipOffset,
             ...other

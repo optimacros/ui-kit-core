@@ -7,7 +7,7 @@ import type { ButtonInitialProps, ThemeButtonProps } from '../Button'
 import { Tooltip, TooltipProps } from '../Tooltip'
 
 // order of styles import is important
-import themeStyle from './theme.module.css'
+import themeStyle from './iconButtonTheme.module.css'
 // eslint-disable-next-line
 import style from './IconButton.module.css'
 

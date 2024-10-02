@@ -9,7 +9,7 @@ import { FontIcon } from '../FontIcon'
 
 // order of styles import is important
 // eslint-disable-next-line
-import inputThemeStyle from './theme.module.css'
+import inputThemeStyle from './inputTheme.module.css'
 // eslint-disable-next-line
 import inputDefaultStyle from './Input.module.css'
 
