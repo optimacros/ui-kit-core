@@ -1,5 +1,4 @@
 module.exports = {
-	parser: 'postcss-comment',
 	plugins: {
         'postcss-import': {
             path: ['src'],
