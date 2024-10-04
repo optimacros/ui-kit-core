@@ -13,7 +13,7 @@ import style from './IconButton.module.css'
 
 export type IconButtonTheme = ThemeButtonProps & { IconButton: string }
 
-export interface Props extends Partial<ButtonInitialProps> {
+interface Props extends Partial<ButtonInitialProps> {
     theme: Partial<IconButtonTheme>;
 }
 

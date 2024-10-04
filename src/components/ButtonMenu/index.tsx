@@ -12,7 +12,7 @@ import buttonMenuTheme from './ButtonMenu.module.css'
 
 export type ButtonMenuTheme = Partial<ButtonTheme> & Partial<TooltipTheme>
 
-export type Props = {
+type Props = {
     label?: string;
     disabled?: boolean;
     className?: string;
