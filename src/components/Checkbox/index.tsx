@@ -18,6 +18,7 @@ export type Theme = {
 
 export type InitialProps = {
     checked?: boolean;
+    defaultChecked?: boolean;
     name?: string;
     label?: React.ReactNode | string;
     tooltipLabel?: string;

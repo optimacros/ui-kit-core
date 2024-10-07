@@ -1,5 +1,6 @@
 import classnames from 'classnames'
-import React, { Component } from 'react'
+import _ from 'lodash'
+import React, { Component, PropsWithChildren } from 'react'
 
 import { Box } from './Box'
 import type { InitialProps, Theme } from './index'
@@ -11,18 +12,26 @@ export interface CheckboxComponentProps extends InitialProps {
     theme: Required<Theme>;
 }
 
-export class CheckboxComponent extends Component<React.PropsWithChildren<CheckboxComponentProps>> {
+export interface CheckboxComponentState {
+    checked: boolean;
+}
+
+export class CheckboxComponent extends Component<PropsWithChildren<CheckboxComponentProps>, CheckboxComponentState> {
     constructor(props: CheckboxComponentProps) {
         super(props)
 
         this.inputNode = React.createRef()
     }
 
+    state = {
+        checked: Boolean(this.props.defaultChecked),
+    }
+
     inputNode: React.RefObject<HTMLInputElement>
 
     render(): React.JSX.Element {
         const {
-            checked = false,
+            defaultChecked,
             children,
             disabled = false,
             label,
@@ -37,6 +46,7 @@ export class CheckboxComponent extends Component<React.PropsWithChildren<Checkbo
         } = this.props
 
         const theme = mergeStyles(customTheme, checkBoxStyle) as Required<Theme>
+        const { checked } = this
 
         const className = classnames(
             theme.field,
@@ -90,7 +100,10 @@ export class CheckboxComponent extends Component<React.PropsWithChildren<Checkbo
         }
 
         if (!this.props.disabled && this.props.onChange) {
-            this.props.onChange(!this.props.checked, event)
+            this.props.onChange(!this.checked, event)
+            this.setState(({ checked }) => ({
+                checked: !checked,
+            }))
         }
     }
 
@@ -104,5 +117,13 @@ export class CheckboxComponent extends Component<React.PropsWithChildren<Checkbo
         if (this.inputNode) {
             this.inputNode.current?.focus()
         }
+    }
+
+    get checked(): boolean {
+        const { defaultChecked, checked = false } = this.props
+
+        return _.isBoolean(defaultChecked)
+            ? this.state.checked
+            : checked
     }
 }
