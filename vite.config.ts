@@ -47,7 +47,7 @@ export default defineConfig({
         copyPublicDir: false,
         lib: {
             entry: path.resolve(__dirname, 'src/index.ts'),
-            formats: ['es'],
+            formats: ['cjs'],
         },
         rollupOptions: {
             external: ['react', 'react-dom', 'react/jsx-runtime'],
