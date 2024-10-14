@@ -39,7 +39,6 @@ const Wrapper = ({ children }: { children: ReactNode }) => (
 
 export const Horizontal: Story = {
     args: {
-        type: 'horizontal',
         children: (
             <>
                 <Button label="Portfolio" />
@@ -51,7 +50,7 @@ export const Horizontal: Story = {
 
 export const Vertical: Story = {
     args: {
-        type: 'vertical',
+        vertical: true,
         children: (
             <>
                 <Button label="Portfolio" />
@@ -63,7 +62,6 @@ export const Vertical: Story = {
 
 export const Wrap: Story = {
     args: {
-        type: 'horizontal',
         wrap: true,
         children: (
             <>

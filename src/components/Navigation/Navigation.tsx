@@ -43,7 +43,8 @@ export class Navigation extends React.PureComponent<NavigationProps, State> {
             this.props.className,
             {
                 [navigationTheme.NavigationContainer]: true,
-                [navigationTheme.NavigationContainer_Vertical]: this.props?.type === 'vertical',
+                [navigationTheme.NavigationContainer_Vertical]: this.props.vertical
+                    ?? false,
                 [navigationTheme.NavigationContainer_Wrap]: this.props.wrap,
             },
         )

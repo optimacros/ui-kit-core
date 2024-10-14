@@ -12,7 +12,7 @@ export type NavigationTheme = {
 }
 
 export type NavigationProps = {
-    type?: 'vertical' | 'horizontal';
+    vertical?: boolean;
     theme: NavigationTheme;
     className?: string;
     wrap?: boolean;
@@ -43,7 +43,9 @@ export class BaseNavigation extends React.PureComponent<React.PropsWithChildren<
     render() {
         const { theme } = this.state
 
-        const classes = classnames(theme[this.props.type ?? 'horizontal'], this.props.className)
+        const classes = classnames(theme[this.props.vertical
+            ? 'vertical'
+            : 'horizontal'], this.props.className)
 
         return (
             <nav
