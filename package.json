@@ -26,7 +26,8 @@
     "rc-menu": "7.4.23",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-modal": "3.16.1"
+    "react-modal": "3.16.1",
+    "react-range": "1.8.14"
   },
   "devDependencies": {
     "@storybook/addon-actions": "8.0.9",

@@ -17,3 +17,23 @@ export class Divider extends PureComponent<DividerProps> {
         return <hr className={className} />
     }
 }
+
+export class HorizontalDivider extends React.Component {
+    static identifier = 'horizontalDivider'
+
+    static hideInToolbarConfig = true
+
+    render() {
+        return <Divider />
+    }
+}
+
+export class VerticalDivider extends React.Component {
+    static identifier = 'verticalDivider'
+
+    static isDivider = true
+
+    render() {
+        return <Divider vertical />
+    }
+}
