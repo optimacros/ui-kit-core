@@ -1,8 +1,8 @@
 import { ArgTypes, Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 
-import { Tabs } from './index'
 import { Tab } from './Tab.tsx'
+import { Tabs } from './Tabs'
 
 const argTypes: Partial<ArgTypes> = {
     active: {

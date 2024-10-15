@@ -17,7 +17,7 @@ interface Props {
     showIcon?: boolean;
 }
 
-export const SearchContainer: React.FC<Props> = ({
+export const SearchInput: React.FC<Props> = ({
     value,
     onChange,
     onClose,
