@@ -110,6 +110,7 @@ export class ButtonMenu extends PureComponent<ButtonMenuProps> {
                         ...otherProps,
                         'data-label': label,
                         'data-name': dataName,
+                        'data-recipe': 'ButtonMenu',
                     }}
                     className={updatedClassName}
                     onClick={onClick}
@@ -136,6 +137,7 @@ export class ButtonMenu extends PureComponent<ButtonMenuProps> {
                 className={updatedClassName}
                 data-label={label}
                 data-name={dataName}
+                data-recipe="ButtonMenu"
             >
                 {this.renderContent(classNameText, classNameIcon, iconValue)}
             </Button>

@@ -62,6 +62,10 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
         this.dropdownNode = React.createRef()
     }
 
+    static defaultProps = {
+        source: [],
+    }
+
     state = {
         active: false,
         up: false,
@@ -96,7 +100,7 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
             onChange,
             onFocus,
             onBlur,
-            source,
+            source = [],
             template,
             theme,
             valueKey,
@@ -119,6 +123,7 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
         return (
             <div
                 className={className}
+                data-recipe="SelectBox"
                 data-react-toolbox="dropdown"
                 onBlur={this.handleBlur}
                 onFocus={this.handleFocus}
