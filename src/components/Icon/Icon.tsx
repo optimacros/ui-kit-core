@@ -1,11 +1,9 @@
-import React, { ReactNode, SVGProps } from 'react'
+import React, { SVGProps } from 'react'
 
 import { useUiCore } from '../../store'
 
-import IconStyle from './Icon.module.css'
-
 export interface IconProps {
-    value: ReactNode;
+    name: string;
     className?: string;
     onClick?: (event: React.MouseEvent) => void;
     title?: string;
@@ -14,29 +12,17 @@ export interface IconProps {
 }
 
 export function Icon({
-    value,
+    name,
     ...rest
 }: SVGProps<SVGSVGElement> & IconProps) {
     const { iconsSrc } = useUiCore()
 
-    if (typeof value === 'string') {
-        return (
-            <svg
-                {...rest}
-                data-recipe="Icon"
-            >
-                <use href={`${iconsSrc}#${value}`} />
-            </svg>
-        )
-    }
-
     return (
-        // @ts-ignore
-        <div
+        <svg
             {...rest}
-            className={rest.className ?? IconStyle.Container}
+            data-recipe="Icon"
         >
-            {value}
-        </div>
+            <use href={`${iconsSrc}#${name}`} />
+        </svg>
     )
 }

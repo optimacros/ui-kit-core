@@ -1,4 +1,6 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
+
+import { Icon } from '../Icon'
 
 import styles from './FileInput.module.css'
 
@@ -14,7 +16,6 @@ interface Props {
     value?: string;
     filePreview?: boolean;
     labelUploadNewFile?: string;
-    renderIcon: (props: any) => ReactNode;
 }
 
 export class FileInput extends React.Component<Props> {
@@ -74,13 +75,10 @@ export class FileInput extends React.Component<Props> {
 
         return (
             <div className={styles.Reset}>
-                {this.props.renderIcon({ onClick: () => this.props.state.reset && this.props.state.reset() })}
-                {/* TODO: ADD TO WS_FE */}
-
-                {/* <Icon
-                    value="clear"
+                <Icon
+                    name="clear"
                     onClick={() => this.props.state.reset && this.props.state.reset()}
-                /> */}
+                />
             </div>
         )
     }

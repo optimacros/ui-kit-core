@@ -294,7 +294,7 @@ export class TabHeader extends Component<Props> {
             return (
                 <Icon
                     className={styles.Icon}
-                    value={props.icon}
+                    name={props.icon}
                 />
             )
         }
