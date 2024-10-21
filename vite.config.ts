@@ -1,5 +1,4 @@
 import react from '@vitejs/plugin-react-swc'
-import crypto from 'crypto'
 import { glob } from 'glob'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -27,19 +26,12 @@ export default defineConfig({
     css: {
         modules: {
             localsConvention: 'camelCase',
-            generateScopedName: (name, filename, css) => {
+            generateScopedName: (name, filename) => {
                 const componentName = filename
                     .split('/')
                     .pop()
 
-                const hash = crypto
-                    .createHash('md5')
-                    .update(css)
-                    .digest('base64')
-                    .replace(/[^\d\w]+/, '')
-                    .substring(0, 5)
-
-                return `${componentName?.replace('.module.css', '-module')}__${name}__${hash}`
+                return `${componentName?.replace('.module.css', '-module')}__${name}`
             },
         },
     },
