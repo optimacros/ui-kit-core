@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { observer } from 'mobx-react'
 import React from 'react'
 
-import { FontIcon } from '../FontIcon'
+import { Icon } from '../Icon'
 
 import styles from './UiKitContents.module.css'
 
@@ -100,11 +100,11 @@ export class Contents extends React.Component<Props> {
 
         return (
             <div>
-                <FontIcon
+                <Icon
                     className={styles.toggleBtnIcon}
                     value={value}
                 />
-                <FontIcon
+                <Icon
                     className={styles.toggleBtnIcon}
                     value={value}
                 />
@@ -116,7 +116,7 @@ export class Contents extends React.Component<Props> {
         const value = 'keyboard_arrow_left'
 
         return (
-            <FontIcon
+            <Icon
                 className={styles.toggleBtnIcon}
                 value={value}
             />

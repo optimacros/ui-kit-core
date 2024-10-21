@@ -1,10 +1,13 @@
 import React, { SVGProps } from 'react'
 
+import { ICONS_MAP } from './iconList'
 import { useUiCore } from '../../store'
+import { FontIcon } from '../FontIcon'
 
 import IconStyle from './Icon.module.css'
 
 export interface IconProps {
+    // TODO: provide strong typing
     value: string | React.JSX.Element;
     className?: string;
     onClick?: (event: React.MouseEvent) => void;
@@ -20,14 +23,21 @@ export function Icon({
     const { iconsSrc } = useUiCore()
 
     if (typeof value === 'string') {
-        return (
-            <svg
-                {...rest}
-                data-recipe="Icon"
-            >
-                <use href={`${iconsSrc}#${value}`} />
-            </svg>
-        )
+        // @ts-ignore
+        return ICONS_MAP[value]
+            ? (
+                <svg
+                    {...rest}
+                    data-recipe="Icon"
+                >
+                    <use href={`${iconsSrc}#${value}`} />
+                </svg>
+            )
+            : (
+                <FontIcon {...rest}
+                    value={value}
+                />
+            )
     }
 
     return (

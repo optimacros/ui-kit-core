@@ -3,7 +3,7 @@ import type { MouseEvent } from 'react'
 import React, { Component } from 'react'
 
 import type { IconButtonProps, IconButtonTheme } from './index'
-import { FontIcon } from '../FontIcon'
+import { Icon } from '../Icon'
 
 export interface Props extends IconButtonProps {
     theme: IconButtonTheme & { toggle: string };
@@ -65,7 +65,7 @@ export class IconButtonComponent extends Component<Props> {
 
         const iconElement = typeof icon === 'string'
             ? (
-                <FontIcon
+                <Icon
                     className={theme.icon}
                     value={icon}
                 />

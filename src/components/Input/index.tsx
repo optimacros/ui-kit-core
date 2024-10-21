@@ -5,7 +5,7 @@ import type { TextareaHTMLAttributes, HTMLInputTypeAttribute, InputHTMLAttribute
 
 import { mergeStyles } from '../../utils/mergeStyle'
 import { isValuePresent } from '../../utils/react-toolbox-utils'
-import { FontIcon } from '../FontIcon'
+import { Icon } from '../Icon'
 
 // order of styles import is important
 // eslint-disable-next-line
@@ -184,7 +184,7 @@ export class Input extends React.Component<InputProps> {
                 }
 
                 {icon && (
-                    <FontIcon
+                    <Icon
                         className={theme.icon}
                         value={icon}
                     />

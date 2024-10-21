@@ -76,7 +76,7 @@ export class FileInput extends React.Component<Props> {
         return (
             <div className={styles.Reset}>
                 <Icon
-                    name="clear"
+                    value="clear"
                     onClick={() => this.props.state.reset && this.props.state.reset()}
                 />
             </div>

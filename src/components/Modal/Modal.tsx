@@ -5,7 +5,7 @@ import React, { Component } from 'react'
 
 import Draggable from './DraggableModalContainer'
 import ReactModal from './ReactModal'
-import { FontIcon } from '../FontIcon'
+import { Icon } from '../Icon'
 
 import styles from './Modal.module.css'
 /* eslint-disable */
@@ -87,7 +87,7 @@ export default class Modal extends Component {
 
         return (
             <div className={styles.CloseButton}>
-                <FontIcon
+                <Icon
                     className={styles.CloseButton_Icon}
                     value="close"
                     onClick={this.props.onRequestClose}

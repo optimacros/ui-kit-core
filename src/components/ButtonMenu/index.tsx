@@ -4,7 +4,7 @@ import React, { PureComponent } from 'react'
 import { mergeStyles } from '../../utils/mergeStyle'
 import { Button, ButtonTheme } from '../Button'
 import { Dropdown } from '../Dropdown'
-import { FontIcon } from '../FontIcon'
+import { Icon } from '../Icon'
 import { Menu } from '../Menu'
 import { Tooltip, TooltipProps, TooltipTheme } from '../Tooltip'
 
@@ -154,7 +154,7 @@ export class ButtonMenu extends PureComponent<ButtonMenuProps> {
                 )}
 
                 <div className={classNameIcon}>
-                    <FontIcon value={iconValue} />
+                    <Icon value={iconValue} />
                 </div>
             </>
         )

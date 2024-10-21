@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import React from 'react'
 
-import { FontIcon } from '../FontIcon'
+import { Icon } from '../Icon'
 
 import styles from './SearchInput.module.css'
 
@@ -39,7 +39,7 @@ export const SearchInput: React.FC<Props> = ({
         }
 
         return (
-            <FontIcon
+            <Icon
                 className={styles.CloseIcon}
                 onClick={() => onClose && onClose()}
                 value="close"

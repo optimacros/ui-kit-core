@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import React, { Component } from 'react'
 
 import { Checkbox } from '../Checkbox'
-import { FontIcon } from '../FontIcon'
+import { Icon } from '../Icon'
 
 import styles from './Favourite.module.css'
 
@@ -32,7 +32,7 @@ export class Favourite extends Component<Props> {
                     checked={this.props.checked}
                     onChange={this.props.onChange}
                 >
-                    <FontIcon
+                    <Icon
                         className={styles.Icon}
                         value={iconValue}
                     />
