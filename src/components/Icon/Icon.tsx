@@ -1,6 +1,6 @@
+import { ICONS_MAP } from '@optimacros/icons'
 import React, { SVGProps } from 'react'
 
-import { ICONS_MAP } from './iconList'
 import { useUiCore } from '../../store'
 import { FontIcon } from '../FontIcon'
 
