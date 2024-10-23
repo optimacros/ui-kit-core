@@ -20,7 +20,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@optimacros/icons": "github:optimacros/icons",
+    "@optimacros/icons": "git+https://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:x-oauth-basic@github.com/optimacros/icons.git",
     "mobx": "6.12.3",
     "mobx-react": "9.1.1",
     "rc-dropdown": "2.4.1",
