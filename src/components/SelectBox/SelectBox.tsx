@@ -55,6 +55,12 @@ type State = {
     focusedItemIndex: number | undefined;
 }
 
+const waitForTransitionEnd = async (targetElement: HTMLElement) => {
+    return new Promise(resolve => {
+        targetElement.addEventListener('transitionend', resolve, { once: true })
+    })
+}
+
 export class SelectBoxComponent extends Component<SelectBoxProps, State> {
     constructor(props: SelectBoxProps) {
         super(props)
@@ -101,6 +107,7 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
             template,
             theme,
             valueKey,
+            scrollIntoView,
             ...others
         } = this.props
 
@@ -410,13 +417,8 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
                 return
             }
 
-            if (typeof scrollIntoView === 'object' && scrollIntoView !== null) {
-                elementToFocus.scrollIntoView(scrollIntoView)
-            } else if (scrollIntoView) {
-                elementToFocus.scrollIntoView()
-            }
-
             elementToFocus.focus()
+            this.scrollToSelected(scrollIntoView, elementToFocus, dropdown)
         }, 30)
 
         if (!this.props.disabled) {
@@ -425,6 +427,24 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
 
         if (this.props.onFocus) {
             this.props.onFocus(event)
+        }
+    }
+
+    scrollToSelected = async (
+        scrollIntoView: SelectBoxProps['scrollIntoView'],
+        element: HTMLElement,
+        dropdown: HTMLUListElement,
+    ) => {
+        const transitionDuration = parseFloat(getComputedStyle(dropdown).transitionDuration)
+
+        if (transitionDuration) {
+            await waitForTransitionEnd(dropdown)
+        }
+
+        if (typeof scrollIntoView === 'object' && scrollIntoView !== null) {
+            element.scrollIntoView(scrollIntoView)
+        } else if (scrollIntoView) {
+            element.scrollIntoView()
         }
     }
 
