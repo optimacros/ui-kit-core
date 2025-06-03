@@ -46,6 +46,7 @@ export interface SelectBoxProps {
     onFocus?: React.FocusEventHandler<HTMLDivElement>;
     required?: boolean;
     template?: (item: SelectBoxProps['source'][number] | undefined) => React.ReactNode;
+    scrollIntoView?: boolean | ScrollIntoViewOptions;
 }
 
 type State = {
@@ -387,7 +388,7 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
     private handleFocus = (event: React.FocusEvent<HTMLDivElement>): void => {
         event.stopPropagation()
 
-        const { source } = this.props
+        const { source, scrollIntoView } = this.props
         const { focusedItemIndex } = this.state
 
         const dropdown = this.dropdownNode.current
@@ -404,7 +405,18 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
 
         setTimeout(() => {
             const elementToFocus = dropdown.children[firstFocusableItem] as HTMLElement | undefined
-            elementToFocus?.focus()
+
+            if (!elementToFocus) {
+                return
+            }
+
+            if (typeof scrollIntoView === 'object' && scrollIntoView !== null) {
+                elementToFocus.scrollIntoView(scrollIntoView)
+            } else if (scrollIntoView) {
+                elementToFocus.scrollIntoView()
+            }
+
+            elementToFocus.focus()
         }, 30)
 
         if (!this.props.disabled) {
