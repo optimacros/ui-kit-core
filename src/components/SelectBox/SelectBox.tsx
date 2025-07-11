@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import { isUndefined } from 'lodash'
+import { isUndefined, isNumber } from 'lodash'
 import React, { Component } from 'react'
 
 import { Key } from '../../types/KeyboardKeyList'
@@ -47,6 +47,7 @@ export interface SelectBoxProps {
     required?: boolean;
     template?: (item: SelectBoxProps['source'][number] | undefined) => React.ReactNode;
     scrollIntoView?: boolean | ScrollIntoViewOptions;
+    focusedItemIndex?: number;
 }
 
 type State = {
@@ -62,6 +63,12 @@ const waitForTransitionEnd = async (targetElement: HTMLElement) => {
 }
 
 export class SelectBoxComponent extends Component<SelectBoxProps, State> {
+    static getDerivedStateFromProps(props: SelectBoxProps) {
+        return {
+            focusedItemIndex: props.focusedItemIndex,
+        }
+    }
+
     constructor(props: SelectBoxProps) {
         super(props)
 
@@ -369,7 +376,7 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
 
     private close = (): void => {
         if (this.state.active) {
-            this.setState({ active: false, focusedItemIndex: undefined })
+            this.setState({ active: false, focusedItemIndex: this.props.focusedItemIndex })
         }
     }
 
@@ -457,7 +464,7 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
 
                 if (!this.refNode.current.contains(currentFocusedItem)) {
                     this.setState({
-                        focusedItemIndex: undefined,
+                        focusedItemIndex: this.props.focusedItemIndex,
                     })
 
                     if (this.state.active) {
@@ -474,6 +481,10 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
 
     private setFocusedItemIndex = (idx: number, event: React.FocusEvent<HTMLLIElement>): void => {
         event.stopPropagation()
+
+        if (isNumber(this.props.focusedItemIndex)) {
+            return
+        }
 
         this.setState({
             focusedItemIndex: idx,
