@@ -64,9 +64,13 @@ const waitForTransitionEnd = async (targetElement: HTMLElement) => {
 
 export class SelectBoxComponent extends Component<SelectBoxProps, State> {
     static getDerivedStateFromProps(props: SelectBoxProps) {
-        return {
-            focusedItemIndex: props.focusedItemIndex,
+        if (!isNumber(props.focusedItemIndex)) {
+            return {
+                focusedItemIndex: props.focusedItemIndex,
+            }
         }
+
+        return null
     }
 
     constructor(props: SelectBoxProps) {
@@ -377,7 +381,10 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
 
     private close = (): void => {
         if (this.state.active) {
-            this.setState({ active: false, focusedItemIndex: this.props.focusedItemIndex })
+            this.setState({
+                active: false,
+                focusedItemIndex: undefined,
+            })
         }
     }
 
@@ -465,7 +472,7 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
 
                 if (!this.refNode.current.contains(currentFocusedItem)) {
                     this.setState({
-                        focusedItemIndex: this.props.focusedItemIndex,
+                        focusedItemIndex: undefined,
                     })
 
                     if (this.state.active) {
