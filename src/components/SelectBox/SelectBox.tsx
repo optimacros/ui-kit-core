@@ -64,7 +64,7 @@ const waitForTransitionEnd = async (targetElement: HTMLElement) => {
 
 export class SelectBoxComponent extends Component<SelectBoxProps, State> {
     static getDerivedStateFromProps(props: SelectBoxProps) {
-        if (!isNumber(props.focusedItemIndex)) {
+        if (isNumber(props.focusedItemIndex)) {
             return {
                 focusedItemIndex: props.focusedItemIndex,
             }
