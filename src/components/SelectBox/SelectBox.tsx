@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import { isUndefined } from 'lodash'
+import { isUndefined, isNumber } from 'lodash'
 import React, { Component } from 'react'
 
 import { Key } from '../../types/KeyboardKeyList'
@@ -46,6 +46,8 @@ export interface SelectBoxProps {
     onFocus?: React.FocusEventHandler<HTMLDivElement>;
     required?: boolean;
     template?: (item: SelectBoxProps['source'][number] | undefined) => React.ReactNode;
+    scrollIntoView?: boolean | ScrollIntoViewOptions;
+    focusedItemIndex?: number;
 }
 
 type State = {
@@ -54,7 +56,23 @@ type State = {
     focusedItemIndex: number | undefined;
 }
 
+const waitForTransitionEnd = async (targetElement: HTMLElement) => {
+    return new Promise(resolve => {
+        targetElement.addEventListener('transitionend', resolve, { once: true })
+    })
+}
+
 export class SelectBoxComponent extends Component<SelectBoxProps, State> {
+    static getDerivedStateFromProps(props: SelectBoxProps) {
+        if (isNumber(props.focusedItemIndex)) {
+            return {
+                focusedItemIndex: props.focusedItemIndex,
+            }
+        }
+
+        return null
+    }
+
     constructor(props: SelectBoxProps) {
         super(props)
 
@@ -100,6 +118,8 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
             template,
             theme,
             valueKey,
+            scrollIntoView,
+            focusedItemIndex,
             ...others
         } = this.props
 
@@ -361,7 +381,10 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
 
     private close = (): void => {
         if (this.state.active) {
-            this.setState({ active: false, focusedItemIndex: undefined })
+            this.setState({
+                active: false,
+                focusedItemIndex: undefined,
+            })
         }
     }
 
@@ -387,7 +410,7 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
     private handleFocus = (event: React.FocusEvent<HTMLDivElement>): void => {
         event.stopPropagation()
 
-        const { source } = this.props
+        const { source, scrollIntoView } = this.props
         const { focusedItemIndex } = this.state
 
         const dropdown = this.dropdownNode.current
@@ -404,7 +427,13 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
 
         setTimeout(() => {
             const elementToFocus = dropdown.children[firstFocusableItem] as HTMLElement | undefined
-            elementToFocus?.focus()
+
+            if (!elementToFocus) {
+                return
+            }
+
+            elementToFocus.focus()
+            this.scrollToSelected(scrollIntoView, elementToFocus, dropdown)
         }, 30)
 
         if (!this.props.disabled) {
@@ -413,6 +442,24 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
 
         if (this.props.onFocus) {
             this.props.onFocus(event)
+        }
+    }
+
+    scrollToSelected = async (
+        scrollIntoView: SelectBoxProps['scrollIntoView'],
+        element: HTMLElement,
+        dropdown: HTMLUListElement,
+    ) => {
+        const transitionDuration = parseFloat(getComputedStyle(dropdown).transitionDuration)
+
+        if (transitionDuration) {
+            await waitForTransitionEnd(dropdown)
+        }
+
+        if (typeof scrollIntoView === 'object' && scrollIntoView !== null) {
+            element.scrollIntoView(scrollIntoView)
+        } else if (scrollIntoView) {
+            element.scrollIntoView()
         }
     }
 
@@ -442,6 +489,10 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
 
     private setFocusedItemIndex = (idx: number, event: React.FocusEvent<HTMLLIElement>): void => {
         event.stopPropagation()
+
+        if (isNumber(this.props.focusedItemIndex)) {
+            return
+        }
 
         this.setState({
             focusedItemIndex: idx,
