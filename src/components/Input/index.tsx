@@ -1,9 +1,9 @@
 import classNames from 'classnames'
-import { isNull, isUndefined, debounce, DebouncedFunc } from 'lodash'
+import { isNull, isUndefined, debounce } from 'lodash'
 import React from 'react'
 import type { TextareaHTMLAttributes, HTMLInputTypeAttribute } from 'react'
 
-import { Callback, InputProps, InputTheme } from './models'
+import { Callback, InputProps, InputState, InputTheme } from './models'
 import { mergeStyles } from '../../utils/mergeStyle'
 import { isValuePresent } from '../../utils/react-toolbox-utils'
 import { FontIcon } from '../FontIcon'
@@ -14,11 +14,7 @@ import inputThemeStyle from './inputTheme.module.css'
 // eslint-disable-next-line
 import inputDefaultStyle from './Input.module.css'
 
-interface State {
-    callbacks: { [key in Callback]: InputProps[key] | DebouncedFunc<NonNullable<InputProps[key]>> };
-}
-
-export class Input extends React.Component<InputProps, State> {
+export class Input extends React.Component<InputProps, InputState> {
     constructor(props: InputProps) {
         super(props)
 
