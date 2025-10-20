@@ -91,6 +91,10 @@ const argTypes: Partial<ArgTypes> = {
             + 'them from being sequentially focusable (usually with the Tab key, hence the name) '
             + 'and determine their relative ordering for sequential focus navigation.',
     },
+    debounce: {
+        control: 'number',
+        description: 'Specifies callbacks debounce delay. Works in uncontrolled mode only',
+    },
     onBlur: { table: { disable: true } },
     onChange: { table: { disable: true } },
     onFocus: { table: { disable: true } },
@@ -147,6 +151,27 @@ export const Disabled: Story = {
         value: 'Hello World',
         label: 'Disabled',
         disabled: true,
+    },
+    decorators: [
+        // eslint-disable-next-line new-cap
+        (Story) => <Wrapper>{Story()}</Wrapper>,
+    ],
+}
+
+export const Debounce: Story = {
+    args: {
+        name: 'welcome',
+        placeholder: 'Hello World',
+        label: 'Debounce onChange 2s, onKeyDown 4s',
+        debounce: { onChange: 2000, onKeyDown: 4000 },
+        onChange: () => {
+            // eslint-disable-next-line no-alert
+            alert('onChange fired')
+        },
+        onKeyDown: () => {
+            // eslint-disable-next-line no-alert
+            alert('onKeyDown fired')
+        },
     },
     decorators: [
         // eslint-disable-next-line new-cap

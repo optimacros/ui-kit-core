@@ -1,8 +1,9 @@
 import classNames from 'classnames'
-import { isNull, isUndefined } from 'lodash'
+import { isNull, isUndefined, debounce } from 'lodash'
 import React from 'react'
-import type { TextareaHTMLAttributes, HTMLInputTypeAttribute, InputHTMLAttributes } from 'react'
+import type { TextareaHTMLAttributes, HTMLInputTypeAttribute } from 'react'
 
+import { Callback, InputProps, InputState, InputTheme } from './models'
 import { mergeStyles } from '../../utils/mergeStyle'
 import { isValuePresent } from '../../utils/react-toolbox-utils'
 import { FontIcon } from '../FontIcon'
@@ -13,48 +14,13 @@ import inputThemeStyle from './inputTheme.module.css'
 // eslint-disable-next-line
 import inputDefaultStyle from './Input.module.css'
 
-export type InputTheme = {
-    bar: string;
-    counter: string;
-    disabled: string;
-    error: string;
-    oneLineError: string;
-    errored: string;
-    hidden: string;
-    hint: string;
-    icon: string;
-    input: string;
-    inputElement: string;
-    required: string;
-    withIcon: string;
-    collapsed: string;
-    filled: string;
-    fixed: string;
-    label: string;
-}
-
-type HTMLAttributes = TextareaHTMLAttributes<HTMLTextAreaElement> & InputHTMLAttributes<HTMLInputElement>
-
-export interface InputProps extends Omit<HTMLAttributes, 'onChange' | 'onKeyPress'> {
-    onChange?: (value: string, event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-    onKeyPress?: (event: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-    onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-    multiline?: boolean;
-    floating?: boolean;
-    label?: string | React.JSX.Element;
-    error?: string | React.JSX.Element | null;
-    oneLineError?: boolean;
-    hint?: string | React.JSX.Element;
-    collapsed?: boolean;
-    icon?: string | React.JSX.Element;
-    theme?: Partial<InputTheme>;
-}
-
-export class Input extends React.Component<InputProps> {
+export class Input extends React.Component<InputProps, InputState> {
     constructor(props: InputProps) {
         super(props)
 
         this.inputNode = React.createRef()
+
+        this.state = { callbacks: this.getCallbacks() }
     }
 
     inputNode: React.RefObject<HTMLInputElement | HTMLTextAreaElement>
@@ -84,6 +50,12 @@ export class Input extends React.Component<InputProps> {
         if (this.props.multiline) {
             window.removeEventListener('resize', this.handleAutoresize)
         }
+
+        Object.values(this.state.callbacks).forEach(callback => {
+            if (callback && 'cancel' in callback) {
+                callback.cancel()
+            }
+        })
     }
 
     render(): React.JSX.Element {
@@ -107,10 +79,10 @@ export class Input extends React.Component<InputProps> {
             label,
             maxLength,
             theme: customTheme,
-            onKeyPress,
-            onKeyDown,
             ...others
         } = this.props
+
+        const { onKeyPress, onKeyDown } = this.state.callbacks
 
         const length = !isUndefined(maxLength) && !isUndefined(value)
             ? value.toString().length
@@ -235,8 +207,37 @@ export class Input extends React.Component<InputProps> {
         )
     }
 
+    getCallbacks = () => {
+        const { debounce: debounceProp } = this.props
+
+        const getCallback: <T extends Callback>(key: T) => InputProps[T] = (key) => {
+            if (!this.props[key]) {
+                return undefined
+            }
+
+            const callback = this.props[key] as NonNullable<InputProps[Callback]>
+
+            if (typeof debounceProp === 'number') {
+                return debounce(callback, debounceProp)
+            }
+
+            if (typeof debounceProp === 'object' && typeof debounceProp[key] === 'number') {
+                return debounce(callback, debounceProp[key])
+            }
+
+            return this.props[key]
+        }
+
+        return {
+            onChange: getCallback('onChange'),
+            onKeyPress: getCallback('onKeyPress'),
+            onKeyDown: getCallback('onKeyDown'),
+        }
+    }
+
     handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
-        const { onChange, multiline, maxLength } = this.props
+        const { multiline, maxLength } = this.props
+        const { onChange } = this.state.callbacks
         const target = event.target as HTMLInputElement
         const valueFromEvent = target.value
 
@@ -284,9 +285,9 @@ export class Input extends React.Component<InputProps> {
         const {
             multiline,
             maxLength,
-            onKeyPress,
-            onKeyDown,
         } = this.props
+
+        const { onKeyPress, onKeyDown } = this.state.callbacks
 
         if (multiline && maxLength) {
             const target = event.target as HTMLInputElement
@@ -325,3 +326,6 @@ export class Input extends React.Component<InputProps> {
         this.inputNode.current?.focus()
     }
 }
+
+// eslint-disable-next-line react-refresh/only-export-components
+export * from './models'
