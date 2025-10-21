@@ -246,8 +246,6 @@ export class Input extends React.Component<InputProps, InputState> {
                 return debounce(callback, debounceProp[key])
             }
 
-            console.info(this.props[key])
-
             return this.props[key]
         }
 
