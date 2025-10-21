@@ -46,5 +46,6 @@ export type InputTheme = {
 }
 
 export interface InputState {
+    value: InputProps['value'];
     callbacks: { [key in Callback]: InputProps[key] | DebouncedFunc<NonNullable<InputProps[key]>> };
 }

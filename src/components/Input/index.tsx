@@ -22,7 +22,10 @@ export class Input extends React.Component<InputProps, InputState> {
 
         this.inputNode = React.createRef()
 
-        this.state = { callbacks: this.getCallbacks() }
+        this.state = {
+            value: props.value || props.defaultValue || '',
+            callbacks: this.getCallbacks(),
+        }
     }
 
     inputNode: React.RefObject<HTMLInputElement | HTMLTextAreaElement>
@@ -47,8 +50,16 @@ export class Input extends React.Component<InputProps, InputState> {
             window.removeEventListener('resize', this.handleAutoresize)
         }
 
+        // update debounced callbacks
         if (some(supportedCallbacks, key => this.props[key] !== prevProps[key])) {
+            this.setState({ callbacks: this.getCallbacks() })
             this.getCallbacks()
+        }
+
+        // got new value (validation, reset etc)
+        if (this.props.value !== prevProps.value && this.props.value !== this.state.value) {
+            this.cancelCallbacks()
+            this.setState({ value: this.props.value })
         }
     }
 
@@ -57,6 +68,10 @@ export class Input extends React.Component<InputProps, InputState> {
             window.removeEventListener('resize', this.handleAutoresize)
         }
 
+        this.cancelCallbacks()
+    }
+
+    cancelCallbacks = () => {
         Object.values(this.state.callbacks).forEach(callback => {
             if (callback && 'cancel' in callback) {
                 callback.cancel()
@@ -68,7 +83,6 @@ export class Input extends React.Component<InputProps, InputState> {
         const {
             children,
             name,
-            value,
             role = 'input',
             type = 'text',
             rows = 1,
@@ -88,7 +102,8 @@ export class Input extends React.Component<InputProps, InputState> {
             ...others
         } = this.props
 
-        const { onKeyPress, onKeyDown } = this.state.callbacks
+        const { value, callbacks } = this.state
+        const { onKeyPress, onKeyDown } = callbacks
 
         const length = !isUndefined(maxLength) && !isUndefined(value)
             ? value.toString().length
@@ -231,6 +246,8 @@ export class Input extends React.Component<InputProps, InputState> {
                 return debounce(callback, debounceProp[key])
             }
 
+            console.info(this.props[key])
+
             return this.props[key]
         }
 
@@ -254,6 +271,8 @@ export class Input extends React.Component<InputProps, InputState> {
         const value = haveToTrim
             ? valueFromEvent.substring(0, maxLength)
             : valueFromEvent
+
+        this.setState({ value })
 
         // propagate to store and therefore to the input
         if (onChange) {
