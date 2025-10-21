@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { isNull, isUndefined, debounce } from 'lodash'
+import { isNull, isUndefined, debounce, some } from 'lodash'
 import React from 'react'
 import type { TextareaHTMLAttributes, HTMLInputTypeAttribute } from 'react'
 
@@ -13,6 +13,8 @@ import { FontIcon } from '../FontIcon'
 import inputThemeStyle from './inputTheme.module.css'
 // eslint-disable-next-line
 import inputDefaultStyle from './Input.module.css'
+
+const supportedCallbacks: Callback[] = ['onChange', 'onKeyDown', 'onKeyPress']
 
 export class Input extends React.Component<InputProps, InputState> {
     constructor(props: InputProps) {
@@ -43,6 +45,10 @@ export class Input extends React.Component<InputProps, InputState> {
             window.addEventListener('resize', this.handleAutoresize)
         } else if (this.props.multiline && !prevProps.multiline) {
             window.removeEventListener('resize', this.handleAutoresize)
+        }
+
+        if (some(supportedCallbacks, key => this.props[key] !== prevProps[key])) {
+            this.getCallbacks()
         }
     }
 
