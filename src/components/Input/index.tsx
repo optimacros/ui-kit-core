@@ -23,7 +23,7 @@ export class Input extends React.Component<InputProps, InputState> {
         this.inputNode = React.createRef()
 
         this.state = {
-            value: props.value || props.defaultValue || '',
+            value: props.value ?? props.defaultValue ?? '',
             callbacks: this.getCallbacks(),
         }
     }
@@ -59,7 +59,7 @@ export class Input extends React.Component<InputProps, InputState> {
         // got new value (validation, reset etc)
         if (this.props.value !== prevProps.value && this.props.value !== this.state.value) {
             this.cancelCallbacks()
-            this.setState({ value: this.props.value })
+            this.setState({ value: this.props.value ?? '' })
         }
     }
 
