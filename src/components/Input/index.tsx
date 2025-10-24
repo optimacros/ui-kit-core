@@ -1,2 +1,2 @@
-export * from './App'
+export * from './InputWrapper'
 export * from './models'

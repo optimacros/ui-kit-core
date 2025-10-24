@@ -5,7 +5,7 @@ import React from 'react'
 import type { TextareaHTMLAttributes, HTMLInputTypeAttribute } from 'react'
 
 import type { Callback, InputProps, InputTheme } from './models'
-import { InputContext } from './store/context'
+import { InputStore } from './store/store'
 import { mergeStyles } from '../../utils/mergeStyle'
 import { isValuePresent } from '../../utils/react-toolbox-utils'
 import { FontIcon } from '../FontIcon'
@@ -18,12 +18,13 @@ import inputDefaultStyle from './Input.module.css'
 
 const supportedCallbacks: Callback[] = ['onChange', 'onKeyDown', 'onKeyPress']
 
-@observer
-export class InputComponent extends React.PureComponent<InputProps> {
-    static contextType = InputContext
-    declare context: NonNullable<React.ContextType<typeof InputContext>>
+interface Props extends InputProps {
+    store: InputStore;
+}
 
-    constructor(props: InputProps) {
+@observer
+export class InputComponent extends React.PureComponent<Props> {
+    constructor(props: Props) {
         super(props)
 
         this.inputNode = React.createRef()
@@ -53,15 +54,18 @@ export class InputComponent extends React.PureComponent<InputProps> {
 
         // update debounced callbacks
         if (some(supportedCallbacks, key => this.props[key] !== prevProps[key])) {
-            this.context.cancelCallbacks()
-            this.context.setCallbacks(this.props)
+            this.store.cancelCallbacks()
+            this.store.setCallbacks(this.props)
         }
 
-        const { isAnyCallbackPending, value, setValue } = this.context
+        const { isAnyCallbackPending, value, setValue } = this.store
 
-        // got new final value (validation, reset etc)
-        if (!isAnyCallbackPending && this.props.value !== value) {
-            setValue(this.props.value ?? '')
+        // TODO (un)controlled mode
+        if (!isUndefined(this.props.value)) {
+            // got new final value (validation, reset etc)
+            if (!isAnyCallbackPending && this.props.value !== value) {
+                setValue(this.props.value ?? '')
+            }
         }
     }
 
@@ -70,16 +74,10 @@ export class InputComponent extends React.PureComponent<InputProps> {
             window.removeEventListener('resize', this.handleAutoresize)
         }
 
-        this.context.cancelCallbacks()
+        this.store.cancelCallbacks()
     }
 
     render(): React.JSX.Element {
-        // я не хочу городить reaction для isAnyCallbackPending
-        // @ts-ignore
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const { isAnyCallbackPending, callbacks, value } = this.context
-        const { onKeyPress, onKeyDown } = callbacks
-
         const {
             children,
             name,
@@ -99,8 +97,15 @@ export class InputComponent extends React.PureComponent<InputProps> {
             label,
             maxLength,
             theme: customTheme,
+            store,
             ...others
         } = this.props
+
+        // я не хочу городить reaction для isAnyCallbackPending
+        // @ts-ignore
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { isAnyCallbackPending, callbacks, value } = store
+        const { onKeyPress, onKeyDown } = callbacks
 
         const length = !isUndefined(maxLength) && !isUndefined(value)
             ? value.toString().length
@@ -227,7 +232,7 @@ export class InputComponent extends React.PureComponent<InputProps> {
 
     handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
         const { multiline, maxLength } = this.props
-        const { callbacks, setValue } = this.context
+        const { callbacks, setValue } = this.store
         const { onChange } = callbacks
         const target = event.target as HTMLInputElement
         const valueFromEvent = target.value
@@ -280,7 +285,7 @@ export class InputComponent extends React.PureComponent<InputProps> {
             maxLength,
         } = this.props
 
-        const { onKeyPress, onKeyDown } = this.context.callbacks
+        const { onKeyPress, onKeyDown } = this.store.callbacks
 
         if (multiline && maxLength) {
             const target = event.target as HTMLInputElement
@@ -317,5 +322,9 @@ export class InputComponent extends React.PureComponent<InputProps> {
 
     focus(): void {
         this.inputNode.current?.focus()
+    }
+
+    get store() {
+        return this.props.store
     }
 }
