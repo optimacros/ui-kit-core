@@ -1,4 +1,3 @@
-import { DebouncedFunc } from 'lodash'
 import React from 'react'
 import type { TextareaHTMLAttributes, InputHTMLAttributes } from 'react'
 
@@ -43,8 +42,4 @@ export type InputTheme = {
     filled: string;
     fixed: string;
     label: string;
-}
-
-export interface InputState {
-    callbacks: { [key in Callback]: InputProps[key] | DebouncedFunc<NonNullable<InputProps[key]>> };
 }
