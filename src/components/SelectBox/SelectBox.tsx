@@ -28,7 +28,7 @@ type SelectBoxSourceLabel = keyof SelectBoxProps['source'][number]
 type SelectBoxSourceValue = SelectBoxProps['source'][number][SelectBoxSourceLabel]
 
 export interface SelectBoxProps {
-    source: { [key: string]: any}[];
+    source: { [key: string]: any }[];
     labelKey?: string;
     valueKey?: string;
     name?: string;
@@ -269,38 +269,45 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
             : undefined
     }
 
-    private getNextSelectableItemIndex = (focusedItemIndex: number): number => {
+    private getNextSelectableItemIndex = (focusedItemIndex: number): number | undefined => {
         const { source } = this.props
-        const lastItemIndex = source.length - 1
+        const len = source.length
 
-        let nextIndex = focusedItemIndex != lastItemIndex
-            ? focusedItemIndex + 1
-            : 0
-
-        while (source[nextIndex]?.disabled && nextIndex !== focusedItemIndex) {
-            nextIndex = nextIndex != lastItemIndex
-                ? nextIndex + 1
-                : 0
+        if (len === 0) {
+            return undefined
         }
 
-        return nextIndex
+        // Начинаем поиск со следующего элемента после текущего
+        // Если текущий -1, начнем проверку с 0 ( (-1 + 1) % len = 0 )
+        for (let i = 1; i <= len; i++) {
+            const nextIndex = (focusedItemIndex + i) % len
+
+            if (!source[nextIndex].disabled) {
+                return nextIndex
+            }
+        }
+
+        return undefined
     }
 
-    private getPreviousSelectableItemIndex = (focusedItemIndex: number): number => {
+    private getPreviousSelectableItemIndex = (focusedItemIndex: number): number | undefined => {
         const { source } = this.props
-        const lastItemIndex = source.length - 1
+        const len = source.length
 
-        let previousIndex = focusedItemIndex != 0
-            ? focusedItemIndex - 1
-            : lastItemIndex
-
-        while (source[previousIndex]?.disabled && previousIndex !== focusedItemIndex) {
-            previousIndex = previousIndex != 0
-                ? previousIndex - 1
-                : lastItemIndex
+        if (len === 0) {
+            return undefined
         }
 
-        return previousIndex
+        for (let i = 1; i <= len; i++) {
+            // Формула для движения назад: (текущий - шаг + длина) % длина
+            const prevIndex = (focusedItemIndex - i + len) % len
+
+            if (!source[prevIndex].disabled) {
+                return prevIndex
+            }
+        }
+
+        return undefined
     }
 
     private handleSelect = (
@@ -410,7 +417,7 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
     private handleFocus = (event: React.FocusEvent<HTMLDivElement>): void => {
         event.stopPropagation()
 
-        const { source, scrollIntoView } = this.props
+        const { scrollIntoView } = this.props
         const { focusedItemIndex } = this.state
 
         const dropdown = this.dropdownNode.current
@@ -419,22 +426,20 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
             return
         }
 
-        let firstFocusableItem = focusedItemIndex || 0
+        const firstFocusableItem = this.getNextSelectableItemIndex(focusedItemIndex || 0)
 
-        if (source && source[firstFocusableItem]?.disabled) {
-            firstFocusableItem = this.getNextSelectableItemIndex(firstFocusableItem)
+        if (!isUndefined(firstFocusableItem)) {
+            setTimeout(() => {
+                const elementToFocus = dropdown.children[firstFocusableItem] as HTMLElement | undefined
+
+                if (!elementToFocus) {
+                    return
+                }
+
+                elementToFocus.focus()
+                this.scrollToSelected(scrollIntoView, elementToFocus, dropdown)
+            }, 30)
         }
-
-        setTimeout(() => {
-            const elementToFocus = dropdown.children[firstFocusableItem] as HTMLElement | undefined
-
-            if (!elementToFocus) {
-                return
-            }
-
-            elementToFocus.focus()
-            this.scrollToSelected(scrollIntoView, elementToFocus, dropdown)
-        }, 30)
 
         if (!this.props.disabled) {
             this.open()
