@@ -414,10 +414,11 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
         this.setState({ active: true, up })
     }
 
+    /** Устанавливает начальный фокус при открытии дропдауна */
     private handleFocus = (event: React.FocusEvent<HTMLDivElement>): void => {
         event.stopPropagation()
 
-        const { scrollIntoView } = this.props
+        const { scrollIntoView, source } = this.props
         const { focusedItemIndex } = this.state
 
         const dropdown = this.dropdownNode.current
@@ -426,7 +427,11 @@ export class SelectBoxComponent extends Component<SelectBoxProps, State> {
             return
         }
 
-        const firstFocusableItem = this.getNextSelectableItemIndex(focusedItemIndex || 0)
+        let firstFocusableItem: number | undefined = focusedItemIndex || 0
+
+        if (source && source[firstFocusableItem]?.disabled) {
+            firstFocusableItem = this.getNextSelectableItemIndex(firstFocusableItem)
+        }
 
         if (!isUndefined(firstFocusableItem)) {
             setTimeout(() => {
